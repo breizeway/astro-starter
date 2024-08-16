@@ -48,3 +48,10 @@ const { title } = Astro.props;
 			monospace;
 	}
 </style>
+
+<script>
+	// redirect cms invite emails to admin page
+	if (window.location.hash.startsWith("#invite_token")) {
+		window.location.href = `${window.location.origin}/admin${window.location.hash}`
+	}
+</script>
