@@ -8,8 +8,8 @@ collections:
     name: "pages"
     files:
       - label: "About Page"
-        name: "about"
-        file: "site/content/about.yml"
+        name: "about-page"
+        file: "src/content/about-page.yml"
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Intro, name: intro, widget: markdown }
@@ -21,8 +21,8 @@ collections:
               - { label: Position, name: position, widget: string }
               - { label: Photo, name: photo, widget: image }
       - label: "Locations Page"
-        name: "locations"
-        file: "site/content/locations.yml"
+        name: "locations-page"
+        file: "src/content/locations-page.yml"
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Intro, name: intro, widget: markdown }
