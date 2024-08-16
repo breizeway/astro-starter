@@ -121,3 +121,10 @@ import Card from '../components/Card.astro';
 		padding: 0;
 	}
 </style>
+
+<script>
+	// redirect invite emails to admin page
+	if (window.location.hash.startsWith("#invite_token")) {
+		window.location.href = `${window.location.origin}/admin${window.location.hash}`
+	}
+</script>
