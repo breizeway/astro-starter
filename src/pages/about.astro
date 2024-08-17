@@ -1,11 +1,32 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-interface Props {
-  aboutPage: CollectionEntry<'aboutPage'>;
-}
+import { getEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Image from "astro/components/Image.astro";
+import CmsImages from "../utils/cms-images";
+const images = import.meta.glob("../assets/images/*");
+console.log(`:::IMAGES::: `, images);
 
-// `post` will match your 'blog' collection schema type
-const { aboutPage } = Astro.props;
+const { data } = await getEntry("about", "page");
+console.log(`:::DATA::: `, data);
+
+const test = new CmsImages();
 ---
 
-<h2>{aboutPage.title}</h2>
+<Layout title="About">
+  <h2>
+    {data.title}
+  </h2>
+  <p>
+    {data.intro}
+  </p>
+  {
+    data.team?.map((tm) => (
+      <Image
+        height={100}
+        width={100}
+        alt="profile image"
+        src={test.getSrc(tm.photo)()}
+      />
+    ))
+  }
+</Layout>

@@ -17,7 +17,9 @@ const aboutPageCollection = defineCollection({
   }),
 });
 
-// 3. Export a single `collections` object to register your collection(s)
+// key should match dir name
 export const collections = {
-  aboutPage: aboutPageCollection,
+  about: aboutPageCollection,
 };
+
+// run `npm run astro sync` after making any changes to this file
