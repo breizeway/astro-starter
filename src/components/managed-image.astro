@@ -1,0 +1,13 @@
+---
+import type { LocalImageProps } from "astro/assets";
+import { Image, type RemoteImageProps } from "astro:assets";
+
+type Props<T> = LocalImageProps<T> | RemoteImageProps;
+const imageProps = Astro.props;
+
+// https://markjames.dev/blog/dynamically-importing-images-astro
+const images = import.meta.glob("../assets/images/managed/*");
+const getSrc = images[imageProps.src.replace("src/", "../")];
+---
+
+<Image {...imageProps} src={getSrc?.()} />

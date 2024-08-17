@@ -1,31 +1,25 @@
 ---
 import { getEntry } from "astro:content";
-import Layout from "../layouts/Layout.astro";
-import Image from "astro/components/Image.astro";
-import CmsImages from "../utils/cms-images";
-const images = import.meta.glob("../assets/images/*");
-console.log(`:::IMAGES::: `, images);
+import Layout from "../layouts/layout.astro";
+import ManagedImage from "../components/managed-image.astro";
+import { marked } from "marked";
 
 const { data } = await getEntry("about", "page");
-console.log(`:::DATA::: `, data);
-
-const test = new CmsImages();
 ---
 
 <Layout title="About">
   <h2>
     {data.title}
   </h2>
-  <p>
-    {data.intro}
-  </p>
+  <p set:html={marked.parse(data.intro)} />
   {
     data.team?.map((tm) => (
-      <Image
-        height={100}
-        width={100}
+      <ManagedImage
+        height={300}
+        width={300}
         alt="profile image"
-        src={test.getSrc(tm.photo)()}
+        src={tm.photo}
+        style={{ width: "auto", height: 300 }}
       />
     ))
   }
