@@ -7,20 +7,33 @@ import { marked } from "marked";
 const { data } = await getEntry("about", "page");
 ---
 
-<Layout title="About">
-  <h2>
-    {data.title}
-  </h2>
-  <p set:html={marked.parse(data.intro)} />
-  {
-    data.team?.map((tm) => (
-      <ManagedImage
-        height={300}
-        width={300}
-        alt="profile image"
-        src={tm.photo}
-        style={{ width: "auto", height: 300 }}
-      />
-    ))
-  }
+<Layout title="about">
+  <div class="banner" slot="banner">
+    <span>banner</span>
+  </div>
+
+  <section>
+    {"> "}<a href="/">/</a>
+    <h2>
+      {data.title}
+    </h2>
+    <p set:html={marked.parse(data.intro)} />
+    {
+      data.team?.map((tm) => (
+        <ManagedImage
+          height={300}
+          width={300}
+          alt="profile image"
+          src={tm.photo}
+          style={{ width: "auto", height: 300 }}
+        />
+      ))
+    }
+  </section>
 </Layout>
+
+<style>
+  .banner {
+    @apply bg-fuchsia-700 p-2 flex justify-center font-bold;
+  }
+</style>
