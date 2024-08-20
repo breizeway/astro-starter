@@ -1,5 +1,6 @@
 ---
 import RootLayout from "./root-layout.astro";
+import Logo from "../assets/images/logo.svg?raw";
 
 interface Props {
   title: string;
@@ -10,12 +11,17 @@ const { title } = Astro.props;
 
 <RootLayout {...{ title }}>
   <div id="site-container">
-    <slot name="banner" />
-    <header><h1>site header</h1></header>
-    <main>
+    <slot name="before-header" />
+    <header>
+      <div class="width-content flex gap-2">
+        <Fragment set:html={Logo} />
+      </div>
+    </header>
+    <slot name="after-header" />
+    <main class="width-content">
       <slot />
     </main>
-    <footer>footer</footer>
+    <footer class="width-content">footer</footer>
   </div>
 </RootLayout>
 
@@ -24,10 +30,10 @@ const { title } = Astro.props;
     @apply min-h-screen flex flex-col;
   }
 
-  header,
+  header > div,
   main,
   footer {
-    @apply p-2;
+    @apply p-4;
   }
 
   main {

@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 interface Props {
   title: string;
 }
@@ -23,6 +25,7 @@ const { title } = Astro.props;
     />
     <!--  -->
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
     <slot />
@@ -31,7 +34,12 @@ const { title } = Astro.props;
 
 <style is:global>
   body {
-    @apply bg-gray-50 dark:bg-gray-900;
-    @apply text-gray-900 dark:text-gray-50;
+    @apply bg-gray-50 dark:bg-gray-800;
+    @apply text-gray-800 dark:text-gray-50;
   }
 </style>
+
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace-autoloader.js"
+></script>

@@ -1,0 +1,147 @@
+---
+// const getCompId = (componentDescriptor: string) =>
+//   `${componentDescriptor}_${crypto.randomUUID()}`;
+
+interface Props {
+  images: { src: string; alt: string }[];
+}
+const { images } = Astro.props;
+---
+
+<carousel-comp>
+  <div
+    class="carousel-comp__scroll-container carousel carousel-center w-full h-[500px] space-x-4 px-4"
+  >
+    {
+      images.map(({ src, alt }) => (
+        <div class="carousel-comp__slide carousel-item w-5/6">
+          <img
+            {...{ alt, src }}
+            class="rounded-box object-cover w-full h-full"
+          />
+        </div>
+      ))
+    }
+  </div>
+  <div class="flex w-full justify-center gap-2 py-2">
+    {
+      images.map((_, idx) => (
+        <button class="carousel-comp__pg-btn btn btn-xs">{idx + 1}</button>
+      ))
+    }
+  </div>
+  <div class="flex w-full justify-center gap-2 py-2">
+    {
+      ["prev", "next"].map((lbl) => (
+        <button class={`carousel-comp__nav-btn-${lbl} btn btn-xs`}>
+          {lbl}
+        </button>
+      ))
+    }
+    <button class="carousel-comp__play-btn btn btn-xs">pause</button>
+  </div>
+</carousel-comp>
+
+<script>
+  class Carousel extends HTMLElement {
+    constructor() {
+      super();
+
+      const scrollContainer = this.querySelector(
+        ".carousel-comp__scroll-container",
+      );
+      const length = scrollContainer?.children.length ?? 0;
+
+      let activeSlideIdx: number = 0;
+      let timeouts: NodeJS.Timeout[] = [];
+      let paused: boolean = false;
+
+      const start = () => {
+        timeouts.push(setTimeout(() => incrementSlide(1), 5000));
+      };
+      const stop = () => {
+        while (timeouts.length) {
+          clearTimeout(timeouts.pop());
+        }
+      };
+      const restart = () => {
+        stop();
+        start();
+      };
+
+      const scrollToIdx = (idx: number) => {
+        if (!paused) restart();
+        const slide = scrollContainer?.children[idx];
+        scrollContainer?.scrollBy({
+          left: slide?.getBoundingClientRect().left,
+          behavior: "smooth",
+        });
+      };
+
+      const incrementSlide = (by: number) => {
+        const unsafeIdx = activeSlideIdx + by;
+        activeSlideIdx =
+          unsafeIdx < 0 ? length + (unsafeIdx % length) : unsafeIdx % length;
+        scrollToIdx(activeSlideIdx);
+      };
+
+      Array.from(this.querySelectorAll(`.carousel-comp__pg-btn`)).map(
+        (e, idx) =>
+          e.addEventListener("click", () => {
+            activeSlideIdx = idx;
+            scrollToIdx(activeSlideIdx);
+          }),
+      );
+
+      this.querySelector(`.carousel-comp__nav-btn-prev`)?.addEventListener(
+        "click",
+        () => incrementSlide(-1),
+      );
+
+      this.querySelector(`.carousel-comp__nav-btn-next`)?.addEventListener(
+        "click",
+        () => incrementSlide(1),
+      );
+
+      const playButton = this.querySelector(`.carousel-comp__play-btn`);
+      playButton?.addEventListener("click", () => {
+        if (paused) {
+          paused = false;
+          (playButton as Element).innerHTML = "pause";
+          incrementSlide(1);
+          start();
+        } else {
+          paused = true;
+          (playButton as Element).innerHTML = "play";
+          stop();
+        }
+      });
+
+      scrollContainer?.addEventListener("scrollend", () => {
+        Array.from(scrollContainer.children).forEach((c, idx) => {
+          const parentRect = scrollContainer.getBoundingClientRect();
+          const childRect = c.getBoundingClientRect();
+          if (
+            childRect.left >= parentRect.left &&
+            childRect.right <= parentRect.right
+          ) {
+            activeSlideIdx = idx;
+            if (!paused) restart();
+          }
+        });
+      });
+
+      window.addEventListener("blur", () => {
+        if (paused) return;
+        stop();
+      });
+
+      window.addEventListener("focus", () => {
+        if (paused) return;
+        start();
+      });
+    }
+  }
+
+  customElements.define("carousel-comp", Carousel);
+</script>

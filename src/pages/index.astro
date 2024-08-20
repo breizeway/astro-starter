@@ -1,8 +1,17 @@
 ---
+import { getEntry } from "astro:content";
+import Carousel from "../components/carousel.astro";
 import Layout from "../layouts/layout.astro";
+
+const { data } = await getEntry("about", "page");
 ---
 
 <Layout title="home">
+  <Carousel
+    slot="after-header"
+    images={data.team?.map((tm) => ({ src: tm.photo, alt: "test" })) ?? []}
+  />
+
   <section>
     {"> "}<a href="/about">/about</a>
     <h2>home page</h2>
