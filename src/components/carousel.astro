@@ -17,10 +17,11 @@ const height = heightProp ?? 500;
   <div class="relative" style={{ height: `${height}px` }}>
     <div class="carousel carousel-center w-full h-full space-x-4 px-4">
       {
-        images.map(({ src, alt }) => (
+        images.map(({ src, alt }, idx) => (
           <div class="carousel-item w-5/6">
             <ManagedImage
               class="rounded-box object-cover w-full h-full"
+              loading={[0, 1].includes(idx) ? "eager" : "lazy"}
               width={height * 2}
               {...{ alt, src, height }}
             />
