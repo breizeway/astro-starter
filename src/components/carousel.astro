@@ -44,8 +44,13 @@ const height = heightProp ?? 500;
 
   <div class="flex w-full justify-center items-center gap-2 py-2">
     {
-      images.map(() => (
-        <button class="carousel-comp__pg-btn btn btn-circle btn-xs no-touch:h-4 no-touch:w-4 no-touch:min-h-2" />
+      images.map((_, idx) => (
+        <button
+          class:list={[
+            "carousel-comp__pg-btn btn btn-circle btn-xs no-touch:h-4 no-touch:w-4 no-touch:min-h-2",
+            { "btn-active": !idx },
+          ]}
+        />
       ))
     }
 
@@ -61,103 +66,132 @@ const height = heightProp ?? 500;
 
 <script>
   class Carousel extends HTMLElement {
+    _activeSlideIdx: number;
+    scrollContainer: Element | null;
+    paused: boolean;
+    numImages: number;
+    timeouts: NodeJS.Timeout[];
+
     constructor() {
       super();
 
-      const scrollContainer = this.querySelector(".carousel");
-      const length = scrollContainer?.children.length ?? 0;
-
-      let activeSlideIdx: number = 0;
-      let timeouts: NodeJS.Timeout[] = [];
-      let paused: boolean = false;
-
-      const start = () => {
-        if (timeouts.length) return;
-        timeouts.push(setTimeout(() => incrementSlide(1), 5000));
-      };
-      const stop = () => {
-        while (timeouts.length) {
-          clearTimeout(timeouts.pop());
-        }
-      };
-      const restart = () => {
-        stop();
-        start();
-      };
-
-      const scrollToIdx = (idx: number) => {
-        if (!paused) restart();
-        const slide = scrollContainer?.children[idx];
-        scrollContainer?.scrollBy({
-          left: slide?.getBoundingClientRect().left,
-          behavior: "smooth",
-        });
-      };
-
-      const incrementSlide = (by: number) => {
-        const unsafeIdx = activeSlideIdx + by;
-        activeSlideIdx =
-          unsafeIdx < 0 ? length + (unsafeIdx % length) : unsafeIdx % length;
-        scrollToIdx(activeSlideIdx);
-      };
+      this._activeSlideIdx = 0;
+      this.scrollContainer = this.querySelector(".carousel");
+      this.paused = false;
+      this.numImages = this.scrollContainer?.children.length ?? 0;
+      this.timeouts = [];
 
       Array.from(this.querySelectorAll(`.carousel-comp__pg-btn`)).map(
         (e, idx) =>
           e.addEventListener("click", () => {
-            activeSlideIdx = idx;
-            scrollToIdx(activeSlideIdx);
+            this.activeSlideIdx = idx;
+            this.scrollToIdx(this.activeSlideIdx);
           }),
       );
 
       this.querySelector(`.carousel-comp__nav-btn-prev`)?.addEventListener(
         "click",
-        () => incrementSlide(-1),
+        () => this.incrementSlide(-1),
       );
 
       this.querySelector(`.carousel-comp__nav-btn-next`)?.addEventListener(
         "click",
-        () => incrementSlide(1),
+        () => this.incrementSlide(1),
       );
 
       const playButton = this.querySelector(`.carousel-comp__play-btn`);
       playButton?.addEventListener("click", () => {
-        if (paused) {
-          paused = false;
+        if (this.paused) {
+          this.paused = false;
           (playButton as Element).innerHTML = "pause";
-          incrementSlide(1);
-          start();
+          this.incrementSlide(1);
+          this.start();
         } else {
-          paused = true;
+          this.paused = true;
           (playButton as Element).innerHTML = "play";
-          stop();
+          this.stop();
         }
       });
 
-      scrollContainer?.addEventListener("scrollend", () => {
-        Array.from(scrollContainer.children).forEach((c, idx) => {
-          const parentRect = scrollContainer.getBoundingClientRect();
+      this.scrollContainer?.addEventListener("scrollend", () => {
+        if (!this.scrollContainer) return;
+
+        Array.from(this.scrollContainer.children ?? []).forEach((c, idx) => {
+          if (!this.scrollContainer) return;
+
+          const parentRect = this.scrollContainer.getBoundingClientRect();
           const childRect = c.getBoundingClientRect();
           if (
             childRect.left >= parentRect.left &&
             childRect.right <= parentRect.right
           ) {
-            activeSlideIdx = idx;
-            if (!paused) restart();
+            this.activeSlideIdx = idx;
+            if (!this.paused) this.restart();
           }
         });
       });
 
       window.addEventListener("blur", () => {
-        if (paused) return;
-        stop();
+        if (this.paused) return;
+        this.stop();
       });
 
       window.addEventListener("focus", () => {
-        if (paused) return;
-        start();
+        if (this.paused) return;
+        this.start();
       });
 
-      start();
+      this.start();
+    }
+
+    get activeSlideIdx(): number {
+      return this._activeSlideIdx;
+    }
+
+    set activeSlideIdx(idx: number) {
+      this._activeSlideIdx = idx;
+
+      this.querySelectorAll(`.carousel-comp__pg-btn`).forEach((e, idx) => {
+        if (idx === this.activeSlideIdx) {
+          e.classList.add("btn-active");
+        } else {
+          e.classList.remove("btn-active");
+        }
+      });
+    }
+
+    scrollToIdx(idx: number) {
+      if (!this.paused) this.restart();
+      const slide = this.scrollContainer?.children[idx];
+      this.scrollContainer?.scrollBy({
+        left: slide?.getBoundingClientRect().left,
+        behavior: "smooth",
+      });
+    }
+
+    incrementSlide(by: number) {
+      const unsafeIdx = this.activeSlideIdx + by;
+      this.activeSlideIdx =
+        unsafeIdx < 0
+          ? this.numImages + (unsafeIdx % this.numImages)
+          : unsafeIdx % this.numImages;
+      this.scrollToIdx(this.activeSlideIdx);
+    }
+
+    start() {
+      if (this.timeouts.length) return;
+      this.timeouts.push(setTimeout(() => this.incrementSlide(1), 6000));
+    }
+
+    stop() {
+      while (this.timeouts.length) {
+        clearTimeout(this.timeouts.pop());
+      }
+    }
+
+    restart() {
+      this.stop();
+      this.start();
     }
   }
 
