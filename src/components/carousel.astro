@@ -49,6 +49,8 @@ const height = heightProp ?? 500;
         </button>
       ))
     }
+
+    <button class="carousel-comp__play-btn btn btn-xs">pause</button>
   </div>
 </carousel-comp>
 
@@ -71,6 +73,7 @@ const height = heightProp ?? 500;
       let paused: boolean = false;
 
       const start = () => {
+        if (timeouts.length) return;
         timeouts.push(setTimeout(() => incrementSlide(1), 5000));
       };
       const stop = () => {
@@ -154,6 +157,8 @@ const height = heightProp ?? 500;
         if (paused) return;
         start();
       });
+
+      start();
     }
   }
 
