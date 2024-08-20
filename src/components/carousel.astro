@@ -1,55 +1,69 @@
 ---
+import ManagedImage from "./managed-image.astro";
+
 // const getCompId = (componentDescriptor: string) =>
 //   `${componentDescriptor}_${crypto.randomUUID()}`;
 
 interface Props {
   images: { src: string; alt: string }[];
+  height?: number;
 }
-const { images } = Astro.props;
+const { images, height: heightProp } = Astro.props;
+const height = heightProp ?? 500;
 ---
 
 <carousel-comp>
-  <div
-    class="carousel-comp__scroll-container carousel carousel-center w-full h-[500px] space-x-4 px-4"
-  >
-    {
-      images.map(({ src, alt }) => (
-        <div class="carousel-comp__slide carousel-item w-5/6">
-          <img
-            {...{ alt, src }}
-            class="rounded-box object-cover w-full h-full"
-          />
-        </div>
-      ))
-    }
+  <div class="relative" style={{ height: `${height}px` }}>
+    <div class="carousel carousel-center w-full h-full space-x-4 px-4">
+      {
+        images.map(({ src, alt }) => (
+          <div class="carousel-item w-5/6">
+            <ManagedImage
+              class="rounded-box object-cover w-full h-full"
+              width={height * 2}
+              {...{ alt, src, height }}
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="absolute left-8 top-1/2 -translate-y-1/2">
+      <button class={`carousel-comp__nav-btn-prev btn btn-sm btn-circle`}>
+        ❮
+      </button>
+    </div>
+
+    <div class="absolute right-8 top-1/2 -translate-y-1/2">
+      <button class={`carousel-comp__nav-btn-next btn btn-sm btn-circle`}>
+        ❯
+      </button>
+    </div>
   </div>
+
   <div class="flex w-full justify-center gap-2 py-2">
     {
       images.map((_, idx) => (
-        <button class="carousel-comp__pg-btn btn btn-xs">{idx + 1}</button>
-      ))
-    }
-  </div>
-  <div class="flex w-full justify-center gap-2 py-2">
-    {
-      ["prev", "next"].map((lbl) => (
-        <button class={`carousel-comp__nav-btn-${lbl} btn btn-xs`}>
-          {lbl}
+        <button class="carousel-comp__pg-btn btn btn-circle btn-xs">
+          {idx + 1}
         </button>
       ))
     }
-    <button class="carousel-comp__play-btn btn btn-xs">pause</button>
   </div>
 </carousel-comp>
+
+<style>
+  .carousel-comp__nav-btn {
+    transform: translate(-50%);
+  }
+</style>
 
 <script>
   class Carousel extends HTMLElement {
     constructor() {
       super();
 
-      const scrollContainer = this.querySelector(
-        ".carousel-comp__scroll-container",
-      );
+      const scrollContainer = this.querySelector(".carousel");
       const length = scrollContainer?.children.length ?? 0;
 
       let activeSlideIdx: number = 0;
