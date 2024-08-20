@@ -10,6 +10,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        touch: { raw: "(hover: none)" },
+        "no-touch": { raw: "(hover: hover)" },
+      },
       fontFamily: {
         serif: ["Spectral", ...defaultTheme.fontFamily.serif],
         sans: ["Lato", ...defaultTheme.fontFamily.sans],

@@ -8,7 +8,8 @@ interface Props {
   images: { src: string; alt: string }[];
   height?: number;
 }
-const { images, height: heightProp } = Astro.props;
+const { images: imagesProp, height: heightProp } = Astro.props;
+const images = imagesProp.slice(0, 8);
 const height = heightProp ?? 500;
 ---
 
@@ -41,12 +42,10 @@ const height = heightProp ?? 500;
     </div>
   </div>
 
-  <div class="flex w-full justify-center gap-2 py-2">
+  <div class="flex w-full justify-center items-center gap-2 py-2">
     {
-      images.map((_, idx) => (
-        <button class="carousel-comp__pg-btn btn btn-circle btn-xs">
-          {idx + 1}
-        </button>
+      images.map(() => (
+        <button class="carousel-comp__pg-btn btn btn-circle btn-xs no-touch:h-4 no-touch:w-4 no-touch:min-h-2" />
       ))
     }
 
