@@ -51,9 +51,15 @@ export default {
       {
         light: {
           ...require("daisyui/src/theming/themes")["light"],
+          "--site-logo-color-1": "#455270",
+          "--site-logo-color-2": "#253040",
+          "--site-logo-color-3": "#6E7B8C",
         },
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
+          "--site-logo-color-1": "#6B7B8C",
+          "--site-logo-color-2": "#D9E4E9",
+          "--site-logo-color-3": "#AAB8C2",
         },
       },
     ],
