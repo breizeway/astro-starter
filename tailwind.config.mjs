@@ -40,7 +40,8 @@ export default {
       addUtilities({
         ".width-content": {
           width: `min(100%, ${theme("screens.2xl")})`,
-          margin: "0 auto",
+          "margin-left": "auto",
+          "margin-right": "auto",
         },
       });
     }),

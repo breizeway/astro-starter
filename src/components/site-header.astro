@@ -13,20 +13,23 @@ import Icon from "./icon.astro";
     <nav class="width-content py-4 flex justify-between">
       <Icon icon="logo" id="nav-logo" class="-translate-x-3/4 opacity-0 h-10" />
       <div class="flex gap-2">
-        <a
-          href="/"
-          class:list={[
-            "btn btn-ghost",
-            { "btn-active": Astro.url.pathname === "/" },
-          ]}>home</a
-        >
-        <a
-          href="/about"
-          class:list={[
-            "btn btn-ghost",
-            { "btn-active": Astro.url.pathname === "/about" },
-          ]}>about</a
-        >
+        {
+          [
+            { pathname: "/", label: "home" },
+            { pathname: "/about", label: "about" },
+          ].map(({ pathname, label }) => (
+            <a
+              href={pathname}
+              class:list={[
+                "btn btn-ghost",
+                { "btn-active": Astro.url.pathname === pathname },
+              ]}
+              data-astro-prefetch
+            >
+              {label}
+            </a>
+          ))
+        }
       </div>
     </nav>
   </div>
