@@ -1,0 +1,48 @@
+---
+import Icon from "./icon.astro";
+---
+
+<header class="sticky -top-48 z-50">
+  <div
+    id="site-logo"
+    class="width-content flex justify-center dark:items-center gap-2 h-48"
+  >
+    <Icon icon="logo" class="h-20" />
+  </div>
+  <nav class="glass">
+    <div class="width-content py-4">
+      <Icon icon="logo" id="nav-logo" class="-translate-x-3/4 opacity-0 h-10" />
+    </div>
+  </nav>
+</header>
+
+<script>
+  const navLogo = document.getElementById("nav-logo");
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (!navLogo) return;
+
+        if (e.isIntersecting)
+          navLogo.classList.add("-translate-x-3/4", "opacity-0");
+        else {
+          navLogo.classList.remove("-translate-x-3/4", "opacity-0");
+        }
+      });
+    },
+    { threshold: 0.01 },
+  );
+
+  const siteLogo = document.getElementById("site-logo");
+  if (siteLogo) io.observe(siteLogo);
+
+  // adding transition only after scrolling avoids animation when browser restores place after reload
+  window.addEventListener(
+    "scroll",
+    () => {
+      navLogo?.classList.add("transition");
+    },
+    { once: true },
+  );
+</script>

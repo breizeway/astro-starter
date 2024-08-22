@@ -1,4 +1,10 @@
 {
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#000",
+    "titleBar.inactiveForeground": "#000000cc",
+    "titleBar.activeBackground": "#42526E",
+    "titleBar.inactiveBackground": "#42526Ecc"
+  },
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit",
     "source.removeUnusedImports": "explicit"

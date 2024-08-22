@@ -1,4 +1,5 @@
 ---
+import Icon from "./icon.astro";
 import ManagedImage from "./managed-image.astro";
 
 // const getCompId = (componentDescriptor: string) =>
@@ -54,8 +55,11 @@ const height = heightProp ?? 500;
         />
       ))
     }
-
-    <button class="carousel-comp__play-btn btn btn-xs">pause</button>
+    <div class="divider divider-horizontal mx-1"></div>
+    <button class="carousel-comp__play-btn btn btn-circle btn-xs btn-ghost">
+      <Icon icon="pause" class="h-5" />
+      <Icon icon="play" class="!hidden h-5" />
+    </button>
   </div>
 </carousel-comp>
 
@@ -101,15 +105,21 @@ const height = heightProp ?? 500;
       );
 
       const playButton = this.querySelector(`.carousel-comp__play-btn`);
+      const switchPlayButtonIcon = () => {
+        const children = Array.from(playButton?.children ?? []);
+        if (this.paused) children.reverse();
+        children.at(0)?.classList.remove("!hidden");
+        children.at(1)?.classList.add("!hidden");
+      };
       playButton?.addEventListener("click", () => {
         if (this.paused) {
           this.paused = false;
-          (playButton as Element).innerHTML = "pause";
+          switchPlayButtonIcon();
           this.incrementSlide(1);
           this.start();
         } else {
           this.paused = true;
-          (playButton as Element).innerHTML = "play";
+          switchPlayButtonIcon();
           this.stop();
         }
       });

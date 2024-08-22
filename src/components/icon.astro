@@ -1,0 +1,44 @@
+---
+import type {  HTMLAttributes } from "astro/types";
+import { type AstroComponentFactory } from "astro/runtime/server/render/astro/factory.js";
+
+const rawSvgs = await Astro.glob("./raw-svgs/*.astro");
+
+type SvgMap = { [icon: string]: AstroComponentFactory };
+const svgMap = rawSvgs.reduce<SvgMap>((map, s) => {
+  const key = s.default.moduleId?.split("/").at(-1)?.replace(".astro", "");
+  if (key) Object.assign(map, { [key]: s.default });
+  return map;
+}, {});
+
+
+interface Props extends HTMLAttributes<"div"> {
+  icon: string;
+}
+
+const props = Astro.props;
+const {icon, ...restProps} = props
+const SelectedIcon = svgMap[icon];
+
+---
+
+<comp-icon {...restProps} class:list={[{"h-[1em]": !restProps.class?.match(/(?<!-)h-/)}]} >
+  {SelectedIcon ? <SelectedIcon /> : <></>}
+</comp-icon>
+
+<style>
+  comp-icon {
+    @apply inline-block;
+  }
+</style>
+
+<script>
+  class CompIcon extends HTMLElement {
+
+    constructor() {
+      super();
+    }
+  }
+
+  customElements.define("comp-icon", CompIcon);
+</script>

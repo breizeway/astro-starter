@@ -39,11 +39,23 @@ export default {
       });
       addUtilities({
         ".width-content": {
-          width: `min(100%, ${theme("screens.xl")})`,
+          width: `min(100%, ${theme("screens.2xl")})`,
           margin: "0 auto",
         },
       });
     }),
     daisyui,
   ],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+        },
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+        },
+      },
+    ],
+  },
 };
