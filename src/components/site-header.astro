@@ -12,7 +12,7 @@ import Icon from "./icon.astro";
   <div class="glass">
     <nav class="width-content py-4 flex justify-between">
       <Icon icon="logo" id="nav-logo" class="-translate-x-3/4 opacity-0 h-10" />
-      <ul class="flex gap-2">
+      <div class="flex gap-2">
         <a
           href="/"
           class:list={[
@@ -27,7 +27,7 @@ import Icon from "./icon.astro";
             { "btn-active": Astro.url.pathname === "/about" },
           ]}>about</a
         >
-      </ul>
+      </div>
     </nav>
   </div>
 </header>
