@@ -33,32 +33,34 @@ import Icon from "./icon.astro";
 </header>
 
 <script>
-  const navLogo = document.getElementById("nav-logo");
+  document.addEventListener("astro:page-load", () => {
+    const navLogo = document.getElementById("nav-logo");
 
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (!navLogo) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!navLogo) return;
 
-        if (e.isIntersecting)
-          navLogo.classList.add("-translate-x-3/4", "opacity-0");
-        else {
-          navLogo.classList.remove("-translate-x-3/4", "opacity-0");
-        }
-      });
-    },
-    { threshold: 0.01 },
-  );
+          if (e.isIntersecting)
+            navLogo.classList.add("-translate-x-3/4", "opacity-0");
+          else {
+            navLogo.classList.remove("-translate-x-3/4", "opacity-0");
+          }
+        });
+      },
+      { threshold: 0.01 },
+    );
 
-  const siteLogo = document.getElementById("site-logo");
-  if (siteLogo) io.observe(siteLogo);
+    const siteLogo = document.getElementById("site-logo");
+    if (siteLogo) io.observe(siteLogo);
 
-  // adding transition only after scrolling avoids animation when browser restores place after reload
-  window.addEventListener(
-    "scroll",
-    () => {
-      navLogo?.classList.add("transition");
-    },
-    { once: true },
-  );
+    // adding transition only after scrolling avoids animation when browser restores place after reload
+    window.addEventListener(
+      "scroll",
+      () => {
+        navLogo?.classList.add("transition");
+      },
+      { once: true },
+    );
+  });
 </script>
