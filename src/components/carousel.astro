@@ -58,7 +58,7 @@ const height = heightProp ?? 500;
     <div class="divider divider-horizontal mx-1"></div>
     <button class="carousel-comp__play-btn btn btn-circle btn-xs btn-ghost">
       <Icon icon="pause" class="h-5" />
-      <Icon icon="play" class="!hidden h-5" />
+      <Icon icon="play" class="hidden h-5" />
     </button>
   </div>
 </carousel-comp>
@@ -108,8 +108,8 @@ const height = heightProp ?? 500;
       const switchPlayButtonIcon = () => {
         const children = Array.from(playButton?.children ?? []);
         if (this.paused) children.reverse();
-        children.at(0)?.classList.remove("!hidden");
-        children.at(1)?.classList.add("!hidden");
+        children.at(0)?.classList.remove("hidden");
+        children.at(1)?.classList.add("hidden");
       };
       playButton?.addEventListener("click", () => {
         if (this.paused) {

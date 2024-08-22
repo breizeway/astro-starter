@@ -1,8 +1,8 @@
 ---
 import { getEntry } from "astro:content";
-import Layout from "../layouts/layout.astro";
-import ManagedImage from "../components/managed-image.astro";
 import { marked } from "marked";
+import ManagedImage from "../components/managed-image.astro";
+import Layout from "../layouts/layout.astro";
 
 const { data } = await getEntry("about", "page");
 ---
@@ -13,7 +13,6 @@ const { data } = await getEntry("about", "page");
   </div>
 
   <section>
-    {"> "}<a href="/">/</a>
     <h2>
       {data.title}
     </h2>

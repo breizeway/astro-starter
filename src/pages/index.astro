@@ -8,8 +8,7 @@ const { data } = await getEntry("about", "page");
 
 <Layout title="home">
   <section>
-    {"> "}<a href="/about">/about</a>
-    <h2>home page</h2>
+    <h2>home</h2>
     <Carousel
       images={data.team?.map((tm) => ({ src: tm.photo, alt: "test" })) ?? []}
     />
