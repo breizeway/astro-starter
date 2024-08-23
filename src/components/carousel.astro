@@ -1,20 +1,21 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import Icon from "./icon.astro";
 import ManagedImage from "./managed-image.astro";
 
 // const getCompId = (componentDescriptor: string) =>
 //   `${componentDescriptor}_${crypto.randomUUID()}`;
 
-interface Props {
+interface Props extends HTMLAttributes<"div"> {
   images: { src: string; alt: string }[];
   height?: number;
 }
-const { images: imagesProp, height: heightProp } = Astro.props;
+const { images: imagesProp, height: heightProp, ...restProps } = Astro.props;
 const images = imagesProp.slice(0, 8);
 const height = heightProp ?? 500;
 ---
 
-<carousel-comp>
+<carousel-comp {...restProps}>
   <div class="relative" style={{ height: `${height}px` }}>
     <div class="carousel carousel-center w-full h-full space-x-4 px-4">
       {

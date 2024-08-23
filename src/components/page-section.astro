@@ -1,15 +1,18 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { propsWithMergedClasses } from "../helpers/style";
 
 interface Props extends HTMLAttributes<"section"> {}
 
 const props = Astro.props;
 ---
 
-<section {...props} class:list={["page-section", props.class]}></section>
+<section {...propsWithMergedClasses(props, "page-section")}>
+  <slot />
+</section>
 
 <style is:global>
   .page-section {
-    @apply w-full;
+    @apply site-width-content site-px;
   }
 </style>

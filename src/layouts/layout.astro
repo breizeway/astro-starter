@@ -12,11 +12,10 @@ const { title } = Astro.props;
 <RootLayout {...{ title }}>
   <slot name="before-header" />
   <SiteHeader />
-  <slot name="after-header" />
-  <main class="site-width-content">
+  <main>
     <slot />
   </main>
-  <footer class="site-width-content">footer</footer>
+  <footer class="site-width-content site-px site-py">footer</footer>
 </RootLayout>
 
 <style is:global>
@@ -24,18 +23,7 @@ const { title } = Astro.props;
     @apply min-h-screen flex flex-col;
   }
 
-  #site-logo,
-  nav,
-  main,
-  footer {
-    @apply site-py site-px;
-  }
-
   main {
-    @apply flex-grow flex flex-col;
-  }
-
-  footer {
-    @apply mb-[env(safe-area-inset-bottom)];
+    @apply flex-grow flex flex-col site-py gap-6;
   }
 </style>

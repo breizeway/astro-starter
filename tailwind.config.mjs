@@ -36,19 +36,11 @@ export default {
       });
       addUtilities({
         ".site-width-content": {
-          width: `min(100%, ${theme("screens.2xl")})`,
+          width: `min(100%, ${theme("screens.xl")})`,
+          "max-width": `min(100%, ${theme("screens.xl")})`,
           "margin-left": "auto",
           "margin-right": "auto",
         },
-        // ".glass-b": {
-        //   background: "rgba(255, 255, 255, 0.5)",
-        //   "box-shadow":
-        //     "inset 1px 2px 2px rgba(255, 255, 255, 0.5), inset -1px -2px 2px rgba(0, 0, 0, 0.25), inset 32.8667px -32.8667px 32.8667px rgba(194, 194, 194, 0.1), inset -32.8667px 32.8667px 32.8667px rgba(255, 255, 255, 0.1)",
-        //   /* Note: backdrop-filter has minimal browser support */
-        //   "backdrop-filter": "blur(32.8667px)",
-        //   "border-radius": "8px",
-        //   // "border-radius": "20px",
-        // },
       });
       addComponents({
         ".site-px": {
@@ -87,7 +79,7 @@ export default {
         light: {
           ...require("daisyui/src/theming/themes")["light"],
 
-          "base-100": "#ddd",
+          "base-100": "#eee",
           "--site-logo-color-1": "#455270",
           "--site-logo-color-2": "#253040",
           "--site-logo-color-3": "#6E7B8C",
