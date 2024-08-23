@@ -13,10 +13,10 @@ const { title } = Astro.props;
   <slot name="before-header" />
   <SiteHeader />
   <slot name="after-header" />
-  <main class="width-content">
+  <main class="site-width-content">
     <slot />
   </main>
-  <footer class="width-content">footer</footer>
+  <footer class="site-width-content">footer</footer>
 </RootLayout>
 
 <style is:global>
@@ -28,7 +28,7 @@ const { title } = Astro.props;
   nav,
   main,
   footer {
-    @apply p-6 px-4 sm:px-6 transition-[padding];
+    @apply site-py site-px;
   }
 
   main {
