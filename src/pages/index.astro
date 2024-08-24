@@ -12,7 +12,10 @@ const { data } = await getEntry("about", "page");
   <ImgFadeInHandler />
   <div class="w-full">
     <Carousel
-      images={data.team?.map((tm) => ({ src: tm.photo, alt: "test" })) ?? []}
+      images={[...data.team, ...data.team].map((tm) => ({
+        src: tm.photo,
+        alt: "test",
+      })) ?? []}
     />
   </div>
   <PageSection>

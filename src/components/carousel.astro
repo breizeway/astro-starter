@@ -85,7 +85,8 @@ const height = heightProp ?? 500;
     scrollContainer: Element | null;
     paused: boolean;
     numImages: number;
-    timeouts: NodeJS.Timeout[];
+    playTimers: NodeJS.Timeout[];
+    scrollTimer: NodeJS.Timeout | null;
 
     constructor() {
       super();
@@ -94,26 +95,8 @@ const height = heightProp ?? 500;
       this.scrollContainer = this.querySelector(".carousel");
       this.paused = false;
       this.numImages = this.scrollContainer?.children.length ?? 0;
-      this.timeouts = [];
-
-      // Array.from(this.scrollContainer?.children ?? []).forEach((c, idx) => {
-      //   const img = c.querySelector("img") as HTMLImageElement;
-      //   // console.log(`:::IMG::: `, img);
-      //   // img.onload = (e) => console.log(`:::IMG::: `, e);
-      //   if (!img.complete) {
-      //     img.addEventListener(
-      //       "load",
-      //       (e) => {
-      //         console.log(`:::E::: `, e);
-      //         img.classList.add("img-loaded");
-      //       },
-      //       { once: true },
-      //     );
-      //     // image.addEventListener("error", handleImageLoad);
-      //   } else {
-      //     img.classList.add("img-loaded");
-      //   }
-      // });
+      this.playTimers = [];
+      this.scrollTimer = null;
 
       Array.from(this.querySelectorAll(`.carousel-comp__pg-btn`)).map(
         (e, idx) =>
@@ -153,21 +136,26 @@ const height = heightProp ?? 500;
         }
       });
 
-      this.scrollContainer?.addEventListener("scrollend", () => {
-        if (!this.scrollContainer) return;
-
-        Array.from(this.scrollContainer.children ?? []).forEach((c, idx) => {
+      this.scrollContainer?.addEventListener("scroll", () => {
+        if (this.scrollTimer !== null) return;
+        this.scrollTimer = setTimeout(() => {
           if (!this.scrollContainer) return;
-          const parentRect = this.scrollContainer.getBoundingClientRect();
-          const childRect = c.getBoundingClientRect();
-          if (
-            childRect.left >= parentRect.left &&
-            childRect.right <= parentRect.right
-          ) {
-            this.activeSlideIdx = idx;
-            if (!this.paused) this.restart();
-          }
-        });
+
+          Array.from(this.scrollContainer.children ?? []).forEach((c, idx) => {
+            if (!this.scrollContainer) return;
+            const parentRect = this.scrollContainer.getBoundingClientRect();
+            const childRect = c.getBoundingClientRect();
+            if (
+              childRect.left >= parentRect.left &&
+              childRect.right <= parentRect.right
+            ) {
+              this.activeSlideIdx = idx;
+              if (!this.paused) this.restart();
+            }
+          });
+
+          this.scrollTimer = null;
+        }, 500);
       });
 
       window.addEventListener("blur", () => {
@@ -202,9 +190,9 @@ const height = heightProp ?? 500;
     scrollToIdx(idx: number) {
       if (!this.paused) this.restart();
       const slide = this.scrollContainer?.children[idx];
-      this.scrollContainer?.scrollBy({
-        left: slide?.getBoundingClientRect().left,
-        behavior: "smooth",
+      const slideWith = slide?.getBoundingClientRect().width ?? 0;
+      this.scrollContainer?.scrollTo({
+        left: slideWith * idx,
       });
     }
 
@@ -218,13 +206,13 @@ const height = heightProp ?? 500;
     }
 
     start() {
-      if (this.timeouts.length) return;
-      this.timeouts.push(setTimeout(() => this.incrementSlide(1), 6000));
+      if (this.playTimers.length) return;
+      this.playTimers.push(setTimeout(() => this.incrementSlide(1), 6000));
     }
 
     stop() {
-      while (this.timeouts.length) {
-        clearTimeout(this.timeouts.pop());
+      while (this.playTimers.length) {
+        clearTimeout(this.playTimers.pop());
       }
     }
 
