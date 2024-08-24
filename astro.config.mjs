@@ -1,5 +1,4 @@
 import netlify from "@astrojs/netlify";
-import { astroImageTools } from "astro-imagetools";
 import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
@@ -8,5 +7,5 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   output: "server",
   adapter: netlify(),
-  integrations: [tailwind(), astroImageTools],
+  integrations: [tailwind()],
 });
