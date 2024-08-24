@@ -3,11 +3,13 @@ import { getEntry } from "astro:content";
 import Carousel from "../components/carousel.astro";
 import Layout from "../layouts/layout.astro";
 import PageSection from "../components/page-section.astro";
+import ImgFadeInHandler from "../components/img-fade-in-handler.astro";
 
 const { data } = await getEntry("about", "page");
 ---
 
 <Layout title="home">
+  <ImgFadeInHandler />
   <div class="w-full">
     <Carousel
       images={data.team?.map((tm) => ({ src: tm.photo, alt: "test" })) ?? []}

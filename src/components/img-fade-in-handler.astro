@@ -1,0 +1,53 @@
+---
+/**
+ * i set this up as custom component so that the script runs every time its loaded
+ * otherwise ViewTransitions forces me to use custom events which don't run
+ * at the right time to catch if it's already cached (img.complete)
+ *
+ * this is typically added on the page level, or as a child to an element whose
+ * children imgs should fade in
+ *
+ * inspired by: https://samhermes.com/posts/detect-when-image-has-loaded-javascript/
+ *
+ */
+---
+
+<img-fade-in-handler> </img-fade-in-handler>
+
+<style>
+  img-fade-in-handler {
+    display: none;
+  }
+</style>
+
+<script>
+  class ImgFadeInHandler extends HTMLElement {
+    constructor() {
+      super();
+
+      const allImgs =
+        this.parentElement?.querySelectorAll<HTMLImageElement>(".img-fade-in");
+
+      Array.from(allImgs ?? []).forEach((img) => {
+        if (!img.complete) {
+          img.addEventListener(
+            "load",
+            () => {
+              img.classList.add("transition");
+              console.timeStamp();
+              setTimeout(() => {
+                console.timeStamp();
+                img.classList.add("img-fade-in-loaded");
+              });
+            },
+            { once: true },
+          );
+        } else {
+          img.classList.add("img-fade-in-loaded");
+        }
+      });
+    }
+  }
+
+  customElements.define("img-fade-in-handler", ImgFadeInHandler);
+</script>

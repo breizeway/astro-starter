@@ -25,28 +25,3 @@ export const tailwindTransition = (
     `transitionTimingFunction.${props?.timing ?? "DEFAULT"}`,
   ),
 });
-
-// https://samhermes.com/posts/detect-when-image-has-loaded-javascript/
-const fadeInImagesWithDoc = (doc: Document) => {
-  const allImgs = doc.querySelectorAll<HTMLImageElement>(".img-fade-in");
-  Array.from(allImgs ?? []).forEach((img) => {
-    if (!img.complete) {
-      img.addEventListener(
-        "load",
-        () => {
-          img.classList.add("img-fade-in-loaded");
-        },
-        { once: true },
-      );
-    } else {
-      img.classList.add("img-fade-in-loaded");
-    }
-  });
-};
-
-export const enableImgFadeIn = () => {
-  fadeInImagesWithDoc(document);
-  document.addEventListener("astro:before-swap", (ev) =>
-    fadeInImagesWithDoc(ev.newDocument),
-  );
-};

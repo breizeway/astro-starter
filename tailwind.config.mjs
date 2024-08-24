@@ -2,7 +2,6 @@ import typography from "@tailwindcss/typography";
 import daisyui from "daisyui";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
-import { tailwindTransition } from "./src/helpers/style";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -47,7 +46,7 @@ export default {
         ".img-fade-in": {
           opacity: theme("opacity.0"),
           filter: `blur(${theme("blur.lg")})`,
-          ...tailwindTransition(theme, { duration: "75" }),
+          // ...tailwindTransition(theme, { duration: "75" }),
         },
         ".img-fade-in-loaded": {
           opacity: theme("opacity.100"),

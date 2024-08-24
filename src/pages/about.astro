@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import { marked } from "marked";
+import ImgFadeInHandler from "../components/img-fade-in-handler.astro";
 import PageSection from "../components/page-section.astro";
 import { getManagedImage } from "../helpers/media";
 import Layout from "../layouts/layout.astro";
@@ -10,6 +11,7 @@ const { data } = await getEntry("about", "page");
 ---
 
 <Layout title="about">
+  <ImgFadeInHandler />
   <!-- <div class="banner" slot="before-header">
     <span>banner</span>
   </div> -->
