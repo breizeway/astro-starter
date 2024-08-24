@@ -25,3 +25,6 @@ export const tailwindTransition = (
     `transitionTimingFunction.${props?.timing ?? "DEFAULT"}`,
   ),
 });
+
+// const getCompId = (componentDescriptor: string) =>
+//   `${componentDescriptor}_${crypto.randomUUID()}`;

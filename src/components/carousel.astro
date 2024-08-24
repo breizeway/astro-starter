@@ -4,9 +4,6 @@ import Icon from "./icon.astro";
 import { Image } from "astro:assets";
 import { getManagedImage } from "../helpers/media";
 
-// const getCompId = (componentDescriptor: string) =>
-//   `${componentDescriptor}_${crypto.randomUUID()}`;
-
 interface Props extends HTMLAttributes<"div"> {
   images: { src: string; alt: string }[];
   height?: number;
@@ -14,7 +11,6 @@ interface Props extends HTMLAttributes<"div"> {
 const { images: imagesProp, height: heightProp, ...restProps } = Astro.props;
 const images = imagesProp.slice(0, 8);
 const height = heightProp ?? 500;
-// loading={[0, 1].includes(idx) ? "eager" : "lazy"}
 ---
 
 <carousel-comp {...restProps}>
@@ -25,7 +21,7 @@ const height = heightProp ?? 500;
           <div class="carousel-item w-5/6 bg-base-300 rounded-box overflow-hidden">
             <Image
               class=" object-cover w-full h-full img-fade-in"
-              loading="lazy"
+              loading={idx ? "lazy" : "eager"}
               decoding="async"
               src={getManagedImage(src)}
               {...{ alt }}
