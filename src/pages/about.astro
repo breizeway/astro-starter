@@ -1,7 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import { marked } from "marked";
-import ManagedImage from "../components/managed-image.astro";
+import PageSection from "../components/page-section.astro";
+import { getManagedImage } from "../helpers/media";
 import Layout from "../layouts/layout.astro";
 
 const { data } = await getEntry("about", "page");
@@ -12,23 +14,22 @@ const { data } = await getEntry("about", "page");
     <span>banner</span>
   </div> -->
 
-  <section>
+  <PageSection>
     <h2>
       {data.title}
     </h2>
-    <p set:html={marked.parse(data.intro)} />
+    <div class="prose" set:html={marked.parse(data.intro)} />
     {
       data.team?.map((tm) => (
-        <ManagedImage
-          height={300}
-          width={300}
+        <Image
+          class="img-fade-in"
           alt="profile image"
-          src={tm.photo}
+          src={getManagedImage(tm.photo)}
           style={{ width: "auto", height: 300 }}
         />
       ))
     }
-  </section>
+  </PageSection>
 </Layout>
 
 <style>

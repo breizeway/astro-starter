@@ -1,6 +1,8 @@
+import typography from "@tailwindcss/typography";
 import daisyui from "daisyui";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
+import { tailwindTransition } from "./src/helpers/style";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -19,6 +21,7 @@ export default {
   },
   plugins: [
     plugin(function ({ addBase, addUtilities, addComponents, theme }) {
+      // console.log(`:::THEME::: `, theme("transitionProperty"));
       addBase({
         h1: {
           fontSize: theme("fontSize.5xl"),
@@ -40,6 +43,15 @@ export default {
           "max-width": `min(100%, ${theme("screens.xl")})`,
           "margin-left": "auto",
           "margin-right": "auto",
+        },
+        ".img-fade-in": {
+          opacity: theme("opacity.0"),
+          filter: `blur(${theme("blur.lg")})`,
+          ...tailwindTransition(theme, { duration: "75" }),
+        },
+        ".img-fade-in-loaded": {
+          opacity: theme("opacity.100"),
+          filter: `blur(${theme("blur.0")})`,
         },
       });
       addComponents({
@@ -71,6 +83,7 @@ export default {
         },
       });
     }),
+    typography,
     daisyui,
   ],
   daisyui: {

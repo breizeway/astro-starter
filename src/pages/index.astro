@@ -13,8 +13,8 @@ const { data } = await getEntry("about", "page");
       images={data.team?.map((tm) => ({ src: tm.photo, alt: "test" })) ?? []}
     />
   </div>
-  <PageSection class="relative">
-    <h1>About Us</h1>
+  <PageSection>
+    <h1 class="">About Us</h1>
     <div class="glass-b p-2">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
