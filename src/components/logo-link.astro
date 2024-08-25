@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Icon, { type IconProps } from "./icon.astro";
+
+interface LogoIconProps extends Omit<IconProps, "icon"> {
+  icon?: IconProps["icon"];
+}
+
+interface Props extends HTMLAttributes<"a"> {
+  variant?: "small" | "large";
+  iconProps?: LogoIconProps;
+}
+
+const { variant, iconProps, ...aProps } = Astro.props;
+---
+
+<a href="/" {...aProps}>
+  <Icon icon={`logo-${variant}`} {...iconProps} />
+</a>

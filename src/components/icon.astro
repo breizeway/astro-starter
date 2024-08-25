@@ -14,6 +14,7 @@ const svgMap = rawSvgs.reduce<SvgMap>((map, s) => {
 interface Props extends HTMLAttributes<"div"> {
   icon: string;
 }
+export interface IconProps extends Props {}
 
 const props = Astro.props;
 const { icon, ...restProps } = props;

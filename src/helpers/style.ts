@@ -1,14 +1,16 @@
+import { type ClassValue } from "clsx";
+
 import type { PluginAPI } from "tailwindcss/types/config";
 
 export const propsWithMergedClasses = <
   T extends { class?: string | null | undefined },
 >(
   props: T,
-  ...classes: string[]
+  classList: ClassValue[],
 ): T => ({
   ...props,
   class: undefined,
-  "class:list": [...classes, props.class],
+  "class:list": [...classList, props.class],
 });
 
 export const tailwindTransition = (

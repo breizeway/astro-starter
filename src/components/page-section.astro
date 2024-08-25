@@ -7,7 +7,7 @@ interface Props extends HTMLAttributes<"section"> {}
 const props = Astro.props;
 ---
 
-<section {...propsWithMergedClasses(props, "page-section")}>
+<section {...propsWithMergedClasses(props, ["page-section"])}>
   <slot />
 </section>
 
