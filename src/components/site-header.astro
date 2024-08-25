@@ -1,5 +1,4 @@
 ---
-import Icon from "./icon.astro";
 import LogoLink from "./logo-link.astro";
 ---
 
@@ -11,12 +10,15 @@ import LogoLink from "./logo-link.astro";
     <LogoLink variant="large" iconProps={{ class: "h-[6.75rem]" }} />
   </div>
   <div class="glass">
-    <nav class="site-width-content site-px py-4 flex justify-between">
+    <nav
+      id="site-nav"
+      class="site-width-content site-px py-4 flex justify-between"
+    >
       <LogoLink
         variant="large"
         id="nav-logo"
         iconProps={{ class: "h-10" }}
-        class="-translate-x-3/4 opacity-0"
+        class="-translate-x-8 opacity-0"
       />
       <div class="flex gap-2">
         {
@@ -44,26 +46,27 @@ import LogoLink from "./logo-link.astro";
 <script>
   document.addEventListener("astro:page-load", () => {
     const navLogo = document.getElementById("nav-logo");
+    const siteNav = document.getElementById("site-nav");
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (!navLogo) return;
+    // const io = new IntersectionObserver(
+    //   (entries) => {
+    //     entries.forEach((e) => {
+    //       if (!navLogo) return;
 
-          if (e.isIntersecting)
-            navLogo.classList.add("-translate-x-3/4", "opacity-0");
-          else {
-            navLogo.classList.remove("-translate-x-3/4", "opacity-0");
-          }
-        });
-      },
-      { threshold: 0.01 },
-    );
+    //       if (e.isIntersecting)
+    //         navLogo.classList.add("-translate-x-8", "opacity-0");
+    //       else {
+    //         navLogo.classList.remove("-translate-x-8", "opacity-0");
+    //       }
+    //     });
+    //   },
+    //   { threshold: 0.01 },
+    // );
 
-    const siteLogo = document.getElementById("site-logo");
-    if (siteLogo) io.observe(siteLogo);
+    // const siteLogo = document.getElementById("site-logo");
+    // if (siteLogo) io.observe(siteLogo);
 
-    // adding transition only after scrolling avoids animation when browser restores place after reload
+    // adding transition only after scrolling avoids animation if browser restores place after reload
     window.addEventListener(
       "scroll",
       () => {
@@ -71,5 +74,16 @@ import LogoLink from "./logo-link.astro";
       },
       { once: true },
     );
+
+    const manageNavLogoClasses = () => {
+      if (siteNav?.getBoundingClientRect().y === 0) {
+        navLogo?.classList.remove("-translate-x-8", "opacity-0");
+      } else {
+        navLogo?.classList.add("-translate-x-8", "opacity-0");
+      }
+    };
+
+    manageNavLogoClasses();
+    window.addEventListener("scroll", manageNavLogoClasses);
   });
 </script>
