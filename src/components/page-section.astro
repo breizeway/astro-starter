@@ -8,11 +8,27 @@ const props = Astro.props;
 ---
 
 <section {...propsWithMergedClasses(props, ["page-section"])}>
-  <slot />
+  <div class="site-width-content">
+    <slot />
+  </div>
 </section>
 
 <style is:global>
+  [data-theme="dark"] .page-section {
+    @apply my-32;
+  }
+
   .page-section {
-    @apply site-width-content site-px;
+    @apply site-px py-3;
+  }
+
+  .page-section:nth-of-type(odd) {
+    @apply bg-base-100;
+  }
+  .page-section:nth-of-type(even) {
+    @apply bg-base-300 border-y border-[var(--fallback-bc,oklch(var(--bc)/0.1))];
+    box-shadow:
+      inset 0px 18px 12px -12px #0000000a,
+      inset 0px -18px 12px -12px #0000000a;
   }
 </style>

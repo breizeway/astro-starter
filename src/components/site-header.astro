@@ -4,21 +4,18 @@ import LogoLink from "./logo-link.astro";
 
 <header class="sticky -top-80 z-50">
   <div
-    id="site-logo"
+    id="site-logo-area"
     class="site-width-content site-px site-py flex justify-center items-center gap-2 h-80"
   >
     <LogoLink variant="large" iconProps={{ class: "h-[6.75rem]" }} />
   </div>
   <div class="glass">
-    <nav
-      id="site-nav"
-      class="site-width-content site-px py-4 flex justify-between"
-    >
+    <nav class="site-width-content site-px py-4 flex justify-between">
       <LogoLink
         variant="large"
         id="nav-logo"
         iconProps={{ class: "h-10" }}
-        class="-translate-x-8 opacity-0"
+        class="-translate-x-1/4 opacity-0"
       />
       <div class="flex gap-2">
         {
@@ -29,7 +26,7 @@ import LogoLink from "./logo-link.astro";
             <a
               href={pathname}
               class:list={[
-                "btn btn-ghost",
+                "btn btn-outline",
                 { "btn-active": Astro.url.pathname === pathname },
               ]}
               data-astro-prefetch
@@ -45,28 +42,27 @@ import LogoLink from "./logo-link.astro";
 
 <script>
   document.addEventListener("astro:page-load", () => {
+    const siteLogoAreaHeight =
+      document.getElementById("site-logo-area")?.offsetHeight ?? 0;
     const navLogo = document.getElementById("nav-logo");
-    const siteNav = document.getElementById("site-nav");
 
-    // const io = new IntersectionObserver(
-    //   (entries) => {
-    //     entries.forEach((e) => {
-    //       if (!navLogo) return;
+    let navLogoVisible = false;
+    const manageNavLogoClasses = () => {
+      if (window.scrollY >= siteLogoAreaHeight) {
+        if (navLogoVisible) return;
+        navLogo?.classList.remove("-translate-x-1/4", "opacity-0");
+        navLogoVisible = true;
+      } else {
+        if (!navLogoVisible) return;
+        navLogo?.classList.add("-translate-x-1/4", "opacity-0");
+        navLogoVisible = false;
+      }
+    };
 
-    //       if (e.isIntersecting)
-    //         navLogo.classList.add("-translate-x-8", "opacity-0");
-    //       else {
-    //         navLogo.classList.remove("-translate-x-8", "opacity-0");
-    //       }
-    //     });
-    //   },
-    //   { threshold: 0.01 },
-    // );
+    manageNavLogoClasses();
+    window.addEventListener("scroll", manageNavLogoClasses);
 
-    // const siteLogo = document.getElementById("site-logo");
-    // if (siteLogo) io.observe(siteLogo);
-
-    // adding transition only after scrolling avoids animation if browser restores place after reload
+    // adding transition only after first scroll avoids slide animation if browser restores place after reload
     window.addEventListener(
       "scroll",
       () => {
@@ -74,23 +70,5 @@ import LogoLink from "./logo-link.astro";
       },
       { once: true },
     );
-
-    let navLogoVisible = false;
-    const manageNavLogoClasses = () => {
-      if (window.scrollY >= 320) {
-        if (navLogoVisible) return;
-        navLogo?.classList.remove("-translate-x-8", "opacity-0");
-        navLogoVisible = true;
-        console.log(`:::NAVLOGOVISIBLE::: `, navLogoVisible);
-      } else {
-        if (!navLogoVisible) return;
-        navLogo?.classList.add("-translate-x-8", "opacity-0");
-        navLogoVisible = false;
-        console.log(`:::NAVLOGOVISIBLE::: `, navLogoVisible);
-      }
-    };
-
-    manageNavLogoClasses();
-    window.addEventListener("scroll", manageNavLogoClasses);
   });
 </script>

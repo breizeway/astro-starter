@@ -19,8 +19,15 @@ export default {
     },
   },
   plugins: [
-    plugin(function ({ addBase, addUtilities, addComponents, theme }) {
+    plugin(function ({
+      addBase,
+      addUtilities,
+      addComponents,
+      addVariant,
+      theme,
+    }) {
       // console.log(`:::THEME::: `, theme("transitionProperty"));
+      addVariant("light", "@media (prefers-color-scheme: light)");
       addBase({
         h1: {
           fontSize: theme("fontSize.5xl"),
@@ -105,4 +112,5 @@ export default {
       },
     ],
   },
+  // darkMode: ["class", '[data-theme="dark"]'],
 };

@@ -12,9 +12,14 @@ interface Props extends HTMLAttributes<"a"> {
   iconProps?: LogoIconProps;
 }
 
-const { variant, iconProps, ...aProps } = Astro.props;
+const { variant, iconProps, href: hrefProps, ...aProps } = Astro.props;
+const href = hrefProps === undefined ? "/" : hrefProps;
 ---
 
-<a href="/" {...propsWithMergedClasses(aProps, ["max-w-full"])}>
+<a
+  data-astro-prefetch
+  aria-label={`site ${href === "/" ? "home" : href} page`}
+  {...propsWithMergedClasses({ ...aProps, href }, ["max-w-full"])}
+>
   <Icon icon={`logo-${variant}`} {...iconProps} />
 </a>
