@@ -25,10 +25,10 @@
     constructor() {
       super();
 
-      const allImgs =
+      const imgsToFadeIn =
         this.parentElement?.querySelectorAll<HTMLImageElement>(".img-fade-in");
 
-      Array.from(allImgs ?? []).forEach((img) => {
+      Array.from(imgsToFadeIn ?? []).forEach((img) => {
         if (!img.complete) {
           img.addEventListener(
             "load",
