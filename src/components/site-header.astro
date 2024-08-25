@@ -75,11 +75,18 @@ import LogoLink from "./logo-link.astro";
       { once: true },
     );
 
+    let navLogoVisible = false;
     const manageNavLogoClasses = () => {
-      if (siteNav?.getBoundingClientRect().y === 0) {
+      if (window.scrollY >= 320) {
+        if (navLogoVisible) return;
         navLogo?.classList.remove("-translate-x-8", "opacity-0");
+        navLogoVisible = true;
+        console.log(`:::NAVLOGOVISIBLE::: `, navLogoVisible);
       } else {
+        if (!navLogoVisible) return;
         navLogo?.classList.add("-translate-x-8", "opacity-0");
+        navLogoVisible = false;
+        console.log(`:::NAVLOGOVISIBLE::: `, navLogoVisible);
       }
     };
 

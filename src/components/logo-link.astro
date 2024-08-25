@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { propsWithMergedClasses } from "../helpers/style";
 import Icon, { type IconProps } from "./icon.astro";
 
 interface LogoIconProps extends Omit<IconProps, "icon"> {
@@ -14,6 +15,6 @@ interface Props extends HTMLAttributes<"a"> {
 const { variant, iconProps, ...aProps } = Astro.props;
 ---
 
-<a href="/" {...aProps}>
+<a href="/" {...propsWithMergedClasses(aProps, ["max-w-full"])}>
   <Icon icon={`logo-${variant}`} {...iconProps} />
 </a>
