@@ -4,6 +4,7 @@ import Carousel from "../components/carousel.astro";
 import Layout from "../layouts/layout.astro";
 import PageSection from "../components/page-section.astro";
 import ImgFadeInHandler from "../components/img-fade-in-handler.astro";
+import Icon from "../components/icon.astro";
 
 const { data } = await getEntry("about", "page");
 ---
@@ -15,6 +16,44 @@ const { data } = await getEntry("about", "page");
       images={data.team?.map((tm) => ({ src: tm.photo, alt: "test" })) ?? []}
     />
   </div>
+  <PageSection>
+    <div class="flex gap-8">
+      <div class="bracket-card flex flex-col gap-12 items-center p-12">
+        <h3>SOUTH FLORIDA</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div
+        class="bracket-card flex flex-col gap-12 items-center p-12 text-red-300"
+      >
+        <h3 class="text-base-content">FAMILY OWNED</h3>
+        <p class="text-base-content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+      </div>
+      <div class="bracket-card flex flex-col gap-12 items-center p-12">
+        <h3>LOTS OF DOORS</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+        </p>
+      </div>
+    </div>
+  </PageSection>
   {
     [...Array(6)].map((_, i) => (
       <PageSection>
@@ -31,6 +70,7 @@ const { data } = await getEntry("about", "page");
       </PageSection>
     ))
   }
+  <Icon icon="florida" class="h-36" />
 </Layout>
 
 <script>

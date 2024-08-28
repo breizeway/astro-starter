@@ -87,6 +87,49 @@ export default {
           "border-radius": "8px",
           // "border-radius": "20px",
         },
+        ".bracket-card": {
+          position: "relative",
+          border: "3px solid transparent",
+          width: "fit-content",
+          "min-width": "108px",
+
+          "&::after": {
+            content: "''",
+            position: "absolute",
+            top: "-3px",
+            bottom: "-3px",
+            left: "-3px",
+            width: "36px",
+
+            "background-color": "currentColor",
+            "clip-path": `polygon(
+              100% 0,
+              3px 3px,
+              3px calc(100% - 3px),
+              100% 100%,
+              0 100%,
+              0 0
+            )`,
+          },
+          "&::before": {
+            content: "''",
+            position: "absolute",
+            top: "-3px",
+            bottom: "-3px",
+            right: "-3px",
+            width: "36px",
+
+            "background-color": "currentColor",
+            "clip-path": `polygon(
+              0 0,
+              100% 0,
+              100% 100%,
+              0 100%,
+              calc(100% - 3px) calc(100% - 3px),
+              calc(100% - 3px) 3px
+            )`,
+          },
+        },
       });
     }),
     typography,
