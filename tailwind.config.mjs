@@ -5,6 +5,9 @@ import plugin from "tailwindcss/plugin";
 
 const COMMON_VARS = {
   "--icon-stroke-lg": "3px",
+
+  "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)/1))",
+  "--site-bg-color-2": "var(--fallback-n, oklch(var(--n)/1))",
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -139,29 +142,27 @@ export default {
           secondary: "#455270",
           accent: "#D9AF72",
           // basically a color that should be dark on both light and dark, probably slightly lighter than base-300 on dark
-          // neutral: "#555566",
+          neutral: "#666666",
+
           // "neutral-content": "#ffffff",
           "base-100": "#fafafa",
-          "base-content": "#758DAD",
-          // info: "#00dbff",
-          // success: "#00ad6c",
-          // warning: "#faa800",
-          // error: "#ff5f79",
+          // "base-content": "#758DAD",
+          "base-content": "#253040",
 
-          // "base-100": "#eee",
           "--site-logo-color-1": "#455270",
           "--site-logo-color-2": "#253040",
           "--site-logo-color-3": "#6E7B8C",
           ...COMMON_VARS,
         },
         dark: {
-          // ...require("daisyui/src/theming/themes")["dark"],
           primary: "#449FF4",
           secondary: "#455270",
           accent: "#D9AF72",
+          neutral: "#999999",
           "base-100": "#414141",
-          // this should be light blue
-          "base-content": "#ffffff",
+          // made up light blue
+          // "base-content": "#E3E8EF",
+          "base-content": "#D9E4E9",
 
           "--site-logo-color-1": "#6B7B8C",
           "--site-logo-color-2": "#D9E4E9",

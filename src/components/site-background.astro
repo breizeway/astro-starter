@@ -9,14 +9,13 @@ const props = Astro.props;
 ---
 
 <div {...propsWithMergedClasses(props, ["site-background"])}>
-  <!-- TODO: add theme colors -->
-  <Icon icon="site-background" class="w-full h-full" />
+  <Icon icon="site-background" class="w-full h-full opacity-35" />
   <!-- firefox gets upset at any blur other than backdrop -->
   <div class="absolute inset-0 backdrop-blur-[100px]"></div>
 </div>
 
 <style is:global>
   .site-background {
-    @apply absolute inset-0 -z-10 opacity-35 overflow-clip;
+    @apply absolute inset-0 -z-10 overflow-clip bg-base-100;
   }
 </style>
