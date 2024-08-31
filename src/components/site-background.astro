@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { propsWithMergedClasses } from "../helpers/style";
+import Icon from "./icon.astro";
+
+interface Props extends HTMLAttributes<"div"> {}
+
+const props = Astro.props;
+---
+
+<div {...propsWithMergedClasses(props, ["site-background"])}>
+  <!-- TODO: add theme colors -->
+  <Icon icon="site-background" class="w-full h-full" />
+  <!-- firefox gets upset at any blur other than backdrop -->
+  <div class="absolute inset-0 backdrop-blur-[100px]"></div>
+</div>
+
+<style is:global>
+  .site-background {
+    @apply absolute inset-0 -z-10 opacity-35 overflow-clip;
+  }
+</style>
