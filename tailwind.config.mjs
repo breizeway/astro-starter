@@ -3,6 +3,10 @@ import daisyui from "daisyui";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
 
+const COMMON_VARS = {
+  "--icon-stroke-lg": "3px",
+};
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -78,34 +82,25 @@ export default {
           "padding-top": theme("padding.6"),
           "padding-bottom": theme("padding.6"),
         },
-        ".glass-b": {
-          background: "rgba(255, 255, 255, 0.5)",
-          "box-shadow":
-            "inset 1px 2px 2px rgba(255, 255, 255, 0.5), inset -1px -2px 2px rgba(0, 0, 0, 0.25), inset 32.8667px -32.8667px 32.8667px rgba(194, 194, 194, 0.1), inset -32.8667px 32.8667px 32.8667px rgba(255, 255, 255, 0.1)",
-          /* Note: backdrop-filter has minimal browser support */
-          "backdrop-filter": "blur(32.8667px)",
-          "border-radius": "8px",
-          // "border-radius": "20px",
-        },
         ".bracket-card": {
           position: "relative",
-          border: "3px solid transparent",
+          border: "var(--icon-stroke-lg) solid transparent",
           width: "fit-content",
           "min-width": "108px",
 
           "&::after": {
             content: "''",
             position: "absolute",
-            top: "-3px",
-            bottom: "-3px",
-            left: "-3px",
-            width: "36px",
+            top: "calc(var(--icon-stroke-lg)*-1)",
+            bottom: "calc(var(--icon-stroke-lg)*-1)",
+            left: "calc(var(--icon-stroke-lg)*-1)",
+            width: "calc(var(--icon-stroke-lg)*16)",
 
             "background-color": "currentColor",
             "clip-path": `polygon(
               100% 0,
-              3px 3px,
-              3px calc(100% - 3px),
+              var(--icon-stroke-lg) var(--icon-stroke-lg),
+              var(--icon-stroke-lg) calc(100% - var(--icon-stroke-lg)),
               100% 100%,
               0 100%,
               0 0
@@ -114,10 +109,10 @@ export default {
           "&::before": {
             content: "''",
             position: "absolute",
-            top: "-3px",
-            bottom: "-3px",
-            right: "-3px",
-            width: "36px",
+            top: "calc(var(--icon-stroke-lg)*-1)",
+            bottom: "calc(var(--icon-stroke-lg)*-1)",
+            right: "calc(var(--icon-stroke-lg)*-1)",
+            width: "calc(var(--icon-stroke-lg)*16)",
 
             "background-color": "currentColor",
             "clip-path": `polygon(
@@ -125,8 +120,8 @@ export default {
               100% 0,
               100% 100%,
               0 100%,
-              calc(100% - 3px) calc(100% - 3px),
-              calc(100% - 3px) 3px
+              calc(100% - var(--icon-stroke-lg)) calc(100% - var(--icon-stroke-lg)),
+              calc(100% - var(--icon-stroke-lg)) var(--icon-stroke-lg)
             )`,
           },
         },
@@ -139,18 +134,39 @@ export default {
     themes: [
       {
         light: {
-          ...require("daisyui/src/theming/themes")["light"],
+          // ...require("daisyui/src/theming/themes")["light"],
+          primary: "#449FF4",
+          secondary: "#455270",
+          accent: "#D9AF72",
+          // basically a color that should be dark on both light and dark, probably slightly lighter than base-300 on dark
+          // neutral: "#555566",
+          // "neutral-content": "#ffffff",
+          "base-100": "#fafafa",
+          "base-content": "#758DAD",
+          // info: "#00dbff",
+          // success: "#00ad6c",
+          // warning: "#faa800",
+          // error: "#ff5f79",
 
-          "base-100": "#eee",
+          // "base-100": "#eee",
           "--site-logo-color-1": "#455270",
           "--site-logo-color-2": "#253040",
           "--site-logo-color-3": "#6E7B8C",
+          ...COMMON_VARS,
         },
         dark: {
-          ...require("daisyui/src/theming/themes")["dark"],
+          // ...require("daisyui/src/theming/themes")["dark"],
+          primary: "#449FF4",
+          secondary: "#455270",
+          accent: "#D9AF72",
+          "base-100": "#414141",
+          // this should be light blue
+          "base-content": "#ffffff",
+
           "--site-logo-color-1": "#6B7B8C",
           "--site-logo-color-2": "#D9E4E9",
           "--site-logo-color-3": "#AAB8C2",
+          ...COMMON_VARS,
         },
       },
     ],
