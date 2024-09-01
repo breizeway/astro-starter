@@ -1,28 +1,30 @@
 ---
-import { getEntry } from "astro:content";
-import Carousel from "../components/carousel.astro";
+// import { getEntry } from "astro:content";
+// import Carousel from "../components/common/carousel.astro";
 import Layout from "../layouts/layout.astro";
-import PageSection from "../components/page-section.astro";
-import ImgFadeInHandler from "../components/img-fade-in-handler.astro";
-import Icon from "../components/icon.astro";
+import PageSection from "../components/common/page-section.astro";
+// import ImgFadeInHandler from "../components/common/img-fade-in-handler.astro";
+import Icon from "../components/common/icon.astro";
 import SiteBackground from "../components/site-background.astro";
+import HeroSection from "../components/hero-section.astro";
 
-const { data } = await getEntry("about", "page");
+// const { data } = await getEntry("about", "page");
 ---
 
 <Layout title="Elite Commercial Door">
-  <ImgFadeInHandler />
+  <!-- <ImgFadeInHandler /> -->
 
   <SiteBackground slot="before-layout" />
-  <div class="w-full">
+  <!-- <div class="w-full">
     <Carousel
       images={data.team?.map((tm) => ({ src: tm.photo, alt: "test" })) ?? []}
     />
-  </div>
+  </div> -->
+  <HeroSection />
   <PageSection>
     <div class="flex gap-8">
       <div class="bracket-card flex flex-col gap-12 items-center p-12">
-        <h3>SOUTH FLORIDA</h3>
+        <span class="text-title-3">south florida</span>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -36,7 +38,7 @@ const { data } = await getEntry("about", "page");
       <div
         class="bracket-card flex flex-col gap-12 items-center p-12 text-red-300"
       >
-        <h3 class="text-base-content">FAMILY OWNED</h3>
+        <span class="text-base-content text-title-2">Family Owned</span>
         <p class="text-base-content">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -45,7 +47,7 @@ const { data } = await getEntry("about", "page");
         </p>
       </div>
       <div class="bracket-card flex flex-col gap-12 items-center p-12">
-        <h3>LOTS OF DOORS</h3>
+        <span class="text-title-1">LOTS OF DOORS</span>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

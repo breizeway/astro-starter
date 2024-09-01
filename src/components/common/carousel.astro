@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "astro/types";
 import Icon from "./icon.astro";
 import { Image } from "astro:assets";
-import { getManagedImage } from "../helpers/media";
+import { getManagedImage } from "../../helpers/media";
 
 interface Props extends HTMLAttributes<"div"> {
   images: { src: string; alt: string }[];

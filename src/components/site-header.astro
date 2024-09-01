@@ -1,5 +1,5 @@
 ---
-import LogoLink from "./logo-link.astro";
+import LogoLink from "./common/logo-link.astro";
 ---
 
 <header class="sticky -top-80 z-50 bg-base-100">
@@ -21,7 +21,7 @@ import LogoLink from "./logo-link.astro";
         {
           [
             { pathname: "/", label: "home" },
-            { pathname: "/about", label: "about" },
+            // { pathname: "/about", label: "about" },
           ].map(({ pathname, label }) => (
             <a
               href={pathname}

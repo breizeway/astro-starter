@@ -1,22 +1,63 @@
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
-media_folder: "src/assets/images/managed" # Location where files will be stored in the repo
-public_folder: "src/assets/images/managed" # The src attribute for uploaded media
+site_url: https://elite-door.com
+logo_url: https://elite-dorr.com/favicon.svg
+media_folder: src/assets/images/managed # Location where files will be stored in the repo
+public_folder: src/assets/images/managed # The src attribute for uploaded media
 collections:
-  - label: "Pages"
-    name: "pages"
+  - name: home-page
+    identifier_field: name
+    label: Home Page
     files:
-      - label: "About Page"
-        name: "about-page"
-        file: "src/content/about/page.yml"
+      - name: banner
+        label: Banner
+        file: src/content/home-page/banner.json
         fields:
-          - { label: Title, name: title, widget: string }
-          - { label: Intro, name: intro, widget: markdown }
-          - label: Team
-            name: team
-            widget: list
-            fields:
-              - { label: Name, name: name, widget: string }
-              - { label: Position, name: position, widget: string }
-              - { label: Photo, name: photo, widget: image }
+          - name: slogan
+            label: Slogan
+            description: Write a slogan...
+            widget: markdown
+            required: true
+            default: The **ELITE** choice&#10; for commercial door&#10; installation
+          - name: image
+            label: Image
+            description: ...or use an image
+            widget: image
+      - name: about-us
+        label: About Us
+        file: src/content/home-page/about-us.json
+        fields:
+          - name: title
+            label: Title
+            widget: string
+            required: true
+            default: About Us
+          - name: description
+            label: Description
+            widget: markdown
+            required: true
+          - name: location-card-title
+            label: Location Card Title
+            widget: string
+            required: true
+          - name: location-card-description
+            label: Location Card Description
+            widget: markdown
+            required: true
+          - name: business-card-title
+            label: Business Card Title
+            widget: string
+            required: true
+          - name: business-card-description
+            label: Business Card Description
+            widget: markdown
+            required: true
+          - name: service-card-title
+            label: Service Card Title
+            widget: string
+            required: true
+          - name: service-card-description
+            label: Service Card Description
+            widget: markdown
+            required: true

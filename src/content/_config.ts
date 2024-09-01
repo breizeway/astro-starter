@@ -1,4 +1,4 @@
-import { z, defineCollection } from "astro:content";
+import { defineCollection, z } from "astro:content";
 
 const aboutPageCollection = defineCollection({
   type: "data",
@@ -11,7 +11,7 @@ const aboutPageCollection = defineCollection({
           name: z.string(),
           position: z.string(),
           photo: z.string(),
-        })
+        }),
       )
       .optional(),
   }),

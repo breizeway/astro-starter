@@ -20,8 +20,10 @@ export default {
         "no-touch": { raw: "(hover: hover)" },
       },
       fontFamily: {
-        serif: ["Spectral", ...defaultTheme.fontFamily.serif],
-        sans: ["Lato", ...defaultTheme.fontFamily.sans],
+        // serif: ["Spectral", ...defaultTheme.fontFamily.serif],
+        // sans: ["Lato", ...defaultTheme.fontFamily.sans],
+        title: ["poppins", ...defaultTheme.fontFamily.sans],
+        sans: ["nunito", ...defaultTheme.fontFamily.sans],
       },
     },
   },
@@ -36,18 +38,6 @@ export default {
       // console.log(`:::THEME::: `, theme("transitionProperty"));
       addVariant("light", "@media (prefers-color-scheme: light)");
       addBase({
-        h1: {
-          fontSize: theme("fontSize.5xl"),
-          fontFamily: theme("fontFamily.serif"),
-        },
-        h2: {
-          fontSize: theme("fontSize.4xl"),
-          fontFamily: theme("fontFamily.serif"),
-        },
-        h3: {
-          fontSize: theme("fontSize.3xl"),
-          fontFamily: theme("fontFamily.serif"),
-        },
         a: { textDecoration: "underline" },
       });
       addUtilities({
@@ -66,8 +56,6 @@ export default {
           opacity: theme("opacity.100"),
           filter: `blur(${theme("blur.0")})`,
         },
-      });
-      addComponents({
         ".site-px": {
           "transition-property": "padding",
           "transition-duration": theme("transitionDuration.DEFAULT"),
@@ -84,6 +72,24 @@ export default {
         ".site-py": {
           "padding-top": theme("padding.6"),
           "padding-bottom": theme("padding.6"),
+        },
+      });
+      addComponents({
+        ".text-title-1": {
+          fontSize: theme("fontSize.5xl"),
+          fontFamily: theme("fontFamily.title"),
+        },
+        ".text-title-2": {
+          fontSize: "2.5rem",
+          fontFamily: theme("fontFamily.title"),
+          fontWeight: 700,
+        },
+
+        ".text-title-3": {
+          fontSize: theme("fontSize.2xl"),
+          fontFamily: theme("fontFamily.title"),
+          fontWeight: 700,
+          textTransform: "uppercase",
         },
         ".bracket-card": {
           position: "relative",

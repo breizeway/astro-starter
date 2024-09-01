@@ -16,26 +16,6 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <!-- google fonts - https://css-tricks.com/how-to-load-fonts-in-a-way-that-fights-fout-and-makes-lighthouse-happy/ -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-      />
-    </noscript>
-    <!--  -->
     <ViewTransitions />
     <title>{title}</title>
   </head>
@@ -45,4 +25,76 @@ const { title } = Astro.props;
   </body>
 </html>
 
-<style is:global></style>
+<style is:global>
+  /* poppins-regular - latin */
+  @font-face {
+    font-display: swap;
+    font-family: "poppins";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./fonts/poppins-v21-latin-regular.woff2") format("woff2");
+  }
+
+  /* poppins-italic - latin */
+  @font-face {
+    font-display: swap;
+    font-family: "poppins";
+    font-style: italic;
+    font-weight: 400;
+    src: url("./fonts/poppins-v21-latin-italic.woff2") format("woff2");
+  }
+
+  /* poppins-700 - latin */
+  @font-face {
+    font-display: swap;
+    font-family: "poppins";
+    font-style: normal;
+    font-weight: 700;
+    src: url("./fonts/poppins-v21-latin-700.woff2") format("woff2");
+  }
+
+  /* poppins-700italic - latin */
+  @font-face {
+    font-display: swap;
+    font-family: "poppins";
+    font-style: italic;
+    font-weight: 700;
+    src: url("./fonts/poppins-v21-latin-700italic.woff2") format("woff2");
+  }
+
+  /* nunito-regular - latin */
+  @font-face {
+    font-display: swap;
+    font-family: "nunito";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./fonts/nunito-v26-latin-regular.woff2") format("woff2");
+  }
+
+  /* nunito-italic - latin */
+  @font-face {
+    font-display: swap;
+    font-family: "nunito";
+    font-style: italic;
+    font-weight: 400;
+    src: url("./fonts/nunito-v26-latin-italic.woff2") format("woff2");
+  }
+
+  /* nunito-700 - latin */
+  @font-face {
+    font-display: swap;
+    font-family: "nunito";
+    font-style: normal;
+    font-weight: 700;
+    src: url("./fonts/nunito-v26-latin-700.woff2") format("woff2");
+  }
+
+  /* nunito-700italic - latin */
+  @font-face {
+    font-display: swap;
+    font-family: "nunito";
+    font-style: italic;
+    font-weight: 700;
+    src: url("./fonts/nunito-v26-latin-700italic.woff2") format("woff2");
+  }
+</style>
