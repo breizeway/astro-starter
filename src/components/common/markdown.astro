@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { marked } from "marked";
+import { propsWithMergedClasses } from "../../helpers/style";
+
+interface Props extends HTMLAttributes<"div"> {
+  content: string;
+}
+
+const { content, ...divProps } = Astro.props;
+---
+
+<div
+  set:html={marked.parse(content)}
+  {...propsWithMergedClasses(divProps, ["markdwon"])}
+/>
+
+<style is:global>
+  .markdown {
+    @apply prose;
+  }
+</style>

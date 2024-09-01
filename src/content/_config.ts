@@ -19,7 +19,7 @@ const aboutPageCollection = defineCollection({
 
 // key should match dir name
 export const collections = {
-  about: aboutPageCollection,
+  // about: aboutPageCollection,
 };
 
 // run `npm run astro sync` after making any changes to this file

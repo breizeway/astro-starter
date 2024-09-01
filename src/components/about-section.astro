@@ -1,16 +1,24 @@
 ---
+import { getEntry } from "astro:content";
+import type { About, ContentSection } from "../content/types";
 import PageSection from "./common/page-section.astro";
+
+const { data } = (await getEntry(
+  "home-page",
+  "about",
+)) as ContentSection<About>;
+
+const cards = data.
 ---
 
-<PageSection class="hero-section h-[60rem] flex items-center">
-  <span class="font-title text-[6rem] leading-tight">
-    <!-- TODO: hook up to cms -->
-    The <strong>ELITE</strong> choice&#10; for commercial door&#10; installation
-  </span>
-</PageSection>
+<PageSection class="about-section relative" 
+ <div class="bracket-card">
+  <p class="text-"></p>
+ </div>
+/>
 
 <style>
-  .hero-section strong {
+  .about-section strong {
     @apply text-base-100;
   }
 </style>

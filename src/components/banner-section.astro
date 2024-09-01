@@ -1,0 +1,28 @@
+---
+import { getEntry } from "astro:content";
+import type { Banner, ContentSection } from "../content/types";
+import Markdown from "./common/markdown.astro";
+import PageSection from "./common/page-section.astro";
+
+const { data } = (await getEntry(
+  "home-page",
+  "banner",
+)) as ContentSection<Banner>;
+---
+
+<PageSection class="hero-section flex items-center">
+  <Markdown class="font-title leading-tight" content={data.slogan} />
+  <!-- TODO: add optional image -->
+</PageSection>
+
+<style is:global>
+  .hero-section {
+    width: 100%;
+    aspect-ratio: 1.5 / 1;
+    max-height: 50rem;
+    font-size: min(8vw, 6rem);
+    strong {
+      @apply !text-base-100;
+    }
+  }
+</style>

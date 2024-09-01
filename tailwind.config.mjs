@@ -20,8 +20,6 @@ export default {
         "no-touch": { raw: "(hover: hover)" },
       },
       fontFamily: {
-        // serif: ["Spectral", ...defaultTheme.fontFamily.serif],
-        // sans: ["Lato", ...defaultTheme.fontFamily.sans],
         title: ["poppins", ...defaultTheme.fontFamily.sans],
         sans: ["nunito", ...defaultTheme.fontFamily.sans],
       },
