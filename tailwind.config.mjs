@@ -45,77 +45,7 @@ export default {
       addBase({
         a: { textDecoration: "underline" },
       });
-      addUtilities({
-        ".site-width-content": {
-          width: `min(100%, ${theme("screens.xl")})`,
-          maxWidth: `min(100%, ${theme("screens.xl")})`,
-          marginLeft: "auto",
-          marginRight: "auto",
-        },
-        ".img-fade-in": {
-          opacity: theme("opacity.0"),
-        },
-        ".img-fade-in-loaded": {
-          opacity: theme("opacity.100"),
-        },
-        ".site-px": {
-          transitionProperty: "padding",
-          transitionDuration: theme("transitionDuration.DEFAULT"),
-          transitionTimingFunction: theme("transitionTimingFunction.DEFAULT"),
-          paddingLeft: theme("padding.4"),
-          paddingRight: theme("padding.4"),
-          "@screen sm": {
-            paddingLeft: theme("padding.6"),
-            paddingRight: theme("padding.6"),
-          },
-        },
-        ".site-py": {
-          paddingTop: theme("padding.6"),
-          paddingBottom: theme("padding.6"),
-        },
-        ".glass-empty": {
-          "--tw-bg-opacity": "0.3",
-          backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
-          backdropFilter: "blur(50px)",
-        },
-        ".glass-full": {
-          "--tw-bg-opacity": "0.3",
-          backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
-          backdropFilter: "blur(50px)",
-        },
-      });
       addComponents({
-        ".text-title-1": {
-          fontSize: theme("fontSize.5xl"),
-          fontFamily: theme("fontFamily.title"),
-        },
-        ".text-title-2": {
-          fontSize: "2.5rem",
-          fontFamily: theme("fontFamily.title"),
-          fontWeight: 700,
-        },
-        ".text-title-3": {
-          fontSize: theme("fontSize.2xl"),
-          fontFamily: theme("fontFamily.title"),
-          fontWeight: 700,
-          textTransform: "uppercase",
-        },
-        ".text-empty": {
-          "--tw-text-opacity": "1",
-          color: "oklch(var(--color-empty)/var(--tw-text-opacity))",
-        },
-        ".text-full": {
-          "--tw-text-opacity": "1",
-          color: "oklch(var(--color-full)/var(--tw-text-opacity))",
-        },
-        ".bg-empty": {
-          "--tw-bg-opacity": "1",
-          backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
-        },
-        ".bg-full": {
-          "--tw-bg-opacity": "1",
-          backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
-        },
         ".bracket-card": {
           position: "relative",
           border: "var(--icon-stroke-lg) solid transparent",
@@ -160,6 +90,82 @@ export default {
           },
         },
       });
+      addUtilities({
+        ".site-width-content": {
+          width: `min(100%, ${theme("screens.xl")})`,
+          maxWidth: `min(100%, ${theme("screens.xl")})`,
+          marginLeft: "auto",
+          marginRight: "auto",
+        },
+        ".img-fade-in": {
+          opacity: theme("opacity.0"),
+        },
+        ".img-fade-in-loaded": {
+          opacity: theme("opacity.100"),
+        },
+        ".site-px": {
+          transitionProperty: "padding",
+          transitionDuration: theme("transitionDuration.DEFAULT"),
+          transitionTimingFunction: theme("transitionTimingFunction.DEFAULT"),
+          paddingLeft: theme("padding.4"),
+          paddingRight: theme("padding.4"),
+          "@screen sm": {
+            paddingLeft: theme("padding.6"),
+            paddingRight: theme("padding.6"),
+          },
+        },
+        ".site-py": {
+          paddingTop: theme("padding.6"),
+          paddingBottom: theme("padding.6"),
+        },
+        ".text-title-1": {
+          fontSize: theme("fontSize.5xl"),
+          fontFamily: theme("fontFamily.title"),
+        },
+        ".text-title-2": {
+          fontSize: "2.5rem",
+          fontFamily: theme("fontFamily.title"),
+          fontWeight: 700,
+        },
+        ".text-title-3": {
+          fontSize: theme("fontSize.2xl"),
+          fontFamily: theme("fontFamily.title"),
+          fontWeight: 700,
+          textTransform: "uppercase",
+        },
+        ".text-empty": {
+          "--tw-text-opacity": "1",
+          color: "oklch(var(--color-empty)/var(--tw-text-opacity))",
+        },
+        ".text-full": {
+          "--tw-text-opacity": "1",
+          color: "oklch(var(--color-full)/var(--tw-text-opacity))",
+        },
+        ".bg-empty": {
+          "--tw-bg-opacity": "1",
+          backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
+        },
+        ".bg-full": {
+          "--tw-bg-opacity": "1",
+          backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
+        },
+        ".glass-base": {
+          "--tw-bg-opacity": "0.66",
+          backgroundColor:
+            "var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)))",
+          backdropFilter: "blur(50px)",
+        },
+        ".glass-empty": {
+          "--tw-bg-opacity": "0.33",
+          backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
+          backdropFilter: "blur(50px)",
+        },
+        ".glass-full": {
+          "--tw-bg-opacity": "0.33",
+          backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
+          backdropFilter: "blur(50px)",
+        },
+      });
     }),
     typography,
     daisyui,
@@ -173,7 +179,7 @@ export default {
           secondary: "#455270",
           accent: "#D9AF72",
           // basically a color that should be dark on both light and dark, probably slightly lighter than base-300 on dark
-          neutral: "#666666",
+          neutral: "#555",
 
           // "neutral-content": "#ffffff",
           "base-100": "#fafafa",
@@ -191,7 +197,7 @@ export default {
           primary: "#449FF4",
           secondary: "#455270",
           accent: "#D9AF72",
-          neutral: "#999999",
+          neutral: "#aaa",
           "base-100": "#414141",
           // made up light blue
           // "base-content": "#E3E8EF",

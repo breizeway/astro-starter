@@ -50,7 +50,7 @@ const props = Astro.props;
   const ctx = canvas?.getContext("2d");
   if (ctx) {
     ctx.filter = "blur(8px)";
-    ctx.globalAlpha = 0.4;
+    ctx.globalAlpha = 0.45;
 
     ctx.fillStyle = styles.getPropertyValue("--site-bg-color-1");
     ctx.beginPath();

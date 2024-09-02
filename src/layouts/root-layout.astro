@@ -26,6 +26,14 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
+  @tailwind utilities;
+
+  @layer utilities {
+    .test-u {
+      color: red;
+    }
+  }
+
   body {
     @apply relative min-h-screen flex flex-col overflow-x-clip;
   }
