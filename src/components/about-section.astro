@@ -1,24 +1,42 @@
 ---
+import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import type { About, ContentSection } from "../content/types";
+import { getManagedImage } from "../helpers/media";
 import Icon from "./common/icon.astro";
 import Markdown from "./common/markdown.astro";
 import PageSection from "./common/page-section.astro";
 
 const {
-  data: { title, description, location_card, business_card, service_card },
+  data: {
+    title,
+    description,
+    image,
+    location_card,
+    business_card,
+    service_card,
+  },
 } = (await getEntry("home-page", "about")) as ContentSection<About>;
 ---
 
-<PageSection class="about-section relative">
-  <div class="flex gap-8 p-8">
-    <!-- <Image src={getManagedImage()} -->
+<PageSection class="about-section">
+  <div class="glass-b rounded-[2.5rem] flex gap-8 p-8 -translate-y-1/2">
+    <!-- TODO: add alt to cms -->
+    <Image
+      src={getManagedImage(image.src)}
+      alt={image.alt}
+      class="img-fade-in rounded-3xl h-content"
+    />
+    <div>
+      <p class="text-title-2">{title}</p>
+      <Markdown content={description} />
+    </div>
   </div>
   <div class="grid grid-flow-col auto-cols-fr gap-16 text-center">
     {
       [location_card, business_card, service_card].map((card) => (
-        <div class="bracket-card grid grid-flow-row p-12 gap-4">
-          <Icon icon="arrow-truck" class="h-36 mx-auto" />
+        <div class="bracket-card grid grid-flow-row auto-rows-fr p-12 gap-6">
+          <Icon icon="arrow-truck" class="h-24 mx-auto" />
           <p class="text-title-3 text-primary">{card.title}</p>
 
           <Markdown content={card.description} />
@@ -29,11 +47,13 @@ const {
 </PageSection>
 
 <style>
-  .about-section strong {
-    @apply text-base-100;
+  .about-section {
+    .page-section-inner {
+      @apply relative flex flex-col gap-8;
+    }
   }
 
   .bracket-card {
-    grid-template-rows: minmax(auto, 2fr) minmax(auto, 1fr) minmax(auto, 2fr);
+    /* grid-template-rows: minmax(auto, 2fr) minmax(auto, 2fr) minmax(auto, 2fr); */
   }
 </style>

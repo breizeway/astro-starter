@@ -21,8 +21,16 @@ collections:
           - name: image
             label: Image
             description: ...or use an image
-            widget: image
+            widget: object
             required: false
+            fields:
+              - name: src
+                label: Source
+                widget: image
+              - name: alt
+                label: Description
+                description: For accessibility or if the image doesn't load
+                widget: string
       - name: about
         label: About
         file: src/content/home-page/about.json
@@ -32,7 +40,15 @@ collections:
             widget: string
           - name: image
             label: Image
-            widget: image
+            widget: object
+            fields:
+              - name: src
+                label: Source
+                widget: image
+              - name: alt
+                label: Description
+                description: For accessibility or if the image doesn't load
+                widget: string
           - name: description
             label: Description
             widget: markdown

@@ -1,28 +1,40 @@
 ---
+import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import type { Banner, ContentSection } from "../content/types";
+import { getManagedImage } from "../helpers/media";
 import Markdown from "./common/markdown.astro";
 import PageSection from "./common/page-section.astro";
 
-const { data } = (await getEntry(
-  "home-page",
-  "banner",
-)) as ContentSection<Banner>;
+const {
+  data: { slogan, image },
+} = (await getEntry("home-page", "banner")) as ContentSection<Banner>;
 ---
 
-<PageSection class="hero-section flex items-center">
-  <Markdown class="font-title leading-tight" content={data.slogan} />
-  <!-- TODO: add optional image -->
+<PageSection class="banner-section flex items-center">
+  <Markdown class="font-title leading-tight" content={slogan} />
+  <!-- TODO: test img -->
+  {
+    !!image && (
+      <Image
+        class="w-full h-full object-fill z-10 img-fade-in"
+        src={getManagedImage(image.src)}
+        alt={image.alt}
+        loading="eager"
+      />
+    )
+  }
 </PageSection>
 
-<style is:global>
-  .hero-section {
+<style>
+  .banner-section {
     width: 100%;
     aspect-ratio: 1.5 / 1;
     max-height: 50rem;
     font-size: min(8vw, 6rem);
+
     strong {
-      @apply !text-base-100;
+      @apply text-base-100;
     }
   }
 </style>

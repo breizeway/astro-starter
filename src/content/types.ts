@@ -1,5 +1,8 @@
 type Markdown = string;
-type Image = string;
+interface Image {
+  src: string;
+  alt: string;
+}
 
 export interface ContentSection<T extends object> {
   id: string;
@@ -20,6 +23,7 @@ interface AboutCard {
 export interface About {
   title: string;
   description: string;
+  image: Image;
   location_card: AboutCard;
   business_card: AboutCard;
   service_card: AboutCard;

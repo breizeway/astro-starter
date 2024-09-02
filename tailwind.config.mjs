@@ -26,6 +26,10 @@ export default {
         sans: ["nunito", ...defaultTheme.fontFamily.sans],
       },
     },
+    transitionDuration: {
+      ...defaultTheme.transitionDuration,
+      load: "100ms",
+    },
   },
   plugins: [
     plugin(function ({
@@ -35,7 +39,7 @@ export default {
       addVariant,
       theme,
     }) {
-      // console.log(`:::THEME::: `, theme("transitionProperty"));
+      console.log(`:::THEME::: `, theme("size"));
       addVariant("light", "@media (prefers-color-scheme: light)");
       addVariant("safari", "@supports (background: -webkit-named-image(i))");
       addBase({
@@ -50,12 +54,9 @@ export default {
         },
         ".img-fade-in": {
           opacity: theme("opacity.0"),
-          filter: `blur(${theme("blur.lg")})`,
-          // ...tailwindTransition(theme, { duration: "75" }),
         },
         ".img-fade-in-loaded": {
           opacity: theme("opacity.100"),
-          filter: `blur(${theme("blur.0")})`,
         },
         ".site-px": {
           "transition-property": "padding",
@@ -74,6 +75,13 @@ export default {
           "padding-top": theme("padding.6"),
           "padding-bottom": theme("padding.6"),
         },
+        ".glass-b": {
+          "background-color":
+            "var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)))",
+          "--tw-bg-opacity": "0.20",
+          "backdrop-filter": "blur(50px)",
+          // "border-radius": theme("size.10"),
+        },
       });
       addComponents({
         ".text-title-1": {
@@ -85,7 +93,6 @@ export default {
           fontFamily: theme("fontFamily.title"),
           fontWeight: 700,
         },
-
         ".text-title-3": {
           fontSize: theme("fontSize.2xl"),
           fontFamily: theme("fontFamily.title"),
@@ -169,6 +176,7 @@ export default {
           "base-100": "#414141",
           // made up light blue
           // "base-content": "#E3E8EF",
+          // "base-content": "#fff",
           "base-content": "#D9E4E9",
 
           "--site-logo-color-1": "#6B7B8C",

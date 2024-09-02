@@ -1,61 +1,20 @@
 ---
-// import { getEntry } from "astro:content";
-// import Carousel from "../components/common/carousel.astro";
 import Layout from "../layouts/layout.astro";
 import PageSection from "../components/common/page-section.astro";
-// import ImgFadeInHandler from "../components/common/img-fade-in-handler.astro";
 import Icon from "../components/common/icon.astro";
 import SiteBackground from "../components/site-background.astro";
 import BannerSection from "../components/banner-section.astro";
 import AboutSection from "../components/about-section.astro";
-
-// const { data } = await getEntry("about", "page");
+import ImgFadeInHandler from "../components/common/img-fade-in-handler.astro";
 ---
 
 <Layout title="Elite Commercial Door">
+  <ImgFadeInHandler />
   <SiteBackground slot="before-layout" />
   <BannerSection />
   <AboutSection />
-  <PageSection>
-    <div class="flex gap-8">
-      <div class="bracket-card flex flex-col gap-12 items-center p-12">
-        <span class="text-title-3">south florida</span>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
-      <div
-        class="bracket-card flex flex-col gap-12 items-center p-12 text-red-300"
-      >
-        <span class="text-base-content text-title-2">Family Owned</span>
-        <p class="text-base-content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </p>
-      </div>
-      <div class="bracket-card flex flex-col gap-12 items-center p-12">
-        <span class="text-title-1">LOTS OF DOORS</span>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
-      </div>
-    </div>
-  </PageSection>
   {
-    [...Array(6)].map((_, i) => (
+    [...Array(2)].map((_, i) => (
       <PageSection>
         <h1 class="">{`About Us ${i}`}</h1>
         <p>

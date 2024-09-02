@@ -1,6 +1,6 @@
 {
   "title": "About Us",
-  "description": "Elite Commercial Door, Inc. is a state licensed & insured premier company for all of your automatic or manual commercial door needs.",
+  "description": "**Elite Commercial Door, Inc.** is a state licensed & insured premier company for all of your automatic or manual commercial door needs.",
   "location_card": {
     "title": "South Florida",
     "description": "Based in South Florida, we can service any of the Tri-County areas (Palm Beach, Broward or Miami-Dade) in short notice."
@@ -13,5 +13,8 @@
     "title": "Service & Installation",
     "description": "We can service and install Automatic Door assemblies, Manual steel door assemblies, Storefront assemblies and all respective hardware."
   },
-  "image": "src/assets/images/managed/team.jpg"
+  "image": {
+    "src": "src/assets/images/managed/team.jpg",
+    "alt": "Nine team members arranged as a group, smiling at the camera"
+  }
 }
