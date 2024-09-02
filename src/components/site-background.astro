@@ -1,30 +1,62 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import { propsWithMergedClasses } from "../helpers/style";
-import Icon from "./common/icon.astro";
 
 interface Props extends HTMLAttributes<"div"> {}
 
 const props = Astro.props;
+/**
+ * using canvas because:
+ *   - firefox limits blur to 100px -- plus any sort of blur in firefox except backdrop
+ *     (even gaussian blur in svg, or using a transparent png) causes rendering artifacts
+ *   - svgs had inconsistant success and performace across browsers
+ *   - so instead using a canvas with blur works and performs really well everywhere
+ *   - except safari which doesnt support canvas filters, so we're just using a css hack
+ *     to target only safari to make visible an overlway with backdrop-blur
+ */
 ---
 
 <div {...propsWithMergedClasses(props, ["site-background"])}>
-  <Icon icon="site-background" class="w-full h-full opacity-35" />
-  <!-- firefox gets upset at any blur other than backdrop -->
-  <div class="blur-overlay absolute inset-0"></div>
+  <canvas id="bg-canvas" height={100} width={100} class="w-[140%] h-[140%]">
+  </canvas>
+  <div class="bg-canvas-overlay"></div>
 </div>
 
 <style is:global>
   .site-background {
-    @apply absolute inset-0 -z-10 overflow-clip bg-base-100 blur-[50px];
+    @apply absolute inset-0 -z-10 overflow-clip bg-base-100;
   }
-
-  @supports (backdrop-filter: blur(50px)) {
-    .site-background {
-      @apply blur-none;
-    }
-    .blur-overlay {
-      @apply backdrop-blur-[50px];
-    }
+  .bg-canvas-overlay {
+    @apply absolute inset-0 z-10 backdrop-blur-[140px] hidden safari:block;
   }
 </style>
+
+<script>
+  const styles = getComputedStyle(document.documentElement);
+  const canvas = document.getElementById(
+    "bg-canvas",
+  ) as HTMLCanvasElement | null;
+  const ctx = canvas?.getContext("2d");
+  if (ctx) {
+    ctx.filter = "blur(10px)";
+    ctx.globalAlpha = 0.4;
+
+    ctx.fillStyle = styles.getPropertyValue("--site-bg-color-1");
+    ctx.beginPath();
+    ctx.moveTo(30, 0);
+    ctx.lineTo(70, 100);
+    ctx.lineTo(35, 100);
+    ctx.lineTo(0, 15);
+    ctx.lineTo(0, 0);
+    ctx.fill();
+
+    ctx.fillStyle = styles.getPropertyValue("--site-bg-color-2");
+    ctx.beginPath();
+    ctx.moveTo(30, 0);
+    ctx.lineTo(70, 100);
+    ctx.lineTo(100, 100);
+    ctx.lineTo(100, 90);
+    ctx.lineTo(40, 0);
+    ctx.fill();
+  }
+</script>

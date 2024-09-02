@@ -4,8 +4,10 @@ import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
 
 const COMMON_VARS = {
+  // sizes
   "--icon-stroke-lg": "3px",
 
+  // colors
   "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)/1))",
   "--site-bg-color-2": "var(--fallback-n, oklch(var(--n)/1))",
 };
@@ -35,6 +37,7 @@ export default {
     }) {
       // console.log(`:::THEME::: `, theme("transitionProperty"));
       addVariant("light", "@media (prefers-color-scheme: light)");
+      addVariant("safari", "@supports (background: -webkit-named-image(i))");
       addBase({
         a: { textDecoration: "underline" },
       });

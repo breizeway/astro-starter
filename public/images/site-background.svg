@@ -1,0 +1,47 @@
+<svg
+  viewBox="0 0 1000 1000"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="none"
+>
+  <filter id="site-background-blur">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="100" color-interpolation-filters="sRGB"></feGaussianBlur>
+  </filter>
+  <mask
+    id="mask0_433_1228"
+    style="mask-type:alpha"
+    maskUnits="userSpaceOnUse"
+    x="0"
+    y="0"
+    width="1000"
+    height="1000"
+  >
+    <rect x="0" width="1000" height="1000" fill="#D9D9D9"></rect>
+  </mask>
+  <g mask="url(#mask0_433_1228)" filter="url(#site-background-blur)">
+    <rect
+      x="720.475"
+      y="-505.977"
+      width="1665.05"
+      height="1382.21"
+      transform="rotate(60 720.475 -505.977)"
+      fill="url(#paint0_linear_433_1228)"></rect>
+  </g>
+  <defs>
+    <linearGradient
+      id="paint0_linear_433_1228"
+      x1="1372.14"
+      y1="695.265"
+      x2="1364.1"
+      y2="-286.158"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="transparent"></stop>
+      <stop offset="0.25" stop-color="#449FF4"></stop>
+      <stop offset="0.35" stop-color="#449FF4"></stop>
+      <stop offset="0.70" stop-color="#666666"></stop>
+      <stop offset="0.75" stop-color="#666666"></stop>
+      <stop offset="1" stop-color="transparent"></stop>
+    </linearGradient>
+  </defs>
+</svg>

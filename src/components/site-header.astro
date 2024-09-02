@@ -2,14 +2,16 @@
 import LogoLink from "./common/logo-link.astro";
 ---
 
-<header class="sticky -top-80 z-50 bg-base-100">
-  <div
-    id="site-logo-area"
-    class="site-width-content site-px site-py flex justify-center items-center gap-2 h-80"
-  >
-    <LogoLink variant="large" iconProps={{ class: "h-[6.75rem]" }} />
+<header class="sticky -top-80 z-50">
+  <div class="bg-base-100">
+    <div
+      id="site-logo-area"
+      class="site-width-content site-px site-py flex justify-center items-center gap-2 h-80 bg-base-100"
+    >
+      <LogoLink variant="large" iconProps={{ class: "h-[6.75rem]" }} />
+    </div>
   </div>
-  <div class="glass">
+  <div class="backdrop-blur-[50px] bg-base-100 bg-opacity-65">
     <nav class="site-width-content site-px py-4 flex justify-between">
       <LogoLink
         variant="large"
@@ -62,7 +64,10 @@ import LogoLink from "./common/logo-link.astro";
     manageNavLogoClasses();
     window.addEventListener("scroll", manageNavLogoClasses);
 
-    // adding transition only after first scroll avoids slide animation if browser restores place after reload
+    /**
+     * adding transition only after first scroll avoids slide animation
+     * if browser restores place after reload
+     */
     window.addEventListener(
       "scroll",
       () => {
