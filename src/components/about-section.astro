@@ -1,24 +1,39 @@
 ---
 import { getEntry } from "astro:content";
 import type { About, ContentSection } from "../content/types";
+import Icon from "./common/icon.astro";
+import Markdown from "./common/markdown.astro";
 import PageSection from "./common/page-section.astro";
 
-const { data } = (await getEntry(
-  "home-page",
-  "about",
-)) as ContentSection<About>;
-
-const cards = data.
+const {
+  data: { title, description, location_card, business_card, service_card },
+} = (await getEntry("home-page", "about")) as ContentSection<About>;
 ---
 
-<PageSection class="about-section relative" 
- <div class="bracket-card">
-  <p class="text-"></p>
- </div>
-/>
+<PageSection class="about-section relative">
+  <div class="flex gap-8 p-8">
+    <!-- <Image src={getManagedImage()} -->
+  </div>
+  <div class="grid grid-flow-col auto-cols-fr gap-16 text-center">
+    {
+      [location_card, business_card, service_card].map((card) => (
+        <div class="bracket-card grid grid-flow-row p-12 gap-4">
+          <Icon icon="arrow-truck" class="h-36 mx-auto" />
+          <p class="text-title-3 text-primary">{card.title}</p>
+
+          <Markdown content={card.description} />
+        </div>
+      ))
+    }
+  </div>
+</PageSection>
 
 <style>
   .about-section strong {
     @apply text-base-100;
+  }
+
+  .bracket-card {
+    grid-template-rows: minmax(auto, 2fr) minmax(auto, 1fr) minmax(auto, 2fr);
   }
 </style>

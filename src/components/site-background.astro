@@ -17,7 +17,12 @@ const props = Astro.props;
 ---
 
 <div {...propsWithMergedClasses(props, ["site-background"])}>
-  <canvas id="bg-canvas" height={100} width={100} class="w-[140%] h-[140%]">
+  <canvas
+    id="bg-canvas"
+    height={100}
+    width={100}
+    class="w-[140%] h-[140%] transition opacity-0"
+  >
   </canvas>
   <div class="bg-canvas-overlay"></div>
 </div>
@@ -58,5 +63,7 @@ const props = Astro.props;
     ctx.lineTo(100, 90);
     ctx.lineTo(40, 0);
     ctx.fill();
+
+    canvas?.classList.remove("opacity-0");
   }
 </script>

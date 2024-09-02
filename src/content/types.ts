@@ -12,13 +12,15 @@ export interface Banner {
   image?: Image;
 }
 
+interface AboutCard {
+  title: string;
+  description: string;
+}
+
 export interface About {
   title: string;
   description: string;
-  location_card_title: string;
-  location_card_description: string;
-  business_card_title: string;
-  business_card_description: string;
-  service_card_title: string;
-  service_card_description: string;
+  location_card: AboutCard;
+  business_card: AboutCard;
+  service_card: AboutCard;
 }

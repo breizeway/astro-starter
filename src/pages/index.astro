@@ -7,20 +7,15 @@ import PageSection from "../components/common/page-section.astro";
 import Icon from "../components/common/icon.astro";
 import SiteBackground from "../components/site-background.astro";
 import BannerSection from "../components/banner-section.astro";
+import AboutSection from "../components/about-section.astro";
 
 // const { data } = await getEntry("about", "page");
 ---
 
 <Layout title="Elite Commercial Door">
-  <!-- <ImgFadeInHandler /> -->
-
   <SiteBackground slot="before-layout" />
-  <!-- <div class="w-full">
-    <Carousel
-      images={data.team?.map((tm) => ({ src: tm.photo, alt: "test" })) ?? []}
-    />
-  </div> -->
   <BannerSection />
+  <AboutSection />
   <PageSection>
     <div class="flex gap-8">
       <div class="bracket-card flex flex-col gap-12 items-center p-12">
