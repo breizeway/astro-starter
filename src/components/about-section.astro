@@ -20,8 +20,9 @@ const {
 ---
 
 <PageSection class="about-section">
-  <div class="glass-b rounded-[2.5rem] flex gap-8 p-8 -translate-y-1/2">
-    <!-- TODO: add alt to cms -->
+  <div
+    class="glass-full rounded-[2.5rem] text-empty flex gap-8 p-8 -translate-y-1/2"
+  >
     <Image
       src={getManagedImage(image.src)}
       alt={image.alt}
@@ -35,7 +36,7 @@ const {
   <div class="grid grid-flow-col auto-cols-fr gap-16 text-center">
     {
       [location_card, business_card, service_card].map((card) => (
-        <div class="bracket-card grid grid-flow-row auto-rows-fr p-12 gap-6">
+        <div class="bracket-card grid grid-flow-row auto-rows-fr p-6 gap-6">
           <Icon icon="arrow-truck" class="h-24 mx-auto" />
           <p class="text-title-3 text-primary">{card.title}</p>
 
@@ -54,6 +55,6 @@ const {
   }
 
   .bracket-card {
-    /* grid-template-rows: minmax(auto, 2fr) minmax(auto, 2fr) minmax(auto, 2fr); */
+    grid-template-rows: auto minmax(0, 2fr) minmax(0, 3fr);
   }
 </style>

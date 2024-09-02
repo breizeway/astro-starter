@@ -17,7 +17,7 @@ const {
   {
     !!image && (
       <Image
-        class="w-full h-full object-fill z-10 img-fade-in"
+        class="w-full h-full object-cover z-10 img-fade-in"
         src={getManagedImage(image.src)}
         alt={image.alt}
         loading="eager"
@@ -34,7 +34,7 @@ const {
     font-size: min(8vw, 6rem);
 
     strong {
-      @apply text-base-100;
+      @apply text-empty;
     }
   }
 </style>

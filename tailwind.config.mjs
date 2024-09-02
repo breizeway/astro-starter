@@ -8,8 +8,8 @@ const COMMON_VARS = {
   "--icon-stroke-lg": "3px",
 
   // colors
-  "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)/1))",
-  "--site-bg-color-2": "var(--fallback-n, oklch(var(--n)/1))",
+  "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)))",
+  "--site-bg-color-2": "var(--fallback-n, oklch(var(--n)))",
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -39,7 +39,7 @@ export default {
       addVariant,
       theme,
     }) {
-      console.log(`:::THEME::: `, theme("size"));
+      // console.log(`:::THEME::: `, theme("size"));
       addVariant("light", "@media (prefers-color-scheme: light)");
       addVariant("safari", "@supports (background: -webkit-named-image(i))");
       addBase({
@@ -48,9 +48,9 @@ export default {
       addUtilities({
         ".site-width-content": {
           width: `min(100%, ${theme("screens.xl")})`,
-          "max-width": `min(100%, ${theme("screens.xl")})`,
-          "margin-left": "auto",
-          "margin-right": "auto",
+          maxWidth: `min(100%, ${theme("screens.xl")})`,
+          marginLeft: "auto",
+          marginRight: "auto",
         },
         ".img-fade-in": {
           opacity: theme("opacity.0"),
@@ -59,28 +59,29 @@ export default {
           opacity: theme("opacity.100"),
         },
         ".site-px": {
-          "transition-property": "padding",
-          "transition-duration": theme("transitionDuration.DEFAULT"),
-          "transition-timing-function": theme(
-            "transitionTimingFunction.DEFAULT",
-          ),
-          "padding-left": theme("padding.4"),
-          "padding-right": theme("padding.4"),
+          transitionProperty: "padding",
+          transitionDuration: theme("transitionDuration.DEFAULT"),
+          transitionTimingFunction: theme("transitionTimingFunction.DEFAULT"),
+          paddingLeft: theme("padding.4"),
+          paddingRight: theme("padding.4"),
           "@screen sm": {
-            "padding-left": theme("padding.6"),
-            "padding-right": theme("padding.6"),
+            paddingLeft: theme("padding.6"),
+            paddingRight: theme("padding.6"),
           },
         },
         ".site-py": {
-          "padding-top": theme("padding.6"),
-          "padding-bottom": theme("padding.6"),
+          paddingTop: theme("padding.6"),
+          paddingBottom: theme("padding.6"),
         },
-        ".glass-b": {
-          "background-color":
-            "var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)))",
-          "--tw-bg-opacity": "0.20",
-          "backdrop-filter": "blur(50px)",
-          // "border-radius": theme("size.10"),
+        ".glass-empty": {
+          "--tw-bg-opacity": "0.3",
+          backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
+          backdropFilter: "blur(50px)",
+        },
+        ".glass-full": {
+          "--tw-bg-opacity": "0.3",
+          backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
+          backdropFilter: "blur(50px)",
         },
       });
       addComponents({
@@ -98,6 +99,22 @@ export default {
           fontFamily: theme("fontFamily.title"),
           fontWeight: 700,
           textTransform: "uppercase",
+        },
+        ".text-empty": {
+          "--tw-text-opacity": "1",
+          color: "oklch(var(--color-empty)/var(--tw-text-opacity))",
+        },
+        ".text-full": {
+          "--tw-text-opacity": "1",
+          color: "oklch(var(--color-full)/var(--tw-text-opacity))",
+        },
+        ".bg-empty": {
+          "--tw-bg-opacity": "1",
+          backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
+        },
+        ".bg-full": {
+          "--tw-bg-opacity": "1",
+          backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
         },
         ".bracket-card": {
           position: "relative",
@@ -163,6 +180,8 @@ export default {
           // "base-content": "#758DAD",
           "base-content": "#253040",
 
+          "--color-empty": "100% 0 0",
+          "--color-full": "0% 0 0",
           "--site-logo-color-1": "#455270",
           "--site-logo-color-2": "#253040",
           "--site-logo-color-3": "#6E7B8C",
@@ -179,6 +198,8 @@ export default {
           // "base-content": "#fff",
           "base-content": "#D9E4E9",
 
+          "--color-empty": "0% 0 0",
+          "--color-full": "100% 0 0",
           "--site-logo-color-1": "#6B7B8C",
           "--site-logo-color-2": "#D9E4E9",
           "--site-logo-color-3": "#AAB8C2",
