@@ -17,29 +17,34 @@ const {
     service_card,
   },
 } = (await getEntry("home-page", "about")) as ContentSection<About>;
+
+const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 ---
 
-<PageSection class="about-section">
+<PageSection class="about-section pt-0" id="about">
   <div
-    class="glass-full rounded-[2.5rem] text-empty flex gap-8 p-8 -translate-y-1/2"
+    class="glass-card glass-full rounded-[2.5rem] text-empty flex flex-col md:flex-row gap-8 p-4 sm:p-8 transition-all"
   >
-    <Image
-      src={getManagedImage(image.src)}
-      alt={image.alt}
-      class="img-fade-in rounded-3xl h-content"
-    />
-    <div>
+    <div class="flex-1">
+      <Image
+        src={getManagedImage(image.src)}
+        alt={image.alt}
+        class="img-fade-in rounded-[1.75rem] sm:rounded-[1.25rem] w-full h-full object-cover"
+      />
+    </div>
+    <div class="flex-1">
       <p class="text-title-2">{title}</p>
-      <Markdown content={description} />
+      <Markdown content={description} class="about-description" />
     </div>
   </div>
-  <div class="grid grid-flow-col auto-cols-fr gap-16 text-center">
+  <div
+    class="about-cards flex flex-col items-center justify-between gap-x-12 gap-y-24 text-center sm:flex-wrap md:flex-nowrap md:flex-row md:items-stretch"
+  >
     {
-      [location_card, business_card, service_card].map((card) => (
-        <div class="bracket-card grid grid-flow-row auto-rows-fr p-6 gap-6">
-          <Icon icon="arrow-truck" class="h-24 mx-auto" />
+      [location_card, business_card, service_card].map((card, idx) => (
+        <div class="bracket-card flex-1 max-w-sm grid grid-flow-row p-6 gap-3 sm:min-w-[20rem] md:crafted-rows md:max-w-xs md:gap-0">
+          <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
           <p class="text-title-3 text-primary">{card.title}</p>
-
           <Markdown content={card.description} />
         </div>
       ))
@@ -47,14 +52,52 @@ const {
   </div>
 </PageSection>
 
+<script>
+  const aboutSection = document.querySelector(".about-section") as HTMLElement;
+  window.addEventListener("scroll", () => {
+    const top = aboutSection?.getBoundingClientRect().top ?? 0;
+    const scrollHeight = window.innerHeight;
+    const aboutProgress = Math.max(0.01, Math.min(1, top / scrollHeight));
+    aboutSection?.style.setProperty(
+      "--about-progress",
+      String(1 - aboutProgress),
+    );
+  });
+</script>
+
 <style>
   .about-section {
+    --progress-start: -0.33;
+    scroll-margin-top: calc(var(--banner-pb) + 2rem);
+
     .page-section-inner {
       @apply relative flex flex-col gap-8;
     }
+    .glass-card {
+      animation: slide 1s linear;
+      animation-play-state: paused;
+      animation-delay: calc(var(--about-progress) * -1s);
+    }
+    .about-cards {
+      margin-top: calc(var(--banner-pb) * var(--progress-start));
+    }
+    .about-description {
+      --bc: var(--color-empty);
+    }
   }
 
-  .bracket-card {
-    grid-template-rows: auto minmax(0, 2fr) minmax(0, 3fr);
+  @keyframes slide {
+    from {
+      transform: translateY(calc(var(--banner-pb) * var(--progress-start)));
+    }
+    to {
+      transform: translateY(calc(var(--banner-pb) * -1));
+    }
+  }
+  @tailwind utilities;
+  @layer utilities {
+    .crafted-rows {
+      grid-template-rows: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 6fr);
+    }
   }
 </style>

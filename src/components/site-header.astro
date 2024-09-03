@@ -21,21 +21,20 @@ import LogoLink from "./common/logo-link.astro";
       />
       <div class="flex gap-2">
         {
-          [
-            { pathname: "/", label: "home" },
-            // { pathname: "/about", label: "about" },
-          ].map(({ pathname, label }) => (
-            <a
-              href={pathname}
-              class:list={[
-                "btn btn-outline no-animation",
-                { "btn-active": Astro.url.pathname === pathname },
-              ]}
-              data-astro-prefetch
-            >
-              {label}
-            </a>
-          ))
+          [{ pathname: "/#about", label: "About" }].map(
+            ({ pathname, label }) => (
+              <a
+                href={pathname}
+                class:list={[
+                  "btn btn-outline no-animation",
+                  { "btn-active": Astro.url.pathname === pathname },
+                ]}
+                data-astro-prefetch
+              >
+                {label}
+              </a>
+            ),
+          )
         }
       </div>
     </nav>

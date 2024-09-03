@@ -12,11 +12,20 @@ const { content, ...divProps } = Astro.props;
 
 <div
   set:html={marked.parse(content)}
-  {...propsWithMergedClasses(divProps, ["markdwon"])}
+  {...propsWithMergedClasses(divProps, ["markdown"])}
 />
 
 <style is:global>
   .markdown {
-    @apply prose;
+    @apply prose max-w-full;
+    code {
+      @apply rounded-md;
+    }
+    blockquote {
+      ::before,
+      ::after {
+        opacity: 0.66;
+      }
+    }
   }
 </style>

@@ -12,7 +12,7 @@ const {
 ---
 
 <PageSection class="banner-section flex items-center">
-  <Markdown class="font-title leading-tight" content={slogan} />
+  <Markdown content={slogan} />
   <!-- TODO: test img -->
   {
     !!image && (
@@ -26,15 +26,35 @@ const {
   }
 </PageSection>
 
+<style is:global>
+  :root {
+    --banner-pb: 20rem;
+  }
+</style>
+
 <style>
   .banner-section {
     width: 100%;
-    aspect-ratio: 1.5 / 1;
-    max-height: 50rem;
-    font-size: min(8vw, 6rem);
+    /* aspect-ratio: 1.5 / 1; */
+    /* max-height: 50rem; */
 
-    strong {
-      @apply text-empty;
+    @apply pb-[var(--banner-pb)] pt-[calc(var(--banner-pb)/4)];
+
+    .markdown {
+      & * {
+        @apply font-title leading-tight;
+        font-size: min(8vw, 6rem);
+
+        &:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      strong {
+        @apply text-empty;
+      }
     }
   }
 </style>

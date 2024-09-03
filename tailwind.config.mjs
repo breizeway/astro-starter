@@ -58,7 +58,7 @@ export default {
             top: "calc(var(--icon-stroke-lg)*-1)",
             bottom: "calc(var(--icon-stroke-lg)*-1)",
             left: "calc(var(--icon-stroke-lg)*-1)",
-            width: "calc(var(--icon-stroke-lg)*16)",
+            width: "calc(var(--icon-stroke-lg)*14)",
 
             "background-color": "currentColor",
             "clip-path": `polygon(
@@ -76,7 +76,7 @@ export default {
             top: "calc(var(--icon-stroke-lg)*-1)",
             bottom: "calc(var(--icon-stroke-lg)*-1)",
             right: "calc(var(--icon-stroke-lg)*-1)",
-            width: "calc(var(--icon-stroke-lg)*16)",
+            width: "calc(var(--icon-stroke-lg)*14)",
 
             "background-color": "currentColor",
             "clip-path": `polygon(
@@ -110,13 +110,13 @@ export default {
           paddingLeft: theme("padding.4"),
           paddingRight: theme("padding.4"),
           "@screen sm": {
-            paddingLeft: theme("padding.6"),
-            paddingRight: theme("padding.6"),
+            paddingLeft: theme("padding.8"),
+            paddingRight: theme("padding.8"),
           },
         },
         ".site-py": {
-          paddingTop: theme("padding.6"),
-          paddingBottom: theme("padding.6"),
+          paddingTop: theme("padding.8"),
+          paddingBottom: theme("padding.8"),
         },
         ".text-title-1": {
           fontSize: theme("fontSize.5xl"),
