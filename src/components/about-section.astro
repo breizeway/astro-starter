@@ -23,13 +23,20 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 
 <PageSection class="about-section pt-0" id="about">
   <div
-    class="glass-card glass-full rounded-[2.5rem] text-empty flex flex-col md:flex-row gap-8 p-4 sm:p-8 transition-all"
+    class={`
+      glass-card glass-full rounded-[2.5rem] text-empty flex flex-col gap-8 p-4 transition-all
+      sm:p-8
+      md:flex-row
+    `}
   >
     <div class="flex-1">
       <Image
         src={getManagedImage(image.src)}
         alt={image.alt}
-        class="img-fade-in rounded-[1.75rem] sm:rounded-[1.25rem] w-full h-full object-cover"
+        class={`
+          img-fade-in rounded-[1.75rem] w-full h-full object-cover
+          sm:rounded-[1.25rem]
+        `}
       />
     </div>
     <div class="flex-1">
@@ -38,11 +45,22 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
     </div>
   </div>
   <div
-    class="about-cards flex flex-col items-center justify-between gap-x-12 gap-y-24 text-center sm:flex-wrap md:flex-nowrap md:flex-row md:items-stretch"
+    class={`
+      about-cards flex flex-col items-center justify-between gap-x-12 gap-y-12 text-center
+      sm:flex-wrap sm:justify-evenly 
+      md:flex-row md:items-stretch
+    `}
   >
     {
       [location_card, business_card, service_card].map((card, idx) => (
-        <div class="bracket-card flex-1 max-w-sm grid grid-flow-row p-6 gap-3 sm:min-w-[20rem] md:crafted-rows md:max-w-xs md:gap-0">
+        <div
+          class={`
+            bracket-card transition flex-1 max-w-sm grid grid-flow-row p-6 gap-12 
+            sm:min-w-[20rem] 
+            md:crafted-rows md:max-w-xs md:gap-0
+            no-touch:hover:scale-[1.02]
+          `}
+        >
           <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
           <p class="text-title-3 text-primary">{card.title}</p>
           <Markdown content={card.description} />
@@ -59,7 +77,12 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
     () => {
       const top = aboutSection?.getBoundingClientRect().top ?? 0;
       const scrollHeight = window.innerHeight;
-      const aboutProgress = Math.max(0.01, Math.min(1, top / scrollHeight));
+      // headStart gets it to start before scrolling into view
+      const headStart = scrollHeight * 0.1;
+      const aboutProgress = Math.max(
+        0.01,
+        Math.min(1, (top - headStart) / scrollHeight),
+      );
 
       aboutSection?.style.setProperty(
         "--about-progress",
@@ -72,7 +95,7 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 
 <style>
   .about-section {
-    --progress-start: -0.3;
+    /* --progress-start: -0.05; */
     scroll-margin-top: calc(var(--banner-pb) + 4rem);
 
     .page-section-inner {
@@ -84,7 +107,7 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
       animation-delay: calc(var(--about-progress) * -1s);
     }
     .about-cards {
-      margin-top: calc(var(--banner-pb) * var(--progress-start));
+      margin-top: calc(var(--banner-pb) / -4);
     }
     .about-description {
       --bc: var(--color-empty);
@@ -93,10 +116,11 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 
   @keyframes slide {
     from {
-      transform: translateY(calc(var(--banner-pb) * var(--progress-start)));
+      /* transform: translateY(calc(var(--banner-pb) * var(--progress-start))); */
+      transform: translateY(0);
     }
     to {
-      transform: translateY(calc(var(--banner-pb) * -1));
+      transform: translateY(calc(var(--banner-pb) * -0.9));
     }
   }
   @tailwind utilities;
