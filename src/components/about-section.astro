@@ -60,6 +60,7 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
       const top = aboutSection?.getBoundingClientRect().top ?? 0;
       const scrollHeight = window.innerHeight;
       const aboutProgress = Math.max(0.01, Math.min(1, top / scrollHeight));
+
       aboutSection?.style.setProperty(
         "--about-progress",
         String(1 - aboutProgress),
@@ -71,8 +72,8 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 
 <style>
   .about-section {
-    --progress-start: -0.33;
-    scroll-margin-top: calc(var(--banner-pb) + 2rem);
+    --progress-start: -0.3;
+    scroll-margin-top: calc(var(--banner-pb) + 4rem);
 
     .page-section-inner {
       @apply relative flex flex-col gap-8;
