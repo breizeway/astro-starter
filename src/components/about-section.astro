@@ -54,15 +54,19 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 
 <script>
   const aboutSection = document.querySelector(".about-section") as HTMLElement;
-  window.addEventListener("scroll", () => {
-    const top = aboutSection?.getBoundingClientRect().top ?? 0;
-    const scrollHeight = window.innerHeight;
-    const aboutProgress = Math.max(0.01, Math.min(1, top / scrollHeight));
-    aboutSection?.style.setProperty(
-      "--about-progress",
-      String(1 - aboutProgress),
-    );
-  });
+  window.addEventListener(
+    "scroll",
+    () => {
+      const top = aboutSection?.getBoundingClientRect().top ?? 0;
+      const scrollHeight = window.innerHeight;
+      const aboutProgress = Math.max(0.01, Math.min(1, top / scrollHeight));
+      aboutSection?.style.setProperty(
+        "--about-progress",
+        String(1 - aboutProgress),
+      );
+    },
+    false,
+  );
 </script>
 
 <style>

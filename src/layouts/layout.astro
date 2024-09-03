@@ -10,7 +10,7 @@ const { title } = Astro.props;
 ---
 
 <RootLayout {...{ title }}>
-  <div id="top" aria-hidden></div>
+  <div id="top" aria-hidden="true"></div>
   <slot name="before-layout" />
   <slot name="before-header" />
   <SiteHeader />
