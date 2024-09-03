@@ -5,14 +5,25 @@ import { propsWithMergedClasses } from "../../helpers/style";
 
 interface Props extends HTMLAttributes<"div"> {
   content: string;
+  noMarginY?: boolean;
+  noMarginTop?: boolean;
+  noMarginBottom?: boolean;
 }
 
-const { content, ...divProps } = Astro.props;
+const { content, noMarginY, noMarginTop, noMarginBottom, ...divProps } =
+  Astro.props;
 ---
 
 <div
   set:html={marked.parse(content)}
-  {...propsWithMergedClasses(divProps, ["markdown"])}
+  {...propsWithMergedClasses(divProps, [
+    "markdown",
+    {
+      "no-margin-y": noMarginY,
+      "no-margin-top": noMarginTop,
+      "no-margin-bottom": noMarginBottom,
+    },
+  ])}
 />
 
 <style is:global>
@@ -27,5 +38,19 @@ const { content, ...divProps } = Astro.props;
         opacity: 0.66;
       }
     }
+    &.no-margin-y > *,
+    &.no-margin-top > * {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    &.no-margin-y > *,
+    &.no-margin-bottom > * {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 </style>
+
+<style></style>

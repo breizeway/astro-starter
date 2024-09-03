@@ -17,12 +17,12 @@ export interface Banner {
 
 interface AboutCard {
   title: string;
-  description: string;
+  description: Markdown;
 }
 
 export interface About {
   title: string;
-  description: string;
+  description: Markdown;
   image: Image;
   location_card: AboutCard;
   business_card: AboutCard;

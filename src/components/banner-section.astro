@@ -12,7 +12,7 @@ const {
 ---
 
 <PageSection class="banner-section flex items-center">
-  <Markdown content={slogan} />
+  <Markdown content={slogan} noMarginY />
   <!-- TODO: test img -->
   {
     !!image && (
@@ -42,13 +42,6 @@ const {
       & * {
         @apply font-title leading-tight;
         font-size: min(9vw, 6rem);
-
-        &:first-child {
-          margin-top: 0;
-        }
-        &:last-child {
-          margin-bottom: 0;
-        }
       }
       strong {
         @apply text-empty;

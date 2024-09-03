@@ -24,9 +24,9 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 <PageSection class="about-section pt-0" id="about">
   <div
     class={`
-      glass-card glass-full rounded-[2.5rem] text-empty flex flex-col gap-8 p-4 transition-all
+      glass-card glass-full rounded-[2.5rem] text-empty flex flex-col gap-8 p-4 transition-all max-w-[30rem] mx-auto
       sm:p-8
-      md:flex-row
+      md:flex-row md:max-w-max
     `}
   >
     <div class="flex-1">
@@ -37,11 +37,12 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
           img-fade-in rounded-[1.75rem] w-full h-full object-cover
           sm:rounded-[1.25rem]
         `}
+        loading="eager"
       />
     </div>
     <div class="flex-1">
       <p class="text-title-2">{title}</p>
-      <Markdown content={description} class="about-description" />
+      <Markdown content={description} class="about-description" noMarginBottom />
     </div>
   </div>
   <div
@@ -58,8 +59,9 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
             bracket-card transition flex-1 max-w-sm grid grid-flow-row p-6 gap-12 
             sm:min-w-[20rem] 
             md:crafted-rows md:max-w-xs md:gap-0
-            no-touch:hover:scale-[1.02]
-          `}
+            no-touch:hover:scale-[1.03]            
+            `}
+            // [&::after]:transition no-touch:hover:[&::after]:translate-x-2  [&::before]:transition no-touch:hover:[&::before]:-translate-x-2
         >
           <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
           <p class="text-title-3 text-primary">{card.title}</p>
@@ -72,25 +74,24 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 
 <script>
   const aboutSection = document.querySelector(".about-section") as HTMLElement;
-  window.addEventListener(
-    "scroll",
-    () => {
-      const top = aboutSection?.getBoundingClientRect().top ?? 0;
-      const scrollHeight = window.innerHeight;
-      // headStart gets it to start before scrolling into view
-      const headStart = scrollHeight * 0.1;
-      const aboutProgress = Math.max(
-        0.01,
-        Math.min(1, (top - headStart) / scrollHeight),
-      );
+  const positionGlassCard = () => {
+    const top = aboutSection?.getBoundingClientRect().top ?? 0;
+    const scrollHeight = window.innerHeight;
+    // headStart gets it to start before scrolling into view
+    const headStart = scrollHeight * 0.1;
+    const aboutProgress = Math.max(
+      0.01,
+      Math.min(1, (top - headStart) / scrollHeight),
+    );
 
-      aboutSection?.style.setProperty(
-        "--about-progress",
-        String(1 - aboutProgress),
-      );
-    },
-    false,
-  );
+    aboutSection?.style.setProperty(
+      "--about-progress",
+      String(1 - aboutProgress),
+    );
+  };
+
+  window.addEventListener("scroll", positionGlassCard, false);
+  positionGlassCard();
 </script>
 
 <style>
@@ -111,6 +112,9 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
     }
     .about-description {
       --bc: var(--color-empty);
+      & * {
+        @apply text-xl
+      }
     }
   }
 

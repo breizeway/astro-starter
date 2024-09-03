@@ -52,7 +52,7 @@ export default {
           width: "fit-content",
           "min-width": "108px",
 
-          "&::after": {
+          "&::before": {
             content: "''",
             position: "absolute",
             top: "calc(var(--icon-stroke-lg)*-1)",
@@ -70,7 +70,7 @@ export default {
               0 0
             )`,
           },
-          "&::before": {
+          "&::after": {
             content: "''",
             position: "absolute",
             top: "calc(var(--icon-stroke-lg)*-1)",
