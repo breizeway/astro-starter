@@ -1,5 +1,7 @@
 import typography from "@tailwindcss/typography";
 import daisyui from "daisyui";
+import tailwindCssAnimated from "tailwindcss-animated";
+import tailwindCssIntersect from "tailwindcss-intersect";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
 
@@ -10,6 +12,8 @@ const COMMON_VARS = {
   // colors
   "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)))",
   "--site-bg-color-2": "var(--fallback-n, oklch(var(--n)))",
+  "--fade-up-from": "10rem",
+  "--fade-up-to": "0",
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -30,8 +34,21 @@ export default {
       ...defaultTheme.transitionDuration,
       load: "100ms",
     },
+    keyframes: {
+      "fade-up": {
+        "0%": {
+          opacity: "0",
+          transform: "translateY(var(--fade-up-from))",
+        },
+        "100%": {
+          opacity: "1",
+          transform: "translateY(var(--fade-up-to))",
+        },
+      },
+    },
   },
   plugins: [
+    tailwindCssAnimated,
     plugin(function ({
       addBase,
       addUtilities,
@@ -169,6 +186,7 @@ export default {
     }),
     typography,
     daisyui,
+    tailwindCssIntersect,
   ],
   daisyui: {
     themes: [

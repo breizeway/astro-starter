@@ -106,3 +106,8 @@ const { title } = Astro.props;
     src: url("/fonts/nunito-v26-latin-700italic.woff2") format("woff2");
   }
 </style>
+
+<script>
+  import { Observer } from "tailwindcss-intersect";
+  Observer.start();
+</script>
