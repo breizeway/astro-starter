@@ -2,46 +2,43 @@
 import LogoLink from "./common/logo-link.astro";
 ---
 
-<header class="sticky -top-80 z-50">
-  <div class="bg-base-100 intersect:opacity-100">
-    <div
-      id="site-logo-area"
-      class="site-width-content site-px site-py flex justify-center items-center gap-2 h-80 bg-base-100"
-    >
-      <LogoLink
-        variant="large"
-        iconProps={{ class: "h-[6.75rem] max-w-[66vw]" }}
-      />
+<div class="bg-base-100">
+  <div
+    id="site-logo-area"
+    class="site-width-content site-px site-py flex justify-center items-center gap-2 bg-base-100"
+  >
+    <LogoLink
+      variant="large"
+      class="py-[12vw] sm:py-[5rem]"
+      iconProps={{ class: "w-[75vw] sm:w-[30rem] h-auto" }}
+    />
+  </div>
+</div>
+<header class="bg-base-200 shadow-2xl sticky top-0 z-50">
+  <nav class="site-width-content site-px py-4 flex justify-between">
+    <LogoLink
+      variant="large"
+      id="nav-logo"
+      iconProps={{ class: "h-10" }}
+      class="-translate-x-1/4 opacity-0 duration-300"
+    />
+    <div class="flex gap-2">
+      {
+        [{ pathname: "/#about", label: "About" }].map(({ pathname, label }) => (
+          <a
+            href={pathname}
+            class:list={[
+              "btn btn-outline no-animation",
+              { "btn-active": Astro.url.pathname === pathname },
+            ]}
+            data-astro-prefetch
+          >
+            {label}
+          </a>
+        ))
+      }
     </div>
-  </div>
-  <div class="bg-base-200 shadow-2xl">
-    <nav class="site-width-content site-px py-4 flex justify-between">
-      <LogoLink
-        variant="large"
-        id="nav-logo"
-        iconProps={{ class: "h-10" }}
-        class="-translate-x-1/4 opacity-0 duration-300"
-      />
-      <div class="flex gap-2">
-        {
-          [{ pathname: "/#about", label: "About" }].map(
-            ({ pathname, label }) => (
-              <a
-                href={pathname}
-                class:list={[
-                  "btn btn-outline no-animation",
-                  { "btn-active": Astro.url.pathname === pathname },
-                ]}
-                data-astro-prefetch
-              >
-                {label}
-              </a>
-            ),
-          )
-        }
-      </div>
-    </nav>
-  </div>
+  </nav>
 </header>
 
 <script>
