@@ -40,8 +40,7 @@ const {
 
     .markdown {
       & * {
-        @apply font-title leading-tight;
-        font-size: min(9vw, 6rem);
+        @apply font-title leading-tight text-[2.75rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] motion-safe:transition-[font-size];
       }
       strong {
         @apply text-empty;
