@@ -38,24 +38,3 @@ import ImgFadeInHandler from "../components/common/img-fade-in-handler.astro";
     window.location.href = `${window.location.origin}/admin${window.location.hash}`;
   }
 </script>
-
-<style>
-  @tailwind utilities;
-  @layer utilities {
-    @keyframes fade-up-more {
-      0% {
-        opacity: 0;
-        transform: translateY(4rem);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .animate-fade-up-more {
-      animation: fade-up-more var(--tw-animate-duration, 1s)
-        var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s)
-        var(--tw-animate-iteration, 1) var(--tw-animate-fill, both);
-    }
-  }
-</style>

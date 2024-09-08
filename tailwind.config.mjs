@@ -1,9 +1,9 @@
 import typography from "@tailwindcss/typography";
 import daisyui from "daisyui";
 // import tailwindCssAnimated from "tailwindcss-animated";
-import tailwindCssIntersect from "tailwindcss-intersect";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
+import { intersectionPlugin } from "./src/library/intersection-handler";
 
 const COMMON_VARS = {
   // sizes
@@ -17,17 +17,20 @@ const COMMON_VARS = {
   "--tw-animate-duration": "500ms",
   "--tw-animate-easing": "ease",
   "--tw-animate-delay": "0ms",
-  "--tw-animate-iteration": "once",
-  "--tw-animate-fill": "normal",
+  "--tw-animate-iteration": "1",
+  "--tw-animate-fill": "both",
 
-  "--fade-up-from": "20%",
-  "--fade-up-to": "0%",
-  "--fade-right-from": "-20%",
-  "--fade-right-to": "0%",
-  "--fade-left-from": "20%",
-  "--fade-left-to": "0%",
-  "--fade-down-from": "-20%",
-  "--fade-down-to": "0%",
+  "--fade-start-opacity": "0",
+  "--fade-end-opacity": "1",
+
+  "--fade-up-start-translate": "20%",
+  "--fade-up-end-translate": "0%",
+  "--fade-right-start-translate": "-20%",
+  "--fade-right-end-translate": "0%",
+  "--fade-left-start-translate": "20%",
+  "--fade-left-end-translate": "0%",
+  "--fade-down-start-translate": "-20%",
+  "--fade-down-end-translate": "0%",
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -47,6 +50,7 @@ export default {
         ...defaultTheme.transitionDuration,
         load: "100ms",
       },
+      // animations inspired by https://github.com/new-data-services/tailwindcss-animated
       animationDelay: {
         none: "0ms",
         0: "0ms",
@@ -87,87 +91,68 @@ export default {
       },
       animation: {
         ...defaultTheme.animation,
-        // "rotate-y":
-        //   "rotate-y var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
-        // "rotate-x":
-        //   "rotate-x var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
-        // fade: "fade var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
-        // "fade-down":
-        //   "fade-down var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
-        "fade-fuck":
-          "fade-fuck var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
-        // "fade-left":
-        //   "fade-left var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
-        // "fade-right":
-        //   "fade-right var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        fade: "fade var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        "fade-down":
+          "fade-down var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        "fade-up":
+          "fade-up var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        "fade-left":
+          "fade-left var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        "fade-right":
+          "fade-right var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
       },
       keyframes: {
-        // ...defaultTheme.keyframes,
-        // "rotate-y": {
-        //   "0%": {
-        //     transform: "rotateY(360deg)",
-        //   },
-        //   "100%": {
-        //     transform: "rotateY(0)",
-        //   },
-        // },
-        // "rotate-x": {
-        //   "0%": {
-        //     transform: "rotateX(360deg)",
-        //   },
-        //   "100%": {
-        //     transform: "rotateX(0)",
-        //   },
-        // },
-        // fade: {
-        //   from: {
-        //     opacity: "0",
-        //   },
-        //   to: {
-        //     opacity: "1",
-        //   },
-        // },
-        // "fade-down": {
-        //   from: {
-        //     opacity: "0",
-        //     transform: "translateY(var(--fade-down-from))",
-        //   },
-        //   to: {
-        //     opacity: "1",
-        //     transform: "translateY(var(--fade-down-to))",
-        //   },
-        // },
-        "fade-fuck": {
-          "0%": {
-            opacity: "0",
-            // transform: "translateY(var(--fade-up-from))",
-            transform: "translateY(20rem)",
+        fade: {
+          from: {
+            opacity: "var(--fade-start-opacity)",
           },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0rem)",
+          to: {
+            opacity: "var(--fade-end-opacity)",
           },
         },
-        // "fade-left": {
-        //   from: {
-        //     opacity: "0",
-        //     transform: "translateY(var(--fade-left-from))",
-        //   },
-        //   to: {
-        //     opacity: "1",
-        //     transform: "translateY(var(--fade-left-to))",
-        //   },
-        // },
-        // "fade-right": {
-        //   from: {
-        //     opacity: "0",
-        //     transform: "translateY(var(--fade-right-from))",
-        //   },
-        //   to: {
-        //     opacity: "1",
-        //     transform: "translateY(var(--fade-right-to))",
-        //   },
-        // },
+        "fade-up": {
+          "0%": {
+            opacity: "var(--fade-start-opacity)",
+            transform: "scale(0.95) translateY(var(--fade-up-start-translate))",
+          },
+          "100%": {
+            opacity: "var(--fade-end-opacity)",
+            transform: "scale(1) translateY(var(--fade-up-end-translate))",
+          },
+        },
+        "fade-right": {
+          from: {
+            opacity: "var(--fade-start-opacity)",
+            transform:
+              "scale(0.95) translateX(var(--fade-right-start-translate))",
+          },
+          to: {
+            opacity: "var(--fade-end-opacity)",
+            transform: "scale(1) translateX(var(--fade-right-end-translate))",
+          },
+        },
+        "fade-down": {
+          from: {
+            opacity: "var(--fade-start-opacity)",
+            transform:
+              "scale(0.95) translateY(var(--fade-down-start-translate))",
+          },
+          to: {
+            opacity: "var(--fade-end-opacity)",
+            transform: "scale(1) translateY(var(--fade-down-end-translate))",
+          },
+        },
+        "fade-left": {
+          from: {
+            opacity: "var(--fade-start-opacity)",
+            transform:
+              "scale(0.95) translateX(var(--fade-left-start-translate))",
+          },
+          to: {
+            opacity: "var(--fade-end-opacity)",
+            transform: "scale(1) translate(var(--fade-left-end-translate))",
+          },
+        },
       },
     },
   },
@@ -180,7 +165,6 @@ export default {
       addVariant,
       theme,
     }) {
-      // console.log(`:::THEME::: `, theme("size"));
       addVariant("light", "@media (prefers-color-scheme: light)");
       addVariant("safari", "@supports (background: -webkit-named-image(i))");
       addBase({
@@ -306,11 +290,14 @@ export default {
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
           backdropFilter: "blur(50px)",
         },
+        ".intersecting": {
+          border: "3px solid red !important",
+        },
       });
     }),
     typography,
     daisyui,
-    tailwindCssIntersect,
+    intersectionPlugin,
   ],
   daisyui: {
     themes: [

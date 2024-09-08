@@ -108,6 +108,9 @@ const { title } = Astro.props;
 </style>
 
 <script>
-  import { Observer } from "tailwindcss-intersect";
-  Observer.start();
+  // import { Observer } from "tailwindcss-intersect";
+  import { IntersectionHandler } from "../library/intersection-handler";
+  // Observer.start();
+
+  IntersectionHandler.start();
 </script>
