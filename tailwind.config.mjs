@@ -1,6 +1,6 @@
 import typography from "@tailwindcss/typography";
 import daisyui from "daisyui";
-import tailwindCssAnimated from "tailwindcss-animated";
+// import tailwindCssAnimated from "tailwindcss-animated";
 import tailwindCssIntersect from "tailwindcss-intersect";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
@@ -12,8 +12,22 @@ const COMMON_VARS = {
   // colors
   "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)))",
   "--site-bg-color-2": "var(--fallback-n, oklch(var(--n)))",
-  "--fade-up-from": "10rem",
-  "--fade-up-to": "0",
+
+  // animations
+  "--tw-animate-duration": "500ms",
+  "--tw-animate-easing": "ease",
+  "--tw-animate-delay": "0ms",
+  "--tw-animate-iteration": "once",
+  "--tw-animate-fill": "normal",
+
+  "--fade-up-from": "20%",
+  "--fade-up-to": "0%",
+  "--fade-right-from": "-20%",
+  "--fade-right-to": "0%",
+  "--fade-left-from": "20%",
+  "--fade-left-to": "0%",
+  "--fade-down-from": "-20%",
+  "--fade-down-to": "0%",
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -29,26 +43,136 @@ export default {
         title: ["poppins", ...defaultTheme.fontFamily.sans],
         sans: ["nunito", ...defaultTheme.fontFamily.sans],
       },
-    },
-    transitionDuration: {
-      ...defaultTheme.transitionDuration,
-      load: "100ms",
-    },
-    keyframes: {
-      "fade-up": {
-        "0%": {
-          opacity: "0",
-          transform: "translateY(var(--fade-up-from))",
+      transitionDuration: {
+        ...defaultTheme.transitionDuration,
+        load: "100ms",
+      },
+      animationDelay: {
+        none: "0ms",
+        0: "0ms",
+        75: "75ms",
+        100: "100ms",
+        150: "150ms",
+        200: "200ms",
+        300: "300ms",
+        500: "500ms",
+        700: "700ms",
+        1000: "1000ms",
+      },
+      animationDuration: {
+        75: "75ms",
+        100: "100ms",
+        150: "150ms",
+        200: "200ms",
+        300: "300ms",
+        500: "500ms",
+        700: "700ms",
+        1000: "1000ms",
+      },
+      animationTimingFunction: {
+        DEFAULT: "ease",
+        linear: "linear",
+        in: "cubic-bezier(0.4, 0, 1, 1)",
+        out: "cubic-bezier(0, 0, 0.2, 1)",
+        "in-out": "cubic-bezier(0.4, 0, 0.2, 1)",
+      },
+      animationIteration: {
+        infinite: "infinite",
+        once: "1",
+        twice: "2",
+        thrice: "3",
+        1: "1",
+        2: "2",
+        3: "3",
+      },
+      animation: {
+        ...defaultTheme.animation,
+        // "rotate-y":
+        //   "rotate-y var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        // "rotate-x":
+        //   "rotate-x var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        // fade: "fade var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        // "fade-down":
+        //   "fade-down var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        "fade-fuck":
+          "fade-fuck var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        // "fade-left":
+        //   "fade-left var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+        // "fade-right":
+        //   "fade-right var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both)",
+      },
+      keyframes: {
+        // ...defaultTheme.keyframes,
+        // "rotate-y": {
+        //   "0%": {
+        //     transform: "rotateY(360deg)",
+        //   },
+        //   "100%": {
+        //     transform: "rotateY(0)",
+        //   },
+        // },
+        // "rotate-x": {
+        //   "0%": {
+        //     transform: "rotateX(360deg)",
+        //   },
+        //   "100%": {
+        //     transform: "rotateX(0)",
+        //   },
+        // },
+        // fade: {
+        //   from: {
+        //     opacity: "0",
+        //   },
+        //   to: {
+        //     opacity: "1",
+        //   },
+        // },
+        // "fade-down": {
+        //   from: {
+        //     opacity: "0",
+        //     transform: "translateY(var(--fade-down-from))",
+        //   },
+        //   to: {
+        //     opacity: "1",
+        //     transform: "translateY(var(--fade-down-to))",
+        //   },
+        // },
+        "fade-fuck": {
+          "0%": {
+            opacity: "0",
+            // transform: "translateY(var(--fade-up-from))",
+            transform: "translateY(20rem)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0rem)",
+          },
         },
-        "100%": {
-          opacity: "1",
-          transform: "translateY(var(--fade-up-to))",
-        },
+        // "fade-left": {
+        //   from: {
+        //     opacity: "0",
+        //     transform: "translateY(var(--fade-left-from))",
+        //   },
+        //   to: {
+        //     opacity: "1",
+        //     transform: "translateY(var(--fade-left-to))",
+        //   },
+        // },
+        // "fade-right": {
+        //   from: {
+        //     opacity: "0",
+        //     transform: "translateY(var(--fade-right-from))",
+        //   },
+        //   to: {
+        //     opacity: "1",
+        //     transform: "translateY(var(--fade-right-to))",
+        //   },
+        // },
       },
     },
   },
   plugins: [
-    tailwindCssAnimated,
+    // tailwindCssAnimated,
     plugin(function ({
       addBase,
       addUtilities,

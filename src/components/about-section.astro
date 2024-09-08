@@ -21,17 +21,14 @@ const {
 const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 ---
 
-<PageSection
-  class="about-section pt-0 animate-duration-500 motion-reduce:animate-duration-[0]"
-  id="about"
->
+<!-- animate-duration-500 motion-reduce:animate-duration-[0] -->
+<PageSection class="about-section pt-0" id="about">
   <div
     class={`
       glass-card glass-full rounded-[2.5rem] text-empty flex flex-col gap-8 p-4 transition-all max-w-[30rem] mx-auto
       sm:p-8
       md:flex-row md:max-w-max
-      intersect:animate-fade-up-about-glass intersect-once motion-reduce:animate-none animate-replace
-
+      intersect:animate-fade-up-about-glass intersect-once motion-reduce:animate-none
     `}
   >
     <div class="flex-1">
@@ -75,8 +72,7 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
     }
   </div>
 </PageSection>
-
-<style>
+<style is:global>
   .about-section {
     scroll-margin-top: calc(var(--banner-pb) + 3rem);
 
@@ -84,7 +80,9 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
       @apply relative flex flex-col gap-8;
     }
     .glass-card {
-      transform: translateY(calc(var(--banner-pb) * -0.33));
+      /* transform: translateY(calc(var(--banner-pb) * -0.33)); */
+      /* --fade-up-from: calc(var(--banner-pb) * -0.33);
+      --fade-up-to: calc(var(--banner-pb) * -0.66); */
     }
     .about-cards {
       margin-top: calc(var(--banner-pb) / -3);
@@ -101,22 +99,6 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
       grid-template-rows: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 6fr);
     }
 
-    @keyframes fade-up-about-glass {
-      0% {
-        /* opacity: 0; */
-        transform: translateY(calc(var(--banner-pb) * -0.33));
-      }
-      100% {
-        /* opacity: 1; */
-        transform: translateY(calc(var(--banner-pb) * -0.66));
-      }
-    }
-    .animate-fade-up-about-glass {
-      animation: fade-up-about-glass var(--tw-animate-duration, 1s)
-        var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s)
-        var(--tw-animate-iteration, 1) var(--tw-animate-fill, both);
-    }
-
     @keyframes fade-up-long {
       0% {
         opacity: 0;
@@ -129,6 +111,22 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
     }
     .animate-fade-up-long {
       animation: fade-up-long var(--tw-animate-duration, 1s)
+        var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s)
+        var(--tw-animate-iteration, 1) var(--tw-animate-fill, both);
+    }
+
+    @keyframes fade-up-about-glass {
+      0% {
+        /* opacity: 0; */
+        transform: translateY(calc(var(--banner-pb) * -0.33));
+      }
+      100% {
+        /* opacity: 1; */
+        transform: translateY(calc(var(--banner-pb) * -0.66));
+      }
+    }
+    .animate-fade-up-about-glass {
+      animation: fade-up-about-glass var(--tw-animate-duration, 1s)
         var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s)
         var(--tw-animate-iteration, 1) var(--tw-animate-fill, both);
     }
