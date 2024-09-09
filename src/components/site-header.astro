@@ -38,29 +38,32 @@ import SiteTabs from "./site-tabs.astro";
 </style>
 
 <script>
+  import { throttle } from "../helpers/performance";
+
   document.addEventListener("astro:page-load", () => {
-    const siteLogoAreaHeight =
-      document.getElementById("site-logo-area")?.offsetHeight ?? 0;
     const navLogo = document.getElementById("nav-logo");
     const siteHeader = document.getElementById("site-header");
 
-    let navLogoVisible = false;
-    const manageNavLogoClasses = () => {
-      if (window.scrollY >= siteLogoAreaHeight) {
-        if (navLogoVisible) return;
+    let alreadyStuck = false;
+    const manageNavLogoClasses = throttle(() => {
+      const isStuck = !document
+        .getElementById("site-header")
+        ?.getBoundingClientRect().top;
+      checkStuck: if (isStuck) {
+        if (alreadyStuck) break checkStuck;
         siteHeader?.classList.remove("unstuck");
         siteHeader?.classList.add("stuck");
-        navLogoVisible = true;
+        alreadyStuck = true;
       } else {
-        if (!navLogoVisible) return;
+        if (!alreadyStuck) break checkStuck;
         siteHeader?.classList.remove("stuck");
         siteHeader?.classList.add("unstuck");
-        navLogoVisible = false;
+        alreadyStuck = false;
       }
-    };
+    }, 50);
 
     manageNavLogoClasses();
-    window.addEventListener("scroll", manageNavLogoClasses);
+    window.addEventListener("scroll", manageNavLogoClasses, { passive: true });
 
     /**
      * adding transition only after first scroll avoids slide animation

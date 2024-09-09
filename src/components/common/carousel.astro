@@ -80,6 +80,8 @@ const height = heightProp ?? 500;
 </style>
 
 <script>
+  import { throttle } from "../../helpers/performance";
+
   class Carousel extends HTMLElement {
     _activeSlideIdx: number;
     scrollContainer: Element | null;
@@ -136,26 +138,24 @@ const height = heightProp ?? 500;
         }
       });
 
-      this.scrollContainer?.addEventListener("scroll", () => {
-        if (this.scrollTimer !== null) return;
-        this.scrollTimer = setTimeout(() => {
+      const handleActiveSlide = throttle(() => {
+        if (!this.scrollContainer) return;
+
+        Array.from(this.scrollContainer.children ?? []).forEach((c, idx) => {
           if (!this.scrollContainer) return;
-
-          Array.from(this.scrollContainer.children ?? []).forEach((c, idx) => {
-            if (!this.scrollContainer) return;
-            const parentRect = this.scrollContainer.getBoundingClientRect();
-            const childRect = c.getBoundingClientRect();
-            if (
-              childRect.left >= parentRect.left &&
-              childRect.right <= parentRect.right
-            ) {
-              this.activeSlideIdx = idx;
-              if (!this.paused) this.restart();
-            }
-          });
-
-          this.scrollTimer = null;
-        }, 500);
+          const parentRect = this.scrollContainer.getBoundingClientRect();
+          const childRect = c.getBoundingClientRect();
+          if (
+            childRect.left >= parentRect.left &&
+            childRect.right <= parentRect.right
+          ) {
+            this.activeSlideIdx = idx;
+            if (!this.paused) this.restart();
+          }
+        });
+      });
+      this.scrollContainer?.addEventListener("scroll", handleActiveSlide, {
+        passive: true,
       });
 
       window.addEventListener("blur", () => {

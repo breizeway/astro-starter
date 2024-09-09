@@ -37,6 +37,8 @@ import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../constants";
 </style>
 
 <script>
+  import { throttle } from "../helpers/performance";
+
   interface Props {
     sectionClass: string;
     tabPrefix: string;
@@ -59,32 +61,25 @@ import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../constants";
       this.visibilities = {};
       this.timeout = null;
 
-      window.addEventListener(
-        "scroll",
-        () => {
-          if (this.timeout !== null) return;
-          this.timeout = setTimeout(() => {
-            const windowHeight = window.innerHeight;
-            this.siteSections.forEach((section) => {
-              const rect = section.getBoundingClientRect();
-              const topDiff = rect.top < 0 ? rect.top : 0;
-              const bottomDiff = rect.top < 0 ? 0 : windowHeight - rect.bottom;
-              const pxVisible = rect.height + topDiff + bottomDiff;
+      const handleTabStyles = throttle(() => {
+        const windowHeight = window.innerHeight;
+        this.siteSections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          const topDiff = rect.top < 0 ? rect.top : 0;
+          const bottomDiff = rect.top < 0 ? 0 : windowHeight - rect.bottom;
+          const pxVisible = rect.height + topDiff + bottomDiff;
 
-              this.visibilities[section.id] = pxVisible / windowHeight;
-              const selectedId = Object.entries(this.visibilities)
-                .sort((a, b) => b[1] - a[1])
-                .at(0)
-                ?.at(0);
+          this.visibilities[section.id] = pxVisible / windowHeight;
+          const selectedId = Object.entries(this.visibilities)
+            .sort((a, b) => b[1] - a[1])
+            .at(0)
+            ?.at(0);
 
-              this.setSelectedTab(selectedId);
-            });
+          this.setSelectedTab(selectedId);
+        });
+      }, 500);
 
-            this.timeout = null;
-          }, 500);
-        },
-        { passive: true },
-      );
+      window.addEventListener("scroll", handleTabStyles, { passive: true });
 
       this.siteTabs.forEach((tab) => {
         tab.addEventListener("click", (e) => {
