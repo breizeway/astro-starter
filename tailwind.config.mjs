@@ -25,9 +25,9 @@ const COMMON_VARS = {
 
   "--fade-up-start-translate": "4rem",
   "--fade-up-end-translate": "0%",
-  "--fade-right-start-translate": "-4rem",
+  "--fade-right-start-translate": "-2rem",
   "--fade-right-end-translate": "0%",
-  "--fade-left-start-translate": "4rem",
+  "--fade-left-start-translate": "2rem",
   "--fade-left-end-translate": "0%",
   "--fade-down-start-translate": "-4rem",
   "--fade-down-end-translate": "0%",

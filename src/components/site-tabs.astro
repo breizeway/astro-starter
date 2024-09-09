@@ -1,5 +1,5 @@
 ---
-import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../../constants";
+import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../constants";
 ---
 
 <site-tabs
@@ -17,7 +17,7 @@ import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../../constants";
         role="tab"
         id={tabId}
         class:list={[
-          "tl-tab inline-flex justify-center items-center h-full text-xl text-base-content hover:text-opacity-75 hover:border-b-primary hover:border-opacity-75 px-5 border-transparent border-y-[0.6rem] transition-colors",
+          "tl-tab inline-flex justify-center items-center h-full text-xl text-base-content no-touch:hover:text-opacity-75 no-touch:hover:border-b-primary no-touch:hover:border-opacity-75 px-5 border-transparent border-y-[0.6rem] transition-colors",
           { "tl-tab--selected": !idx },
         ]}
         {...{ href }}
@@ -42,36 +42,37 @@ import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../../constants";
     tabPrefix: string;
   }
   class SiteTabs extends HTMLElement {
-    siteTabs: Element[];
     props: Props;
+    siteTabs: Element[];
+    siteSections: NodeListOf<Element>;
+    visibilities: { [id: string]: number };
+    timeout: NodeJS.Timeout | null;
 
     constructor() {
       super();
 
       this.props = JSON.parse(this.dataset.props ?? "{}") as Props;
       this.siteTabs = Array.from(this.children);
-
-      const siteSections = document.querySelectorAll(
+      this.siteSections = document.querySelectorAll(
         `.${this.props.sectionClass}`,
       );
+      this.visibilities = {};
+      this.timeout = null;
 
-      const visibilityPercents: { [id: string]: number } = {};
-
-      let timeout: NodeJS.Timeout | null = null;
       window.addEventListener(
         "scroll",
         () => {
-          if (timeout !== null) return;
-          timeout = setTimeout(() => {
-            const scrollHeight = window.innerHeight;
-            siteSections.forEach((section) => {
+          if (this.timeout !== null) return;
+          this.timeout = setTimeout(() => {
+            const windowHeight = window.innerHeight;
+            this.siteSections.forEach((section) => {
               const rect = section.getBoundingClientRect();
-              const bottom = rect.top < 0 ? 0 : scrollHeight - rect.bottom;
-              const numVisible =
-                rect.height + (rect.top < 0 ? rect.top : 0) + bottom;
+              const topDiff = rect.top < 0 ? rect.top : 0;
+              const bottomDiff = rect.top < 0 ? 0 : windowHeight - rect.bottom;
+              const pxVisible = rect.height + topDiff + bottomDiff;
 
-              visibilityPercents[section.id] = numVisible / scrollHeight;
-              const selectedId = Object.entries(visibilityPercents)
+              this.visibilities[section.id] = pxVisible / windowHeight;
+              const selectedId = Object.entries(this.visibilities)
                 .sort((a, b) => b[1] - a[1])
                 .at(0)
                 ?.at(0);
@@ -79,7 +80,7 @@ import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../../constants";
               this.setSelectedTab(selectedId);
             });
 
-            timeout = null;
+            this.timeout = null;
           }, 500);
         },
         { passive: true },

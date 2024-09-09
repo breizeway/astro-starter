@@ -24,30 +24,28 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
 ---
 
 <PageSection id={sectionId} class:list={[sectionClass, "about-section pt-0"]}>
-  <div class="glass-card-wrapper">
-    <div
-      class={`
+  <div
+    class={`
       glass-card glass-full rounded-[2.5rem] text-empty flex flex-col gap-8 p-4 transition-all max-w-[30rem] mx-auto
       motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none motion-reduce:translate-end
       sm:p-8
       md:flex-row md:max-w-max
       `}
-    >
-      <div class="flex-1">
-        <Image
-          src={getManagedImage(image.src)}
-          alt={image.alt}
-          class={`
+  >
+    <div class="flex-1">
+      <Image
+        src={getManagedImage(image.src)}
+        alt={image.alt}
+        class={`
           img-fade-in rounded-[1.75rem] w-full h-full object-cover
           sm:rounded-[1.25rem]
           `}
-          loading="eager"
-        />
-      </div>
-      <div class="flex-1">
-        <p class="text-title-2">{title}</p>
-        <Markdown content={description} class="about-description" />
-      </div>
+        loading="eager"
+      />
+    </div>
+    <div class="flex-1">
+      <p class="text-title-2">{title}</p>
+      <Markdown content={description} class="about-description" />
     </div>
   </div>
   <div
@@ -82,15 +80,10 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
     .page-section-inner {
       @apply relative flex flex-col gap-8;
     }
-    .glass-card-wrapper {
-    }
     .glass-card {
       position: relative;
       top: calc(var(--banner-pb) * -0.66);
-      /* transform: translateY(calc(var(--banner-pb) * -0.33)); */
       --fade-up-start-translate: calc(var(--banner-pb) * 0.66);
-      /* --fade-up-end-translate: calc(var(--banner-pb) * -0.66); */
-      /* --fade-up-end-translate: calc(var(--banner-pb) * -0.66); */
     }
     .about-cards {
       margin-top: calc(var(--banner-pb) / -3);
