@@ -2,12 +2,14 @@
 import type { HTMLAttributes } from "astro/types";
 import { propsWithMergedClasses } from "../../helpers/style";
 
-interface Props extends HTMLAttributes<"section"> {}
+interface Props extends HTMLAttributes<"section"> {
+  forceStyle?: "fore" | "back";
+}
 
-const props = Astro.props;
+const { forceStyle, ...props } = Astro.props;
 ---
 
-<section {...propsWithMergedClasses(props, ["page-section"])}>
+<section {...propsWithMergedClasses(props, ["page-section", forceStyle])}>
   <div class="page-section-inner site-width-content">
     <slot />
   </div>
@@ -18,10 +20,12 @@ const props = Astro.props;
     @apply site-px py-24;
   }
 
-  .page-section:nth-of-type(even) {
+  .page-section:nth-of-type(even):not(.back),
+  .page-section.fore {
     @apply bg-base-100;
   }
-  .page-section:nth-of-type(odd) {
+  .page-section:nth-of-type(odd):not(.fore),
+  .page-section.back {
     --shadow-opacity: 0.08;
     @media (prefers-color-scheme: dark) {
       --shadow-opacity: 0.32;
