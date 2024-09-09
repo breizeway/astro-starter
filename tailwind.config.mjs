@@ -14,7 +14,7 @@ const COMMON_VARS = {
   "--site-bg-color-2": "var(--fallback-n, oklch(var(--n)))",
 
   // animations
-  "--tw-animate-duration": "700ms",
+  "--tw-animate-duration": "500ms",
   "--tw-animate-easing": "ease",
   "--tw-animate-delay": "0ms",
   "--tw-animate-iteration": "1",

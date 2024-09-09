@@ -1,6 +1,7 @@
 ---
 import LogoLink from "./common/logo-link.astro";
-import Tabs from "./common/tabs.astro";
+import SiteTabs from "./common/site-tabs.astro";
+import Tabs from "./common/site-tabs.astro";
 ---
 
 <div
@@ -21,26 +22,10 @@ import Tabs from "./common/tabs.astro";
     <LogoLink
       variant="large"
       id="nav-logo"
-      class="duration-300 h-10"
+      class="transition duration-500 h-10"
       iconProps={{ class: "h-full" }}
     />
-    <!-- <div class="flex gap-2 h-full"> -->
-    <Tabs />
-    <!-- {
-        [{ pathname: "/#about", label: "About" }].map(({ pathname, label }) => (
-          <a
-            href={pathname}
-            class:list={[
-              "btn btn-outline no-animation",
-              { "btn-active": Astro.url.pathname === pathname },
-            ]}
-            data-astro-prefetch
-          >
-            {label}
-          </a>
-        ))
-      } -->
-    <!-- </div> -->
+    <SiteTabs />
   </nav>
 </header>
 

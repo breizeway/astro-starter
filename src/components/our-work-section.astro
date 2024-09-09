@@ -15,11 +15,10 @@ const {
   },
 } = (await getEntry("home-page", "about")) as ContentSection<About>;
 
-const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 ---
 
-<PageSection id={sectionId} class:list={[sectionClass, "about-section pt-0"]}>
+<PageSection id={sectionId} class:list={[sectionClass, "about-section"]}>
   <span class="text-title-1">Our Work</span>
   {
     [...Array(2)].map((_, i) => (
