@@ -1,29 +1,32 @@
 ---
 import LogoLink from "./common/logo-link.astro";
+import Tabs from "./common/tabs.astro";
 ---
 
-<div class="bg-base-100">
-  <div
-    id="site-logo-area"
-    class="site-width-content site-px site-py flex justify-center items-center gap-2 bg-base-100"
-  >
-    <LogoLink
-      variant="large"
-      class="py-[12vw] sm:py-[5rem]"
-      iconProps={{ class: "w-[75vw] sm:w-[30rem] h-auto" }}
-    />
-  </div>
+<div
+  id="site-logo-area"
+  class="site-px site-py flex justify-center items-center gap-2 bg-base-100"
+>
+  <LogoLink
+    variant="large"
+    class="py-[12vw] sm:py-[5rem]"
+    iconProps={{ class: "w-[75vw] sm:w-[30rem] h-auto" }}
+  />
 </div>
-<header class="bg-base-200 shadow-2xl sticky top-0 z-50">
-  <nav class="site-width-content site-px py-4 flex justify-between">
+<header
+  id="site-header"
+  class="unstuck bg-base-200 site-px shadow-2xl sticky top-0 z-50"
+>
+  <nav class="site-width-content h-20 flex justify-between items-center gap-4">
     <LogoLink
       variant="large"
       id="nav-logo"
-      iconProps={{ class: "h-10" }}
-      class="-translate-x-1/4 opacity-0 duration-300"
+      class="duration-300 h-10"
+      iconProps={{ class: "h-full" }}
     />
-    <div class="flex gap-2">
-      {
+    <!-- <div class="flex gap-2 h-full"> -->
+    <Tabs />
+    <!-- {
         [{ pathname: "/#about", label: "About" }].map(({ pathname, label }) => (
           <a
             href={pathname}
@@ -36,26 +39,38 @@ import LogoLink from "./common/logo-link.astro";
             {label}
           </a>
         ))
-      }
-    </div>
+      } -->
+    <!-- </div> -->
   </nav>
 </header>
+
+<style is:global>
+  #site-header.unstuck #nav-logo {
+    @apply -translate-x-1/4 opacity-0;
+  }
+  #site-header.stuck #nav-logo {
+    @apply -translate-x-0 opacity-100;
+  }
+</style>
 
 <script>
   document.addEventListener("astro:page-load", () => {
     const siteLogoAreaHeight =
       document.getElementById("site-logo-area")?.offsetHeight ?? 0;
     const navLogo = document.getElementById("nav-logo");
+    const siteHeader = document.getElementById("site-header");
 
     let navLogoVisible = false;
     const manageNavLogoClasses = () => {
       if (window.scrollY >= siteLogoAreaHeight) {
         if (navLogoVisible) return;
-        navLogo?.classList.remove("-translate-x-1/4", "opacity-0");
+        siteHeader?.classList.remove("unstuck");
+        siteHeader?.classList.add("stuck");
         navLogoVisible = true;
       } else {
         if (!navLogoVisible) return;
-        navLogo?.classList.add("-translate-x-1/4", "opacity-0");
+        siteHeader?.classList.remove("stuck");
+        siteHeader?.classList.add("unstuck");
         navLogoVisible = false;
       }
     };

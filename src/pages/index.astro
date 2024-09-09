@@ -6,6 +6,7 @@ import SiteBackground from "../components/site-background.astro";
 import BannerSection from "../components/banner-section.astro";
 import AboutSection from "../components/about-section.astro";
 import ImgFadeInHandler from "../components/common/img-fade-in-handler.astro";
+import OurWorkSection from "../components/our-work-section.astro";
 ---
 
 <Layout title="Elite Commercial Door">
@@ -14,10 +15,11 @@ import ImgFadeInHandler from "../components/common/img-fade-in-handler.astro";
   <SiteBackground slot="before-layout" />
   <BannerSection />
   <AboutSection />
+  <OurWorkSection />
   {
     [...Array(2)].map((_, i) => (
       <PageSection>
-        <h1 class="intersect:animate-fade-up">{`About Us ${i}`}</h1>
+        <h1>{`About Us ${i}`}</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
+import { SECTION_DEFS } from "../constants";
 import type { About, ContentSection } from "../content/types";
 import { getManagedImage } from "../helpers/media";
 import Icon from "./common/icon.astro";
@@ -19,9 +20,10 @@ const {
 } = (await getEntry("home-page", "about")) as ContentSection<About>;
 
 const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
+const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
 ---
 
-<PageSection class="about-section pt-0" id="about">
+<PageSection id={sectionId} class:list={[sectionClass, "about-section pt-0"]}>
   <div class="glass-card-wrapper">
     <div
       class={`

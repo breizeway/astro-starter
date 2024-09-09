@@ -34,13 +34,11 @@ const {
 
 <style>
   .banner-section {
-    width: 100%;
-
     @apply pb-[var(--banner-pb)] pt-[calc(var(--banner-pb)/2)];
 
     .markdown {
       & * {
-        @apply font-title leading-tight text-[2.75rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] motion-safe:transition-[font-size];
+        @apply font-title leading-tight text-[2.75rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] motion-safe:transition-[font-size] text-full !text-opacity-75;
       }
       strong {
         @apply text-empty;

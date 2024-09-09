@@ -1,0 +1,110 @@
+---
+import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../../constants";
+---
+
+<site-tabs
+  id="site_tabs"
+  role="tablist"
+  class="h-full font-title space-x-3"
+  data-props={JSON.stringify({
+    sectionClass: SECTION_CLASS,
+    tabPrefix: TAB_PREFIX,
+  })}
+>
+  {
+    Object.values(SECTION_DEFS).map(({ label, href, tabId }, idx) => (
+      <a
+        role="tab"
+        id={tabId}
+        class:list={[
+          "tl-tab inline-flex justify-center items-center h-full text-xl text-base-content hover:text-opacity-75 hover:border-b-primary hover:border-opacity-75 px-5 border-transparent border-y-[0.6rem] transition-colors",
+          { "tl-tab--selected": !idx },
+        ]}
+        {...{ href }}
+      >
+        {label}
+      </a>
+    ))
+  }
+</site-tabs>
+
+<style is:global>
+  #site-header.stuck .tl-tab--selected {
+    && {
+      @apply border-b-primary;
+    }
+  }
+</style>
+
+<script>
+  interface Props {
+    sectionClass: string;
+    tabPrefix: string;
+  }
+  class SiteTabs extends HTMLElement {
+    siteTabs: Element[];
+    props: Props;
+
+    constructor() {
+      super();
+
+      this.props = JSON.parse(this.dataset.props ?? "{}") as Props;
+      this.siteTabs = Array.from(this.children);
+
+      const siteSections = document.querySelectorAll(
+        `.${this.props.sectionClass}`,
+      );
+
+      const visibilityPercents: { [id: string]: number } = {};
+
+      let timeout: NodeJS.Timeout | null = null;
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (timeout !== null) return;
+          timeout = setTimeout(() => {
+            const scrollHeight = window.innerHeight;
+            siteSections.forEach((section) => {
+              const rect = section.getBoundingClientRect();
+              const bottom = rect.top < 0 ? 0 : scrollHeight - rect.bottom;
+              const numVisible =
+                rect.height + (rect.top < 0 ? rect.top : 0) + bottom;
+
+              visibilityPercents[section.id] = numVisible / scrollHeight;
+              const selectedId = Object.entries(visibilityPercents)
+                .sort((a, b) => b[1] - a[1])
+                .at(0)
+                ?.at(0);
+
+              this.setSelectedTab(selectedId);
+            });
+
+            timeout = null;
+          }, 500);
+        },
+        { passive: true },
+      );
+
+      this.siteTabs.forEach((tab) => {
+        tab.addEventListener("click", (e) => {
+          const id = (e.target as Element).id;
+          this.setSelectedTab(id);
+        });
+      });
+    }
+
+    setSelectedTab(id: string | number | undefined) {
+      const tabId =
+        this.props.tabPrefix + String(id).replace(this.props.tabPrefix, "");
+      this.siteTabs.forEach((tab) => {
+        if (tab.id === tabId) {
+          tab.classList.add("tl-tab--selected");
+        } else {
+          tab.classList.remove("tl-tab--selected");
+        }
+      });
+    }
+  }
+
+  customElements.define("site-tabs", SiteTabs);
+</script>

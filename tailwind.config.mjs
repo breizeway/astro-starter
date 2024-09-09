@@ -23,17 +23,17 @@ const COMMON_VARS = {
   "--fade-start-opacity": "0",
   "--fade-end-opacity": "1",
 
-  "--fade-up-start-translate": "20%",
+  "--fade-up-start-translate": "4rem",
   "--fade-up-end-translate": "0%",
-  "--fade-right-start-translate": "-20%",
+  "--fade-right-start-translate": "-4rem",
   "--fade-right-end-translate": "0%",
-  "--fade-left-start-translate": "20%",
+  "--fade-left-start-translate": "4rem",
   "--fade-left-end-translate": "0%",
-  "--fade-down-start-translate": "-20%",
+  "--fade-down-start-translate": "-4rem",
   "--fade-down-end-translate": "0%",
 };
 
-/** @type {import('tailwindcss').Config} */
+// /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -113,7 +113,7 @@ export default {
         "fade-up": {
           "0%": {
             opacity: "var(--fade-start-opacity)",
-            transform: "scale(0.95) translateY(var(--fade-up-start-translate))",
+            transform: "scale(0.94) translateY(var(--fade-up-start-translate))",
           },
           "100%": {
             opacity: "var(--fade-end-opacity)",
@@ -124,7 +124,7 @@ export default {
           from: {
             opacity: "var(--fade-start-opacity)",
             transform:
-              "scale(0.95) translateX(var(--fade-right-start-translate))",
+              "scale(0.94) translateX(var(--fade-right-start-translate))",
           },
           to: {
             opacity: "var(--fade-end-opacity)",
@@ -135,7 +135,7 @@ export default {
           from: {
             opacity: "var(--fade-start-opacity)",
             transform:
-              "scale(0.95) translateY(var(--fade-down-start-translate))",
+              "scale(0.94) translateY(var(--fade-down-start-translate))",
           },
           to: {
             opacity: "var(--fade-end-opacity)",
@@ -146,7 +146,7 @@ export default {
           from: {
             opacity: "var(--fade-start-opacity)",
             transform:
-              "scale(0.95) translateX(var(--fade-left-start-translate))",
+              "scale(0.94) translateX(var(--fade-left-start-translate))",
           },
           to: {
             opacity: "var(--fade-end-opacity)",
@@ -167,9 +167,9 @@ export default {
     }) {
       addVariant("light", "@media (prefers-color-scheme: light)");
       addVariant("safari", "@supports (background: -webkit-named-image(i))");
-      addBase({
-        a: { textDecoration: "underline" },
-      });
+      // addBase({
+      //   a: { textDecoration: "underline" },
+      // });
       addComponents({
         ".bracket-card": {
           position: "relative",
