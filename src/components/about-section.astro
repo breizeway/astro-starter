@@ -27,7 +27,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
   <div
     class={`
       glass-card glass-full rounded-[2.5rem] text-empty flex flex-col gap-8 p-4 transition-all max-w-[30rem] mx-auto
-      motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none motion-reduce:translate-end
+      motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
       sm:p-8
       md:flex-row md:max-w-max
       `}
@@ -98,9 +98,6 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
   @layer utilities {
     .crafted-rows {
       grid-template-rows: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 6fr);
-    }
-    .translate-end {
-      transform: translateY(calc(var(--banner-pb) * -0.66));
     }
   }
 </style>
