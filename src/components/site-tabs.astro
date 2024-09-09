@@ -48,7 +48,6 @@ import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../constants";
     siteTabs: Element[];
     siteSections: NodeListOf<Element>;
     visibilities: { [id: string]: number };
-    timeout: NodeJS.Timeout | null;
 
     constructor() {
       super();
@@ -59,7 +58,6 @@ import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../constants";
         `.${this.props.sectionClass}`,
       );
       this.visibilities = {};
-      this.timeout = null;
 
       const handleTabStyles = throttle(() => {
         const windowHeight = window.innerHeight;
