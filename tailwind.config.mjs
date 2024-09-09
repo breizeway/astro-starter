@@ -48,6 +48,7 @@ export default {
       },
       transitionDuration: {
         ...defaultTheme.transitionDuration,
+        DEFAULT: "500ms",
         load: "100ms",
       },
       // animations inspired by https://github.com/new-data-services/tailwindcss-animated
