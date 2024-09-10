@@ -24,7 +24,7 @@ import SiteTabs from "./site-tabs.astro";
       class="h-10 transition motion-reduce:duration-0"
       iconProps={{ class: "h-full" }}
     />
-    <SiteTabs />
+    <SiteTabs class="[&&]:hidden site-tab-width:[&&]:flex" />
   </nav>
 </header>
 
@@ -41,25 +41,26 @@ import SiteTabs from "./site-tabs.astro";
   import { throttle } from "../helpers/performance";
 
   document.addEventListener("astro:page-load", () => {
-    const navLogo = document.getElementById("nav-logo");
     const siteHeader = document.getElementById("site-header");
 
     let alreadyStuck = false;
     const manageNavLogoClasses = throttle(() => {
-      const isStuck = !document
-        .getElementById("site-header")
-        ?.getBoundingClientRect().top;
-      checkStuck: if (isStuck) {
-        if (alreadyStuck) break checkStuck;
-        siteHeader?.classList.remove("unstuck");
-        siteHeader?.classList.add("stuck");
-        alreadyStuck = true;
-      } else {
-        if (!alreadyStuck) break checkStuck;
-        siteHeader?.classList.remove("stuck");
-        siteHeader?.classList.add("unstuck");
-        alreadyStuck = false;
-      }
+      const isStuck =
+        (document.getElementById("site-logo-area")?.getBoundingClientRect()
+          .bottom ?? 0) <= 0;
+      (() => {
+        if (isStuck) {
+          if (alreadyStuck) return;
+          siteHeader?.classList.remove("unstuck");
+          siteHeader?.classList.add("stuck");
+          alreadyStuck = true;
+        } else {
+          if (!alreadyStuck) return;
+          siteHeader?.classList.remove("stuck");
+          siteHeader?.classList.add("unstuck");
+          alreadyStuck = false;
+        }
+      })();
     }, 50);
 
     manageNavLogoClasses();
@@ -69,12 +70,12 @@ import SiteTabs from "./site-tabs.astro";
      * adding transition only after first scroll avoids slide animation
      * if browser restores place after reload
      */
-    window.addEventListener(
-      "scroll",
-      () => {
-        navLogo?.classList.add("transition");
-      },
-      { once: true },
-    );
+    // window.addEventListener(
+    //   "scroll",
+    //   () => {
+    //     navLogo?.classList.add("transition");
+    //   },
+    //   { once: true },
+    // );
   });
 </script>

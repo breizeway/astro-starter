@@ -3,6 +3,7 @@ import daisyui from "daisyui";
 // import tailwindCssAnimated from "tailwindcss-animated";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
+import { SITE_TAB_WIDTH } from "./src/constants";
 import { intersectionPlugin } from "./src/library/intersection-handler";
 
 const COMMON_VARS = {
@@ -39,8 +40,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        touch: { raw: "(hover: none)" },
-        "no-touch": { raw: "(hover: hover)" },
+        "site-tab-width": `${SITE_TAB_WIDTH}px`,
       },
       fontFamily: {
         title: ["poppins", ...defaultTheme.fontFamily.sans],
@@ -159,18 +159,11 @@ export default {
   },
   plugins: [
     // tailwindCssAnimated,
-    plugin(function ({
-      addBase,
-      addUtilities,
-      addComponents,
-      addVariant,
-      theme,
-    }) {
-      addVariant("light", "@media (prefers-color-scheme: light)");
+    plugin(function ({ addUtilities, addComponents, addVariant, theme }) {
       addVariant("safari", "@supports (background: -webkit-named-image(i))");
-      // addBase({
-      //   a: { textDecoration: "underline" },
-      // });
+      addVariant("light", "@media (prefers-color-scheme: light)");
+      addVariant("no-touch", "@media (hover: hover)");
+      addVariant("touch", "@media (hover: none)");
       addComponents({
         ".bracket-card": {
           position: "relative",
