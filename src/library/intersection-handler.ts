@@ -75,18 +75,18 @@ const IntersectionHandler = {
   },
 
   getRootMargin(element: Element) {
-    const DEFAULT_TH = "0px 0px 0px 0px";
+    const DEFAULT_RM = "0px 0px 0px 0px";
     const classes = element.classList.entries();
     let curr = classes.next();
     while (curr.value) {
       const [_, cls] = curr.value as [number, string];
       if (cls.includes("intersect-rm-")) {
         const th = cls.replace("intersect-rm-", "");
-        return th || DEFAULT_TH;
+        return th || DEFAULT_RM;
       }
       curr = classes.next();
     }
-    return DEFAULT_TH;
+    return DEFAULT_RM;
   },
 };
 

@@ -287,9 +287,6 @@ export default {
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
           backdropFilter: "blur(50px)",
         },
-        ".intersecting": {
-          border: "3px solid red !important",
-        },
       });
     }),
     typography,
