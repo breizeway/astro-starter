@@ -9,7 +9,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="none">
+<html lang="en" transition:animate="none" class="is-server">
   <head>
     <meta charset="UTF-8" />
     <!-- TODO: add description -->
@@ -31,6 +31,10 @@ const { title } = Astro.props;
 <style is:global>
   :root {
     @apply init-site-p-vars;
+  }
+
+  :root.is-server * {
+    @apply !transition-none;
   }
 
   body {
@@ -92,7 +96,7 @@ const { title } = Astro.props;
   }
 
   /* nunito-700 - latin */
-  @font-face {
+  a @font-face {
     font-display: swap;
     font-family: "nunito";
     font-style: normal;
@@ -108,11 +112,34 @@ const { title } = Astro.props;
     font-weight: 700;
     src: url("/fonts/nunito-v26-latin-700italic.woff2") format("woff2");
   }
+
+  @tailwind components;
+  @layer components {
+    .tl-tab {
+      @apply inline-flex items-center text-xl border-transparent whitespace-nowrap text-base-content transition-colors h-20;
+      @apply no-touch:hover:text-opacity-75 no-touch:hover:border-opacity-50;
+    }
+    .tl-tab-x {
+      @apply border-y-[0.6rem] no-touch:hover:border-b-primary px-5 justify-center;
+    }
+    .tl-tab-x.tl-tab--selected {
+      @apply border-b-primary;
+    }
+    .tl-tab-y {
+      @apply border-x-[0.6rem] no-touch:hover:border-l-primary;
+    }
+    .tl-tab-y.tl-tab--selected {
+      @apply border-l-primary bg-base-100;
+    }
+  }
 </style>
 
 <script>
   import { IntersectionHandler } from "../library/intersection-handler";
   IntersectionHandler.start();
+
+  // avoid fresh loaded transition flash
+  document.documentElement.classList.remove("is-server");
 
   // avoid smooth scroll after refresh
   const allATags = document.querySelectorAll("a");

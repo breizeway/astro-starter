@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../constants";
+import { SECTION_DEFS, TAB_CLASS, SECTION_CLASS } from "../constants";
 
 interface Props extends HTMLAttributes<"div"> {}
 
@@ -12,24 +12,27 @@ const props = Astro.props;
   role="tablist"
   data-props={JSON.stringify({
     sectionClass: SECTION_CLASS,
-    tabPrefix: TAB_PREFIX,
+    tabClass: TAB_CLASS,
   })}
   {...props}
 >
   {
-    Object.values(SECTION_DEFS).map(({ label, href, tabId }, idx) => (
-      <a
-        role="tab"
-        id={tabId}
-        class:list={[
-          "tl-tab inline-flex justify-center items-center h-full text-xl text-base-content no-touch:hover:text-opacity-75 no-touch:hover:border-b-primary no-touch:hover:border-opacity-75 px-5 border-transparent border-y-[0.6rem] transition-colors whitespace-nowrap",
-          { "tl-tab--selected": !idx },
-        ]}
-        {...{ href }}
-      >
-        {label}
-      </a>
-    ))
+    Object.values(SECTION_DEFS).map(
+      ({ label, href, tabClass, sectionId }, idx) => (
+        <a
+          role="tab"
+          data-section-id={sectionId}
+          class:list={[
+            tabClass,
+            "tl-tab tl-tab-x",
+            { "tl-tab--selected": !idx },
+          ]}
+          {...{ href }}
+        >
+          {label}
+        </a>
+      ),
+    )
   }
 </site-tabs>
 
@@ -40,9 +43,9 @@ const props = Astro.props;
 </style>
 
 <style is:global>
-  #site-header.stuck .tl-tab--selected {
+  #site-header.unstuck .tl-tab.tl-tab--selected:not(:hover) {
     && {
-      @apply border-b-primary;
+      @apply border-b-transparent border-l-transparent bg-inherit;
     }
   }
 </style>
@@ -52,19 +55,21 @@ const props = Astro.props;
 
   interface Props {
     sectionClass: string;
-    tabPrefix: string;
+    tabClass: string;
   }
   class SiteTabs extends HTMLElement {
     props: Props;
-    siteTabs: Element[];
-    siteSections: NodeListOf<Element>;
+    siteTabs: HTMLElement[];
+    siteSections: NodeListOf<HTMLElement>;
     visibilities: { [id: string]: number };
 
     constructor() {
       super();
 
       this.props = JSON.parse(this.dataset.props ?? "{}") as Props;
-      this.siteTabs = Array.from(this.children);
+      this.siteTabs = Array.from(
+        document.querySelectorAll(`.${this.props.tabClass}`),
+      ) as HTMLElement[];
       this.siteSections = document.querySelectorAll(
         `.${this.props.sectionClass}`,
       );
@@ -91,18 +96,17 @@ const props = Astro.props;
       window.addEventListener("scroll", handleTabStyles, { passive: true });
 
       this.siteTabs.forEach((tab) => {
-        tab.addEventListener("click", (e) => {
-          const id = (e.target as Element).id;
-          this.setSelectedTab(id);
+        tab.addEventListener("click", () => {
+          const sectionId = tab.dataset.sectionId;
+          console.log(`:::SECTIONID::: `, sectionId);
+          this.setSelectedTab(sectionId);
         });
       });
     }
 
-    setSelectedTab(id: string | number | undefined) {
-      const tabId =
-        this.props.tabPrefix + String(id).replace(this.props.tabPrefix, "");
+    setSelectedTab(sectionId: string | number | undefined) {
       this.siteTabs.forEach((tab) => {
-        if (tab.id === tabId) {
+        if (tab.dataset.sectionId === sectionId) {
           tab.classList.add("tl-tab--selected");
         } else {
           tab.classList.remove("tl-tab--selected");

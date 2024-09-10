@@ -208,6 +208,15 @@ export default {
             )`,
           },
         },
+        ".tl-tab": {
+          // defined in root-layout @layer components
+        },
+        ".tl-tab-x": {
+          // defined in root-layout @layer components
+        },
+        ".tl-tab-y": {
+          // defined in root-layout @layer components
+        },
       });
       addUtilities({
         ".site-width-content": {

@@ -28,7 +28,7 @@ const props = Astro.props;
       role="tablist"
       class="bg-base-300 w-80 max-w-[75vw] h-full flex flex-col shadow-2xl border-l border-[var(--fallback-bc,oklch(var(--bc)/0.1))]"
     >
-      <li class="inline-flex justify-between items-center h-20 pl-4">
+      <li class="inline-flex justify-between items-center h-20 pl-8">
         <LogoLink
           variant="small"
           class="close-mobile-menu h-10"
@@ -44,17 +44,24 @@ const props = Astro.props;
         </button>
       </li>
       {
-        Object.values(SECTION_DEFS).map(({ label, href }, idx) => (
-          <li class="px-4">
-            <a
-              role="tab"
-              class="close-mobile-menu text-xl h-20 inline-flex w-full items-center "
-              {...{ href }}
-            >
-              {label}
-            </a>
-          </li>
-        ))
+        Object.values(SECTION_DEFS).map(
+          ({ label, href, sectionId, tabClass }, idx) => (
+            <li>
+              <a
+                role="tab"
+                data-section-id={sectionId}
+                class:list={[
+                  tabClass,
+                  "tl-tab tl-tab-y close-mobile-menu w-full pl-[1.4rem]",
+                  { "tl-tab--selected": !idx },
+                ]}
+                {...{ href }}
+              >
+                {label}
+              </a>
+            </li>
+          ),
+        )
       }
     </ul>
   </div>
@@ -75,7 +82,7 @@ const props = Astro.props;
 <script>
   document.getElementById("mobile-menu")?.addEventListener(
     "touchmove",
-    function (e) {
+    (e) => {
       e.preventDefault();
     },
     false,
