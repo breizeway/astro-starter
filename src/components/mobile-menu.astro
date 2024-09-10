@@ -1,115 +1,96 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { SECTION_DEFS, TAB_PREFIX, SECTION_CLASS } from "../constants";
+import { SECTION_DEFS } from "../constants";
+import Icon from "./common/icon.astro";
+import LogoLink from "./common/logo-link.astro";
 
 interface Props extends HTMLAttributes<"div"> {}
-
 const props = Astro.props;
 ---
 
-<site-tabs
-  id="site_tabs"
-  role="tablist"
-  data-props={JSON.stringify({
-    sectionClass: SECTION_CLASS,
-    tabPrefix: TAB_PREFIX,
-  })}
-  {...props}
->
-  {
-    Object.values(SECTION_DEFS).map(({ label, href, tabId }, idx) => (
-      <a
-        role="tab"
-        id={tabId}
-        class:list={[
-          "tl-tab inline-flex justify-center items-center h-full text-xl text-base-content no-touch:hover:text-opacity-75 no-touch:hover:border-b-primary no-touch:hover:border-opacity-75 px-5 border-transparent border-y-[0.6rem] transition-colors whitespace-nowrap",
-          { "tl-tab--selected": !idx },
-        ]}
-        {...{ href }}
-      >
-        {label}
-      </a>
-    ))
-  }
-</site-tabs>
-
-<style>
-  site-tabs {
-    @apply h-full font-title flex gap-3;
-  }
-</style>
+<div id="mobile-menu" {...props}>
+  <input id="mobile-menu-toggle" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content h-full">
+    <label
+      for="mobile-menu-toggle"
+      class="drawer-button btn btn-ghost h-full rounded-none aspect-square -mr-[var(--site-px)] transition-[margin]"
+    >
+      <Icon icon="hamburger" class="h-[2em]" />
+    </label>
+  </div>
+  <div class="drawer-side duration-500 !h-dvh">
+    <label
+      for="mobile-menu-toggle"
+      aria-label="close sidebar"
+      class="[&&]:cursor-default !fixed top-0 left-0 right-0 !h-dvh flex !duration-0"
+    ></label>
+    <ul
+      role="tablist"
+      class="bg-base-300 w-80 max-w-[75vw] h-full flex flex-col shadow-2xl border-l border-[var(--fallback-bc,oklch(var(--bc)/0.1))]"
+    >
+      <li class="inline-flex justify-between items-center h-20 pl-4">
+        <LogoLink
+          variant="small"
+          class="close-mobile-menu h-10"
+          iconProps={{ class: "h-full" }}
+        />
+        <button
+          class="close-mobile-menu btn btn-ghost btn-square h-20 w-20 rounded-none"
+          aria-label="close sidebar"
+        >
+          <div>
+            <Icon icon="close" class="h-[2em] w-auto" />
+          </div>
+        </button>
+      </li>
+      {
+        Object.values(SECTION_DEFS).map(({ label, href }, idx) => (
+          <li class="px-4">
+            <a
+              role="tab"
+              class="close-mobile-menu text-xl h-20 inline-flex w-full items-center "
+              {...{ href }}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
 
 <style is:global>
-  #site-header.stuck .tl-tab--selected {
-    && {
-      @apply border-b-primary;
-    }
+  #mobile-menu {
+    @apply drawer drawer-end w-fit h-full;
+  }
+
+  #mobile-menu
+    .drawer-toggle:checked
+    ~ .drawer-side:has(> :not(.drawer-overlay)) {
+    @apply backdrop-blur-xl;
   }
 </style>
 
 <script>
-  import { throttle } from "../helpers/performance";
+  document.getElementById("mobile-menu")?.addEventListener(
+    "touchmove",
+    function (e) {
+      e.preventDefault();
+    },
+    false,
+  );
 
-  interface Props {
-    sectionClass: string;
-    tabPrefix: string;
-  }
-  class SiteTabs extends HTMLElement {
-    props: Props;
-    siteTabs: Element[];
-    siteSections: NodeListOf<Element>;
-    visibilities: { [id: string]: number };
-
-    constructor() {
-      super();
-
-      this.props = JSON.parse(this.dataset.props ?? "{}") as Props;
-      this.siteTabs = Array.from(this.children);
-      this.siteSections = document.querySelectorAll(
-        `.${this.props.sectionClass}`,
-      );
-      this.visibilities = {};
-
-      const handleTabStyles = throttle(() => {
-        const windowHeight = window.innerHeight;
-        this.siteSections.forEach((section) => {
-          const rect = section.getBoundingClientRect();
-          const topDiff = rect.top < 0 ? rect.top : 0;
-          const bottomDiff = rect.top < 0 ? 0 : windowHeight - rect.bottom;
-          const pxVisible = rect.height + topDiff + bottomDiff;
-
-          this.visibilities[section.id] = pxVisible / windowHeight;
-          const selectedId = Object.entries(this.visibilities)
-            .sort((a, b) => b[1] - a[1])
-            .at(0)
-            ?.at(0);
-
-          this.setSelectedTab(selectedId);
-        });
-      }, 500);
-
-      window.addEventListener("scroll", handleTabStyles, { passive: true });
-
-      this.siteTabs.forEach((tab) => {
-        tab.addEventListener("click", (e) => {
-          const id = (e.target as Element).id;
-          this.setSelectedTab(id);
-        });
-      });
-    }
-
-    setSelectedTab(id: string | number | undefined) {
-      const tabId =
-        this.props.tabPrefix + String(id).replace(this.props.tabPrefix, "");
-      this.siteTabs.forEach((tab) => {
-        if (tab.id === tabId) {
-          tab.classList.add("tl-tab--selected");
-        } else {
-          tab.classList.remove("tl-tab--selected");
-        }
-      });
-    }
-  }
-
-  customElements.define("site-tabs", SiteTabs);
+  document.querySelectorAll(".close-mobile-menu")?.forEach((ele) => {
+    ele.addEventListener(
+      "click",
+      () => {
+        const toggle = document.getElementById(
+          "mobile-menu-toggle",
+        ) as HTMLInputElement;
+        toggle.checked = !toggle.checked;
+      },
+      { passive: true },
+    );
+  });
 </script>

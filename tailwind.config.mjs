@@ -222,20 +222,23 @@ export default {
         ".img-fade-in-loaded": {
           opacity: theme("opacity.100"),
         },
+        ".init-site-p-vars": {
+          "--site-px": theme("padding.4"),
+          "--site-py": theme("padding.8"),
+          "@screen sm": {
+            "--site-px": theme("padding.8"),
+          },
+        },
         ".site-px": {
           transitionProperty: "padding",
           transitionDuration: theme("transitionDuration.DEFAULT"),
           transitionTimingFunction: theme("transitionTimingFunction.DEFAULT"),
-          paddingLeft: theme("padding.4"),
-          paddingRight: theme("padding.4"),
-          "@screen sm": {
-            paddingLeft: theme("padding.8"),
-            paddingRight: theme("padding.8"),
-          },
+          paddingLeft: "var(--site-px)",
+          paddingRight: "var(--site-px)",
         },
         ".site-py": {
-          paddingTop: theme("padding.8"),
-          paddingBottom: theme("padding.8"),
+          paddingTop: "var(--site-py)",
+          paddingBottom: "var(--site-py)",
         },
         ".text-title-1": {
           fontSize: theme("fontSize.5xl"),
@@ -269,7 +272,7 @@ export default {
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
         },
         ".glass-base": {
-          "--tw-bg-opacity": "0.66",
+          "--tw-bg-opacity": "0.33",
           backgroundColor:
             "var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)))",
           backdropFilter: "blur(50px)",

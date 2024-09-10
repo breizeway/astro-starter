@@ -1,5 +1,6 @@
 ---
 import LogoLink from "./common/logo-link.astro";
+import MobileMenu from "./mobile-menu.astro";
 import SiteTabs from "./site-tabs.astro";
 ---
 
@@ -21,10 +22,11 @@ import SiteTabs from "./site-tabs.astro";
     <LogoLink
       variant="large"
       id="nav-logo"
-      class="h-10 transition motion-reduce:duration-0"
+      class="h-10 motion-reduce:duration-0"
       iconProps={{ class: "h-full" }}
     />
     <SiteTabs class="[&&]:hidden site-tab-width:[&&]:flex" />
+    <MobileMenu class="[&&]:inline-flex site-tab-width:!hidden" />
   </nav>
 </header>
 
@@ -44,7 +46,7 @@ import SiteTabs from "./site-tabs.astro";
     const siteHeader = document.getElementById("site-header");
 
     let alreadyStuck = false;
-    const manageNavLogoClasses = throttle(() => {
+    const handleHeaderClasses = () => {
       const isStuck =
         (document.getElementById("site-logo-area")?.getBoundingClientRect()
           .bottom ?? 0) <= 0;
@@ -61,21 +63,23 @@ import SiteTabs from "./site-tabs.astro";
           alreadyStuck = false;
         }
       })();
-    }, 50);
+    };
 
-    manageNavLogoClasses();
-    window.addEventListener("scroll", manageNavLogoClasses, { passive: true });
+    handleHeaderClasses();
+    window.addEventListener("scroll", throttle(handleHeaderClasses, 50), {
+      passive: true,
+    });
 
     /**
      * adding transition only after first scroll avoids slide animation
-     * if browser restores place after reload
+     * when browser restores place after reload
      */
-    // window.addEventListener(
-    //   "scroll",
-    //   () => {
-    //     navLogo?.classList.add("transition");
-    //   },
-    //   { once: true },
-    // );
+    window.addEventListener(
+      "scroll",
+      () => {
+        document.getElementById("nav-logo")?.classList.add("transition");
+      },
+      { once: true },
+    );
   });
 </script>

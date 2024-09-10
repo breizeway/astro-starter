@@ -13,29 +13,28 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <!-- TODO: add description -->
-    <meta name="description" content="Astro description" />
+    <meta
+      name="description"
+      content="Elite Commercial Door, Inc. is a state licensed & insured premier company for all of your automatic or manual commercial door needs."
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <ViewTransitions />
     <title>{title}</title>
   </head>
-  <body class="just-loaded">
+  <body>
     <slot />
   </body>
 </html>
 
 <style is:global>
   :root {
-    @apply motion-safe:scroll-smooth;
+    @apply init-site-p-vars;
   }
 
   body {
     @apply relative min-h-screen flex flex-col overflow-x-clip;
-  }
-
-  body.just-loaded * {
-    @apply !transition-none;
   }
 
   /* poppins-regular - latin */
@@ -115,6 +114,13 @@ const { title } = Astro.props;
   import { IntersectionHandler } from "../library/intersection-handler";
   IntersectionHandler.start();
 
-  // avoid fresh loaded transition flash
-  document.body.classList.remove("just-loaded");
+  // avoid smooth scroll after refresh
+  const allATags = document.querySelectorAll("a");
+  const turnOnSmoothScrolling = () => {
+    document.documentElement.classList.add("motion-safe:scroll-smooth");
+    allATags.forEach((a) =>
+      a.removeEventListener("click", turnOnSmoothScrolling),
+    );
+  };
+  allATags.forEach((a) => a.addEventListener("click", turnOnSmoothScrolling));
 </script>

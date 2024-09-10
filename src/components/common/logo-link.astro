@@ -19,7 +19,13 @@ const href = hrefProps === undefined ? "/#top" : hrefProps;
 <a
   data-astro-prefetch
   aria-label={`site ${href === "/#top" ? "home" : href} page`}
-  {...propsWithMergedClasses({ ...aProps, href }, ["max-w-full"])}
+  {...propsWithMergedClasses({ ...aProps, href }, ["logo-link"])}
 >
   <Icon icon={`logo-${variant}`} {...iconProps} />
 </a>
+
+<style is:global>
+  .logo-link {
+    @apply max-w-full;
+  }
+</style>
