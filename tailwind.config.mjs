@@ -217,6 +217,9 @@ export default {
         ".tl-tab-y": {
           // defined in root-layout @layer components
         },
+        ".tl-tab--selected": {
+          // defined in root-layout @layer components
+        },
       });
       addUtilities({
         ".site-width-content": {

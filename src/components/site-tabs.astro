@@ -43,8 +43,12 @@ const props = Astro.props;
 </style>
 
 <style is:global>
-  #site-header.unstuck .tl-tab.tl-tab--selected:not(:hover) {
+  #site-header.unstuck .tl-tab.tl-tab--selected {
     && {
+      @apply hover:bg-inherit;
+    }
+
+    &&:not(:hover) {
       @apply border-b-transparent border-l-transparent bg-inherit;
     }
   }
