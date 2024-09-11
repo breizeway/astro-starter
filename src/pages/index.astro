@@ -3,7 +3,7 @@ import Layout from "../layouts/layout.astro";
 import PageSection from "../components/common/page-section.astro";
 import SiteBackground from "../components/site-background.astro";
 import BannerSection from "../components/banner-section.astro";
-import AboutSection from "../components/about-section.astro";
+import AboutSection from "../components/about-us-section.astro";
 import ImgFadeInHandler from "../components/common/img-fade-in-handler.astro";
 import OurWorkSection from "../components/our-work-section.astro";
 ---
@@ -18,7 +18,7 @@ import OurWorkSection from "../components/our-work-section.astro";
   {
     [...Array(3)].map((_, i) => (
       <PageSection>
-        <h1>{`About Us ${i}`}</h1>
+        <h1 class="text-title-1">{`Lorem Ipsum ${i}`}</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

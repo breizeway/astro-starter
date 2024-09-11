@@ -31,9 +31,9 @@ collections:
                 label: Description
                 description: For accessibility or if the image doesn't load
                 widget: string
-      - name: about
-        label: About
-        file: src/content/home-page/about.json
+      - name: about-us
+        label: About Us
+        file: src/content/home-page/about-us.json
         fields:
           - name: title
             label: Title
@@ -82,3 +82,41 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
+      - name: our-work
+        label: Our Work
+        file: src/content/home-page/our-work.json
+        fields:
+          - name: title
+            label: Title
+            widget: string
+          - name: galleries
+            label: Galleries
+            widget: list
+            summary: "{{fields.image}}"
+            field:
+              name: gallery
+              label: Gallery
+              widget: object
+              fields:
+                - name: name
+                  label: Name
+                  widget: string
+                - name: description
+                  label: Description
+                  widget: string
+                - name: "images"
+                  label: "Images"
+                  widget: "list"
+                  summary: "{{fields.image}}"
+                  field:
+                    name: image
+                    label: Image
+                    widget: object
+                    fields:
+                      - name: src
+                        label: Source
+                        widget: image
+                      - name: alt
+                        label: Description
+                        description: For accessibility or if the image doesn't load
+                        widget: string
