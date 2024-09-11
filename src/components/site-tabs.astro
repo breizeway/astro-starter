@@ -45,8 +45,9 @@ const props = Astro.props;
 <style is:global>
   #site-header.unstuck .tl-tab.tl-tab--selected {
     &&:not(:hover) {
-      @apply border-b-transparent border-l-transparent;
+      @apply border-b-transparent border-l-transparent bg-base-300;
     }
+    @apply touch:hover:bg-inherit touch:hover:border-l-transparent;
   }
 </style>
 
