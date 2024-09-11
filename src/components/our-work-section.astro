@@ -22,7 +22,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
   <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
     <span class="text-title-1">Our Work</span>
     {
-      [...Array(2)].map((_, i) => (
+      [...Array(10)].map((_, i) => (
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -32,6 +32,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
+        <br />
       ))
     }
   </div>
@@ -41,13 +42,10 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
   .page-section {
     @apply pt-0;
 
-    .page-section-inner {
-      /* @apply relative; */
-    }
-
     .offset-section {
-      @apply z-50 relative left-0 right-0 bottom-0;
-      top: calc(calc(var(--about-section-pb) * -1) + var(--page-section-py));
+      @apply relative;
+      top: calc(var(--about-section-pb) * -1);
+      margin-bottom: calc(var(--about-section-pb) * -1);
     }
   }
 </style>

@@ -13,7 +13,7 @@ const props = Astro.props;
   <div class="drawer-content h-full">
     <label
       for="site-drawer-toggle"
-      class="drawer-button btn btn-ghost h-full rounded-none aspect-square -mr-[var(--site-px)] transition-[margin]"
+      class="drawer-button btn btn-ghost [&&]:min-h-20 [&&]:min-w-20 [&&]:rounded-none aspect-square -mr-[var(--site-px)] transition-[margin]"
     >
       <Icon icon="hamburger" class="h-[2em]" />
     </label>
@@ -34,7 +34,7 @@ const props = Astro.props;
           iconProps={{ class: "h-full" }}
         />
         <button
-          class="close-site-drawer btn btn-ghost btn-square h-20 w-20 rounded-none"
+          class="close-site-drawer btn btn-ghost btn-square [&&]:min-h-20 [&&]:min-w-20 [&&]:rounded-none"
           aria-label="close sidebar"
         >
           <div>

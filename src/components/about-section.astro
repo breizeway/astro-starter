@@ -23,74 +23,80 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
 ---
 
-<PageSection id={sectionId} class={sectionClass}>
-  <div
-    class={`
+<PageSection>
+  <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
+    <div
+      class={`
       glass-card glass-full rounded-[2.5rem] text-empty flex flex-col gap-8 p-4 transition-all max-w-[30rem] mx-auto
       motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
       sm:p-8
       md:flex-row md:max-w-max
       `}
-  >
-    <div class="flex-1">
-      <Image
-        src={getManagedImage(image.src)}
-        alt={image.alt}
-        class={`
+    >
+      <div class="flex-1">
+        <Image
+          src={getManagedImage(image.src)}
+          alt={image.alt}
+          class={`
           img-fade-in rounded-[1.75rem] w-full h-full object-cover
           sm:rounded-[1.25rem]
           `}
-        loading="eager"
-      />
+          loading="eager"
+        />
+      </div>
+      <div class="flex-1">
+        <p class="text-title-2">{title}</p>
+        <Markdown content={description} class="about-description" />
+      </div>
     </div>
-    <div class="flex-1">
-      <p class="text-title-2">{title}</p>
-      <Markdown content={description} class="about-description" />
-    </div>
-  </div>
-  <div
-    class={`
+    <div
+      class={`
       about-cards flex flex-col items-center justify-between gap-x-12 gap-y-12 text-center
       sm:flex-wrap sm:justify-evenly 
       md:flex-row md:items-stretch
     `}
-  >
-    {
-      [location_card, business_card, service_card].map((card, idx) => (
-        <div
-          class:list={`
+    >
+      {
+        [location_card, business_card, service_card].map((card, idx) => (
+          <div
+            class:list={`
             bracket-card transition flex-1 max-w-sm grid grid-flow-row p-6 gap-12 
             motion-safe:opacity-0 ${idx % 2 ? "intersect:animate-fade-left" : "intersect:animate-fade-right"} intersect-once motion-reduce:intersect:animate-none
             sm:min-w-[20rem] 
             md:crafted-rows md:max-w-xs md:gap-0 md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
           `}
-        >
-          <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
-          <p class="text-title-3 text-primary">{card.title}</p>
-          <Markdown content={card.description} />
-        </div>
-      ))
-    }
+          >
+            <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
+            <p class="text-title-3 text-primary">{card.title}</p>
+            <Markdown content={card.description} />
+          </div>
+        ))
+      }
+    </div>
   </div>
 </PageSection>
 <style>
   .page-section {
-    @apply pt-0 pb-[var(--about-section-pb)];
+    @apply pt-0;
 
+    padding-bottom: calc(var(--about-section-pb) + var(--page-section-py));
     scroll-margin-top: calc(var(--banner-section-pb) + 3rem);
 
     .page-section-inner {
-      @apply relative flex flex-col gap-8;
+      @apply flex flex-col gap-8;
     }
-    .glass-card {
-      position: relative;
-      top: calc(var(--banner-section-pb) * -0.66);
-      --fade-up-start-translate: calc(var(--banner-section-pb) * 0.66);
+
+    .offset-section {
+      @apply relative flex flex-col gap-[var(--page-section-py)];
+
+      top: calc(var(--banner-section-pb) * -1);
+      margin-bottom: calc(var(--banner-section-pb) * -1);
     }
+
     .about-cards {
-      margin-top: calc(var(--banner-section-pb) / -3);
-      row-gap: calc(var(--banner-section-pb) / 2);
+      gap: calc(var(--page-section-py));
     }
+
     .about-description {
       --bc: var(--color-empty);
     }

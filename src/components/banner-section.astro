@@ -28,7 +28,10 @@ const {
 
 <style>
   .page-section {
-    @apply flex items-center pb-[var(--banner-section-pb)] pt-[calc(var(--banner-section-pb)/2)];
+    @apply flex items-center;
+    padding-bottom: calc(
+      var(--banner-section-pb) + calc(var(--page-section-py) / 2)
+    );
 
     .markdown {
       & * {
