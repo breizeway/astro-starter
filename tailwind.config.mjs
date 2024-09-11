@@ -40,7 +40,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        "site-tab-width": `${SITE_TAB_WIDTH}px`,
+        "nav-lrg": `${SITE_TAB_WIDTH}px`,
       },
       fontFamily: {
         title: ["poppins", ...defaultTheme.fontFamily.sans],

@@ -1,6 +1,6 @@
 ---
 import LogoLink from "./common/logo-link.astro";
-import MobileMenu from "./mobile-menu.astro";
+import SiteDrawer from "./site-drawer.astro";
 import SiteTabs from "./site-tabs.astro";
 ---
 
@@ -25,8 +25,8 @@ import SiteTabs from "./site-tabs.astro";
       class="h-10 motion-reduce:duration-0"
       iconProps={{ class: "h-full" }}
     />
-    <SiteTabs class="[&&]:hidden site-tab-width:[&&]:flex" />
-    <MobileMenu class="[&&]:inline-flex site-tab-width:!hidden" />
+    <SiteTabs class="!hidden nav-lrg:!flex" />
+    <SiteDrawer class="nav-lrg:!hidden" />
   </nav>
 </header>
 
