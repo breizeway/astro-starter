@@ -101,7 +101,6 @@ const props = Astro.props;
       this.siteTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
           const sectionId = tab.dataset.sectionId;
-          console.log(`:::SECTIONID::: `, sectionId);
           this.setSelectedTab(sectionId);
         });
       });
