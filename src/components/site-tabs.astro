@@ -9,36 +9,40 @@ const props = Astro.props;
 
 <site-tabs
   id="site-tabs"
-  role="tablist"
   data-props={JSON.stringify({
     sectionClass: SECTION_CLASS,
     tabClass: TAB_CLASS,
   })}
   {...props}
 >
-  {
-    Object.values(SECTION_DEFS).map(
-      ({ label, href, tabClass, sectionId }, idx) => (
-        <a
-          role="tab"
-          data-section-id={sectionId}
-          class:list={[
-            tabClass,
-            "tl-tab tl-tab-x",
-            { "tl-tab--selected": !idx },
-          ]}
-          {...{ href }}
-        >
-          {label}
-        </a>
-      ),
-    )
-  }
+  <ul role="tablist">
+    {
+      Object.values(SECTION_DEFS).map(
+        ({ label, href, tabClass, sectionId }, idx) => (
+          <li role="tab">
+            <a
+              data-section-id={sectionId}
+              class:list={[
+                tabClass,
+                "tl-tab tl-tab-x",
+                { "tl-tab--selected": !idx },
+              ]}
+              {...{ href }}
+            >
+              {label}
+            </a>
+          </li>
+        ),
+      )
+    }
+  </ul>
 </site-tabs>
 
 <style>
   site-tabs {
-    @apply h-full font-title flex gap-3;
+    ul {
+      @apply h-full font-title flex gap-3;
+    }
   }
 </style>
 
