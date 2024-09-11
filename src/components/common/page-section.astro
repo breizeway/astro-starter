@@ -17,7 +17,7 @@ const { forceStyle, ...props } = Astro.props;
 
 <style is:global>
   .page-section {
-    @apply site-px py-24;
+    @apply site-px py-[var(--page-section-py)];
   }
 
   .page-section:nth-of-type(even):not(.back),

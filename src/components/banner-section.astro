@@ -11,7 +11,7 @@ const {
 } = (await getEntry("home-page", "banner")) as ContentSection<Banner>;
 ---
 
-<PageSection class="banner-section flex items-center">
+<PageSection>
   <Markdown content={slogan} noMarginY />
   <!-- TODO: test img -->
   {
@@ -26,15 +26,9 @@ const {
   }
 </PageSection>
 
-<style is:global>
-  :root {
-    --banner-pb: 12rem;
-  }
-</style>
-
 <style>
-  .banner-section {
-    @apply pb-[var(--banner-pb)] pt-[calc(var(--banner-pb)/2)];
+  .page-section {
+    @apply flex items-center pb-[var(--banner-section-pb)] pt-[calc(var(--banner-section-pb)/2)];
 
     .markdown {
       & * {

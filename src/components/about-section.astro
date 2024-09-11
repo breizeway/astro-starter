@@ -23,7 +23,7 @@ const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
 ---
 
-<PageSection id={sectionId} class:list={[sectionClass, "about-section pt-0"]}>
+<PageSection id={sectionId} class={sectionClass}>
   <div
     class={`
       glass-card glass-full rounded-[2.5rem] text-empty flex flex-col gap-8 p-4 transition-all max-w-[30rem] mx-auto
@@ -73,21 +73,23 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
     }
   </div>
 </PageSection>
-<style is:global>
-  .about-section {
-    scroll-margin-top: calc(var(--banner-pb) + 3rem);
+<style>
+  .page-section {
+    @apply pt-0 pb-[var(--about-section-pb)];
+
+    scroll-margin-top: calc(var(--banner-section-pb) + 3rem);
 
     .page-section-inner {
       @apply relative flex flex-col gap-8;
     }
     .glass-card {
       position: relative;
-      top: calc(var(--banner-pb) * -0.66);
-      --fade-up-start-translate: calc(var(--banner-pb) * 0.66);
+      top: calc(var(--banner-section-pb) * -0.66);
+      --fade-up-start-translate: calc(var(--banner-section-pb) * 0.66);
     }
     .about-cards {
-      margin-top: calc(var(--banner-pb) / -3);
-      row-gap: calc(var(--banner-pb) / 2);
+      margin-top: calc(var(--banner-section-pb) / -3);
+      row-gap: calc(var(--banner-section-pb) / 2);
     }
     .about-description {
       --bc: var(--color-empty);

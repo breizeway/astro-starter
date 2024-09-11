@@ -9,6 +9,9 @@ import { intersectionPlugin } from "./src/library/intersection-handler";
 const COMMON_VARS = {
   // sizes
   "--icon-stroke-lg": "3px",
+  "--page-section-py": "6rem",
+  "--banner-section-pb": "12rem",
+  "--about-section-pb": "32rem",
 
   // colors
   "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)))",
