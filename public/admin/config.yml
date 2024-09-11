@@ -92,7 +92,7 @@ collections:
           - name: galleries
             label: Galleries
             widget: list
-            summary: "{{fields.image}}"
+            summary: "{{fields.gallery.name}}"
             field:
               name: gallery
               label: Gallery
@@ -107,7 +107,7 @@ collections:
                 - name: "images"
                   label: "Images"
                   widget: "list"
-                  summary: "{{fields.image}}"
+                  summary: "{{fields.src}}"
                   field:
                     name: image
                     label: Image
