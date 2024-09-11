@@ -1,0 +1,23 @@
+{
+  "galleries": [
+    {
+      "name": "Automatic Doors",
+      "description": "Automatic Doors Description",
+      "images": [
+        {
+          "src": "src/assets/images/managed/2023-06-08_14.23.24_screen_99O5F9.png",
+          "alt": "Spicy impossible burger meat"
+        },
+        {
+          "src": "src/assets/images/managed/2023-08-07_15.16.07_screen_sFjpzr.png",
+          "alt": "NY Times Crossword"
+        },
+        {
+          "src": "src/assets/images/managed/2024-08-16_11.04.19_screen_ian9c4.png",
+          "alt": "Profile unavailable"
+        }
+      ]
+    }
+  ],
+  "title": "Our Work"
+}
