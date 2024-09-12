@@ -18,15 +18,11 @@ const props = Astro.props;
   <ul role="tablist">
     {
       Object.values(SECTION_DEFS).map(
-        ({ label, href, tabClass, sectionId }, idx) => (
+        ({ label, href, tabClass, sectionId }) => (
           <li role="tab">
             <a
               data-section-id={sectionId}
-              class:list={[
-                tabClass,
-                "tl-tab tl-tab-x",
-                { "tl-tab--selected": !idx },
-              ]}
+              class:list={[tabClass, "tl-tab tl-tab-x"]}
               {...{ href }}
             >
               {label}

@@ -8,7 +8,11 @@ import LogoLink from "./common/logo-link.astro";
   <div
     class="site-width-content flex flex-col gap-[var(--site-py)] items-center"
   >
-    <LogoLink variant="small" class="h-24" iconProps={{ class: "h-full" }} />
+    <LogoLink
+      variant="small"
+      class="h-[var(--nav-height)]"
+      iconProps={{ class: "h-full" }}
+    />
     <p class="text-center">
       © {new Date().getFullYear()} Elite Commercial Door, Inc.
     </p>
