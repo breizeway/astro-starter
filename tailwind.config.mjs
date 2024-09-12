@@ -10,7 +10,7 @@ const COMMON_VARS = {
   // sizes
   "--icon-stroke-lg": "3px",
   "--nav-height": "5rem",
-  "--page-section-py": "10rem",
+  "--page-section-py": "var(--site-space-y)",
   "--banner-section-pb": "12rem",
   "--about-section-pb": "var(--carousel-img-height)",
 
@@ -233,6 +233,14 @@ export default {
         },
       });
       addUtilities({
+        ".init-dynamic-site-vars": {
+          "--site-space-x": theme("padding.4"),
+          "--site-space-y": "5rem",
+          "@screen sm": {
+            "--site-space-x": theme("padding.8"),
+            "--site-space-y": "10rem",
+          },
+        },
         ".site-width-content": {
           width: `min(100%, ${theme("screens.xl")})`,
           maxWidth: `min(100%, ${theme("screens.xl")})`,
@@ -245,23 +253,16 @@ export default {
         ".img-fade-in-loaded": {
           opacity: theme("opacity.100"),
         },
-        ".init-site-p-vars": {
-          "--site-px": theme("padding.4"),
-          "--site-py": theme("padding.8"),
-          "@screen sm": {
-            "--site-px": theme("padding.8"),
-          },
-        },
         ".site-px": {
           transitionProperty: "padding",
           transitionDuration: theme("transitionDuration.DEFAULT"),
           transitionTimingFunction: theme("transitionTimingFunction.DEFAULT"),
-          paddingLeft: "var(--site-px)",
-          paddingRight: "var(--site-px)",
+          paddingLeft: "var(--site-space-x)",
+          paddingRight: "var(--site-space-x)",
         },
         ".site-py": {
-          paddingTop: "var(--site-py)",
-          paddingBottom: "var(--site-py)",
+          paddingTop: theme("padding.4"),
+          paddingBottom: theme("padding.4"),
         },
         ".text-title-1": {
           fontSize: theme("fontSize.5xl"),

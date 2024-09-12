@@ -16,11 +16,11 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
   <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
     <div
       class={`
-        glass-full glass-card [&&]:px-0 flex flex-col gap-[var(--site-px)]
+        glass-full glass-card [&&]:px-0 flex flex-col gap-[var(--site-space-x)]
         motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
       `}
     >
-      <div class="px-[var(--site-px)]">
+      <div class="px-[var(--site-space-x)]">
         <span class="text-title-2">{title}</span>
       </div>
       <Carousel images={galleries[0].images} />
@@ -31,8 +31,8 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 
 <style>
   .page-section {
-    --carousel-px: var(--site-px);
-    --carousel-gap: var(--site-px);
+    --carousel-px: var(--site-space-x);
+    --carousel-gap: var(--site-space-x);
 
     @apply pt-0;
 

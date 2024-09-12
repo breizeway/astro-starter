@@ -50,7 +50,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
     </div>
     <div
       class={`
-        about-cards flex flex-col items-center justify-between gap-x-12 gap-y-12 text-center
+        about-cards flex flex-col items-center justify-between gap-x-12 gap-y-[var(--site-space-y)] transition-[gap] text-center
         sm:flex-wrap sm:justify-evenly 
         md:flex-row md:items-stretch
     `}
@@ -90,10 +90,6 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
 
       top: calc(var(--banner-section-pb) * -1);
       margin-bottom: calc(var(--banner-section-pb) * -1);
-    }
-
-    .about-cards {
-      @apply gap-y-[var(--page-section-py)];
     }
 
     .about-description {

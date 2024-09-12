@@ -18,7 +18,7 @@ const images = imagesProp.slice(0, 8);
     >
       {
         images.map(({ src, alt }, idx) => (
-          <div class="carousel-item w-[calc(100%-calc(var(--carousel-px)*4))] sm:w-[calc(100%-calc(var(--carousel-px)*6)-calc(var(--carousel-gap)*2))] h-[var(--carousel-img-height)] bg-base-300 rounded-box overflow-hidden">
+          <div class="carousel-item w-full sm:w-[calc(100%-calc(var(--carousel-px)*6)-calc(var(--carousel-gap)*2))] h-[var(--carousel-img-height)] bg-base-300 rounded-box overflow-hidden">
             <Image
               class="object-cover w-full h-full img-fade-in"
               loading={idx ? "lazy" : "eager"}
