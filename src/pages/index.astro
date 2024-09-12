@@ -8,6 +8,7 @@ import ImgFadeInHandler from "../components/common/img-fade-in-handler.astro";
 import OurWorkSection from "../components/our-work-section.astro";
 import CertificationsSection from "../components/certifications-section.astro";
 import DistributorshipsSection from "../components/distributorships-section.astro";
+import ContactUsSection from "../components/contact-us-section.astro";
 ---
 
 <Layout title="Elite Commercial Door">
@@ -24,22 +25,7 @@ import DistributorshipsSection from "../components/distributorships-section.astr
       <DistributorshipsSection />
     </div>
   </OurWorkSection>
-  {
-    [...Array(3)].map((_, i) => (
-      <PageSection>
-        <h1 class="text-title-1">{`Lorem Ipsum ${i}`}</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </PageSection>
-    ))
-  }
+  <ContactUsSection />
 </Layout>
 
 <script>

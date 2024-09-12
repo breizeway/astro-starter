@@ -1,0 +1,16 @@
+---
+import LogoLink from "./common/logo-link.astro";
+---
+
+<footer
+  class="site-px [&&]:pb-[var(--site-py)] [&&]:pt-[calc(var(--site-space-y)/2)] page-section back [&&]:bg-base-200"
+>
+  <div
+    class="site-width-content flex flex-col gap-[var(--site-py)] items-center"
+  >
+    <LogoLink variant="small" class="h-24" iconProps={{ class: "h-full" }} />
+    <p class="text-center">
+      © {new Date().getFullYear()} Elite Commercial Door, Inc.
+    </p>
+  </div>
+</footer>

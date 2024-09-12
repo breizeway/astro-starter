@@ -236,6 +236,7 @@ export default {
         ".init-dynamic-site-vars": {
           "--site-space-x": theme("padding.4"),
           "--site-space-y": "5rem",
+          "--site-py": "1.25rem",
           "@screen sm": {
             "--site-space-x": theme("padding.8"),
             "--site-space-y": "10rem",
@@ -261,8 +262,8 @@ export default {
           paddingRight: "var(--site-space-x)",
         },
         ".site-py": {
-          paddingTop: theme("padding.4"),
-          paddingBottom: theme("padding.4"),
+          paddingTop: "var(--site-py)",
+          paddingBottom: "var(--site-py)",
         },
         ".text-title-1": {
           fontSize: theme("fontSize.5xl"),
@@ -296,18 +297,18 @@ export default {
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
         },
         ".glass-base": {
-          "--tw-bg-opacity": "0.25",
+          "--tw-bg-opacity": "0.35",
           backgroundColor:
             "var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)))",
           backdropFilter: "blur(100px)",
         },
         ".glass-empty": {
-          "--tw-bg-opacity": "0.25",
+          "--tw-bg-opacity": "0.45",
           backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
           backdropFilter: "blur(100px)",
         },
         ".glass-full": {
-          "--tw-bg-opacity": "0.25",
+          "--tw-bg-opacity": "0.35",
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
           backdropFilter: "blur(100px)",
         },
