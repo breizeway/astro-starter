@@ -6,21 +6,21 @@ import { getManagedImage } from "../../helpers/media";
 
 interface Props extends HTMLAttributes<"div"> {
   images: { src: string; alt: string }[];
-  height?: number;
 }
-const { images: imagesProp, height: heightProp, ...restProps } = Astro.props;
+const { images: imagesProp, ...restProps } = Astro.props;
 const images = imagesProp.slice(0, 8);
-const height = heightProp ?? 500;
 ---
 
 <carousel-comp {...restProps}>
-  <div class="relative" style={{ height: `${height}px` }}>
-    <div class="carousel carousel-center w-full h-full space-x-4 px-4">
+  <div class="relative">
+    <div
+      class="carousel carousel-center w-full h-full space-x-[var(--carousel-gap)] px-[var(--carousel-px)]"
+    >
       {
         images.map(({ src, alt }, idx) => (
-          <div class="carousel-item w-5/6 bg-base-300 rounded-box overflow-hidden">
+          <div class="carousel-item w-[calc(100%-calc(var(--carousel-px)*4))] sm:w-[calc(100%-calc(var(--carousel-px)*6)-calc(var(--carousel-gap)*2))] h-[var(--carousel-img-height)] bg-base-300 rounded-box overflow-hidden">
             <Image
-              class=" object-cover w-full h-full img-fade-in"
+              class="object-cover w-full h-full img-fade-in"
               loading={idx ? "lazy" : "eager"}
               decoding="async"
               src={getManagedImage(src)}
@@ -31,7 +31,9 @@ const height = heightProp ?? 500;
       }
     </div>
 
-    <div class="absolute left-8 top-1/2 -translate-y-1/2">
+    <div
+      class="absolute left-[calc(var(--carousel-px)*1.5)] top-1/2 -translate-y-1/2"
+    >
       <button
         class={`carousel-comp__nav-btn-prev btn btn-sm btn-circle`}
         aria-label="go to previous carousel slide"
@@ -40,7 +42,9 @@ const height = heightProp ?? 500;
       </button>
     </div>
 
-    <div class="absolute right-8 top-1/2 -translate-y-1/2">
+    <div
+      class="absolute right-[calc(var(--carousel-px)*1.5)] top-1/2 -translate-y-1/2"
+    >
       <button
         class={`carousel-comp__nav-btn-next btn btn-sm btn-circle`}
         aria-label="go to next carousel slide"
@@ -72,12 +76,6 @@ const height = heightProp ?? 500;
     </button>
   </div>
 </carousel-comp>
-
-<style>
-  .carousel-comp__nav-btn {
-    transform: translate(-50%);
-  }
-</style>
 
 <script>
   import { throttle } from "../../helpers/performance";

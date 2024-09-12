@@ -18,11 +18,13 @@ import SiteTabs from "./site-tabs.astro";
   id="site-header"
   class="unstuck bg-base-200 site-px shadow-2xl sticky top-0 z-50"
 >
-  <nav class="site-width-content h-20 flex justify-between items-center gap-4">
+  <nav
+    class="site-width-content h-[var(--nav-height)] flex justify-between items-center gap-4"
+  >
     <LogoLink
       variant="large"
       id="nav-logo"
-      class="h-10 motion-reduce:duration-0"
+      class="h-1/2 motion-reduce:duration-0"
       iconProps={{ class: "h-full" }}
     />
     <SiteTabs class="!hidden nav-lrg:!flex" />

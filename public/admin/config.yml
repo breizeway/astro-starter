@@ -99,7 +99,8 @@ collections:
                 widget: string
               - name: description
                 label: Description
-                widget: string
+                widget: markdown
+                required: false
               - name: "images"
                 label: "Images"
                 widget: "list"

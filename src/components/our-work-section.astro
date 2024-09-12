@@ -1,45 +1,39 @@
 ---
 import { getEntry } from "astro:content";
 import { SECTION_DEFS } from "../constants";
-import type { About, ContentSection } from "../content/types";
+import type { ContentSection, OurWork } from "../content/types";
+import Carousel from "./common/carousel.astro";
 import PageSection from "./common/page-section.astro";
 
 const {
-  data: {
-    title,
-    description,
-    image,
-    location_card,
-    business_card,
-    service_card,
-  },
-} = (await getEntry("home-page", "about-us")) as ContentSection<About>;
+  data: { title, galleries },
+} = (await getEntry("home-page", "our-work")) as ContentSection<OurWork>;
 
 const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 ---
 
 <PageSection>
   <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
-    <span class="text-title-1">Our Work</span>
-    {
-      [...Array(10)].map((_, i) => (
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <br />
-      ))
-    }
+    <div
+      class={`
+        glass-full glass-card [&&]:px-0 flex flex-col gap-[var(--site-px)]
+        motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+      `}
+    >
+      <div class="px-[var(--site-px)]">
+        <span class="text-title-2">{title}</span>
+      </div>
+      <Carousel images={galleries[0].images} />
+    </div>
   </div>
+  <slot />
 </PageSection>
 
 <style>
   .page-section {
+    --carousel-px: var(--site-px);
+    --carousel-gap: var(--site-px);
+
     @apply pt-0;
 
     .offset-section {

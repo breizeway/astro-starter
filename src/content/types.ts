@@ -20,11 +20,22 @@ interface AboutCard {
   description: Markdown;
 }
 
-export interface About {
+export interface AboutUs {
   title: string;
   description: Markdown;
   image: Image;
   location_card: AboutCard;
   business_card: AboutCard;
   service_card: AboutCard;
+}
+
+interface WorkGallery {
+  name: string;
+  description?: Markdown;
+  images: Image[];
+}
+
+export interface OurWork {
+  title: string;
+  galleries: WorkGallery[];
 }

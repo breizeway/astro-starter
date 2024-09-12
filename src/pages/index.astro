@@ -6,6 +6,8 @@ import BannerSection from "../components/banner-section.astro";
 import AboutSection from "../components/about-us-section.astro";
 import ImgFadeInHandler from "../components/common/img-fade-in-handler.astro";
 import OurWorkSection from "../components/our-work-section.astro";
+import CertificationsSection from "../components/certifications-section.astro";
+import DistributorshipsSection from "../components/distributorships-section.astro";
 ---
 
 <Layout title="Elite Commercial Door">
@@ -14,7 +16,14 @@ import OurWorkSection from "../components/our-work-section.astro";
   <SiteBackground slot="before-layout" />
   <BannerSection />
   <AboutSection />
-  <OurWorkSection />
+  <OurWorkSection>
+    <div
+      class="pt-[var(--page-section-py)] flex flex-col lg:flex-row gap-[var(--site-px)]"
+    >
+      <CertificationsSection />
+      <DistributorshipsSection />
+    </div>
+  </OurWorkSection>
   {
     [...Array(3)].map((_, i) => (
       <PageSection>

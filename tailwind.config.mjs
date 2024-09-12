@@ -9,9 +9,14 @@ import { intersectionPlugin } from "./src/library/intersection-handler";
 const COMMON_VARS = {
   // sizes
   "--icon-stroke-lg": "3px",
-  "--page-section-py": "6rem",
+  "--nav-height": "5rem",
+  "--page-section-py": "10rem",
   "--banner-section-pb": "12rem",
-  "--about-section-pb": "32rem",
+  "--about-section-pb": "var(--carousel-img-height)",
+
+  "--carousel-img-height": "32rem",
+  "--carousel-px": "1rem",
+  "--carousel-gap": "1rem",
 
   // colors
   "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)))",
@@ -223,6 +228,9 @@ export default {
         ".tl-tab--selected": {
           // defined in root-layout @layer components
         },
+        ".glass-card": {
+          // defined in root-layout @layer components
+        },
       });
       addUtilities({
         ".site-width-content": {
@@ -287,20 +295,23 @@ export default {
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
         },
         ".glass-base": {
-          "--tw-bg-opacity": "0.33",
+          "--tw-bg-opacity": "0.25",
           backgroundColor:
             "var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)))",
-          backdropFilter: "blur(50px)",
+          backdropFilter: "blur(100px)",
         },
         ".glass-empty": {
-          "--tw-bg-opacity": "0.33",
+          "--tw-bg-opacity": "0.25",
           backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
-          backdropFilter: "blur(50px)",
+          backdropFilter: "blur(100px)",
         },
         ".glass-full": {
-          "--tw-bg-opacity": "0.33",
+          "--tw-bg-opacity": "0.25",
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
-          backdropFilter: "blur(50px)",
+          backdropFilter: "blur(100px)",
+        },
+        ".site-section": {
+          // defined in root-layout @layer utilities
         },
       });
     }),
