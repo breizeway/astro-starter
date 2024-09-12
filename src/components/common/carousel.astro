@@ -166,7 +166,19 @@ const images = imagesProp.slice(0, 8);
         this.start();
       });
 
-      this.start();
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !this.paused) {
+              this.start();
+            } else {
+              this.stop();
+            }
+          });
+        },
+        { threshold: 0.51 },
+      );
+      io.observe(this);
     }
 
     get activeSlideIdx(): number {
@@ -205,7 +217,7 @@ const images = imagesProp.slice(0, 8);
 
     start() {
       if (this.playTimers.length) return;
-      this.playTimers.push(setTimeout(() => this.incrementSlide(1), 6000));
+      this.playTimers.push(setTimeout(() => this.incrementSlide(1), 4000));
     }
 
     stop() {
