@@ -31,7 +31,7 @@ const { forceStyle, ...props } = Astro.props;
       --shadow-opacity: 0.32;
     }
 
-    @apply border-y border-[var(--fallback-bc,oklch(var(--bc)/0.1))];
+    @apply border-y border-base-content border-opacity-10;
     box-shadow:
       inset 0px 36px 36px -36px rgba(0, 0, 0, var(--shadow-opacity)),
       inset 0px -36px 36px -36px rgba(0, 0, 0, var(--shadow-opacity));

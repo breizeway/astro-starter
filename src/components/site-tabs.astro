@@ -80,20 +80,34 @@ const props = Astro.props;
 
       const handleTabStyles = throttle(() => {
         const windowHeight = window.innerHeight;
-        this.siteSections.forEach((section) => {
+        const NEAR_BOTTOM_THRESHOLD_PERCENT = 0.05;
+        const scrollNearBottom =
+          window.scrollY + windowHeight >=
+          document.documentElement.scrollHeight -
+            windowHeight * NEAR_BOTTOM_THRESHOLD_PERCENT;
+
+        this.siteSections.forEach((section, idx, arr) => {
           const rect = section.getBoundingClientRect();
+
+          const isLastSection = idx + 1 === arr.length;
+          if (isLastSection && scrollNearBottom) {
+            this.visibilities[section.id] = 1;
+            return;
+          }
+
           const topDiff = rect.top < 0 ? rect.top : 0;
           const bottomDiff = rect.top < 0 ? 0 : windowHeight - rect.bottom;
           const pxVisible = rect.height + topDiff + bottomDiff;
 
           this.visibilities[section.id] = pxVisible / windowHeight;
-          const selectedId = Object.entries(this.visibilities)
-            .sort((a, b) => b[1] - a[1])
-            .at(0)
-            ?.at(0);
-
-          this.setSelectedTab(selectedId);
         });
+
+        const selectedId = Object.entries(this.visibilities)
+          .sort((a, b) => b[1] - a[1])
+          .at(0)
+          ?.at(0);
+
+        this.setSelectedTab(selectedId);
       }, 500);
 
       window.addEventListener("scroll", handleTabStyles, { passive: true });
