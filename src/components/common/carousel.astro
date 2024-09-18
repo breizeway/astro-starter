@@ -18,7 +18,10 @@ const images = imagesProp.slice(0, 8);
     >
       {
         images.map(({ src, alt }, idx) => (
-          <div class="carousel-item w-full sm:w-[calc(100%-calc(var(--carousel-px)*6)-calc(var(--carousel-gap)*2))] h-[var(--carousel-img-height)] bg-base-300 rounded-box overflow-hidden">
+          <a
+            target="_blank"
+            class="carousel-item w-full sm:w-[calc(100%-calc(var(--carousel-px)*6)-calc(var(--carousel-gap)*2))] h-[var(--carousel-img-height)] bg-base-300 rounded-box overflow-hidden cursor-auto"
+          >
             <Image
               class="object-cover w-full h-full img-fade-in"
               loading={idx ? "lazy" : "eager"}
@@ -26,7 +29,7 @@ const images = imagesProp.slice(0, 8);
               src={getManagedImage(src)}
               {...{ alt }}
             />
-          </div>
+          </a>
         ))
       }
     </div>
@@ -135,6 +138,13 @@ const images = imagesProp.slice(0, 8);
           this.stop();
         }
       });
+
+      this.querySelectorAll<HTMLAnchorElement>(".carousel-item").forEach(
+        (item) => {
+          item.href =
+            (item.children[0] as HTMLImageElement | undefined)?.src ?? "";
+        },
+      );
 
       const handleActiveSlide = throttle(() => {
         if (!this.scrollContainer) return;
