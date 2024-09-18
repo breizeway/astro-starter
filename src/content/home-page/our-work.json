@@ -5,20 +5,8 @@
       "description": "Automatic Doors Description",
       "images": [
         {
-          "src": "src/assets/images/managed/auto-swing.png",
-          "alt": "Interior view of enclosed automatic glass storefront entryway"
-        },
-        {
-          "src": "src/assets/images/managed/auto-slide.jpg",
-          "alt": "Exterior view of sliding automatic glass doors with large glass-enclosed lobby"
-        },
-        {
           "src": "src/assets/images/managed/auto-swing2.png",
           "alt": "Double wooden doors"
-        },
-        {
-          "src": "src/assets/images/managed/auto-swing3.png",
-          "alt": "Exterior view of sliding automatic glass doors with large glass-enclosed lobby"
         },
         {
           "src": "src/assets/images/managed/auto-swing4.jpg",
@@ -49,6 +37,24 @@
         {
           "src": "src/assets/images/managed/manual-4.jpg",
           "alt": "Single gray door with vent at bottom"
+        }
+      ]
+    },
+    {
+      "name": "Glass & Aluminum Storefront Doors",
+      "description": "Glass & Aluminum Storefront Doors description",
+      "images": [
+        {
+          "src": "src/assets/images/managed/auto-swing.png",
+          "alt": "Interior view of enclosed automatic glass storefront entryway"
+        },
+        {
+          "src": "src/assets/images/managed/auto-swing3.png",
+          "alt": "Exterior view of sliding automatic glass doors with large glass-enclosed lobby"
+        },
+        {
+          "src": "src/assets/images/managed/auto-slide.jpg",
+          "alt": "Exterior view of sliding automatic glass doors with large glass-enclosed lobby"
         }
       ]
     }
