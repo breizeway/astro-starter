@@ -2,13 +2,13 @@
 import { getEntry } from "astro:content";
 import { SECTION_DEFS } from "../constants";
 import type { ContentSection, OurWork } from "../content/types";
-import Carousel from "./common/carousel.astro";
 import PageSection from "./common/page-section.astro";
 
 const {
   data: { title, galleries },
 } = (await getEntry("home-page", "our-work")) as ContentSection<OurWork>;
 
+console.log(`:::GALLERIES::: `, galleries);
 const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 ---
 
@@ -23,7 +23,22 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
       <div class="px-[var(--site-space-x)]">
         <span class="text-title-2">{title}</span>
       </div>
-      <Carousel images={galleries[0].images} />
+      <ul role="tablist" class="flex justify-center">
+        {
+          galleries.map((gallery) => (
+            <li role="tab">
+              <a
+                class="tl-tab tl-tab-x"
+                href={`/${gallery.name.replaceAll(" ", "")}`}
+              >
+                {gallery.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <slot name="gallery" />
+      <!-- <Carousel images={galleries[0].images} /> -->
     </div>
   </div>
   <slot />
