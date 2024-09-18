@@ -1,0 +1,75 @@
+---
+import { getEntry } from "astro:content";
+import type { ContentSection, OurWork } from "../content/types";
+import { makeId } from "../helpers/strings";
+import Carousel from "./common/carousel.astro";
+
+const {
+  data: { galleries },
+} = (await getEntry("home-page", "our-work")) as ContentSection<OurWork>;
+---
+
+<work-galleries class="flex flex-col gap-4">
+  <ul role="tablist" class="flex justify-center gap-2">
+    {
+      galleries.map((gallery, idx) => (
+        <li role="tab">
+          <button
+            class:list={[
+              "gallery-tab tl-tab tl-tab-x",
+              { "tl-tab--selected": !idx },
+            ]}
+            data-gallery={makeId(gallery.name)}
+          >
+            {gallery.name}
+          </button>
+        </li>
+      ))
+    }
+  </ul>
+  {
+    galleries.map((gallery, idx) => (
+      <Carousel
+        images={gallery.images}
+        class:list={["gallery-carousel", { hidden: !!idx }]}
+        data-gallery={makeId(gallery.name)}
+      />
+    ))
+  }
+</work-galleries>
+
+<script>
+  class WorkGalleries extends HTMLElement {
+    constructor() {
+      super();
+      const tabs = this.querySelectorAll<HTMLButtonElement>(".gallery-tab");
+      const carousels =
+        this.querySelectorAll<HTMLDivElement>(".gallery-carousel");
+
+      tabs.forEach((tab) => {
+        const tabGallery = tab.dataset.gallery;
+
+        tab.addEventListener("click", () => {
+          tabs.forEach((thisTab) => {
+            const thisTabGallery = thisTab.dataset.gallery;
+            if (tabGallery === thisTabGallery) {
+              thisTab.classList.add("tl-tab--selected");
+            } else {
+              thisTab.classList.remove("tl-tab--selected");
+            }
+          });
+          carousels.forEach((carousel) => {
+            const carouselGallery = carousel.dataset.gallery;
+            if (tabGallery === carouselGallery) {
+              carousel.classList.remove("hidden");
+            } else {
+              carousel.classList.add("hidden");
+            }
+          });
+        });
+      });
+    }
+  }
+
+  customElements.define("work-galleries", WorkGalleries);
+</script>

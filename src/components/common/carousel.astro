@@ -3,6 +3,7 @@ import type { HTMLAttributes } from "astro/types";
 import Icon from "./icon.astro";
 import { Image } from "astro:assets";
 import { getManagedImage } from "../../helpers/media";
+import ImgLinkHandler from "./raw-svgs/img-link-handler.astro";
 
 interface Props extends HTMLAttributes<"div"> {
   images: { src: string; alt: string }[];
@@ -20,8 +21,9 @@ const images = imagesProp.slice(0, 8);
         images.map(({ src, alt }, idx) => (
           <a
             target="_blank"
-            class="carousel-item w-full sm:w-[calc(100%-calc(var(--carousel-px)*6)-calc(var(--carousel-gap)*2))] h-[var(--carousel-img-height)] bg-base-300 rounded-box overflow-hidden cursor-auto"
+            class="carousel-item w-full sm:w-[calc(100%-calc(var(--carousel-px)*6)-calc(var(--carousel-gap)*2))] h-[var(--carousel-img-height)] bg-base-300 rounded-box overflow-hidden"
           >
+            <ImgLinkHandler />
             <Image
               class="object-cover w-full h-full img-fade-in"
               loading={idx ? "lazy" : "eager"}
@@ -138,13 +140,6 @@ const images = imagesProp.slice(0, 8);
           this.stop();
         }
       });
-
-      this.querySelectorAll<HTMLAnchorElement>(".carousel-item").forEach(
-        (item) => {
-          item.href =
-            (item.children[0] as HTMLImageElement | undefined)?.src ?? "";
-        },
-      );
 
       const handleActiveSlide = throttle(() => {
         if (!this.scrollContainer) return;

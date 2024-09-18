@@ -1,0 +1,24 @@
+---
+
+---
+
+<img-link-handler> </img-link-handler>
+
+<style>
+  img-link-handler {
+    display: none;
+  }
+</style>
+
+<script>
+  class ImgLinkHandler extends HTMLElement {
+    constructor() {
+      super();
+
+      const parent = this.parentElement as HTMLAnchorElement;
+      parent.href = parent.querySelector<HTMLImageElement>("img")?.src ?? "";
+    }
+  }
+
+  customElements.define("img-link-handler", ImgLinkHandler);
+</script>
