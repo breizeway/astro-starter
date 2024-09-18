@@ -29,6 +29,28 @@
           "alt": "Exterior view of two black automatic glass doors"
         }
       ]
+    },
+    {
+      "name": "Manual Doors",
+      "description": "Manual Doors desription",
+      "images": [
+        {
+          "src": "src/assets/images/managed/manual-1.jpg",
+          "alt": "Gray double doors"
+        },
+        {
+          "src": "src/assets/images/managed/manual-2.jpg",
+          "alt": "Gray double doors with half-height windows at the top of each"
+        },
+        {
+          "src": "src/assets/images/managed/manual-3.jpg",
+          "alt": "Gray double doors"
+        },
+        {
+          "src": "src/assets/images/managed/manual-4.jpg",
+          "alt": "Single gray door with vent at bottom"
+        }
+      ]
     }
   ],
   "title": "Our Work"
