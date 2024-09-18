@@ -16,11 +16,11 @@ collections:
         fields:
           - name: slogan
             label: Slogan
-            description: Write a slogan...
+            hint: Write a slogan...
             widget: markdown
           - name: image
             label: Image
-            description: ...or use an image
+            hint: ...or use an image
             widget: object
             required: false
             fields:
@@ -29,7 +29,7 @@ collections:
                 widget: image
               - name: alt
                 label: Description
-                description: For accessibility or if the image doesn't load
+                hint: For accessibility or if the image doesn't load
                 widget: string
       - name: about-us
         label: About Us
@@ -47,7 +47,7 @@ collections:
                 widget: image
               - name: alt
                 label: Description
-                description: For accessibility or if the image doesn't load
+                hint: For accessibility or if the image doesn't load
                 widget: string
           - name: description
             label: Description
@@ -111,5 +111,5 @@ collections:
                     widget: image
                   - name: alt
                     label: Description
-                    description: For accessibility or if the image doesn't load
+                    hint: For accessibility or if the image doesn't load
                     widget: string
