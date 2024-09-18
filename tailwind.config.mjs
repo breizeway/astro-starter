@@ -15,8 +15,8 @@ const COMMON_VARS = {
   "--about-section-pb": "var(--carousel-img-height)",
 
   "--carousel-img-height": "32rem",
-  "--carousel-px": "1rem",
-  "--carousel-gap": "1rem",
+  "--carousel-px": "var(--site-space-x)",
+  "--carousel-gap": "var(--site-space-x)",
 
   // colors
   "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)))",
@@ -296,21 +296,31 @@ export default {
           "--tw-bg-opacity": "1",
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
         },
+        ".glassy": {
+          boxShadow: `1px 2px 2px 0px oklch(100 0 0 / 0.45) inset, 
+            -1px -2px 2px 0px oklch(0 0 0 / 0.45) inset`,
+          backdropFilter: "blur(20px)",
+        },
+        ".glass-empty-header": {
+          "--tw-bg-opacity": "0.3",
+          backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
+        },
         ".glass-base": {
           "--tw-bg-opacity": "0.35",
           backgroundColor:
             "var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)))",
-          backdropFilter: "blur(100px)",
         },
         ".glass-empty": {
-          "--tw-bg-opacity": "0.45",
+          "--tw-bg-opacity": "0.5",
           backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
-          backdropFilter: "blur(100px)",
         },
         ".glass-full": {
-          "--tw-bg-opacity": "0.35",
+          "--tw-bg-opacity": "0.3",
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
-          backdropFilter: "blur(100px)",
+        },
+        ".glass-full-header": {
+          "--tw-bg-opacity": "0.25",
+          backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
         },
         ".site-section": {
           // defined in root-layout @layer utilities

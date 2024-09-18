@@ -1,0 +1,33 @@
+---
+import CertificationsSection from "./certifications-section.astro";
+import PageSection from "./common/page-section.astro";
+import DistributorshipsSection from "./distributorships-section.astro";
+import OurWorkSection from "./our-work-section.astro";
+---
+
+<PageSection>
+  <div class="offset-section">
+    <OurWorkSection />
+    <div
+      class="pt-[var(--page-section-py)] flex flex-col lg:flex-row gap-x-[var(--site-space-x)] gap-y-[calc(var(--site-space-y)/2)] transition-[gap,padding]"
+    >
+      <CertificationsSection />
+      <DistributorshipsSection />
+    </div>
+  </div>
+</PageSection>
+
+<style>
+  .page-section {
+    /* --carousel-px: var(--site-space-x);
+    --carousel-gap: var(--site-space-x); */
+
+    @apply pt-0;
+
+    .offset-section {
+      @apply relative;
+      top: calc(var(--about-section-pb) * -1);
+      margin-bottom: calc(var(--about-section-pb) * -1);
+    }
+  }
+</style>

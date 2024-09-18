@@ -1,45 +1,93 @@
 ---
 import { getEntry } from "astro:content";
-import { SECTION_DEFS } from "../constants";
 import type { ContentSection, OurWork } from "../content/types";
-import PageSection from "./common/page-section.astro";
-import WorkGalleries from "./work-galleries.astro";
+import { makeId } from "../helpers/strings";
+import Carousel from "./common/carousel.astro";
+import { SECTION_DEFS } from "../constants";
 
 const {
-  data: { title },
+  data: { title, galleries },
 } = (await getEntry("home-page", "our-work")) as ContentSection<OurWork>;
-
 const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 ---
 
-<PageSection>
-  <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
-    <div
-      class={`
-        glass-full glass-card [&&]:px-0 flex flex-col gap-[var(--site-space-x)]
-        motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
-      `}
+<work-galleries
+  id={sectionId}
+  class:list={[
+    sectionClass,
+    `
+      glassy glass-full glass-card pt-0 px-0 text-empty [&&]:px-0 flex flex-col gap-[var(--site-space-x)] 
+      motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+    `,
+  ]}
+>
+  <div class="p-[var(--site-space-x)] pb-0 glass-full-header">
+    <span class="text-title-2">{title}</span>
+    <ul
+      role="tablist"
+      class="flex justify-center max-w-full gap-2 overflow-x-scroll"
     >
-      <div class="px-[var(--site-space-x)]">
-        <span class="text-title-2">{title}</span>
-      </div>
-      <WorkGalleries />
-    </div>
+      {
+        galleries.map((gallery, idx) => (
+          <li role="tab">
+            <button
+              class:list={[
+                "gallery-tab tl-tab tl-tab-x text-empty",
+                { "tl-tab--selected": !idx },
+              ]}
+              data-gallery={makeId(gallery.name)}
+            >
+              {gallery.name}
+            </button>
+          </li>
+        ))
+      }
+    </ul>
   </div>
-  <slot />
-</PageSection>
 
-<style>
-  .page-section {
-    --carousel-px: var(--site-space-x);
-    --carousel-gap: var(--site-space-x);
+  {
+    galleries.map((gallery, idx) => (
+      <Carousel
+        images={gallery.images}
+        class:list={["gallery-carousel", { hidden: !!idx }]}
+        data-gallery={makeId(gallery.name)}
+      />
+    ))
+  }
+</work-galleries>
 
-    @apply pt-0;
+<script>
+  class WorkGalleries extends HTMLElement {
+    constructor() {
+      super();
+      const tabs = this.querySelectorAll<HTMLButtonElement>(".gallery-tab");
+      const carousels =
+        this.querySelectorAll<HTMLDivElement>(".gallery-carousel");
 
-    .offset-section {
-      @apply relative;
-      top: calc(var(--about-section-pb) * -1);
-      margin-bottom: calc(var(--about-section-pb) * -1);
+      tabs.forEach((tab) => {
+        const tabGallery = tab.dataset.gallery;
+
+        tab.addEventListener("click", () => {
+          tabs.forEach((thisTab) => {
+            const thisTabGallery = thisTab.dataset.gallery;
+            if (tabGallery === thisTabGallery) {
+              thisTab.classList.add("tl-tab--selected");
+            } else {
+              thisTab.classList.remove("tl-tab--selected");
+            }
+          });
+          carousels.forEach((carousel) => {
+            const carouselGallery = carousel.dataset.gallery;
+            if (tabGallery === carouselGallery) {
+              carousel.classList.remove("hidden");
+            } else {
+              carousel.classList.add("hidden");
+            }
+          });
+        });
+      });
     }
   }
-</style>
+
+  customElements.define("work-galleries", WorkGalleries);
+</script>
