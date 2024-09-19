@@ -297,9 +297,9 @@ export default {
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
         },
         ".glassy": {
-          boxShadow: `1px 2px 2px 0px oklch(100 0 0 / 0.45) inset, 
-            -1px -2px 2px 0px oklch(0 0 0 / 0.45) inset`,
-          backdropFilter: "blur(20px)",
+          boxShadow: `1px 2px 2px 0px oklch(100 0 0 / 0.3) inset, 
+            -1px -2px 2px 0px oklch(0 0 0 / 0.3) inset`,
+          backdropFilter: "blur(75px)",
         },
         ".glass-empty-header": {
           "--tw-bg-opacity": "0.3",
