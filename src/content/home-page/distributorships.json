@@ -6,6 +6,39 @@
       "image": {
         "src": "src/assets/images/managed/horton_logo_nov2022.jpg",
         "alt": "Horton Doors Logo"
+      },
+      "name": "Horton Doors"
+    },
+    {
+      "name": "Nabco Entrances",
+      "website": "https://www.nabcoentrances.com/",
+      "image": {
+        "src": "src/assets/images/managed/nabco-logo.svg",
+        "alt": "Nabco Entrances logo"
+      }
+    },
+    {
+      "name": "Quad Automatic Doors",
+      "website": "https://quadautomaticdoors.com/",
+      "image": {
+        "src": "src/assets/images/managed/quad-systems-logo.png",
+        "alt": "Quad Systems LLC Logo"
+      }
+    },
+    {
+      "name": "Rytec Doors",
+      "website": "https://www.rytecdoors.com/",
+      "image": {
+        "src": "src/assets/images/managed/rytec-nucor-logo.png",
+        "alt": "Rytec Doors Logo"
+      }
+    },
+    {
+      "website": "https://www.tormax.com/",
+      "name": "Tormax",
+      "image": {
+        "src": "src/assets/images/managed/tormax_logo.svg",
+        "alt": "Tormax Logo"
       }
     }
   ]
