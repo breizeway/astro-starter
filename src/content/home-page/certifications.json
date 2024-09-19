@@ -1,1 +1,19 @@
-{}
+{
+  "title": "Certifications",
+  "certificates": [
+    {
+      "name": "State Licensed",
+      "image": {
+        "src": "src/assets/images/managed/elite-cgc-license-exp-2026-0.5x.jpg",
+        "alt": "State ofFlorida construction industry license for Jode L Hunter"
+      }
+    },
+    {
+      "name": "AAADM Certified",
+      "image": {
+        "src": "src/assets/images/managed/aaadm-dh-swing.fold.slide-exp-12-2024-0.5x.jpg",
+        "alt": "American Association of Automatic Door Manufacturers inspector certification for David Hunter"
+      }
+    }
+  ]
+}
