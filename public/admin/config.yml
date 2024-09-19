@@ -149,9 +149,9 @@ collections:
           - name: title
             label: Title
             widget: string
-          - name: distributorships
-            label: Distributorships
-            label_singular: Distributorship
+          - name: distributors
+            label: Distributors
+            label_singular: Distributor
             widget: list
             summary: "{{fields.name}}"
             fields:
