@@ -159,6 +159,9 @@ collections:
                 label: Name
                 required: false
                 widget: string
+              - name: website
+                label: Website
+                widget: string
               - name: image
                 label: Image
                 widget: object
