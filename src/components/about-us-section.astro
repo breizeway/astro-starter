@@ -9,14 +9,7 @@ import Markdown from "./common/markdown.astro";
 import PageSection from "./common/page-section.astro";
 
 const {
-  data: {
-    title,
-    description,
-    image,
-    location_card,
-    business_card,
-    service_card,
-  },
+  data: { title, description, image, locationCard, businessCard, serviceCard },
 } = (await getEntry("home-page", "about-us")) as ContentSection<AboutUs>;
 
 const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
@@ -56,7 +49,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
     `}
     >
       {
-        [location_card, business_card, service_card].map((card, idx) => (
+        [locationCard, businessCard, serviceCard].map((card, idx) => (
           <div
             class:list={`
             bracket-card transition flex-1 max-w-sm grid grid-flow-row p-6 gap-12 

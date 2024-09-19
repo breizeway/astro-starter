@@ -24,9 +24,9 @@ export interface AboutUs {
   title: string;
   description: Markdown;
   image: Image;
-  location_card: AboutCard;
-  business_card: AboutCard;
-  service_card: AboutCard;
+  locationCard: AboutCard;
+  businessCard: AboutCard;
+  serviceCard: AboutCard;
 }
 
 interface WorkGallery {

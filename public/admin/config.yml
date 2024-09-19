@@ -52,7 +52,7 @@ collections:
           - name: description
             label: Description
             widget: markdown
-          - name: location_card
+          - name: locationCard
             label: Location Card
             widget: object
             fields:
@@ -62,7 +62,7 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
-          - name: business_card
+          - name: businessCard
             label: Business Card
             widget: object
             fields:
@@ -72,7 +72,7 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
-          - name: service_card
+          - name: serviceCard
             label: Service Card
             widget: object
             fields:
@@ -91,6 +91,7 @@ collections:
             widget: string
           - name: galleries
             label: Galleries
+            label_singular: Gallery
             widget: list
             summary: "{{fields.name}}"
             fields:
@@ -103,6 +104,7 @@ collections:
                 required: false
               - name: "images"
                 label: "Images"
+                 label_singular: Image
                 widget: "list"
                 summary: "{{fields.alt}}"
                 fields:
@@ -113,3 +115,104 @@ collections:
                     label: Description
                     hint: For accessibility or if the image doesn't load
                     widget: string
+      - name: certifications
+        label: Certifications
+        file: src/content/home-page/certifications.json
+        fields:
+          - name: title
+            label: Title
+            widget: string
+          - name: certifications
+            label: Certifications
+            label_singular: Certification
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - name: name
+                label: Name
+                widget: string
+              - name: image
+                label: Image
+                widget: object
+                fields:
+                  - name: src
+                    label: Source
+                    widget: image
+                  - name: alt
+                    label: Description
+                    hint: For accessibility or if the image doesn't load
+                    widget: string
+      - name: distributorships
+        label: Distributorships
+        file: src/content/home-page/distributorships.json
+        fields:
+          - name: title
+            label: Title
+            widget: string
+          - name: distributorships
+            label: Distributorships
+            label_singular: Certification
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - name: name
+                label: Name
+                widget: string
+              - name: image
+                label: Image
+                widget: object
+                fields:
+                  - name: src
+                    label: Source
+                    widget: image
+                  - name: alt
+                    label: Description
+                    hint: For accessibility or if the image doesn't load
+                    widget: string
+      - name: contact-us
+        label: Contact Us
+        file: src/content/home-page/contact-us.json
+        fields:
+          - name: title
+            label: Title
+            widget: string
+          - name: emailCard
+            label: Email Card
+            widget: object
+            fields:
+              - name: title
+                label: Title
+                widget: string
+              - name: description
+                label: Description
+                widget: markdown
+          - name: phoneCard
+            label: Phone Card
+            widget: object
+            fields:
+              - name: title
+                label: Title
+                widget: string
+              - name: description
+                label: Description
+                widget: markdown
+          - name: mailingCard
+            label: Mailing Card
+            widget: object
+            fields:
+              - name: title
+                label: Title
+                widget: string
+              - name: description
+                label: Description
+                widget: markdown                    
+          - name: shippingCard
+            label: Shipping Card
+            widget: object
+            fields:
+              - name: title
+                label: Title
+                widget: string
+              - name: description
+                label: Description
+                widget: markdown                    
