@@ -102,9 +102,9 @@ collections:
                 label: Description
                 widget: markdown
                 required: false
-              - name: "images"
-                label: "Images"
-                 label_singular: Image
+              - name: images
+                label: Images
+                label_singular: Image
                 widget: "list"
                 summary: "{{fields.alt}}"
                 fields:
@@ -205,7 +205,7 @@ collections:
                 widget: string
               - name: description
                 label: Description
-                widget: markdown                    
+                widget: markdown
           - name: shippingCard
             label: Shipping Card
             widget: object
@@ -215,4 +215,4 @@ collections:
                 widget: string
               - name: description
                 label: Description
-                widget: markdown                    
+                widget: markdown

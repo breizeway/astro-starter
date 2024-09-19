@@ -4,6 +4,7 @@ import type { ContentSection, OurWork } from "../content/types";
 import { makeId } from "../helpers/strings";
 import Carousel from "./common/carousel.astro";
 import { SECTION_DEFS } from "../constants";
+import Markdown from "./common/markdown.astro";
 
 const {
   data: { title, galleries },
@@ -47,20 +48,26 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 
   {
     galleries.map((gallery, idx) => (
-      <Carousel
-        images={gallery.images}
+      <div
         class:list={["gallery-carousel", { hidden: !!idx }]}
         data-gallery={makeId(gallery.name)}
-      />
+      >
+        {!!gallery.description && (
+          <Markdown
+            content={gallery.description}
+            noMarginTop
+            class="!text-2xl w-fit mx-auto font-bold"
+          />
+        )}
+        <Carousel images={gallery.images} />
+      </div>
     ))
   }
 </work-galleries>
 
 <style>
   .gallery-carousel {
-    .carousel-comp__pg-btns {
-      --bc: var(--color-empty);
-    }
+    --bc: var(--color-empty);
   }
 </style>
 
