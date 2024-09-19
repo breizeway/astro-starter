@@ -10,10 +10,10 @@
   },
   "mailingCard": {
     "title": "Mailing Address",
-    "description": "6051 SW 1st Street\nPlantation, FL  33317"
+    "description": "6051 SW 1st Street\nPlantation, FL 33317"
   },
   "shippingCard": {
     "title": "Shipping / Shop Address",
-    "description": "500 SW 21st Terrace\nBay #B103\nFort Lauderdale, FL  33312"
+    "description": "500 SW 21st Terrace\nBay #B103\nFort Lauderdale, FL 33312"
   }
 }

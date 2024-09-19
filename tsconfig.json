@@ -1,9 +1,3 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "baseUrl": ".",
-  "compilerOptions": {
-    "paths": {
-      "@managed-images/*": ["src/assets/images/managed/*"]
-    }
-  }
+  "extends": "astro/tsconfigs/strict"
 }

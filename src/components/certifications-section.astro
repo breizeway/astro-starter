@@ -1,34 +1,56 @@
 ---
+import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import { SECTION_DEFS } from "../constants";
-import type { ContentSection, OurWork } from "../content/types";
+import type { Certifications, ContentSection } from "../content/types";
+import { getManagedImage } from "../helpers/media";
+import Icon from "./common/icon.astro";
+import ImgLinkHandler from "./common/raw-svgs/img-link-handler.astro";
 
 const {
-  data: { title, galleries },
-} = (await getEntry("home-page", "our-work")) as ContentSection<OurWork>;
+  data: { title, certificates },
+} = (await getEntry(
+  "home-page",
+  "certifications",
+)) as ContentSection<Certifications>;
 
 const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
 ---
 
-<div id={sectionId} class:list={[sectionClass, "glassy glass-empty glass-card p-0"]}>
+<div
+  id={sectionId}
+  class:list={[
+    sectionClass,
+    `
+    glassy glass-empty glass-card p-0 mt-[var(--site-space-y)]
+    motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+  `,
+  ]}
+>
   <div class="glass-empty-header p-[var(--site-space-x)]">
-    <span class="text-title-2">Certifications</span>
+    <span class="text-title-2">{title}</span>
   </div>
-  <div class="p-[var(--site-space-x)]">
-  {
-    [...Array(3)].map((_, i) => (
-        <h1 class="text-title-3">{`Lorem Ipsum ${i}`}</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <br />
-    ))
-  } 
+  <div
+    class="p-[var(--site-space-x)] pb-[calc(var(--site-space-x)*2)] flex flex-col items-center justify-around md:flex-row gap-12"
+  >
+    {
+      certificates.map((cert) => (
+        <div class="flex flex-col gap-4">
+          <div class="flex gap-4 items-center text-success">
+            <Icon icon="certified" class="h-16" />
+            <span class="text-title-4">{cert.name}</span>
+          </div>
+          <a class="shadow-2xl">
+            <ImgLinkHandler />
+            <Image
+              src={getManagedImage(cert.image.src)}
+              alt={cert.image.alt}
+              class="w-[24rem]"
+              loading="lazy"
+            />
+          </a>
+        </div>
+      ))
+    }
   </div>
 </div>

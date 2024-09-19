@@ -1,30 +1,48 @@
 ---
+import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import { SECTION_DEFS } from "../constants";
-import type { ContentSection, OurWork } from "../content/types";
+import type { ContentSection, Distributorships } from "../content/types";
+import { getManagedImage } from "../helpers/media";
 
 const {
-  data: { title, galleries },
-} = (await getEntry("home-page", "our-work")) as ContentSection<OurWork>;
+  data: { title, distributors },
+} = (await getEntry(
+  "home-page",
+  "distributorships",
+)) as ContentSection<Distributorships>;
 
 const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
 ---
 
-<div id={sectionId} class:list={[sectionClass, "glassy glass-empty glass-card"]}>
-  <span class="text-title-2">Distributorships</span>
-  {
-    [...Array(3)].map((_, i) => (
-        <h1 class="text-title-3">{`Lorem Ipsum ${i}`}</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <br />
-    ))
-  }
+<div
+  id={sectionId}
+  class:list={[
+    sectionClass,
+    `
+    glassy glass-empty glass-card p-0 mt-[calc(var(--site-space-y)/2)]
+    motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+  `,
+  ]}
+>
+  <div class="glass-empty-header p-[var(--site-space-x)]">
+    <span class="text-title-2">{title}</span>
+  </div>
+  <div
+    class="p-[var(--site-space-x)] pb-[calc(var(--site-space-x)*2)] flex flex-col flex-wrap items-center md:items-start justify-around md:flex-row gap-x-[calc(var(--site-space-y)/2)] gap-y-[var(--site-space-y)] md:gap-y-[calc(var(--site-space-y)/2)]"
+  >
+    {
+      distributors.map((dist) => (
+        <a class="flex flex-col gap-4" href={dist.website} target="_blank">
+          <span class="text-title-4">{dist.name}</span>
+          <Image
+            src={getManagedImage(dist.image.src)}
+            alt={dist.image.alt}
+            class="w-[16rem] min-w-[16rem] drop-shadow-xl"
+            loading="lazy"
+          />
+        </a>
+      ))
+    }
+  </div>
 </div>

@@ -280,6 +280,11 @@ export default {
           fontWeight: 700,
           textTransform: "uppercase",
         },
+        ".text-title-4": {
+          fontSize: theme("fontSize.2xl"),
+          fontFamily: theme("fontFamily.title"),
+          fontWeight: 700,
+        },
         ".text-empty": {
           "--tw-text-opacity": "1",
           color: "oklch(var(--color-empty)/var(--tw-text-opacity))",
