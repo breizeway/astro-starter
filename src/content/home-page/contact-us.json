@@ -1,1 +1,19 @@
-{}
+{
+  "title": "Contact Us",
+  "emailCard": {
+    "title": "Email",
+    "description": "[info@elite-door.com](mailto:info@elite-door.com)"
+  },
+  "phoneCard": {
+    "title": "Phone",
+    "description": "(954) 654-2257"
+  },
+  "mailingCard": {
+    "title": "Mailing Address",
+    "description": "6051 SW 1st Street\nPlantation, FL  33317"
+  },
+  "shippingCard": {
+    "title": "Shipping / Shop Address",
+    "description": "500 SW 21st Terrace\nBay #B103\nFort Lauderdale, FL  33312"
+  }
+}
