@@ -20,35 +20,48 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
   class:list={[
     sectionClass,
     `
-    glassy glass-empty glass-card p-0 mt-[calc(var(--site-space-y)/2)]
-    motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
-  `,
+      glassy glass-empty glass-card p-0 mt-[calc(var(--site-space-y)/2)]
+      motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+    `,
   ]}
 >
   <div class="glass-empty-header p-[var(--site-space-x)]">
     <span class="text-title-2">{title}</span>
   </div>
   <div
-    class="p-[var(--site-space-x)] pb-[calc(var(--site-space-x)*2)] flex flex-col flex-wrap items-center md:items-start justify-around md:flex-row gap-x-[var(--site-space-x)] gap-y-[var(--site-space-y)] sm:gap-y-[calc(var(--site-space-y)/2)]"
+    class="p-[var(--site-space-x)] pb-[calc(var(--site-space-x)*2)] flex flex-col flex-wrap md:items-start md:flex-row gap-y-[var(--site-space-y-sm)]"
   >
     {
       distributors.map((dist) => (
-        <div class="basis-1/3">
+        <div
+          class={`
+            basis-1/2 w-full md:pr-[var(--site-space-x)]
+            motion-safe:opacity-0 intersect:animate-fade-right intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+          `}
+        >
           <a
-            class="flex flex-col gap-4 w-fit mx-auto"
+            class="flex items-start gap-4 w-fit mr-auto hover:no-touch:underline"
             href={dist.href}
             target="_blank"
           >
+            <div class="aspect-square flex flex-col justify-start">
+              <Image
+                src={getManagedImage(dist.image.src)}
+                alt={dist.image.alt}
+                class="img-fade-in w-32 min-w-32 sm:w-40 sm:min-w-40 drop-shadow-xl"
+                loading="lazy"
+              />
+            </div>
             <span class="text-title-4">{dist.name}</span>
-            <Image
-              src={getManagedImage(dist.image.src)}
-              alt={dist.image.alt}
-              class="img-fade-in w-72 min-w-[16rem] drop-shadow-xl"
-              loading="lazy"
-            />
           </a>
         </div>
       ))
     }
   </div>
 </div>
+
+<style>
+  a {
+    text-decoration-thickness: 3px;
+  }
+</style>
