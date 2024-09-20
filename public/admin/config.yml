@@ -19,7 +19,7 @@ collections:
             hint: Write a slogan...
             widget: markdown
             editor_components:
-              - code_block
+              - code-block
           - name: image
             label: Image
             hint: ...or use an image
