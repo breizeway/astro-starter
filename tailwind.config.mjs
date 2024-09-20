@@ -236,6 +236,9 @@ export default {
         ".glass-card": {
           // defined in root-layout @layer components
         },
+        ".glass-bubble": {
+          // defined in root-layout @layer components
+        },
       });
       addUtilities({
         ".init-dynamic-site-vars": {
@@ -307,8 +310,6 @@ export default {
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
         },
         ".glassy": {
-          boxShadow: `1px 2px 2px 0px oklch(100 0 0 / 0.3) inset, 
-            -1px -2px 2px 0px oklch(0 0 0 / 0.3) inset`,
           backdropFilter: "blur(75px)",
         },
         ".glass-empty-header": {

@@ -20,7 +20,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
   <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
     <div
       class={`
-        glassy glass-full glass-card text-empty flex flex-col gap-8 transition-all max-w-[30rem] mx-auto
+        glassy glass-full glass-card glass-responsive text-empty flex flex-col gap-8 transition-all sm:max-w-[30rem] sm:mx-auto
         motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
         md:flex-row md:max-w-max
       `}
@@ -30,8 +30,8 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
           src={getManagedImage(image.src)}
           alt={image.alt}
           class={`
-            img-fade-in rounded-[1.75rem] w-full h-full object-cover
-            sm:rounded-[1.25rem]
+            img-fade-in rounded-[0.75rem] w-full h-full object-cover
+            sm:rounded-[0.75rem]
           `}
           loading="eager"
         />
