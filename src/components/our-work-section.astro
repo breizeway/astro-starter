@@ -17,7 +17,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
   class:list={[
     sectionClass,
     `
-      glassy glass-full glass-card pt-0 px-0 text-empty [&&]:px-0 flex flex-col gap-[var(--site-space-x)] 
+      glassy glass-full glass-card pt-0 text-empty [&&]:px-0 flex flex-col 
       motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
     `,
   ]}
@@ -26,7 +26,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
     <p class="text-title-2 p-[var(--site-space-x)] pb-0">{title}</p>
     <ul
       role="tablist"
-      class="flex gap-2 no-scrollbar scroll-snap-x mx-auto w-fit max-w-full px-[var(--site-space-x)]"
+      class="flex gap-2 no-scrollbar overflow-x-scroll mx-auto w-fit max-w-full px-[var(--site-space-x)]"
     >
       {
         galleries.map((gallery, idx) => (
@@ -55,8 +55,8 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
         {!!gallery.description && (
           <Markdown
             content={gallery.description}
-            noMarginTop
-            class="p-[var(--site-space-x)]"
+            noMarginY
+            class="p-[var(--site-space-x)] mx-auto w-fit [&&]:max-w-[32rem] text-center"
           />
         )}
         <Carousel images={gallery.images} />
@@ -67,7 +67,12 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 
 <style>
   .gallery-carousel {
-    --bc: var(--color-empty);
+    .markdown {
+      --bc: var(--color-empty);
+    }
+    .carousel-comp__controls {
+      --bc: var(--color-empty);
+    }
   }
 </style>
 
@@ -83,6 +88,13 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
         const tabGallery = tab.dataset.gallery;
 
         tab.addEventListener("click", () => {
+          setTimeout(() => {
+            tab.scrollIntoView({
+              block: "nearest",
+              inline: "center",
+              behavior: "smooth",
+            });
+          });
           tabs.forEach((thisTab) => {
             const thisTabGallery = thisTab.dataset.gallery;
             if (tabGallery === thisTabGallery) {

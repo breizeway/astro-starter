@@ -19,7 +19,7 @@ const COMMON_VARS = {
   "--banner-section-pb": "12rem",
   "--about-section-pb": "var(--carousel-img-height)",
 
-  "--carousel-img-height": "32rem",
+  "--carousel-img-height": "30rem",
   "--carousel-px": "var(--site-space-x)",
   "--carousel-gap": "var(--site-space-x)",
 
@@ -343,7 +343,7 @@ export default {
           scrollSnapType: "x mandatory",
           scrollBehavior: "smooth",
           "& > *": {
-            scrollSnapAlign: "start",
+            scrollSnapAlign: "center",
           },
         },
         ".site-section": {

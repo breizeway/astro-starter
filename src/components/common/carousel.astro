@@ -40,10 +40,10 @@ const images = imagesProp.slice(0, 8);
       class="absolute left-[calc(var(--carousel-px)*1.5)] top-1/2 -translate-y-1/2"
     >
       <button
-        class={`carousel-comp__nav-btn-prev btn btn-sm btn-circle`}
+        class="carousel-comp__nav-btn carousel-comp__nav-btn-prev"
         aria-label="go to previous carousel slide"
       >
-        ❮
+        <Icon icon="chevron-left" class="h-6 text-base-100" />
       </button>
     </div>
 
@@ -51,16 +51,16 @@ const images = imagesProp.slice(0, 8);
       class="absolute right-[calc(var(--carousel-px)*1.5)] top-1/2 -translate-y-1/2"
     >
       <button
-        class={`carousel-comp__nav-btn-next btn btn-sm btn-circle`}
+        class={`carousel-comp__nav-btn carousel-comp__nav-btn-next`}
         aria-label="go to next carousel slide"
       >
-        ❯
+        <Icon icon="chevron-right" class="h-6 text-base-100" />
       </button>
     </div>
   </div>
 
   <div
-    class="carousel-comp__pg-btns flex w-full justify-center items-center gap-2 py-2"
+    class="carousel-comp__controls flex w-full justify-center items-center gap-2 py-2"
   >
     {
       images.map((_, idx) => (
@@ -83,6 +83,14 @@ const images = imagesProp.slice(0, 8);
     </button>
   </div>
 </carousel-comp>
+
+<style is:global>
+  .carousel-comp__nav-btn {
+    && {
+      @apply btn min-w-8 min-h-8 max-w-8 max-h-8 !btn-circle bg-neutral bg-opacity-60 no-touch:hover:bg-neutral no-touch:hover:bg-opacity-70 backdrop-blur-xl border-0;
+    }
+  }
+</style>
 
 <script>
   import { throttle } from "../../helpers/performance";

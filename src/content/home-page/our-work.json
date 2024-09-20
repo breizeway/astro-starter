@@ -2,7 +2,7 @@
   "galleries": [
     {
       "name": "Automatic Doors",
-      "description": "Automatic Doors Description",
+      "description": "Automatic commercial doors often utilize motion sensors or low-energy operation to automatically open and close as people approach, providing a seamless and convenient entry experience.",
       "images": [
         {
           "src": "src/assets/images/managed/auto-swing2.png",
@@ -20,7 +20,7 @@
     },
     {
       "name": "Manual Doors",
-      "description": "Manual Doors description",
+      "description": "Commonly used without the use of automated systems. They have very few moving parts, making them simple to maintain and install. They may also continue to function even in the event of a power outage.",
       "images": [
         {
           "src": "src/assets/images/managed/manual-1.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Glass & Aluminum Storefront Doors",
-      "description": "Glass & Aluminum Storefront Doors description",
+      "description": "commonly used as front entrance doors in grocery stores, public buildings, and other retail establishments. Aluminum storefront doors are known for their strength, security, and low maintenance.",
       "images": [
         {
           "src": "src/assets/images/managed/auto-swing.png",
