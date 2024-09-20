@@ -332,6 +332,20 @@ export default {
           "--tw-bg-opacity": "0.25",
           backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
         },
+        ".no-scrollbar": {
+          scrollbarWidth: "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+        ".scroll-snap-x": {
+          overflowX: "scroll",
+          scrollSnapType: "x mandatory",
+          scrollBehavior: "smooth",
+          "& > *": {
+            scrollSnapAlign: "start",
+          },
+        },
         ".site-section": {
           // defined in root-layout @layer utilities
         },

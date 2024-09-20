@@ -22,11 +22,11 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
     `,
   ]}
 >
-  <div class="p-[var(--site-space-x)] pb-0 glass-full-header">
-    <span class="text-title-2">{title}</span>
+  <div class="glass-full-header">
+    <p class="text-title-2 p-[var(--site-space-x)] pb-0">{title}</p>
     <ul
       role="tablist"
-      class="flex gap-2 overflow-x-scroll mx-auto w-fit max-w-full"
+      class="flex gap-2 no-scrollbar scroll-snap-x mx-auto w-fit max-w-full px-[var(--site-space-x)]"
     >
       {
         galleries.map((gallery, idx) => (
@@ -56,7 +56,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
           <Markdown
             content={gallery.description}
             noMarginTop
-            class="!text-2xl w-fit mx-auto font-bold"
+            class="p-[var(--site-space-x)]"
           />
         )}
         <Carousel images={gallery.images} />
