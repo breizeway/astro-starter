@@ -18,6 +18,8 @@ collections:
             label: Slogan
             hint: Write a slogan...
             widget: markdown
+            editor_components:
+              - code_block
           - name: image
             label: Image
             hint: ...or use an image
@@ -52,6 +54,8 @@ collections:
           - name: description
             label: Description
             widget: markdown
+            editor_components:
+              - code_block
           - name: locationCard
             label: Location Card
             widget: object
@@ -62,6 +66,8 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
+                editor_components:
+                  - code_block
           - name: businessCard
             label: Business Card
             widget: object
@@ -72,6 +78,8 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
+                editor_components:
+                  - code_block
           - name: serviceCard
             label: Service Card
             widget: object
@@ -82,6 +90,8 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
+                editor_components:
+                  - code_block
       - name: our-work
         label: Our Work
         file: src/content/home-page/our-work.json
@@ -101,6 +111,8 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
+                editor_components:
+                  - code_block
                 required: false
               - name: images
                 label: Images
@@ -190,6 +202,8 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
+                editor_components:
+                  - code_block
           - name: phoneCard
             label: Phone Card
             widget: object
@@ -200,6 +214,8 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
+                editor_components:
+                  - code_block
           - name: mailingCard
             label: Mailing Card
             widget: object
@@ -210,6 +226,8 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
+                editor_components:
+                  - code_block
           - name: shippingCard
             label: Shipping Card
             widget: object
@@ -220,3 +238,5 @@ collections:
               - name: description
                 label: Description
                 widget: markdown
+                editor_components:
+                  - code_block
