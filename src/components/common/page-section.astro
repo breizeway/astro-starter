@@ -17,7 +17,7 @@ const { forceStyle, ...props } = Astro.props;
 
 <style is:global>
   .page-section {
-    @apply site-px py-[var(--page-section-py)];
+    @apply site-px py-[var(--page-section-py)] overflow-x-clip;
   }
 
   .page-section:nth-of-type(even):not(.back),

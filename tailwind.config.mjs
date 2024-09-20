@@ -9,7 +9,7 @@ import { intersectionPlugin } from "./src/library/intersection-handler";
 const COMMON_VARS = {
   // sizes
   "--site-space-x-lg": "2rem",
-  "--site-space-x-sm": "1.5rem",
+  "--site-space-x-sm": "1rem",
   "--site-space-y-lg": "8rem",
   "--site-space-y-sm": "4rem",
 
@@ -39,9 +39,9 @@ const COMMON_VARS = {
 
   "--fade-up-start-translate": "4rem",
   "--fade-up-end-translate": "0%",
-  "--fade-right-start-translate": "-2rem",
+  "--fade-right-start-translate": "2rem",
   "--fade-right-end-translate": "0%",
-  "--fade-left-start-translate": "2rem",
+  "--fade-left-start-translate": "-2rem",
   "--fade-left-end-translate": "0%",
   "--fade-down-start-translate": "-4rem",
   "--fade-down-end-translate": "0%",
