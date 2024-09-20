@@ -55,7 +55,7 @@ collections:
             label: Description
             widget: markdown
             editor_components:
-              - code_block
+              - code-block
           - name: locationCard
             label: Location Card
             widget: object
@@ -67,7 +67,7 @@ collections:
                 label: Description
                 widget: markdown
                 editor_components:
-                  - code_block
+                  - code-block
           - name: businessCard
             label: Business Card
             widget: object
@@ -79,7 +79,7 @@ collections:
                 label: Description
                 widget: markdown
                 editor_components:
-                  - code_block
+                  - code-block
           - name: serviceCard
             label: Service Card
             widget: object
@@ -91,7 +91,7 @@ collections:
                 label: Description
                 widget: markdown
                 editor_components:
-                  - code_block
+                  - code-block
       - name: our-work
         label: Our Work
         file: src/content/home-page/our-work.json
@@ -112,7 +112,7 @@ collections:
                 label: Description
                 widget: markdown
                 editor_components:
-                  - code_block
+                  - code-block
                 required: false
               - name: images
                 label: Images
@@ -203,7 +203,7 @@ collections:
                 label: Description
                 widget: markdown
                 editor_components:
-                  - code_block
+                  - code-block
           - name: phoneCard
             label: Phone Card
             widget: object
@@ -215,7 +215,7 @@ collections:
                 label: Description
                 widget: markdown
                 editor_components:
-                  - code_block
+                  - code-block
           - name: mailingCard
             label: Mailing Card
             widget: object
@@ -227,7 +227,7 @@ collections:
                 label: Description
                 widget: markdown
                 editor_components:
-                  - code_block
+                  - code-block
           - name: shippingCard
             label: Shipping Card
             widget: object
@@ -239,4 +239,4 @@ collections:
                 label: Description
                 widget: markdown
                 editor_components:
-                  - code_block
+                  - code-block

@@ -81,7 +81,7 @@ import SiteTabs from "./site-tabs.astro";
       () => {
         document.getElementById("nav-logo")?.classList.add("transition");
       },
-      { once: true },
+      { passive: true, once: true },
     );
   });
 </script>
