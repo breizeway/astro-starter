@@ -1,42 +1,43 @@
 ---
 import { getEntry } from "astro:content";
 import { SECTION_DEFS } from "../constants";
-import type { AboutUs, ContentSection } from "../content/types";
+import type { ContactUs, ContentSection } from "../content/types";
 import Icon from "./common/icon.astro";
 import Markdown from "./common/markdown.astro";
 import PageSection from "./common/page-section.astro";
 
 const {
-  data: { title, description, image, locationCard, businessCard, serviceCard },
-} = (await getEntry("home-page", "about-us")) as ContentSection<AboutUs>;
+  data: { title, emailCard, phoneCard, mailingCard, shippingCard },
+} = (await getEntry("home-page", "contact-us")) as ContentSection<ContactUs>;
 
-const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
+const cardIcons = ["email-lrg", "phone-lrg", "mail-lrg", "shipping-lrg"];
 const { sectionId, sectionClass } = SECTION_DEFS["contact-us"];
 ---
 
-<PageSection>
+<PageSection class="pt-[var(--site-space-y-sm)]">
   <div id={sectionId} class:list={[sectionClass]}>
     <p class="text-title-1 mb-[calc(var(--site-space-y)/2)]">{title}</p>
     <div
       class={`
-        about-cards flex flex-col items-center justify-between gap-x-12 gap-y-[var(--site-space-y)] transition-[gap] text-center
-        sm:flex-wrap sm:justify-evenly 
-        md:flex-row md:items-stretch
+        flex flex-col items-stretch justify-evenly gap-y-[var(--site-space-y)] transition-[gap] text-center
+        md:flex md:flex-row md:flex-wrap md:gap-x-[var(--site-space-x)]
+        xl:flex-nowrap
         `}
     >
       {
-        [locationCard, businessCard, serviceCard].map((card, idx) => (
-          <div
-            class:list={`
-        bracket-card transition flex-1 max-w-sm grid grid-flow-row p-6 gap-12 
-        motion-safe:opacity-0 ${idx % 2 ? "intersect:animate-fade-left" : "intersect:animate-fade-right"} intersect-once motion-reduce:intersect:animate-none
-        sm:min-w-[20rem] 
-        md:crafted-rows md:max-w-xs md:gap-0 md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
-        `}
-          >
-            <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
-            <p class="text-title-3 text-primary">{card.title}</p>
-            <Markdown content={card.description} />
+        [emailCard, phoneCard, mailingCard, shippingCard].map((card, idx) => (
+          <div class="md:basis-1/3 w-full">
+            <div
+              class:list={`
+              bracket-card transition mx-auto w-full max-w-sm h-full grid grid-flow-row p-6 gap-12 
+              motion-safe:opacity-0 ${idx % 2 ? "intersect:animate-fade-left" : "intersect:animate-fade-right"} intersect-once motion-reduce:intersect:animate-none
+              sm:strict-relational-rows md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
+              `}
+            >
+              <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
+              <p class="text-title-3 text-primary">{card.title}</p>
+              <Markdown content={card.description} noMarginY />
+            </div>
           </div>
         ))
       }
@@ -45,13 +46,10 @@ const { sectionId, sectionClass } = SECTION_DEFS["contact-us"];
 </PageSection>
 
 <style>
-  .page-section {
-  }
-
   @tailwind utilities;
   @layer utilities {
-    .crafted-rows {
-      grid-template-rows: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 6fr);
+    .strict-relational-rows {
+      grid-template-rows: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 3fr);
     }
   }
 </style>

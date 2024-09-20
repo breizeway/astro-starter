@@ -8,6 +8,11 @@ import { intersectionPlugin } from "./src/library/intersection-handler";
 
 const COMMON_VARS = {
   // sizes
+  "--site-space-x-lg": "2rem",
+  "--site-space-x-sm": "1.5rem",
+  "--site-space-y-lg": "8rem",
+  "--site-space-y-sm": "4rem",
+
   "--icon-stroke-lg": "3px",
   "--nav-height": "5rem",
   "--page-section-py": "var(--site-space-y)",
@@ -234,12 +239,12 @@ export default {
       });
       addUtilities({
         ".init-dynamic-site-vars": {
-          "--site-space-x": theme("padding.4"),
-          "--site-space-y": "5rem",
+          "--site-space-x": "var(--site-space-x-sm)",
+          "--site-space-y": "var(--site-space-y-sm)",
           "--site-py": "1.25rem",
           "@screen sm": {
-            "--site-space-x": theme("padding.8"),
-            "--site-space-y": "10rem",
+            "--site-space-x": "var(--site-space-x-lg)",
+            "--site-space-y": "var(--site-space-y-lg)",
           },
         },
         ".site-width-content": {

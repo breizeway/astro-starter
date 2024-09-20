@@ -52,6 +52,7 @@ export interface Certifications {
 
 interface Distributor {
   name?: string;
+  href: string;
   image: Image;
 }
 

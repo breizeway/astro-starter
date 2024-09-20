@@ -29,19 +29,25 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
     <span class="text-title-2">{title}</span>
   </div>
   <div
-    class="p-[var(--site-space-x)] pb-[calc(var(--site-space-x)*2)] flex flex-col flex-wrap items-center md:items-start justify-around md:flex-row gap-x-[calc(var(--site-space-y)/2)] gap-y-[var(--site-space-y)] md:gap-y-[calc(var(--site-space-y)/2)]"
+    class="p-[var(--site-space-x)] pb-[calc(var(--site-space-x)*2)] flex flex-col flex-wrap items-center md:items-start justify-around md:flex-row gap-x-[var(--site-space-x)] gap-y-[var(--site-space-y)] sm:gap-y-[calc(var(--site-space-y)/2)]"
   >
     {
       distributors.map((dist) => (
-        <a class="flex flex-col gap-4" href={dist.website} target="_blank">
-          <span class="text-title-4">{dist.name}</span>
-          <Image
-            src={getManagedImage(dist.image.src)}
-            alt={dist.image.alt}
-            class="w-[16rem] min-w-[16rem] drop-shadow-xl"
-            loading="lazy"
-          />
-        </a>
+        <div class="basis-1/3">
+          <a
+            class="flex flex-col gap-4 w-fit mx-auto"
+            href={dist.href}
+            target="_blank"
+          >
+            <span class="text-title-4">{dist.name}</span>
+            <Image
+              src={getManagedImage(dist.image.src)}
+              alt={dist.image.alt}
+              class="img-fade-in w-72 min-w-[16rem] drop-shadow-xl"
+              loading="lazy"
+            />
+          </a>
+        </div>
       ))
     }
   </div>

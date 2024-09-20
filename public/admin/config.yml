@@ -159,7 +159,7 @@ collections:
                 label: Name
                 required: false
                 widget: string
-              - name: website
+              - name: href
                 label: Website
                 widget: string
               - name: image

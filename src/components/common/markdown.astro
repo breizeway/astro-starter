@@ -12,6 +12,8 @@ interface Props extends HTMLAttributes<"div"> {
 
 const { content, noMarginY, noMarginTop, noMarginBottom, ...divProps } =
   Astro.props;
+
+marked.use({ gfm: true, breaks: true });
 ---
 
 <div

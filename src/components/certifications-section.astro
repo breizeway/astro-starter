@@ -31,21 +31,21 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
     <span class="text-title-2">{title}</span>
   </div>
   <div
-    class="p-[var(--site-space-x)] pb-[calc(var(--site-space-x)*2)] flex flex-col items-center justify-around md:flex-row gap-12"
+    class="p-[var(--site-space-x)] pb-[calc(var(--site-space-x)*2)] flex flex-col md:flex-row gap-x-[var(--site-space-x)] gap-y-[var(--site-space-y)] sm:gap-y-[calc(var(--site-space-y)/2)]"
   >
     {
       certificates.map((cert) => (
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-4 flex-1">
           <div class="flex gap-4 items-center text-success">
             <Icon icon="certified" class="h-16" />
             <span class="text-title-4">{cert.name}</span>
           </div>
-          <a class="shadow-2xl">
+          <a class="shadow-2xl w-fit" target="_blank">
             <ImgLinkHandler />
             <Image
               src={getManagedImage(cert.image.src)}
               alt={cert.image.alt}
-              class="w-[24rem]"
+              class="img-fade-in sm:w-[24rem]"
               loading="lazy"
             />
           </a>
