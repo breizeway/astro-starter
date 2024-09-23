@@ -34,7 +34,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
   >
     {
       !!description && (
-        <div class="blurb ">
+        <div class="blurb motion-safe:opacity-0 intersect:animate-fade-left intersect-once motion-reduce:intersect:animate-none">
           <Markdown content={description} noMarginY />
         </div>
       )
@@ -45,7 +45,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
           <a
             class={`
               flex items-center gap-[var(--site-space-x)] bg-full [&&]:bg-opacity-10 w-full rounded-lg p-[var(--site-space-x-sm)] no-touch:hover:shadow-xl transition-all duration-200
-              motion-safe:opacity-0 intersect:animate-fade-right intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+              motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none
             `}
             href={dist.href}
             target="_blank"

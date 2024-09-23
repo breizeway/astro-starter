@@ -77,22 +77,22 @@ const { title } = Astro.props;
     src: url("/fonts/poppins-v21-latin-italic.woff2") format("woff2");
   }
 
-  /* poppins-700 - latin */
+  /* poppins-600 - latin */
   @font-face {
     font-display: swap;
     font-family: "poppins";
     font-style: normal;
-    font-weight: 700;
-    src: url("/fonts/poppins-v21-latin-700.woff2") format("woff2");
+    font-weight: 600;
+    src: url("/fonts/poppins-v21-latin-600.woff2") format("woff2");
   }
 
-  /* poppins-700italic - latin */
+  /* poppins-600italic - latin */
   @font-face {
     font-display: swap;
     font-family: "poppins";
     font-style: italic;
-    font-weight: 700;
-    src: url("/fonts/poppins-v21-latin-700italic.woff2") format("woff2");
+    font-weight: 600;
+    src: url("/fonts/poppins-v21-latin-600italic.woff2") format("woff2");
   }
 
   /* nunito-regular - latin */
@@ -161,7 +161,7 @@ const { title } = Astro.props;
         0px -2px 2px 0px oklch(0 0 0 / 0.3) inset;
     }
     .glass-wide {
-      border-radius: 2.5rem;
+      border-radius: 2rem;
       box-shadow:
         1px 2px 2px 0px oklch(100 0 0 / 0.3) inset,
         -1px -2px 2px 0px oklch(0 0 0 / 0.3) inset;
@@ -187,6 +187,9 @@ const { title } = Astro.props;
   @layer utilities {
     .site-section {
       @apply scroll-mt-[calc(var(--nav-height)+var(--site-space-x))];
+    }
+    .no-animation-delay {
+      animation-delay: 0s;
     }
   }
 </style>

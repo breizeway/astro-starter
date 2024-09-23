@@ -27,12 +27,13 @@ const SelectedIcon = svgMap[icon];
 
 <style is:global>
   icon-comp {
-    @apply inline-flex h-[1em] max-w-full;
+    @apply inline-flex h-[1em] max-w-full overflow-visible;
 
     & svg {
       height: inherit;
       width: inherit;
       fill: currentColor;
+      overflow: visible;
     }
   }
 </style>

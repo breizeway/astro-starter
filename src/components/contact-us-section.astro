@@ -22,16 +22,17 @@ const { sectionId, sectionClass } = SECTION_DEFS["contact-us"];
         flex flex-col items-stretch justify-evenly gap-y-[var(--site-space-y)] transition-[gap] text-center
         md:flex md:flex-row md:flex-wrap md:gap-x-[var(--site-space-x)]
         xl:flex-nowrap
-        `}
+      `}
     >
       {
         [emailCard, phoneCard, mailingCard, shippingCard].map((card, idx) => (
           <div class="md:basis-1/3 w-full">
             <div
+              style={`animation-delay: ${idx * 100}ms`}
               class:list={`
-              bracket-card transition mx-auto w-full max-w-sm h-full grid grid-flow-row p-6 gap-12 
-              motion-safe:opacity-0 intersect:animate-fade-right intersect-once motion-reduce:intersect:animate-none
-              sm:strict-relational-rows md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
+                bracket-card transition mx-auto w-full max-w-sm h-full grid grid-flow-row p-6 gap-12 
+                motion-safe:opacity-0 intersect:animate-fade-right intersect-once motion-reduce:intersect:animate-none
+                sm:strict-relational-rows md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none
               `}
             >
               <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
@@ -46,10 +47,17 @@ const { sectionId, sectionClass } = SECTION_DEFS["contact-us"];
 </PageSection>
 
 <style>
+  .bracket-card {
+    @apply max-xl:!no-animation-delay;
+  }
+
   @tailwind utilities;
   @layer utilities {
     .strict-relational-rows {
       grid-template-rows: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 3fr);
+    }
+    .no-animation-delay {
+      animation-delay: 0s;
     }
   }
 </style>

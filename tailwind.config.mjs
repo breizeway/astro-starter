@@ -13,7 +13,7 @@ const COMMON_VARS = {
   "--site-space-y-lg": "8rem",
   "--site-space-y-sm": "4rem",
 
-  "--icon-stroke-lg": "3px",
+  "--icon-stroke-lg": "4px",
   "--nav-height": "5rem",
   "--page-section-py": "var(--site-space-y)",
   "--banner-section-pb": "12rem",
@@ -283,18 +283,18 @@ export default {
         ".text-title-2": {
           fontSize: "2.5rem",
           fontFamily: theme("fontFamily.title"),
-          fontWeight: 700,
+          fontWeight: 600,
         },
         ".text-title-3": {
           fontSize: theme("fontSize.2xl"),
           fontFamily: theme("fontFamily.title"),
-          fontWeight: 700,
+          fontWeight: 600,
           textTransform: "uppercase",
         },
         ".text-title-4": {
           fontSize: theme("fontSize.2xl"),
           fontFamily: theme("fontFamily.title"),
-          fontWeight: 700,
+          fontWeight: 600,
         },
         ".text-empty": {
           "--tw-text-opacity": "1",

@@ -20,9 +20,9 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
   <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
     <div
       class={`
-        glassy glass-full glass-card glass-responsive p-0 text-empty flex flex-col transition-all sm:max-w-[30rem] sm:mx-auto
+        glassy glass-full glass-card glass-responsive p-0 pb-[calc(var(--site-space-x)/2)] text-empty flex flex-col transition-all sm:max-w-[30rem] sm:mx-auto
         motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
-        md:flex-row md:max-w-max
+        md:flex-row md:max-w-max sm:pt-[calc(var(--site-space-x)/2)]
       `}
     >
       <div
@@ -32,8 +32,8 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
           src={getManagedImage(image.src)}
           alt={image.alt}
           class={`
-            img-fade-in w-full h-full object-cover rounded-0
-            sm:rounded-xl 
+            img-fade-in w-full h-full object-cover border-0 border-base-content border-opacity-20 rounded-none overflow-clip shadow-xl
+            sm:rounded-md sm:border
           `}
           loading="eager"
         />
@@ -53,12 +53,13 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
       {
         [locationCard, businessCard, serviceCard].map((card, idx) => (
           <div
+            style={`animation-delay: ${idx * 100}ms`}
             class:list={`
-            bracket-card transition flex-1 max-w-sm grid grid-flow-row p-6 gap-12 
-            motion-safe:opacity-0 intersect:animate-fade-right intersect-once motion-reduce:intersect:animate-none
-            sm:min-w-[20rem] 
-            md:strict-relational-rows md:max-w-xs md:gap-0 md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
-          `}
+              bracket-card transition flex-1 max-w-sm grid grid-flow-row p-6 gap-12 
+              motion-safe:opacity-0 intersect:animate-fade-right intersect-once motion-reduce:intersect:animate-none
+              sm:min-w-[20rem] 
+              md:strict-relational-rows md:max-w-xs md:gap-0 md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
+            `}
           >
             <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
             <p class="text-title-3 text-primary">{card.title}</p>
@@ -69,6 +70,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
     </div>
   </div>
 </PageSection>
+
 <style>
   .page-section {
     @apply pt-0;
@@ -89,12 +91,19 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
     .about-description {
       --bc: var(--color-empty);
     }
+
+    .bracket-card {
+      @apply max-xl:!no-animation-delay;
+    }
   }
 
   @tailwind utilities;
   @layer utilities {
     .strict-relational-rows {
       grid-template-rows: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 6fr);
+    }
+    .no-animation-delay {
+      animation-delay: 0s;
     }
   }
 </style>
