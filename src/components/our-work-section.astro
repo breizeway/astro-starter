@@ -17,8 +17,8 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
   class:list={[
     sectionClass,
     `
-      glassy glass-full glass-card glass-responsive pt-0 text-empty [&&]:px-0 flex flex-col 
-      motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+      glassy glass-full glass-card glass-responsive text-empty [&&]:p-0 flex flex-col 
+      motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none
     `,
   ]}
 >
@@ -49,15 +49,16 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
   {
     galleries.map((gallery, idx) => (
       <div
-        class:list={["gallery-carousel", { hidden: !!idx }]}
+        class:list={[
+          "gallery-carousel py-[calc(var(--site-space-x)*1.5)] flex flex-col gap-[calc(var(--site-space-x)*1.5)]",
+          { hidden: !!idx },
+        ]}
         data-gallery={makeId(gallery.name)}
       >
         {!!gallery.description && (
-          <Markdown
-            content={gallery.description}
-            noMarginY
-            class="p-[var(--site-space-x)] mx-auto w-fit [&&]:max-w-[32rem] text-center"
-          />
+          <div class="blurb">
+            <Markdown content={gallery.description} noMarginY />
+          </div>
         )}
         <Carousel images={gallery.images} />
       </div>

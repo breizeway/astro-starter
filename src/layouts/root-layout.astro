@@ -154,8 +154,6 @@ const { title } = Astro.props;
     }
     .glass-narrow {
       border-radius: 0;
-      /* border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0; */
       margin-left: calc(var(--site-space-x) * -1);
       margin-right: calc(var(--site-space-x) * -1);
       box-shadow:
@@ -172,6 +170,16 @@ const { title } = Astro.props;
     }
     .glass-responsive {
       @apply glass-narrow sm:glass-wide;
+    }
+    .intersect-once {
+    }
+    .blurb {
+      @apply relative pl-[3.0rem] pr-[1.2rem] w-full max-w-[32rem] mx-auto text-current;
+
+      &::before {
+        content: "";
+        @apply absolute left-[1.2rem] h-full w-[0.6rem] bg-current opacity-75;
+      }
     }
   }
 

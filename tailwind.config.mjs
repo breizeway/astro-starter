@@ -39,9 +39,9 @@ const COMMON_VARS = {
 
   "--fade-up-start-translate": "4rem",
   "--fade-up-end-translate": "0%",
-  "--fade-right-start-translate": "2rem",
+  "--fade-right-start-translate": "-2rem",
   "--fade-right-end-translate": "0%",
-  "--fade-left-start-translate": "-2rem",
+  "--fade-left-start-translate": "2rem",
   "--fade-left-end-translate": "0%",
   "--fade-down-start-translate": "-4rem",
   "--fade-down-end-translate": "0%",
@@ -190,7 +190,7 @@ export default {
             top: "calc(var(--icon-stroke-lg)*-1)",
             bottom: "calc(var(--icon-stroke-lg)*-1)",
             left: "calc(var(--icon-stroke-lg)*-1)",
-            width: "calc(var(--icon-stroke-lg)*14)",
+            width: "3rem",
 
             "background-color": "currentColor",
             "clip-path": `polygon(
@@ -208,7 +208,7 @@ export default {
             top: "calc(var(--icon-stroke-lg)*-1)",
             bottom: "calc(var(--icon-stroke-lg)*-1)",
             right: "calc(var(--icon-stroke-lg)*-1)",
-            width: "calc(var(--icon-stroke-lg)*14)",
+            width: "3rem",
 
             "background-color": "currentColor",
             "clip-path": `polygon(
@@ -237,6 +237,9 @@ export default {
           // defined in root-layout @layer components
         },
         ".glass-bubble": {
+          // defined in root-layout @layer components
+        },
+        ".blurb": {
           // defined in root-layout @layer components
         },
       });
@@ -365,7 +368,7 @@ export default {
           secondary: "#455270",
           accent: "#D9AF72",
           // basically a color that should be dark on both light and dark, probably slightly lighter than base-300 on dark
-          neutral: "#555",
+          neutral: "#6E7B8C",
 
           // "neutral-content": "#ffffff",
           "base-100": "#fafafa",
@@ -383,12 +386,12 @@ export default {
           primary: "#449FF4",
           secondary: "#455270",
           accent: "#D9AF72",
-          neutral: "#aaa",
+          neutral: "#6B7B8C",
           "base-100": "#414141",
           // made up light blue
           // "base-content": "#E3E8EF",
           // "base-content": "#fff",
-          "base-content": "#D9E4E9",
+          "base-content": "#AAB8C2",
 
           "--color-empty": "0% 0 0",
           "--color-full": "100% 0 0",

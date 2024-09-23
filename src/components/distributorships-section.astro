@@ -4,9 +4,10 @@ import { getEntry } from "astro:content";
 import { SECTION_DEFS } from "../constants";
 import type { ContentSection, Distributorships } from "../content/types";
 import { getManagedImage } from "../helpers/media";
+import Markdown from "./common/markdown.astro";
 
 const {
-  data: { title, distributors },
+  data: { title, description, distributors },
 } = (await getEntry(
   "home-page",
   "distributorships",
@@ -29,22 +30,27 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
     <span class="text-title-2">{title}</span>
   </div>
   <div
-    class="p-[var(--site-space-x)] pb-[calc(var(--site-space-x)*2)] flex flex-col flex-wrap md:items-start md:flex-row gap-y-[var(--site-space-y-sm)]"
+    class="p-[var(--site-space-x)] py-[calc(var(--site-space-x)*1.5)] flex flex-col gap-[calc(var(--site-space-x)*1.5)]"
   >
     {
-      distributors.map((dist) => (
-        <div
-          class={`
-            basis-1/2 w-full md:pr-[var(--site-space-x)]
-            motion-safe:opacity-0 intersect:animate-fade-right intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
-          `}
-        >
+      !!description && (
+        <div class="blurb ">
+          <Markdown content={description} noMarginY />
+        </div>
+      )
+    }
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-[var(--site-space-x)]">
+      {
+        distributors.map((dist) => (
           <a
-            class="flex items-start gap-4 w-fit mr-auto hover:no-touch:underline"
+            class={`
+              flex items-center gap-[var(--site-space-x)] bg-full [&&]:bg-opacity-10 w-full rounded-lg p-[var(--site-space-x-sm)] no-touch:hover:shadow-xl transition-all duration-200
+              motion-safe:opacity-0 intersect:animate-fade-right intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+            `}
             href={dist.href}
             target="_blank"
           >
-            <div class="aspect-square flex flex-col justify-start">
+            <div class="aspect-square flex flex-col justify-center">
               <Image
                 src={getManagedImage(dist.image.src)}
                 alt={dist.image.alt}
@@ -54,9 +60,9 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
             </div>
             <span class="text-title-4">{dist.name}</span>
           </a>
-        </div>
-      ))
-    }
+        ))
+      }
+    </div>
   </div>
 </div>
 

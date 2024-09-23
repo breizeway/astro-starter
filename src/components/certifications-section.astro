@@ -5,10 +5,11 @@ import { SECTION_DEFS } from "../constants";
 import type { Certifications, ContentSection } from "../content/types";
 import { getManagedImage } from "../helpers/media";
 import Icon from "./common/icon.astro";
+import Markdown from "./common/markdown.astro";
 import ImgLinkHandler from "./common/raw-svgs/img-link-handler.astro";
 
 const {
-  data: { title, certificates },
+  data: { title, description, certificates },
 } = (await getEntry(
   "home-page",
   "certifications",
@@ -30,32 +31,43 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
   <div class="glass-empty-header p-[var(--site-space-x)]">
     <span class="text-title-2">{title}</span>
   </div>
+
   <div
-    class="p-[var(--site-space-x)] pb-[calc(var(--site-space-x)*2)] flex flex-col md:flex-row gap-y-[var(--site-space-y)] sm:gap-y-[calc(var(--site-space-y)/2)]"
+    class="p-[var(--site-space-x)] py-[calc(var(--site-space-x)*1.5)] flex flex-col gap-[calc(var(--site-space-x)*1.5)]"
   >
     {
-      certificates.map((cert) => (
-        <div
-          class={`
-            flex flex-col gap-4 flex-1 md:pr-[var(--site-space-x)]
-            motion-safe:opacity-0 intersect:animate-fade-right intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
-          `}
-        >
-          <div class="flex items-center text-success gap-4">
-            <Icon icon="certified" class="h-12" />
-            <span class="text-title-4">{cert.name}</span>
-          </div>
-          <a class="shadow-2xl w-fit cursor-zoom-in" target="_blank">
-            <ImgLinkHandler />
-            <Image
-              src={getManagedImage(cert.image.src)}
-              alt={cert.image.alt}
-              class="img-fade-in sm:w-[24rem]"
-              loading="lazy"
-            />
-          </a>
+      !!description && (
+        <div class="blurb">
+          <Markdown content={description} noMarginY />
         </div>
-      ))
+      )
     }
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-[var(--site-space-x)]">
+      {
+        certificates.map((cert) => (
+          <div
+            class={`
+              flex flex-col gap-[var(--site-space-x-sm)] bg-full [&&]:bg-opacity-10 w-full rounded-lg p-[var(--site-space-x-sm)] 
+              motion-safe:opacity-0 intersect:animate-fade-right intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+            `}
+          >
+            <div class="flex items-center text-success gap-4">
+              <Icon icon="certified" class="h-12" />
+              <span class="text-title-4">{cert.name}</span>
+            </div>
+            <a class="w-fit cursor-zoom-in" target="_blank">
+              <ImgLinkHandler />
+              <Image
+                src={getManagedImage(cert.image.src)}
+                alt={cert.image.alt}
+                class="img-fade-in w-full"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </div>
