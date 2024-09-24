@@ -4,8 +4,7 @@ export const scrollXIntoView = (ele?: Element | HTMLElement | null) => {
   element.parentElement?.scrollTo({
     left:
       element?.offsetLeft -
-      element.parentElement?.offsetWidth / 2 -
-      element.offsetWidth / 2,
+      (element.parentElement?.offsetWidth - element?.offsetWidth) / 2,
     behavior: "smooth",
   });
 };

@@ -61,7 +61,7 @@ const { images, ...restProps } = Astro.props;
   <div
     class="carousel-comp__controls flex w-full justify-center items-center gap-2 py-2 px-[var(--carousel-px)]"
   >
-    <div class="flex gap-2 items-center overflow-x-scroll no-scrollbar">
+    <div class="flex gap-2 overflow-x-scroll no-scrollbar">
       {
         images.map((_, idx) => (
           <button
@@ -200,7 +200,7 @@ const { images, ...restProps } = Astro.props;
       this._activeSlideIdx = idx;
 
       this.querySelectorAll(`.carousel-comp__pg-btn`).forEach((e, idx) => {
-        if (idx === this.activeSlideIdx) {
+        if (idx === this._activeSlideIdx) {
           e.classList.add("btn-active");
           scrollXIntoView(e);
         } else {
@@ -215,9 +215,6 @@ const { images, ...restProps } = Astro.props;
         | HTMLElement
         | undefined;
       scrollXIntoView(slide);
-      this.scrollContainer?.scrollTo({
-        left: slide?.offsetLeft,
-      });
     }
 
     incrementSlide(by: number) {

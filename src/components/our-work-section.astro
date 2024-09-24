@@ -83,6 +83,8 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 </style>
 
 <script>
+  import { scrollXIntoView } from "../helpers/scroll";
+
   class WorkGalleries extends HTMLElement {
     constructor() {
       super();
@@ -94,13 +96,9 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
         const tabGallery = tab.dataset.gallery;
 
         tab.addEventListener("click", () => {
-          setTimeout(() => {
-            tab.scrollIntoView({
-              block: "nearest",
-              inline: "center",
-              behavior: "smooth",
-            });
-          });
+          // setTimeout(() => {
+          scrollXIntoView(tab.parentElement);
+          // });
           tabs.forEach((thisTab) => {
             const thisTabGallery = thisTab.dataset.gallery;
             if (tabGallery === thisTabGallery) {
