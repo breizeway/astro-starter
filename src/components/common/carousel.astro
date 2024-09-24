@@ -207,10 +207,10 @@ const { images, ...restProps } = Astro.props;
           e.classList.remove("btn-active");
         }
       });
+      if (!this.paused) this.restart();
     }
 
     scrollToIdx(idx: number) {
-      if (!this.paused) this.restart();
       const slide = this.scrollContainer?.children[idx] as
         | HTMLElement
         | undefined;
