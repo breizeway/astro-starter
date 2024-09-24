@@ -3,7 +3,7 @@ backend:
   branch: main # Branch to update (optional; defaults to master)
 site_url: https://main--dapper-medovik-b8af9d.netlify.app/
 display_url: https://main--dapper-medovik-b8af9d.netlify.app/
-logo_url: https://main--dapper-medovik-b8af9d.netlify.app/favicon.svg
+logo_url: https://main--dapper-medovik-b8af9d.netlify.app/logo-large.svg
 media_folder: src/assets/images/managed # Location where files will be stored in the repo
 public_folder: src/assets/images/managed # The src attribute for uploaded media
 collections:
