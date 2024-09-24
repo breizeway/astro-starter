@@ -34,13 +34,11 @@ const props = Astro.props;
   </ul>
 </site-tabs>
 
-<style>
-  ul {
+<style is:global>
+  site-tabs ul {
     @apply h-full flex gap-3;
   }
-</style>
 
-<style is:global>
   #site-header.unstuck .tl-tab.tl-tab--selected {
     &&:not(:hover) {
       @apply border-b-transparent border-l-transparent bg-inherit;
