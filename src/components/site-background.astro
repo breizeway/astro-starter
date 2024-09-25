@@ -43,6 +43,7 @@ const props = Astro.props;
 </style>
 
 <script>
+  console.log(`:::SCRIPT::: `, "ran");
   const styles = getComputedStyle(document.documentElement);
   const canvas = document.getElementById(
     "bg-canvas",
@@ -70,6 +71,7 @@ const props = Astro.props;
     ctx.lineTo(55, 0);
     ctx.fill();
 
+    console.log(`:::"CANVAS-FINISHED"::: `, "true");
     canvas?.classList.add("canvas-loaded");
   }
 </script>
