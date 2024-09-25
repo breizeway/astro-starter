@@ -31,29 +31,30 @@ marked.use({ gfm: true, breaks: true });
 <style is:global>
   .markdown {
     @apply prose max-w-full;
-    code {
-      @apply rounded-md;
+  }
+  .markdown blockquote {
+    ::before,
+    ::after {
+      opacity: 0.66;
     }
-    blockquote {
-      ::before,
-      ::after {
-        opacity: 0.66;
-      }
+  }
+  .markdown code {
+    @apply rounded-md;
+  }
+  .markdown * {
+    color: currentColor;
+  }
+
+  .markdown.no-margin-y > *,
+  .markdown.no-margin-top > * {
+    &:first-child {
+      margin-top: 0;
     }
-    &.no-margin-y > *,
-    &.no-margin-top > * {
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-    &.no-margin-y > *,
-    &.no-margin-bottom > * {
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-    & * {
-      color: currentColor;
+  }
+  .markdown.no-margin-y > *,
+  .markdown.no-margin-bottom > * {
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 </style>

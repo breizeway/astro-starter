@@ -43,35 +43,48 @@ const props = Astro.props;
 </style>
 
 <script>
-  console.log(`:::SCRIPT::: `, "ran");
-  const styles = getComputedStyle(document.documentElement);
-  const canvas = document.getElementById(
-    "bg-canvas",
-  ) as HTMLCanvasElement | null;
-  const ctx = canvas?.getContext("2d");
-  if (ctx) {
-    ctx.filter = "blur(8px)";
-    ctx.globalAlpha = 0.45;
+  let drawn = false;
+  const drawCanvas = () => {
+    const styles = getComputedStyle(document.documentElement);
+    const canvas = document.getElementById(
+      "bg-canvas",
+    ) as HTMLCanvasElement | null;
+    const ctx = canvas?.getContext("2d");
+    if (ctx) {
+      ctx.filter = "blur(8px)";
+      ctx.globalAlpha = 0.45;
 
-    ctx.fillStyle = styles.getPropertyValue("--site-bg-color-1");
-    ctx.beginPath();
-    ctx.moveTo(30, 0);
-    ctx.lineTo(70, 100);
-    ctx.lineTo(25, 100);
-    ctx.lineTo(0, 25);
-    ctx.lineTo(0, 0);
-    ctx.fill();
+      const stylesLoaded = !!styles.getPropertyValue("--site-bg-color-1");
+      if (!stylesLoaded) return;
 
-    ctx.fillStyle = styles.getPropertyValue("--site-bg-color-2");
-    ctx.beginPath();
-    ctx.moveTo(30, 0);
-    ctx.lineTo(70, 100);
-    ctx.lineTo(100, 100);
-    ctx.lineTo(100, 95);
-    ctx.lineTo(55, 0);
-    ctx.fill();
+      ctx.fillStyle = styles.getPropertyValue("--site-bg-color-1");
+      ctx.beginPath();
+      ctx.moveTo(30, 0);
+      ctx.lineTo(70, 100);
+      ctx.lineTo(25, 100);
+      ctx.lineTo(0, 25);
+      ctx.lineTo(0, 0);
+      ctx.fill();
 
-    console.log(`:::"CANVAS-FINISHED"::: `, "true");
-    canvas?.classList.add("canvas-loaded");
-  }
+      ctx.fillStyle = styles.getPropertyValue("--site-bg-color-2");
+      ctx.beginPath();
+      ctx.moveTo(30, 0);
+      ctx.lineTo(70, 100);
+      ctx.lineTo(100, 100);
+      ctx.lineTo(100, 95);
+      ctx.lineTo(55, 0);
+      ctx.fill();
+
+      canvas?.classList.add("canvas-loaded");
+      drawn = true;
+      console.log(`:::DRAWN::: `, drawn);
+    }
+  };
+
+  drawCanvas();
+  window.addEventListener("load", () => {
+    console.log(`:::"LOAD"::: `, "load");
+    // sometimes it hasn't loaded yet when run
+    if (!drawn) drawCanvas();
+  });
 </script>
