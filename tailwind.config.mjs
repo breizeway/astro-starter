@@ -6,6 +6,17 @@ import plugin from "tailwindcss/plugin";
 import { SITE_TAB_WIDTH } from "./src/constants";
 import { intersectionPlugin } from "./src/library/intersection-handler";
 
+const customColor = (colorVar, { opacityVariable, opacityValue }) => {
+  if (opacityValue !== undefined) {
+    return `oklch(var(${colorVar}) / ${opacityValue})`;
+  }
+  if (opacityVariable !== undefined) {
+    return `oklch(var(${colorVar}) / var(${opacityVariable}, 1))`;
+  }
+
+  return `oklch(var(${colorVar}))`;
+};
+
 const COMMON_VARS = {
   // sizes
   "--site-space-x-lg": "2rem",
@@ -48,10 +59,18 @@ const COMMON_VARS = {
 };
 
 // /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      colors: {
+        empty: (params) => {
+          return customColor("--color-empty", params);
+        },
+        full: (params) => {
+          return customColor("--color-full", params);
+        },
+      },
       screens: {
         "nav-lrg": `${SITE_TAB_WIDTH}px`,
       },
@@ -233,12 +252,6 @@ export default {
         ".tl-tab--selected": {
           // defined in root-layout @layer components
         },
-        ".glass-card": {
-          // defined in root-layout @layer components
-        },
-        ".glass-bubble": {
-          // defined in root-layout @layer components
-        },
         ".blurb": {
           // defined in root-layout @layer components
         },
@@ -296,46 +309,6 @@ export default {
           fontFamily: theme("fontFamily.title"),
           fontWeight: 600,
         },
-        ".text-empty": {
-          "--tw-text-opacity": "1",
-          color: "oklch(var(--color-empty)/var(--tw-text-opacity))",
-        },
-        ".text-full": {
-          "--tw-text-opacity": "1",
-          color: "oklch(var(--color-full)/var(--tw-text-opacity))",
-        },
-        ".bg-empty": {
-          "--tw-bg-opacity": "1",
-          backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
-        },
-        ".bg-full": {
-          "--tw-bg-opacity": "1",
-          backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
-        },
-        ".glassy": {
-          backdropFilter: "blur(75px)",
-        },
-        ".glass-empty-header": {
-          "--tw-bg-opacity": "0.3",
-          backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
-        },
-        ".glass-base": {
-          "--tw-bg-opacity": "0.35",
-          backgroundColor:
-            "var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)))",
-        },
-        ".glass-empty": {
-          "--tw-bg-opacity": "0.5",
-          backgroundColor: "oklch(var(--color-empty)/var(--tw-bg-opacity))",
-        },
-        ".glass-full": {
-          "--tw-bg-opacity": "0.3",
-          backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
-        },
-        ".glass-full-header": {
-          "--tw-bg-opacity": "0.25",
-          backgroundColor: "oklch(var(--color-full)/var(--tw-bg-opacity))",
-        },
         ".no-scrollbar": {
           scrollbarWidth: "none",
           "&::-webkit-scrollbar": {
@@ -349,6 +322,43 @@ export default {
           "& > *": {
             scrollSnapAlign: "center",
           },
+        },
+        ".intersect-once": {},
+        ".glassy": {
+          // defined in root-layout @layer utilities
+        },
+        ".glass-card": {
+          // defined in root-layout @layer utilities
+        },
+        ".glass-wide": {
+          // defined in root-layout @layer utilities
+        },
+        ".glass-narrow": {
+          // defined in root-layout @layer utilities
+        },
+        ".glass-responsive": {
+          // defined in root-layout @layer utilities
+        },
+        ".glass-bubble": {
+          // defined in root-layout @layer utilities
+        },
+        ".glass-empty-header": {
+          // defined in root-layout @layer utilities
+        },
+        ".glass-base": {
+          // defined in root-layout @layer utilities
+        },
+        ".glass-empty": {
+          // defined in root-layout @layer utilities
+        },
+        ".glass-full": {
+          // defined in root-layout @layer utilities
+        },
+        ".glass-full-header": {
+          // defined in root-layout @layer utilities
+        },
+        ".no-animation-delay": {
+          // defined in root-layout @layer utilities
         },
         ".site-section": {
           // defined in root-layout @layer utilities
@@ -405,3 +415,5 @@ export default {
   },
   // darkMode: ["class", '[data-theme="dark"]'],
 };
+
+export default config;

@@ -73,11 +73,9 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 
 <style>
   .gallery-carousel {
+    --carousel-control-color: var(--color-empty);
     .markdown {
-      --bc: var(--color-empty);
-    }
-    .carousel-comp__controls {
-      --bc: var(--color-empty);
+      @apply text-empty;
     }
   }
 </style>
@@ -96,9 +94,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
         const tabGallery = tab.dataset.gallery;
 
         tab.addEventListener("click", () => {
-          // setTimeout(() => {
           scrollXIntoView(tab.parentElement);
-          // });
           tabs.forEach((thisTab) => {
             const thisTabGallery = thisTab.dataset.gallery;
             if (tabGallery === thisTabGallery) {

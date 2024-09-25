@@ -91,6 +91,10 @@ const { images, ...restProps } = Astro.props;
       @apply btn min-w-8 min-h-8 max-w-8 max-h-8 !btn-circle bg-neutral bg-opacity-60 no-touch:hover:bg-neutral no-touch:hover:bg-opacity-70 backdrop-blur-xl border-0;
     }
   }
+
+  .carousel-comp__controls {
+    --bc: var(--carousel-control-color, --bc);
+  }
 </style>
 
 <script>

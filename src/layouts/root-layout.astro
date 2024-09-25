@@ -164,6 +164,27 @@ const { title } = Astro.props;
     .tl-tab-y.tl-tab--selected {
       @apply border-l-primary bg-base-content bg-opacity-10 no-touch:hover:bg-base-content no-touch:hover:bg-opacity-5;
     }
+    .blurb {
+      @apply relative pl-[3.0rem] pr-[1.2rem] w-full max-w-[32rem] mx-auto text-current;
+
+      &::before {
+        content: "";
+        @apply absolute left-[1.2rem] h-full w-[0.6rem] bg-current opacity-75;
+      }
+    }
+  }
+
+  @tailwind utilities;
+  @layer utilities {
+    .site-section {
+      @apply scroll-mt-[calc(var(--nav-height)+var(--site-space-x))];
+    }
+    .no-animation-delay {
+      animation-delay: 0s;
+    }
+    .glassy {
+      backdrop-filter: blur(75px);
+    }
     .glass-card {
       @apply p-[var(--site-space-x)] transition-all overflow-clip;
     }
@@ -186,25 +207,20 @@ const { title } = Astro.props;
     .glass-responsive {
       @apply glass-narrow sm:glass-wide;
     }
-    .intersect-once {
+    .glass-empty-header {
+      @apply bg-opacity-30 bg-empty;
     }
-    .blurb {
-      @apply relative pl-[3.0rem] pr-[1.2rem] w-full max-w-[32rem] mx-auto text-current;
-
-      &::before {
-        content: "";
-        @apply absolute left-[1.2rem] h-full w-[0.6rem] bg-current opacity-75;
-      }
+    .glass-base {
+      @apply bg-opacity-30 bg-base-100;
     }
-  }
-
-  @tailwind utilities;
-  @layer utilities {
-    .site-section {
-      @apply scroll-mt-[calc(var(--nav-height)+var(--site-space-x))];
+    .glass-empty {
+      @apply bg-opacity-50 bg-empty;
     }
-    .no-animation-delay {
-      animation-delay: 0s;
+    .glass-full {
+      @apply bg-opacity-30 bg-full;
+    }
+    .glass-full-header {
+      @apply bg-opacity-25 bg-full;
     }
   }
 </style>
