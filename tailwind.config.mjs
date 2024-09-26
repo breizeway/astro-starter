@@ -260,7 +260,6 @@ const config = {
         ".init-dynamic-site-vars": {
           "--site-space-x": "var(--site-space-x-sm)",
           "--site-space-y": "var(--site-space-y-sm)",
-          "--site-py": "1.25rem",
           "@screen sm": {
             "--site-space-x": "var(--site-space-x-lg)",
             "--site-space-y": "var(--site-space-y-lg)",
@@ -284,10 +283,6 @@ const config = {
           transitionTimingFunction: theme("transitionTimingFunction.DEFAULT"),
           paddingLeft: "var(--site-space-x)",
           paddingRight: "var(--site-space-x)",
-        },
-        ".site-py": {
-          paddingTop: "var(--site-py)",
-          paddingBottom: "var(--site-py)",
         },
         ".text-title-1": {
           fontSize: theme("fontSize.5xl"),
