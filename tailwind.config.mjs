@@ -21,7 +21,7 @@ const COMMON_VARS = {
   // sizes
   "--site-space-x-lg": "2rem",
   "--site-space-x-sm": "1rem",
-  "--site-space-y-lg": "14rem",
+  "--site-space-y-lg": "12rem",
   "--site-space-y-sm": "6rem",
 
   "--icon-stroke": "3px",
