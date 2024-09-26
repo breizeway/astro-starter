@@ -36,7 +36,7 @@ const COMMON_VARS = {
 
   // colors
   "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)))",
-  "--site-bg-color-2": "var(--fallback-n, oklch(var(--n)))",
+  "--site-bg-color-2": "var(--fallback-a, oklch(var(--a)))",
 
   // animations
   "--tw-animate-duration": "500ms",
@@ -376,7 +376,7 @@ const config = {
           // ...require("daisyui/src/theming/themes")["light"],
           primary: "#449FF4",
           secondary: "#455270",
-          accent: "#D9AF72",
+          accent: "#888",
           // basically a color that should be dark on both light and dark, probably slightly lighter than base-300 on dark
           neutral: "#6E7B8C",
 
@@ -395,7 +395,7 @@ const config = {
         dark: {
           primary: "#449FF4",
           secondary: "#455270",
-          accent: "#D9AF72",
+          accent: "#888",
           neutral: "#6B7B8C",
           "base-100": "#414141",
           // made up light blue
