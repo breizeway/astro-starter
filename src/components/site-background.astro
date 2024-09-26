@@ -77,13 +77,11 @@ const props = Astro.props;
 
       canvas?.classList.add("canvas-loaded");
       drawn = true;
-      console.log(`:::DRAWN::: `, drawn);
     }
   };
 
   drawCanvas();
   window.addEventListener("load", () => {
-    console.log(`:::"LOAD"::: `, "load");
     // sometimes it hasn't loaded yet when run
     if (!drawn) drawCanvas();
   });

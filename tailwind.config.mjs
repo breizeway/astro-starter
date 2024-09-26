@@ -21,10 +21,10 @@ const COMMON_VARS = {
   // sizes
   "--site-space-x-lg": "2rem",
   "--site-space-x-sm": "1rem",
-  "--site-space-y-lg": "8rem",
-  "--site-space-y-sm": "4rem",
+  "--site-space-y-lg": "14rem",
+  "--site-space-y-sm": "6rem",
 
-  "--icon-stroke-lg": "4px",
+  "--icon-stroke": "3px",
   "--nav-height": "5rem",
   "--page-section-py": "var(--site-space-y)",
   "--banner-section-pb": "12rem",
@@ -199,23 +199,23 @@ const config = {
       addComponents({
         ".bracket-card": {
           position: "relative",
-          border: "var(--icon-stroke-lg) solid transparent",
+          border: "var(--icon-stroke) solid transparent",
           width: "fit-content",
           "min-width": "108px",
 
           "&::before": {
             content: "''",
             position: "absolute",
-            top: "calc(var(--icon-stroke-lg)*-1)",
-            bottom: "calc(var(--icon-stroke-lg)*-1)",
-            left: "calc(var(--icon-stroke-lg)*-1)",
+            top: "calc(var(--icon-stroke)*-1)",
+            bottom: "calc(var(--icon-stroke)*-1)",
+            left: "calc(var(--icon-stroke)*-1)",
             width: "3rem",
 
             "background-color": "currentColor",
             "clip-path": `polygon(
               100% 0,
-              var(--icon-stroke-lg) var(--icon-stroke-lg),
-              var(--icon-stroke-lg) calc(100% - var(--icon-stroke-lg)),
+              var(--icon-stroke) var(--icon-stroke),
+              var(--icon-stroke) calc(100% - var(--icon-stroke)),
               100% 100%,
               0 100%,
               0 0
@@ -224,9 +224,9 @@ const config = {
           "&::after": {
             content: "''",
             position: "absolute",
-            top: "calc(var(--icon-stroke-lg)*-1)",
-            bottom: "calc(var(--icon-stroke-lg)*-1)",
-            right: "calc(var(--icon-stroke-lg)*-1)",
+            top: "calc(var(--icon-stroke)*-1)",
+            bottom: "calc(var(--icon-stroke)*-1)",
+            right: "calc(var(--icon-stroke)*-1)",
             width: "3rem",
 
             "background-color": "currentColor",
@@ -235,8 +235,8 @@ const config = {
               100% 0,
               100% 100%,
               0 100%,
-              calc(100% - var(--icon-stroke-lg)) calc(100% - var(--icon-stroke-lg)),
-              calc(100% - var(--icon-stroke-lg)) var(--icon-stroke-lg)
+              calc(100% - var(--icon-stroke)) calc(100% - var(--icon-stroke)),
+              calc(100% - var(--icon-stroke)) var(--icon-stroke)
             )`,
           },
         },
