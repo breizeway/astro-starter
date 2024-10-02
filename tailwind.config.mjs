@@ -368,6 +368,9 @@ const config = {
         ".site-section": {
           // defined in root-layout @layer utilities
         },
+        ".btn-overlay": {
+          // defined in root-layout @layer utilities
+        },
       });
     }),
     typography,
