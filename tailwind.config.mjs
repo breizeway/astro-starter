@@ -25,7 +25,7 @@ const COMMON_VARS = {
   "--site-space-y-sm": "4rem",
 
   "--icon-stroke": "3px",
-  "--nav-height": "5rem",
+  "--nav-height": "5.75rem",
   "--page-section-py": "var(--site-space-y)",
   "--banner-section-pb": "var(--site-space-y)",
   "--about-section-pb": "var(--carousel-img-height)",
@@ -79,7 +79,14 @@ const config = {
         sans: ["nunito", ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
+        xs: "1rem",
+        sm: "1.1rem",
         base: "1.2rem",
+        lg: "1.3rem",
+        xl: "1.4rem",
+        "2xl": "1.5rem",
+        "3xl": "2.1rem",
+        "4xl": "2.5rem",
       },
       transitionDuration: {
         ...defaultTheme.transitionDuration,
@@ -292,7 +299,7 @@ const config = {
           fontFamily: theme("fontFamily.title"),
         },
         ".text-title-2": {
-          fontSize: "2.5rem",
+          fontSize: theme("fontSize.4xl"),
           fontFamily: theme("fontFamily.title"),
           fontWeight: 600,
         },
