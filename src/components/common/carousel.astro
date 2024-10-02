@@ -61,27 +61,33 @@ const { images, ...restProps } = Astro.props;
   <div
     class="carousel-comp__controls flex w-full justify-center items-center gap-2 py-2 px-[var(--carousel-px)]"
   >
-    <div class="flex gap-2 overflow-x-scroll no-scrollbar">
-      {
-        images.map((_, idx) => (
-          <button
-            aria-label={`scroll to carousel slide ${idx + 1}`}
-            class:list={[
-              "carousel-comp__pg-btn btn btn-circle btn-xs btn-outline h-4 w-4 min-h-4",
-              { "btn-active": !idx },
-            ]}
-          />
-        ))
-      }
+    <div class="flex w-full justify-end">
+      <div
+        class="flex max-w-[7.5rem] gap-2 overflow-x-scroll no-scrollbar relative"
+      >
+        {
+          images.map((_, idx) => (
+            <button
+              aria-label={`scroll to carousel slide ${idx + 1}`}
+              class:list={[
+                "carousel-comp__pg-btn btn btn-circle btn-xs btn-outline h-4 w-4 min-h-4",
+                { "btn-active": !idx },
+              ]}
+            />
+          ))
+        }
+      </div>
     </div>
     <div class="divider divider-horizontal mx-1"></div>
-    <button
-      class="carousel-comp__play-btn btn btn-circle btn-xs btn-ghost"
-      aria-label="pause or play carousel"
-    >
-      <Icon icon="pause" class="h-5" />
-      <Icon icon="play" class="hidden h-5" />
-    </button>
+    <div class="w-full">
+      <button
+        class="carousel-comp__play-btn btn btn-circle btn-xs btn-ghost"
+        aria-label="pause or play carousel"
+      >
+        <Icon icon="pause" class="h-5" />
+        <Icon icon="play" class="hidden h-5" />
+      </button>
+    </div>
   </div>
 </carousel-comp>
 
@@ -203,12 +209,12 @@ const { images, ...restProps } = Astro.props;
     set activeSlideIdx(idx: number) {
       this._activeSlideIdx = idx;
 
-      this.querySelectorAll(`.carousel-comp__pg-btn`).forEach((e, idx) => {
+      this.querySelectorAll(`.carousel-comp__pg-btn`).forEach((ele, idx) => {
         if (idx === this._activeSlideIdx) {
-          e.classList.add("btn-active");
-          scrollXIntoView(e);
+          ele.classList.add("btn-active");
+          scrollXIntoView(ele);
         } else {
-          e.classList.remove("btn-active");
+          ele.classList.remove("btn-active");
         }
       });
       if (!this.paused) this.restart();

@@ -1,3 +1,6 @@
+/**
+ * Parent position must be set to `relative`.
+ */
 export const scrollXIntoView = (ele?: Element | HTMLElement | null) => {
   if (!ele) return;
   const element = ele as HTMLElement;
