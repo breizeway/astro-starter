@@ -24,7 +24,7 @@ import SiteTabs from "./site-tabs.astro";
     <LogoLink
       variant="large"
       id="nav-logo"
-      class="h-1/2 motion-reduce:duration-0"
+      class="h-1/2 duration-300 motion-reduce:duration-0"
       iconProps={{ class: "h-full" }}
     />
     <SiteTabs class="!hidden nav-lrg:!flex" />
@@ -37,7 +37,7 @@ import SiteTabs from "./site-tabs.astro";
     @apply -translate-x-1/4 opacity-0;
   }
   #site-header.stuck #nav-logo {
-    @apply -translate-x-0 opacity-100;
+    @apply -translate-x-0 opacity-100 duration-500;
   }
 </style>
 
