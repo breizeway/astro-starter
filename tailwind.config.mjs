@@ -78,6 +78,9 @@ const config = {
         title: ["poppins", ...defaultTheme.fontFamily.sans],
         sans: ["nunito", ...defaultTheme.fontFamily.sans],
       },
+      fontSize: {
+        // base: "16px",
+      },
       transitionDuration: {
         ...defaultTheme.transitionDuration,
         DEFAULT: "500ms",

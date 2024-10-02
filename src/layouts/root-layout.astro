@@ -46,6 +46,8 @@ const { title } = Astro.props;
 <style is:global>
   :root {
     @apply init-dynamic-site-vars;
+
+    font-size: 14px;
   }
 
   :root.is-server * {
@@ -205,7 +207,7 @@ const { title } = Astro.props;
       margin-right: 0;
     }
     .glass-responsive {
-      @apply glass-narrow sm:glass-wide;
+      @apply glass-wide;
     }
     .glass-empty-header {
       @apply bg-opacity-30 bg-empty;
