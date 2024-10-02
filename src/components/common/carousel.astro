@@ -63,7 +63,7 @@ const { images, ...restProps } = Astro.props;
   >
     <div class="flex w-full justify-end">
       <div
-        class="flex max-w-[7.5rem] gap-2 overflow-x-scroll no-scrollbar relative"
+        class="flex items-center max-w-[7.5rem] gap-2 overflow-x-scroll no-scrollbar relative"
       >
         {
           images.map((_, idx) => (
@@ -79,7 +79,7 @@ const { images, ...restProps } = Astro.props;
       </div>
     </div>
     <div class="divider divider-horizontal mx-1"></div>
-    <div class="w-full">
+    <div class="w-full flex items-center">
       <button
         class="carousel-comp__play-btn btn btn-circle btn-xs btn-ghost"
         aria-label="pause or play carousel"
