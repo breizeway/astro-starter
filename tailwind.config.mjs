@@ -21,13 +21,13 @@ const COMMON_VARS = {
   // sizes
   "--site-space-x-lg": "2rem",
   "--site-space-x-sm": "1rem",
-  "--site-space-y-lg": "12rem",
-  "--site-space-y-sm": "6rem",
+  "--site-space-y-lg": "8rem",
+  "--site-space-y-sm": "4rem",
 
   "--icon-stroke": "3px",
   "--nav-height": "5rem",
   "--page-section-py": "var(--site-space-y)",
-  "--banner-section-pb": "12rem",
+  "--banner-section-pb": "var(--site-space-y)",
   "--about-section-pb": "var(--carousel-img-height)",
 
   "--carousel-img-height": "30rem",
@@ -396,7 +396,7 @@ const config = {
           // made up light blue
           // "base-content": "#E3E8EF",
           // "base-content": "#fff",
-          "base-content": "#AAB8C2",
+          "base-content": "#eeeeee",
 
           "--color-empty": "0% 0 0",
           "--color-full": "100% 0 0",
