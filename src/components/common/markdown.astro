@@ -30,6 +30,7 @@ marked.use({ gfm: true, breaks: true });
 
 <style is:global>
   .markdown {
+    --tw-prose-body: var(--fallback-bc, oklch(var(--bc) / 1));
     @apply prose max-w-full;
   }
   .markdown blockquote {
@@ -42,6 +43,7 @@ marked.use({ gfm: true, breaks: true });
     @apply rounded-md;
   }
   .markdown * {
+    @apply text-base text-opacity-100;
     color: currentColor;
   }
 

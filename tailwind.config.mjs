@@ -79,7 +79,7 @@ const config = {
         sans: ["nunito", ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
-        // base: "16px",
+        base: "1.2rem",
       },
       transitionDuration: {
         ...defaultTheme.transitionDuration,
