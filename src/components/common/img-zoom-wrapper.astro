@@ -1,0 +1,92 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Icon from "./icon.astro";
+
+interface Props extends HTMLAttributes<"div"> {}
+
+const props = Astro.props;
+const id = "modal_" + crypto.randomUUID().replaceAll("-", "");
+---
+
+<img-zoom-wrapper {...props}>
+  <button class="open-button" onclick={`${id}.showModal()`}><slot /></button>
+  <dialog id={id} class="modal w-full">
+    <div
+      class="modal-box !transform-none !max-w-[100vw] !max-h-screen bg-transparent p-0 rounded-none w-fit cursor-zoom-in"
+    >
+      <slot />
+      <button
+        class="fixed left-[calc(100vw-3.75rem)] top-[1.25rem] close-button btn-overlay"
+        onclick={`${id}.close()`}
+      >
+        <Icon icon="close" /></button
+      >
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button></button>
+    </form>
+  </dialog>
+</img-zoom-wrapper>
+
+<style is:global>
+  img-zoom-wrapper {
+    @apply w-full h-full;
+  }
+  img-zoom-wrapper .open-button,
+  img-zoom-wrapper .open-button img {
+    height: inherit;
+    width: inherit;
+  }
+  img-zoom-wrapper dialog::backdrop {
+    @apply backdrop-blur-2xl;
+    background: oklch(0% 0 0 / 0.8) !important;
+  }
+  img-zoom-wrapper * {
+    transition: none !important;
+  }
+  img-zoom-wrapper .close-button:focus-visible {
+    outline: none;
+  }
+  img-zoom-wrapper .img-zoomed {
+    @apply transform-none cursor-zoom-out object-contain;
+  }
+  img-zoom-wrapper .img-zoomed-portrait {
+    @apply h-screen w-auto;
+  }
+  img-zoom-wrapper .img-zoomed-landscape {
+    @apply w-screen h-auto;
+  }
+</style>
+
+<script>
+  class ImgZoomWrapper extends HTMLElement {
+    constructor() {
+      super();
+
+      this.querySelector<HTMLImageElement>(".modal-box img")?.addEventListener(
+        "click",
+        (ele) => {
+          const img = ele.target as HTMLImageElement;
+          const windowAr = window.innerWidth / window.innerHeight;
+          const imgAr =
+            parseFloat(img.getAttribute("width") ?? "1") /
+            parseFloat(img.getAttribute("height") ?? "1");
+          if (img.classList.contains("img-zoomed")) {
+            img.classList.remove(
+              "img-zoomed",
+              "img-zoomed-portrait",
+              "img-zoomed-landscape",
+            );
+          } else {
+            img.classList.add(
+              "img-zoomed",
+              imgAr < windowAr ? "img-zoomed-portrait" : "img-zoomed-landscape",
+            );
+          }
+        },
+      );
+    }
+  }
+
+  customElements.define("img-zoom-wrapper", ImgZoomWrapper);
+</script>

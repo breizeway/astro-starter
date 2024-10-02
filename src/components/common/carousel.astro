@@ -4,7 +4,7 @@ import Icon from "./icon.astro";
 import { Image } from "astro:assets";
 import { getManagedImage } from "../../helpers/media";
 import ImgLinkHandler from "./raw-svgs/img-link-handler.astro";
-import ImgZoomHandler from "./img-zoom-handler.astro";
+import ImgZoomWrapper from "./img-zoom-wrapper.astro";
 import SiteDrawer from "../site-drawer.astro";
 
 interface Props extends HTMLAttributes<"div"> {
@@ -26,7 +26,7 @@ const { images, ...restProps } = Astro.props;
           >
             {/* <ImgLinkHandler /> */}
             {/* <SiteDrawer class="w-full h-full" /> */}
-            <ImgZoomHandler class="">
+            <ImgZoomWrapper class="">
               <Image
                 class="object-cover img-fade-in"
                 loading={idx ? "lazy" : "eager"}
@@ -34,7 +34,7 @@ const { images, ...restProps } = Astro.props;
                 src={getManagedImage(src)}
                 {...{ alt }}
               />
-            </ImgZoomHandler>
+            </ImgZoomWrapper>
           </a>
         ))
       }
@@ -44,7 +44,7 @@ const { images, ...restProps } = Astro.props;
       class="absolute left-[calc(var(--carousel-px)*1.5)] top-1/2 -translate-y-1/2"
     >
       <button
-        class="carousel-comp__nav-btn carousel-comp__nav-btn-prev"
+        class="btn-overlay carousel-comp__nav-btn-prev"
         aria-label="go to previous carousel slide"
       >
         <Icon icon="chevron-left" class="h-6 text-base-100" />
@@ -55,7 +55,7 @@ const { images, ...restProps } = Astro.props;
       class="absolute right-[calc(var(--carousel-px)*1.5)] top-1/2 -translate-y-1/2"
     >
       <button
-        class={`carousel-comp__nav-btn carousel-comp__nav-btn-next`}
+        class={`btn-overlay carousel-comp__nav-btn-next`}
         aria-label="go to next carousel slide"
       >
         <Icon icon="chevron-right" class="h-6 text-base-100" />
@@ -212,6 +212,11 @@ const { images, ...restProps } = Astro.props;
     }
 
     set activeSlideIdx(idx: number) {
+      if (!!this.querySelector("dialog[open]")) {
+        if (!this.paused) this.restart();
+        return;
+      }
+
       this._activeSlideIdx = idx;
 
       this.querySelectorAll(`.carousel-comp__pg-btn`).forEach((ele, idx) => {
