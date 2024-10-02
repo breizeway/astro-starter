@@ -4,6 +4,8 @@ import Icon from "./icon.astro";
 import { Image } from "astro:assets";
 import { getManagedImage } from "../../helpers/media";
 import ImgLinkHandler from "./raw-svgs/img-link-handler.astro";
+import ImgZoomHandler from "./img-zoom-handler.astro";
+import SiteDrawer from "../site-drawer.astro";
 
 interface Props extends HTMLAttributes<"div"> {
   images: { src: string; alt: string }[];
@@ -22,14 +24,17 @@ const { images, ...restProps } = Astro.props;
             target="_blank"
             class="carousel-item w-full md:w-[calc(100%-calc(var(--carousel-px)*6)-calc(var(--carousel-gap)*2))] h-[var(--carousel-img-height)] bg-base-300 rounded-md overflow-hidden"
           >
-            <ImgLinkHandler />
-            <Image
-              class="object-cover w-full h-full img-fade-in"
-              loading={idx ? "lazy" : "eager"}
-              decoding="async"
-              src={getManagedImage(src)}
-              {...{ alt }}
-            />
+            {/* <ImgLinkHandler /> */}
+            {/* <SiteDrawer class="w-full h-full" /> */}
+            <ImgZoomHandler class="">
+              <Image
+                class="object-cover img-fade-in"
+                loading={idx ? "lazy" : "eager"}
+                decoding="async"
+                src={getManagedImage(src)}
+                {...{ alt }}
+              />
+            </ImgZoomHandler>
           </a>
         ))
       }
