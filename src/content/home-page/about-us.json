@@ -1,20 +1,20 @@
 {
   "title": "About Us",
-  "description": "**Elite Commercial Door, Inc.** is a state licensed & insured premier company for all your automatic or manual commercial door needs.\n\n[Contact us](/#contact-us) today for service, repairs and new installation.\n\n***We also do Bullet Resistant Doors & Hardware!***",
+  "description": "**Elite Commercial Door, Inc.** is a state licensed & insured premier company for all your automatic or manual commercial door needs.  We can tackle your automatic, storefront or manual projects, whether it's service, repairs or new installation!\n\n[Contact us](/#contact-us) today!\n\n***We also do Bullet Resistant Doors & Hardware!***",
   "locationCard": {
     "title": "South Florida",
-    "description": "Based in South Florida, we can service any of the Tri-County areas (Palm Beach, Broward or Miami-Dade) in short notice."
+    "description": "We have offices & crews on the East Coast and West Coast of Florida!"
   },
   "businessCard": {
     "title": "18 Years",
-    "description": "We are a family owned business with over 18 years in the commercial door industry."
+    "description": "We are a family owned & operated business of nearly 10 years, with over 25 years in the commercial door industry."
   },
   "serviceCard": {
     "title": "Service & Installation",
     "description": "We can service and install Automatic Door assemblies, Manual steel door assemblies, Storefront assemblies and all respective hardware."
   },
   "image": {
-    "src": "src/assets/images/managed/team-sml.jpg",
-    "alt": "Nine team members arranged as a group, smiling at the camera"
+    "src": "src/assets/images/managed/capture.png",
+    "alt": "Automatic Door"
   }
 }
