@@ -30,7 +30,7 @@ const COMMON_VARS = {
   "--banner-section-pb": "var(--site-space-y)",
   "--about-section-pb": "var(--carousel-img-height)",
 
-  "--carousel-img-height": "30rem",
+  "--carousel-img-height": "42rem",
   "--carousel-px": "var(--site-space-x)",
   "--carousel-gap": "var(--site-space-x)",
 
