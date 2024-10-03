@@ -48,12 +48,12 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
         certificates.map((cert) => (
           <div
             class={`
-              flex flex-col gap-[var(--site-space-x-sm)] bg-full [&&]:bg-opacity-10 w-full rounded-lg p-[var(--site-space-x-sm)] 
+              flex flex-col gap-[var(--site-space-x-sm)] bg-full [&&]:bg-opacity-10 w-full rounded-lg px-[calc(var(--site-space-x)*1)] py-[calc(var(--site-space-x)*1)]
               motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none
             `}
           >
             <div class="flex items-center text-success gap-4">
-              <Icon icon="certified" class="h-12" />
+              <Icon icon="certified" class="h-14" />
               <span class="text-title-4">{cert.name}</span>
             </div>
             <a
@@ -75,3 +75,9 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
     </div>
   </div>
 </div>
+
+<style>
+  .glassy {
+    --icon-stroke: 4px;
+  }
+</style>
