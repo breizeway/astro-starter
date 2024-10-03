@@ -5,19 +5,17 @@ import Icon from "./icon.astro";
 interface Props extends HTMLAttributes<"div"> {}
 
 const props = Astro.props;
-const id = "modal_" + crypto.randomUUID().replaceAll("-", "");
 ---
 
 <img-zoom-wrapper {...props}>
-  <button class="open-button" onclick={`${id}.showModal()`}><slot /></button>
-  <dialog id={id} class="modal w-full">
+  <button class="open-button"><slot /></button>
+  <dialog class="modal w-full">
     <div
       class="modal-box !transform-none !max-w-[100vw] !max-h-screen bg-transparent p-0 rounded-none w-fit cursor-zoom-in"
     >
       <slot />
       <button
-        class="fixed left-[calc(100vw-3.75rem)] top-[1.25rem] close-button btn-overlay"
-        onclick={`${id}.close()`}
+        class="close-button fixed left-[calc(100vw-3.75rem)] top-[1.25rem] btn-overlay"
       >
         <Icon icon="close" /></button
       >
@@ -63,28 +61,61 @@ const id = "modal_" + crypto.randomUUID().replaceAll("-", "");
     constructor() {
       super();
 
-      this.querySelector<HTMLImageElement>(".modal-box img")?.addEventListener(
+      const img = this.querySelector<HTMLImageElement>(".modal-box img");
+      const modal = this.querySelector<HTMLDialogElement>("dialog");
+
+      this.querySelector<HTMLDialogElement>(".open-button")?.addEventListener(
         "click",
-        (ele) => {
-          const img = ele.target as HTMLImageElement;
-          const windowAr = window.innerWidth / window.innerHeight;
-          const imgAr =
-            parseFloat(img.getAttribute("width") ?? "1") /
-            parseFloat(img.getAttribute("height") ?? "1");
-          if (img.classList.contains("img-zoomed")) {
-            img.classList.remove(
-              "img-zoomed",
-              "img-zoomed-portrait",
-              "img-zoomed-landscape",
-            );
-          } else {
-            img.classList.add(
-              "img-zoomed",
-              imgAr < windowAr ? "img-zoomed-portrait" : "img-zoomed-landscape",
-            );
-          }
+        () => {
+          zoom();
+          modal?.showModal();
         },
       );
+      this.querySelectorAll<HTMLButtonElement>(
+        ".close-button, form button",
+      )?.forEach((button) =>
+        button.addEventListener("click", () => {
+          modal?.close();
+        }),
+      );
+
+      const zoom = () => {
+        if (!img) return;
+
+        const windowAr = window.innerWidth / window.innerHeight;
+        const imgAr =
+          parseFloat(img.getAttribute("width") ?? "1") /
+          parseFloat(img.getAttribute("height") ?? "1");
+
+        img.classList.add(
+          "img-zoomed",
+          imgAr < windowAr ? "img-zoomed-portrait" : "img-zoomed-landscape",
+        );
+      };
+      const unZoom = () => {
+        if (!img) return;
+
+        img.classList.remove(
+          "img-zoomed",
+          "img-zoomed-portrait",
+          "img-zoomed-landscape",
+        );
+      };
+      const toggleZoom = () => {
+        if (!img) return;
+
+        if (img.classList.contains("img-zoomed")) {
+          unZoom();
+        } else {
+          zoom();
+        }
+      };
+
+      img?.addEventListener("click", (e) => {
+        toggleZoom();
+      });
+
+      // this.querySelector<HTMLDialogElement>("dialog")?.on;
     }
   }
 
