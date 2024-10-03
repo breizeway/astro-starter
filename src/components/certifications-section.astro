@@ -5,8 +5,8 @@ import { SECTION_DEFS } from "../constants";
 import type { Certifications, ContentSection } from "../content/types";
 import { getManagedImage } from "../helpers/media";
 import Icon from "./common/icon.astro";
+import ImgZoomWrapper from "./common/img-zoom-wrapper.astro";
 import Markdown from "./common/markdown.astro";
-import ImgLinkHandler from "./common/raw-svgs/img-link-handler.astro";
 
 const {
   data: { title, description, certificates },
@@ -60,13 +60,14 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
               class="w-fit cursor-zoom-in border border-base-content border-opacity-20 rounded-md overflow-clip shadow-xl"
               target="_blank"
             >
-              <ImgLinkHandler />
-              <Image
-                src={getManagedImage(cert.image.src)}
-                alt={cert.image.alt}
-                class="img-fade-in w-full"
-                loading="lazy"
-              />
+              <ImgZoomWrapper>
+                <Image
+                  src={getManagedImage(cert.image.src)}
+                  alt={cert.image.alt}
+                  class="img-fade-in w-full"
+                  loading="lazy"
+                />
+              </ImgZoomWrapper>
             </a>
           </div>
         ))
