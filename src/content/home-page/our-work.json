@@ -1,16 +1,16 @@
 {
   "galleries": [
     {
-      "name": "Automatic Doors",
-      "description": "Automatic commercial doors often utilize motion sensors or low-energy operation to automatically open and close as people approach, providing a seamless and convenient entry experience.",
+      "name": "AUTOMATIC DOORS",
+      "description": "Avoid discriminatory openings and access by automating your doors.  \n\nAutomatic commercial doors often utilize motion sensors and / or push buttons to activate automatic operators to automatically open and close, providing a seamless and convenient user experience.\n\nWe can automate existing doors, or add new doors and operators.  The options are endless!",
       "images": [
         {
           "src": "src/assets/images/managed/auto-swing2.png",
-          "alt": "Double wooden doors"
+          "alt": "Double Acting Wood Doors with Operator"
         },
         {
-          "src": "src/assets/images/managed/auto-swing4.jpg",
-          "alt": "Exterior view of accessible automatic glass door being open by person in wheelchair"
+          "src": "src/assets/images/managed/capture.png",
+          "alt": "Exterior view of accessible automatic glass tri-part door"
         },
         {
           "src": "src/assets/images/managed/auto-swing5.jpg",
@@ -19,8 +19,8 @@
       ]
     },
     {
-      "name": "Manual Doors",
-      "description": "Commonly used without the use of automated systems. They have very few moving parts, making them simple to maintain and install. They may also continue to function even in the event of a power outage.",
+      "name": "MANUAL DOORS",
+      "description": "We offer a full line of:\n\n* interior or exterior doors  \n* impact or non-impact\n* wood, fiberglass or steel\n* traffic doors\n\nWe can do full replacement including frames, or simply just the slab.\n\nWe also offer an array of hardware, no matter what the need.\n\nNew doors and hardware can change and upgrade the entire look and function of your space.",
       "images": [
         {
           "src": "src/assets/images/managed/manual-1.jpg",
@@ -37,6 +37,10 @@
         {
           "src": "src/assets/images/managed/manual-4.jpg",
           "alt": "Single gray door with vent at bottom"
+        },
+        {
+          "src": "src/assets/images/managed/img_5635.jpg",
+          "alt": "Traffic Doors"
         }
       ]
     },
