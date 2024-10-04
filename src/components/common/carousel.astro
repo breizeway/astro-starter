@@ -22,7 +22,7 @@ const { images, ...restProps } = Astro.props;
         images.map(({ src, alt }, idx) => (
           <a
             target="_blank"
-            class="carousel-item w-full md:w-[calc(100%-calc(var(--carousel-px)*6)-calc(var(--carousel-gap)*2))] h-[var(--carousel-img-height)] bg-base-300 overflow-hidden"
+            class="carousel-item w-full md:w-3/4 h-[var(--carousel-img-height)] bg-base-300 overflow-hidden"
           >
             <ImgZoomWrapper>
               <Image
@@ -39,7 +39,7 @@ const { images, ...restProps } = Astro.props;
     </div>
 
     <div
-      class="absolute left-[calc(var(--carousel-px)*1.5)] top-1/2 -translate-y-1/2"
+      class="absolute left-[var(--site-space-x)] sm:left-[calc(var(--carousel-gap)*1.5)] top-1/2 -translate-y-1/2"
     >
       <button
         class="btn-overlay carousel-comp__nav-btn-prev"
@@ -50,7 +50,7 @@ const { images, ...restProps } = Astro.props;
     </div>
 
     <div
-      class="absolute right-[calc(var(--carousel-px)*1.5)] top-1/2 -translate-y-1/2"
+      class="absolute right-[var(--site-space-x)] sm:right-[calc(var(--carousel-gap)*1.5)] top-1/2 -translate-y-1/2"
     >
       <button
         class={`btn-overlay carousel-comp__nav-btn-next`}
