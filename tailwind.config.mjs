@@ -30,9 +30,11 @@ const COMMON_VARS = {
   "--banner-section-pb": "var(--site-space-y)",
   "--about-section-pb": "var(--carousel-img-height)",
 
-  "--carousel-img-height": "42rem",
-  "--carousel-px": "var(--site-space-x)",
-  "--carousel-gap": "var(--site-space-x)",
+  "--carousel-img-height": "min(40rem, calc(90vh - var(--nav-height)))",
+  "--carousel-px": "0px",
+  "--carousel-px-sm": "var(--site-space-x)",
+  "--carousel-gap": "var(--site-space-x-lg)",
+  "--carousel-gap-sm": "var(--site-space-x-lg)",
 
   // colors
   "--site-bg-color-1": "var(--fallback-p, oklch(var(--p)))",

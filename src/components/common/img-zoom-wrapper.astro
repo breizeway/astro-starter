@@ -76,6 +76,7 @@ const props = Astro.props;
       )?.forEach((button) =>
         button.addEventListener("click", () => {
           modal?.close();
+          unZoom();
         }),
       );
 
@@ -111,11 +112,9 @@ const props = Astro.props;
         }
       };
 
-      img?.addEventListener("click", (e) => {
+      img?.addEventListener("click", () => {
         toggleZoom();
       });
-
-      // this.querySelector<HTMLDialogElement>("dialog")?.on;
     }
   }
 
