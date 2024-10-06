@@ -173,7 +173,7 @@ const { title } = Astro.props;
       }
     }
     .cell {
-      @apply flex flex-col gap-[var(--site-space-x-sm)] bg-empty !bg-opacity-15 rounded-lg shadow-std p-[var(--site-space-x)] border border-[oklch(100%_0_0_/_10%)];
+      @apply flex flex-col gap-[var(--site-space-x-sm)] bg-empty !bg-opacity-15 rounded-lg p-[var(--site-space-x)] border border-[oklch(100%_0_0_/_10%)];
       @apply motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none;
     }
   }
