@@ -44,13 +44,17 @@ marked.use({ gfm: true, breaks: true });
     @apply rounded-md;
   }
   .markdown * {
-    @apply text-base text-opacity-100;
+    @apply text-opacity-100;
     color: currentColor;
   }
 
   .markdown ul,
   .markdown ul {
-    @apply text-left inline-flex flex-col;
+    @apply text-left inline-flex flex-col mt-0;
+  }
+
+  .markdown li {
+    @apply my-0;
   }
 
   .markdown.no-margin-y > *,

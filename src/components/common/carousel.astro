@@ -185,7 +185,7 @@ const { images, ...restProps } = Astro.props;
               if (entry.isIntersecting) this.activeSlideIdx = idx;
             });
           }),
-          { threshold: 1.0 },
+          { threshold: 0.51 },
         );
         io.observe(c);
       });

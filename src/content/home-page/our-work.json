@@ -53,10 +53,12 @@
       ],
       "subDescriptions": [
         {
-          "description": "We offer a full line of:\n\n* interior or exterior doors  \n* impact or non-impact\n* wood, fiberglass or steel\n* traffic doors"
+          "title": "Full Line of Doors",
+          "description": "* interior or exterior doors\n* impact or non-impact\n* wood, fiberglass or steel\n* traffic doors"
         },
         {
-          "description": "\n\nWe also offer an array of hardware, no matter what the need;\n\n* Panic hardware\n* Electric panic hardware\n* Door closers\n* Perimeter Soundproofing kits\n* Sweeps"
+          "title": "Wide Array of Hardware",
+          "description": "* Panic hardware\n* Electric panic hardware\n* Door closers\n* Perimeter Soundproofing kits\n* Sweeps"
         }
       ]
     },
@@ -75,13 +77,13 @@
       ],
       "subDescriptions": [
         {
-          "description": "We office service, repair, replacement or new installation of all types of storefront."
+          "description": "Service, repair, replacement or new installation of all types of storefront."
         },
         {
-          "description": "We can do interior or exterior, architectural or structural, and impact or non-impact."
+          "description": "Interior or exterior, architectural or structural, and impact or non-impact."
         },
         {
-          "description": "We also offer frameless options.  We have teams that can tint any storefront to your liking, as well!"
+          "description": "Frameless options are also available. We have teams that can tint any storefront to your liking, as well!"
         }
       ]
     }

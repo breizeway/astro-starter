@@ -32,6 +32,7 @@ export interface AboutUs {
 interface WorkGallery {
   name: string;
   description?: Markdown;
+  subDescriptions: { title?: string; description: string }[];
   images: Image[];
 }
 
