@@ -2,7 +2,7 @@
   "galleries": [
     {
       "name": "AUTOMATIC DOORS",
-      "description": "Avoid discriminatory openings and access by automating your doors.  \n\nAutomatic commercial doors often utilize motion sensors and / or push buttons to activate automatic operators to automatically open and close, providing a seamless and convenient user experience.\n\nWe can automate existing doors, or add new doors and operators.  The options are endless!",
+      "description": "Automatic commercial doors often utilize motion sensors and / or push buttons to activate automatic operators to automatically open and close, providing a seamless and convenient user experience.",
       "images": [
         {
           "src": "src/assets/images/managed/auto-swing2.png",
@@ -16,11 +16,19 @@
           "src": "src/assets/images/managed/auto-swing5.jpg",
           "alt": "Exterior view of two black automatic glass doors"
         }
+      ],
+      "subDescriptions": [
+        {
+          "description": "Avoid discriminatory openings and access by automating your doors."
+        },
+        {
+          "description": "We can automate existing doors, or add new doors and operators.  The options are endless!"
+        }
       ]
     },
     {
       "name": "MANUAL DOORS",
-      "description": "We offer a full line of:\n\n* interior or exterior doors  \n* impact or non-impact\n* wood, fiberglass or steel\n* traffic doors\n\nWe can do full replacement including frames, or simply just the slab.\n\nWe also offer an array of hardware, no matter what the need;\n\n* Panic hardware\n* Electric panic hardware\n* Door closers\n* Perimeter Soundproofing kits\n* Sweeps\n\nNew doors and hardware can change and upgrade the entire look and function of your space.",
+      "description": "New doors and hardware can change and upgrade the entire look and function of your space. We can do full replacement including frames, or simply just the slab.",
       "images": [
         {
           "src": "src/assets/images/managed/manual-1.jpg",
@@ -42,11 +50,19 @@
           "src": "src/assets/images/managed/img_5635.jpg",
           "alt": "Traffic Doors"
         }
+      ],
+      "subDescriptions": [
+        {
+          "description": "We offer a full line of:\n\n* interior or exterior doors  \n* impact or non-impact\n* wood, fiberglass or steel\n* traffic doors"
+        },
+        {
+          "description": "\n\nWe also offer an array of hardware, no matter what the need;\n\n* Panic hardware\n* Electric panic hardware\n* Door closers\n* Perimeter Soundproofing kits\n* Sweeps"
+        }
       ]
     },
     {
       "name": "GLASS & ALUMINUM STOREFRONT",
-      "description": "Whether you're a boutique or a restaurant, school or office, chances are you have storefront in your space.\n\nWe office service, repair, replacement or new installation of all types of storefront.\n\nWe can do interior or exterior, architectural or structural, and impact or non-impact.\n\nWe also offer frameless options.  We have teams that can tint any storefront to your liking, as well!\n\nDoes your storefront need some attention?  Give us a call!",
+      "description": "Whether you're a boutique or a restaurant, school or office, chances are you have storefront in your space. Does your storefront need some attention?  [Give us a call](/#contact-us)!",
       "images": [
         {
           "src": "src/assets/images/managed/resized_20171213_183614_1250.jpeg",
@@ -55,6 +71,17 @@
         {
           "src": "src/assets/images/managed/pc-ilab.jpg",
           "alt": "Single with sidelites"
+        }
+      ],
+      "subDescriptions": [
+        {
+          "description": "We office service, repair, replacement or new installation of all types of storefront."
+        },
+        {
+          "description": "We can do interior or exterior, architectural or structural, and impact or non-impact."
+        },
+        {
+          "description": "We also offer frameless options.  We have teams that can tint any storefront to your liking, as well!"
         }
       ]
     }
