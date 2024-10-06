@@ -33,6 +33,7 @@ marked.use({ gfm: true, breaks: true });
     --tw-prose-body: var(--fallback-bc, oklch(var(--bc) / 1)) !important;
     @apply prose max-w-full;
   }
+
   .markdown blockquote {
     ::before,
     ::after {
@@ -45,6 +46,11 @@ marked.use({ gfm: true, breaks: true });
   .markdown * {
     @apply text-base text-opacity-100;
     color: currentColor;
+  }
+
+  .markdown ul,
+  .markdown ul {
+    @apply text-left inline-flex flex-col;
   }
 
   .markdown.no-margin-y > *,
