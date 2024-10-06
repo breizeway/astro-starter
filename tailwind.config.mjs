@@ -19,8 +19,8 @@ const customColor = (colorVar, { opacityVariable, opacityValue }) => {
 
 const COMMON_VARS = {
   // sizes
-  "--site-space-x-lg": "1.6rem",
-  "--site-space-x-sm": "0.8rem",
+  "--site-space-x-lg": "1.5rem",
+  "--site-space-x-sm": "0.75rem",
   "--site-space-y-lg": "6rem",
   "--site-space-y-sm": "3rem",
 
