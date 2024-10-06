@@ -44,7 +44,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
         distributors.map((dist) => (
           <a
             class={`
-              flex items-center gap-[var(--site-space-x)] bg-full [&&]:bg-opacity-10 w-full rounded-lg p-[var(--site-space-x-sm)] no-touch:hover:shadow-xl transition-all duration-200
+              cell bg-full gap-[var(--site-space-x)] flex-row items-center w-full
               motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none
             `}
             href={dist.href}

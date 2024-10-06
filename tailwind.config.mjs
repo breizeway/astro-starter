@@ -327,9 +327,9 @@ const config = {
         },
         ".shadow-std": {
           "--tw-shadow":
-            "0 20px 50px -5px rgb(0 0 0 / 0.1), 0 8px 20px -6px rgb(0 0 0 / 0.1)",
+            "0 15px 50px -5px rgb(0 0 0 / 0.1), 0 6px 20px -6px rgb(0 0 0 / 0.1)",
           "--tw-shadow-colored":
-            "0 20px 50px -5px var(--tw-shadow-color), 0 8px 20px -6px var(--tw-shadow-color)",
+            "0 15px 50px -5px var(--tw-shadow-color), 0 6px 20px -6px var(--tw-shadow-color)",
           "box-shadow":
             "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)",
         },
@@ -391,7 +391,7 @@ const config = {
           secondary: "#455270",
           accent: "#888",
           // basically a color that should be dark on both light and dark, probably slightly lighter than base-300 on dark
-          neutral: "#6E7B8C",
+          neutral: "#455270",
 
           // "neutral-content": "#ffffff",
           "base-100": "#fafafa",

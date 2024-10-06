@@ -165,7 +165,16 @@ const { title } = Astro.props;
       @apply border-l-primary bg-base-content bg-opacity-10 no-touch:hover:bg-base-content no-touch:hover:bg-opacity-5;
     }
     .blurb {
-      @apply relative site-px w-full max-w-[36rem] text-current border-l-[0.6rem] border-opacity-30;
+      @apply relative pl-[calc(var(--site-space-x)+1.2rem)] pr-[var(--site-space-x)] w-full max-w-[36rem] text-current;
+
+      &::before {
+        content: "";
+        @apply absolute left-[0.6rem] h-full w-[0.6rem] bg-current opacity-75;
+      }
+    }
+    .cell {
+      @apply flex flex-col gap-[var(--site-space-x-sm)] bg-empty !bg-opacity-15 rounded-lg shadow-std p-[var(--site-space-x)] border border-[oklch(100%_0_0_/_10%)];
+      @apply motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none;
     }
   }
 

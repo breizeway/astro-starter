@@ -23,7 +23,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
   class:list={[
     sectionClass,
     `
-      glassy glass-empty glass-card glass-responsive [&&]:p-0 mt-[var(--site-space-y)]
+      glassy glass-empty text-full glass-card glass-responsive [&&]:p-0 mt-[var(--site-space-y)]
       motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
     `,
   ]}
@@ -48,8 +48,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
         certificates.map((cert) => (
           <div
             class={`
-              flex flex-col gap-[var(--site-space-x-sm)] bg-full [&&]:bg-opacity-10 w-full rounded-lg px-[calc(var(--site-space-x)*1)] py-[calc(var(--site-space-x)*1)]
-              motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none
+              cell bg-full w-full
             `}
           >
             <div class="flex items-center text-success gap-4">
