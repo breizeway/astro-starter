@@ -19,18 +19,18 @@ const customColor = (colorVar, { opacityVariable, opacityValue }) => {
 
 const COMMON_VARS = {
   // sizes
-  "--site-space-x-lg": "2rem",
-  "--site-space-x-sm": "1rem",
-  "--site-space-y-lg": "8rem",
-  "--site-space-y-sm": "4rem",
+  "--site-space-x-lg": "1.6rem",
+  "--site-space-x-sm": "0.8rem",
+  "--site-space-y-lg": "6rem",
+  "--site-space-y-sm": "3rem",
 
   "--icon-stroke": "3px",
-  "--nav-height": "5.75rem",
+  "--nav-height": "4.75rem",
   "--page-section-py": "var(--site-space-y)",
   "--banner-section-pb": "var(--site-space-y)",
   "--about-section-pb": "var(--carousel-img-height)",
 
-  "--carousel-img-height": "min(40rem, calc(90vh - var(--nav-height)))",
+  "--carousel-img-height": "min(36rem, calc(82vh - var(--nav-height)))",
   "--carousel-px": "0px",
   "--carousel-px-sm": "var(--site-space-x)",
   "--carousel-gap": "var(--site-space-x-lg)",
@@ -79,16 +79,6 @@ const config = {
       fontFamily: {
         title: ["poppins", ...defaultTheme.fontFamily.sans],
         sans: ["nunito", ...defaultTheme.fontFamily.sans],
-      },
-      fontSize: {
-        xs: "1rem",
-        sm: "1.1rem",
-        base: "1.2rem",
-        lg: "1.3rem",
-        xl: "1.4rem",
-        "2xl": "1.5rem",
-        "3xl": "2.1rem",
-        "4xl": "2.5rem",
       },
       transitionDuration: {
         ...defaultTheme.transitionDuration,
