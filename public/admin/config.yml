@@ -115,6 +115,22 @@ collections:
                 editor_components:
                   - code-block
                 required: false
+              - name: subDescriptions
+                label: Sub-descriptions
+                label_singular: Sub-description
+                widget: list
+                summary: "{{fields.title}}"
+                required: false
+                fields:
+                  - name: title
+                    label: Title
+                    required: false
+                    widget: string
+                  - name: description
+                    label: Description
+                    widget: markdown
+                    editor_components:
+                      - code-block
               - name: images
                 label: Images
                 label_singular: Image
