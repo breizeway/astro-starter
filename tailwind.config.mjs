@@ -333,9 +333,9 @@ const config = {
         },
         ".shadow-std": {
           "--tw-shadow":
-            "0 15px 50px -5px rgb(0 0 0 / 0.1), 0 6px 20px -6px rgb(0 0 0 / 0.1)",
+            "0 10px 50px -5px rgb(0 0 0 / 0.1), 0 4px 20px -6px rgb(0 0 0 / 0.1)",
           "--tw-shadow-colored":
-            "0 15px 50px -5px var(--tw-shadow-color), 0 6px 20px -6px var(--tw-shadow-color)",
+            "0 10px 50px -5px var(--tw-shadow-color), 0 4px 20px -6px var(--tw-shadow-color)",
           "box-shadow":
             "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)",
         },

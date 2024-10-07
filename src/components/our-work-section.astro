@@ -59,10 +59,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
       >
         {!!gallery.description && (
           <div class="site-px w-full flex flex-col gap-[var(--carousel-gap)]">
-            <div
-              class="w-full max-w-[30rem] mx-auto text-center motion-safe:opacity-0 intersect:animate-fade-left intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
-            "
-            >
+            <div class="w-full max-w-[30rem] mx-auto text-center">
               <Markdown
                 content={gallery.description}
                 noMarginY

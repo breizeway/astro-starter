@@ -173,7 +173,8 @@ const { title } = Astro.props;
       }
     }
     .border-std {
-      @apply border border-[oklch(100%_0_0_/_10%)];
+      /* @apply border border-[oklch(100%_0_0_/_25%)]; */
+      @apply border border-neutral border-opacity-15 shadow-std;
     }
     .cell {
       @apply flex flex-col gap-[var(--site-space-x-sm)] bg-empty !bg-opacity-60 dark:!bg-opacity-30 rounded-lg p-[var(--site-space-x)] border-std;
@@ -224,7 +225,7 @@ const { title } = Astro.props;
       @apply bg-opacity-50 bg-empty;
     }
     .glass-full {
-      @apply bg-opacity-40 bg-full;
+      @apply bg-opacity-50 bg-full;
     }
     .glass-full-header {
       @apply bg-opacity-25 bg-full;
