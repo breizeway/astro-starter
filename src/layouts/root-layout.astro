@@ -1,4 +1,17 @@
 ---
+import { getImage } from "astro:assets";
+import faviconSrc from "../assets/images/logos-og/favicon.png";
+import faviconSvgSrc from "../assets/images/logos-og/favicon.svg";
+
+// https://kremalicious.com/favicon-generation-with-astro/
+const appleTouchIcon = await getImage({
+  src: faviconSrc,
+  width: 180,
+  height: 180,
+  format: "png",
+});
+const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
+
 interface Props {
   title: string;
 }
@@ -16,8 +29,12 @@ const { title } = Astro.props;
       content="Elite Commercial Door, Inc. is a state licensed & insured premier company for all of your automatic or manual commercial door needs."
     />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- <link rel="icon" href="/favicon.ico" sizes="32x32" /> -->
+    <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={appleTouchIcon.src} />
+    <link rel="manifest" href="/manifest.json" />
     <title>{title}</title>
   </head>
   <body>
