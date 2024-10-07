@@ -242,27 +242,15 @@ const config = {
             )`,
           },
         },
-        ".tl-tab": {
-          // defined in root-layout @layer components
-        },
-        ".tl-tab-x": {
-          // defined in root-layout @layer components
-        },
-        ".tl-tab-y": {
-          // defined in root-layout @layer components
-        },
-        ".tl-tab--selected": {
-          // defined in root-layout @layer components
-        },
-        ".blurb": {
-          // defined in root-layout @layer components
-        },
-        ".cell": {
-          // defined in root-layout @layer components
-        },
-        ".border-std": {
-          // defined in root-layout @layer components
-        },
+        //// defined in root-layout @layer components
+        ".tl-tab": {},
+        ".tl-tab-x": {},
+        ".tl-tab-y": {},
+        ".tl-tab--selected": {},
+        ".blurb": {},
+        ".cell": {},
+        ".border-std": {},
+        ////
       });
       addUtilities({
         ".init-dynamic-site-vars": {
@@ -340,48 +328,22 @@ const config = {
             "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)",
         },
         ".intersect-once": {},
-        ".glassy": {
-          // defined in root-layout @layer utilities
-        },
-        ".glass-card": {
-          // defined in root-layout @layer utilities
-        },
-        ".glass-wide": {
-          // defined in root-layout @layer utilities
-        },
-        ".glass-narrow": {
-          // defined in root-layout @layer utilities
-        },
-        ".glass-responsive": {
-          // defined in root-layout @layer utilities
-        },
-        ".glass-bubble": {
-          // defined in root-layout @layer utilities
-        },
-        ".glass-empty-header": {
-          // defined in root-layout @layer utilities
-        },
-        ".glass-base": {
-          // defined in root-layout @layer utilities
-        },
-        ".glass-empty": {
-          // defined in root-layout @layer utilities
-        },
-        ".glass-full": {
-          // defined in root-layout @layer utilities
-        },
-        ".glass-full-header": {
-          // defined in root-layout @layer utilities
-        },
-        ".no-animation-delay": {
-          // defined in root-layout @layer utilities
-        },
-        ".site-section": {
-          // defined in root-layout @layer utilities
-        },
-        ".btn-overlay": {
-          // defined in root-layout @layer utilities
-        },
+        //// defined in root-layout @layer utilities
+        ".glassy": {},
+        ".glass-card": {},
+        ".glass-wide": {},
+        ".glass-narrow": {},
+        ".glass-responsive": {},
+        ".glass-bubble": {},
+        ".glass-empty-header": {},
+        ".glass-base": {},
+        ".glass-empty": {},
+        ".glass-full": {},
+        ".glass-full-header": {},
+        ".no-animation-delay": {},
+        ".site-section": {},
+        ".btn-overlay": {},
+        ////
       });
     }),
     typography,
@@ -392,16 +354,12 @@ const config = {
     themes: [
       {
         light: {
-          // ...require("daisyui/src/theming/themes")["light"],
           primary: "#449FF4",
           secondary: "#455270",
           accent: "#888",
-          // basically a color that should be dark on both light and dark, probably slightly lighter than base-300 on dark
           neutral: "#455270",
 
-          // "neutral-content": "#ffffff",
           "base-100": "#fafafa",
-          // "base-content": "#758DAD",
           "base-content": "#253040",
 
           "--color-empty": "100% 0 0",
@@ -416,10 +374,8 @@ const config = {
           secondary: "#455270",
           accent: "#888",
           neutral: "#6B7B8C",
+
           "base-100": "#414141",
-          // made up light blue
-          // "base-content": "#E3E8EF",
-          // "base-content": "#fff",
           "base-content": "#eeeeee",
 
           "--color-empty": "0% 0 0",
@@ -432,7 +388,6 @@ const config = {
       },
     ],
   },
-  // darkMode: ["class", '[data-theme="dark"]'],
 };
 
 export default config;

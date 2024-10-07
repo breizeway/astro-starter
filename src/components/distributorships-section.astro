@@ -26,7 +26,9 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
     `,
   ]}
 >
-  <div class="glass-empty-header p-[var(--site-space-x)]">
+  <div
+    class="glass-empty-header px-[var(--site-space-x)] py-[var(--site-space-x-lg)]"
+  >
     <span class="text-title-2">{title}</span>
   </div>
   <div
@@ -34,7 +36,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
   >
     {
       !!description && (
-        <div class="blurb motion-safe:opacity-0 intersect:animate-fade-left intersect-once motion-reduce:intersect:animate-none">
+        <div class="blurb my-[var(--site-space-x-sm)] motion-safe:opacity-0 intersect:animate-fade-left intersect-once motion-reduce:intersect:animate-none">
           <Markdown content={description} noMarginY />
         </div>
       )
