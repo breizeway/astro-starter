@@ -23,7 +23,7 @@ export const GET: APIRoute = async () => {
 
   const manifest = {
     name: "Elite Commercial Door",
-    description: "Your elite choice for all commercial door projects",
+    description: "The elite choice for all your commercial door projects",
     start_url: "/",
     display: "standalone",
     id: "https://elite-door.com/",
