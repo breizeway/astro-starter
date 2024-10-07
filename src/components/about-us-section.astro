@@ -32,8 +32,8 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
           src={getManagedImage(image.src)}
           alt={image.alt}
           class={`
-            img-fade-in w-full h-full object-cover border-0 border-base-content border-opacity-20 rounded-none overflow-clip shadow-xl
-            sm:rounded-md sm:border
+            img-fade-in w-full h-full object-cover overflow-clip
+            sm:border sm:border-std sm:shadow-std sm:rounded-lg
           `}
           loading="eager"
         />
