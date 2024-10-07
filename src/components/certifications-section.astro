@@ -48,16 +48,12 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
     <div class="grid grid-cols-1 md:grid-cols-2 gap-[var(--site-space-x)]">
       {
         certificates.map((cert) => (
-          <div
-            class={`
-              cell bg-empty w-full
-            `}
-          >
+          <div class="cell bg-empty w-full">
             <div class="flex items-center text-success gap-4">
               <Icon icon="certified" class="h-12" />
               <span class="text-title-4">{cert.name}</span>
             </div>
-            <a class="w-fit border-std shadow-std" target="_blank">
+            <a class="w-fit border-std shadow-md" target="_blank">
               <ImgZoomWrapper>
                 <Image
                   src={getManagedImage(cert.image.src)}
