@@ -257,6 +257,12 @@ const config = {
         ".blurb": {
           // defined in root-layout @layer components
         },
+        ".cell": {
+          // defined in root-layout @layer components
+        },
+        ".border-std": {
+          // defined in root-layout @layer components
+        },
       });
       addUtilities({
         ".init-dynamic-site-vars": {
