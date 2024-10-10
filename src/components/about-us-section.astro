@@ -20,14 +20,12 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
   <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
     <div
       class={`
-        glassy glass-full glass-card glass-responsive p-0 pb-[calc(var(--site-space-x)/2)] text-empty flex flex-col transition-all sm:max-w-[30rem] sm:mx-auto
+        glassy glass-full glass-card glass-responsive p-0 pb-[calc(var(--site-space-x)/2)] text-empty flex gap-[var(--site-space-x)] flex-wrap [&_>_*]:flex-[1_1_24rem] transition-all
         motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
-        md:flex-row md:max-w-max sm:pt-[calc(var(--site-space-x)/2)]
+        sm:p-[var(--site-space-x)] sm:py-[calc(var(--site-space-x)*1.5)]
       `}
     >
-      <div
-        class="flex-1 sm:p-[var(--site-space-x)] sm:pb-0 md:p-[var(--site-space-x)] md:pr-0 transition-all"
-      >
+      <div class="transition-all">
         <Image
           src={getManagedImage(image.src)}
           alt={image.alt}
@@ -38,7 +36,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
           loading="eager"
         />
       </div>
-      <div class="flex-1 p-[var(--site-space-x)]">
+      <div class="p-[var(--site-space-x)] pt-0 sm:p-0">
         <p class="text-title-2">{title}</p>
         <Markdown content={description} class="about-description" />
       </div>
