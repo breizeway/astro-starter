@@ -26,22 +26,23 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
       `}
     >
       {
-        !!image && (
-          <Image
-            src={getManagedImage(image.src)}
-            alt={image.alt}
-            class={`
+        !!image?.length &&
+          image.map((i) => (
+            <Image
+              src={getManagedImage(i.src)}
+              alt={i.alt}
+              class={`
             img-fade-in w-full h-full object-cover overflow-clip
             sm:border sm:border-std sm:shadow-std sm:rounded-lg
           `}
-            loading="eager"
-          />
-        )
+              loading="eager"
+            />
+          ))
       }
       <div
         class:list={[
           "p-[var(--site-space-x)] sm:p-0",
-          { "py-[calc(var(--site-space-x)*1.5)]": !image },
+          { "py-[calc(var(--site-space-x)*1.5)]": !image?.length },
         ]}
       >
         <p class="text-title-2">{title}</p>

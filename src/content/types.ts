@@ -12,7 +12,7 @@ export interface ContentSection<T extends object> {
 
 export interface Banner {
   slogan: Markdown;
-  image: Image[];
+  image?: Image[];
 }
 
 interface InfoCard {
@@ -23,7 +23,7 @@ interface InfoCard {
 export interface AboutUs {
   title: string;
   description: Markdown;
-  image?: Image;
+  image?: Image[];
   locationCard: InfoCard;
   businessCard: InfoCard;
   serviceCard: InfoCard;

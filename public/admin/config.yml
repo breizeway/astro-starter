@@ -22,9 +22,10 @@ collections:
             editor_components:
               - code-block
           - name: image
-            label: Image
+            label: Image (1 max)
             hint: ...or use an image
             widget: list
+            summary: "{{fields.alt}}"
             required: false
             max: 1
             fields:
@@ -43,9 +44,11 @@ collections:
             label: Title
             widget: string
           - name: image
-            label: Image
-            widget: object
+            label: Image (1 max)
+            widget: list
+            summary: "{{fields.alt}}"
             required: false
+            max: 1
             fields:
               - name: src
                 label: Source

@@ -13,8 +13,10 @@
     "title": "Service & Installation",
     "description": "We can service and install Automatic Door assemblies, Manual & steel door assemblies, Storefront assemblies and all respective hardware."
   },
-  "image": {
-    "src": "src/assets/images/managed/capture.png",
-    "alt": "Automatic Door"
-  }
+  "image": [
+    {
+      "src": "src/assets/images/managed/capture.png",
+      "alt": "Automatic Door"
+    }
+  ]
 }
