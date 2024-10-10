@@ -16,13 +16,13 @@ const { images, ...restProps } = Astro.props;
 <carousel-comp {...restProps}>
   <div class="media-wrapper sm:media-wrapper-sm relative">
     <div
-      class="carousel carousel-center w-full h-full space-x-[var(--carousel-gap)] px-[var(--carousel-px)]"
+      class="carousel carousel-center w-full h-full space-x-[var(--carousel-gap)] px-[var(--carousel-px)] py-[4rem] my-[-4rem]"
     >
       {
         images.map(({ src, alt }, idx) => (
           <a
             target="_blank"
-            class="carousel-item w-full md:w-3/4 h-[var(--carousel-img-height)] bg-base-300 overflow-hidden"
+            class="carousel-item w-full md:w-3/4 h-[var(--carousel-img-height)] bg-base-300 overflow-hidden shadow-std"
           >
             <ImgZoomWrapper>
               <Image
