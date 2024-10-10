@@ -80,7 +80,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
             )}
           </div>
         )}
-        <Carousel images={gallery.images} />
+        {!!gallery.images.length && <Carousel images={gallery.images} />}
       </div>
     ))
   }
