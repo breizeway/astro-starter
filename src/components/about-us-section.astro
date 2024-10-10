@@ -20,23 +20,30 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
   <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
     <div
       class={`
-        glassy glass-full glass-card glass-responsive p-0 pb-[calc(var(--site-space-x)/2)] text-empty flex gap-[var(--site-space-x)] flex-wrap [&_>_*]:flex-[1_1_24rem] transition-all
+        glassy glass-full glass-card glass-responsive p-0 text-empty flex gap-[var(--site-space-x)] flex-wrap [&_>_*]:flex-[1_1_24rem] transition-all
         motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
         sm:p-[var(--site-space-x)] sm:py-[calc(var(--site-space-x)*1.5)]
       `}
     >
-      <div class="transition-all">
-        <Image
-          src={getManagedImage(image.src)}
-          alt={image.alt}
-          class={`
+      {
+        !!image && (
+          <Image
+            src={getManagedImage(image.src)}
+            alt={image.alt}
+            class={`
             img-fade-in w-full h-full object-cover overflow-clip
             sm:border sm:border-std sm:shadow-std sm:rounded-lg
           `}
-          loading="eager"
-        />
-      </div>
-      <div class="p-[var(--site-space-x)] pt-0 sm:p-0">
+            loading="eager"
+          />
+        )
+      }
+      <div
+        class:list={[
+          "p-[var(--site-space-x)] sm:p-0",
+          { "py-[calc(var(--site-space-x)*1.5)]": !image },
+        ]}
+      >
         <p class="text-title-2">{title}</p>
         <Markdown content={description} class="about-description" />
       </div>

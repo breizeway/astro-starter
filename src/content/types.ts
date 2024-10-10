@@ -23,7 +23,7 @@ interface InfoCard {
 export interface AboutUs {
   title: string;
   description: Markdown;
-  image: Image;
+  image?: Image;
   locationCard: InfoCard;
   businessCard: InfoCard;
   serviceCard: InfoCard;
