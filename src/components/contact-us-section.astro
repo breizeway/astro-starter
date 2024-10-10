@@ -19,23 +19,21 @@ const { sectionId, sectionClass } = SECTION_DEFS["contact-us"];
     <p class="text-title-1 mb-[calc(var(--site-space-y)/2)]">{title}</p>
     <div
       class={`
-        flex flex-col items-stretch justify-evenly gap-y-[var(--site-space-y)] transition-[gap] text-center
-        md:flex md:flex-row md:flex-wrap md:gap-x-[var(--site-space-x)]
-        xl:flex-nowrap
+        flex flex-wrap gap-y-[var(--site-space-y)] transition-[gap]
       `}
     >
       {
         [emailCard, phoneCard, mailingCard, shippingCard].map((card, idx) => (
-          <div class="md:basis-1/3 w-full">
+          <div class="bracket-card-wrapper flex-1 basis-[22rem] lg:basis-[28rem] flex justify-center px-[var(--site-space-x-lg)]">
             <div
               style={`animation-delay: ${idx * 100}ms`}
               class:list={`
-                bracket-card transition mx-auto w-full max-w-sm h-full grid grid-flow-row p-8 gap-12 
+                bracket-card max-w-[22rem] transition w-full grid p-8 text-center strict-relational-rows
                 motion-safe:opacity-0 intersect:animate-fade-right intersect-once motion-reduce:intersect:animate-none
-                sm:strict-relational-rows md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none
+                md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
               `}
             >
-              <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
+              <Icon icon={cardIcons[idx]} class="h-24 mx-auto mb-12" />
               <p class="text-title-3 text-primary">{card.title}</p>
               <Markdown content={card.description} noMarginY />
             </div>
@@ -49,6 +47,14 @@ const { sectionId, sectionClass } = SECTION_DEFS["contact-us"];
 <style>
   .bracket-card {
     @apply max-xl:!no-animation-delay;
+  }
+  @media (min-width: 80rem) {
+    .bracket-card-wrapper {
+      @apply !basis-0 !px-4;
+    }
+    .bracket-card {
+      @apply max-w-[20rem];
+    }
   }
 
   @tailwind utilities;

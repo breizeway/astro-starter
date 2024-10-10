@@ -45,25 +45,24 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
     </div>
     <div
       class={`
-        about-cards flex flex-col items-center justify-between gap-x-12 gap-y-[var(--site-space-y)] transition-[gap] text-center
-        sm:flex-wrap sm:justify-evenly 
-        md:flex-row md:items-stretch
+        flex flex-wrap gap-y-[var(--site-space-y)] transition-[gap]
     `}
     >
       {
         [locationCard, businessCard, serviceCard].map((card, idx) => (
-          <div
-            style={`animation-delay: ${idx * 100}ms`}
-            class:list={`
-              bracket-card transition flex-1 max-w-sm grid grid-flow-row p-8 gap-12 
-              motion-safe:opacity-0 intersect:animate-fade-right intersect-once motion-reduce:intersect:animate-none
-              sm:min-w-[22rem]
-              md:strict-relational-rows md:max-w-xs md:gap-0 md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
-            `}
-          >
-            <Icon icon={cardIcons[idx]} class="h-24 mx-auto" />
-            <p class="text-title-3 text-primary">{card.title}</p>
-            <Markdown content={card.description} />
+          <div class="flex-1 basis-[22rem] flex justify-center px-[var(--site-space-x-lg)]">
+            <div
+              style={`animation-delay: ${idx * 100}ms`}
+              class:list={`
+                bracket-card max-w-[22rem] transition w-full grid p-8 text-center strict-relational-rows
+                motion-safe:opacity-0 intersect:animate-fade-right intersect-once motion-reduce:intersect:animate-none
+                md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
+              `}
+            >
+              <Icon icon={cardIcons[idx]} class="h-24 mx-auto mb-12" />
+              <p class="text-title-3 text-primary">{card.title}</p>
+              <Markdown content={card.description} />
+            </div>
           </div>
         ))
       }

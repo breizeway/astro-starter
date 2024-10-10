@@ -45,10 +45,10 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
       )
     }
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-[var(--site-space-x)]">
+    <div class="flex flex-wrap gap-[var(--site-space-x)]">
       {
         certificates.map((cert) => (
-          <div class="cell bg-empty w-full">
+          <div class="cell bg-empty flex-1 basis-80">
             <div class="flex items-center text-success gap-4">
               <Icon icon="certified" class="h-12" />
               <span class="text-title-4">{cert.name}</span>

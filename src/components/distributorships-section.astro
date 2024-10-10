@@ -41,12 +41,12 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
         </div>
       )
     }
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-[var(--site-space-x)]">
+    <div class="flex flex-wrap gap-[var(--site-space-x)]">
       {
         distributors.map((dist) => (
           <a
             class={`
-              cell bg-empty gap-[var(--site-space-x)] flex-row items-center w-full
+              cell bg-empty flex-1 basis-[26rem] gap-[var(--site-space-x)] flex flex-row items-center
               motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none
             `}
             href={dist.href}
