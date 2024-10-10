@@ -120,13 +120,9 @@ collections:
                 label: Sub-descriptions
                 label_singular: Sub-description
                 widget: list
-                summary: "{{fields.title}}"
+                summary: "{{fields.description}}"
                 required: false
                 fields:
-                  - name: title
-                    label: Title
-                    required: false
-                    widget: string
                   - name: description
                     label: Description
                     widget: markdown

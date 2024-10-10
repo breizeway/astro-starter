@@ -18,12 +18,8 @@
         }
       ],
       "subDescriptions": [
-        {
-          "description": "Avoid discriminatory openings and access by automating your doors."
-        },
-        {
-          "description": "We can automate existing doors, or add new doors and operators.  The options are endless!"
-        }
+        "Avoid discriminatory openings and access by automating your doors.",
+        "We can automate existing doors, or add new doors and operators.  The options are endless!"
       ]
     },
     {
@@ -52,14 +48,8 @@
         }
       ],
       "subDescriptions": [
-        {
-          "title": "Full Line of Doors",
-          "description": "* Interior or exterior doors\n* Impact or non-impact\n* Wood, fiberglass or steel\n* Traffic doors"
-        },
-        {
-          "title": "Wide Array of Hardware",
-          "description": "* Panic hardware\n* Electric panic hardware\n* Door closers\n* Perimeter Soundproofing kits\n* Sweeps"
-        }
+        "### Full Line of Doors\n* Interior or exterior doors\n* Impact or non-impact\n* Wood, fiberglass or steel\n* Traffic doors",
+        "### Wide Array of Hardware\n* Panic hardware\n* Electric panic hardware\n* Door closers\n* Perimeter Soundproofing kits\n* Sweeps"
       ]
     },
     {
@@ -76,15 +66,9 @@
         }
       ],
       "subDescriptions": [
-        {
-          "description": "Service, repair, replacement or new installation of all types of storefront."
-        },
-        {
-          "description": "Interior or exterior, architectural or structural, and impact or non-impact."
-        },
-        {
-          "description": "Frameless options are also available. We have teams that can tint any storefront to your liking, as well!"
-        }
+        "Service, repair, replacement or new installation of all types of storefront.",
+        "Interior or exterior, architectural or structural, and impact or non-impact.",
+        "Frameless options are also available. We have teams that can tint any storefront to your liking, as well!"
       ]
     }
   ],

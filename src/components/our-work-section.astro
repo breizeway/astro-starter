@@ -72,8 +72,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
               <div class="flex flex-wrap gap-[var(--site-space-x)]">
                 {gallery.subDescriptions.map((sd) => (
                   <div class="cell shadow-std bg-full !bg-opacity-25 flex-1 basis-72">
-                    {!!sd.title && <span class="text-title-5">{sd.title}</span>}
-                    <Markdown content={sd.description} noMarginY />
+                    <Markdown content={sd} noMarginY />
                   </div>
                 ))}
               </div>
