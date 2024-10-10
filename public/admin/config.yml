@@ -120,8 +120,6 @@ collections:
                 label: Sub-descriptions
                 label_singular: Sub-description
                 widget: list
-                summary: "{{fields.description}}"
-                required: false
                 fields:
                   - name: description
                     label: Description
