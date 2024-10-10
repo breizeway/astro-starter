@@ -13,15 +13,17 @@ const {
 
 <PageSection>
   {
-    !!image ? (
-      <div class="h-[calc(var(--site-space-y)*6)] w-full">
-        <Image
-          class="banner-img w-full h-full object-cover img-fade-in"
-          src={getManagedImage(image.src)}
-          alt={image.alt}
-          loading="eager"
-        />
-      </div>
+    !!image.length ? (
+      image.map((i) => (
+        <div class="h-[calc(var(--site-space-y)*6)] w-full">
+          <Image
+            class="banner-img w-full h-full object-cover img-fade-in"
+            src={getManagedImage(i.src)}
+            alt={i.alt}
+            loading="eager"
+          />
+        </div>
+      ))
     ) : (
       <Markdown content={slogan} noMarginY />
     )

@@ -1,7 +1,9 @@
 {
   "slogan": "The **ELITE** choice\nfor all your commercial door projects!",
-  "image": {
-    "src": "src/assets/images/managed/capture.png",
-    "alt": "Doors - NEED TO CHANGE THIS!"
-  }
+  "image": [
+    {
+      "src": "src/assets/images/managed/capture.png",
+      "alt": "Doors - NEED TO CHANGE THIS!"
+    }
+  ]
 }

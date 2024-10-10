@@ -24,8 +24,9 @@ collections:
           - name: image
             label: Image
             hint: ...or use an image
-            widget: object
+            widget: list
             required: false
+            max: 1
             fields:
               - name: src
                 label: Source
