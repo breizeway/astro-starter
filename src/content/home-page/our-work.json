@@ -1,3 +1,31 @@
 {
-  "title": "Our Work"
+  "title": "Our Work",
+  "galleries": [
+    {
+      "name": "AUTOMATIC DOORS",
+      "description": "Automatic commercial doors often utilize motion sensors and / or push buttons to activate automatic operators to automatically open and close, providing a seamless and convenient user experience.",
+      "subDescriptions": [
+        {
+          "description": "Avoid discriminatory openings and access by automating your doors."
+        },
+        {
+          "description": "We can automate existing doors, or add new doors and operators.  The options are endless!"
+        }
+      ],
+      "images": [
+        {
+          "src": "src/assets/images/managed/auto-swing2.png",
+          "alt": "Double Acting Wood Doors with Operator"
+        },
+        {
+          "src": "src/assets/images/managed/capture.png",
+          "alt": "Exterior view of accessible automatic glass tri-part door"
+        },
+        {
+          "src": "src/assets/images/managed/auto-swing5.jpg",
+          "alt": "Exterior view of two black automatic glass doors"
+        }
+      ]
+    }
+  ]
 }
