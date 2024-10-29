@@ -1,4 +1,9 @@
 {
   "slogan": "The **ELITE** choice\nfor all your commercial door projects!",
-  "image": []
+  "image": [
+    {
+      "src": "src/assets/images/managed/20230511_185821.jpg",
+      "alt": "Interior Glass"
+    }
+  ]
 }
