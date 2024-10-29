@@ -1,9 +1,4 @@
 {
   "slogan": "The **ELITE** choice\nfor all your commercial door projects!",
-  "image": [
-    {
-      "src": "src/assets/images/managed/horton-photo.jpg",
-      "alt": "auto horton"
-    }
-  ]
+  "image": []
 }
