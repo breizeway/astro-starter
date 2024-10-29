@@ -26,6 +26,40 @@
           "alt": "Exterior view of two black automatic glass doors"
         }
       ]
+    },
+    {
+      "name": "MANUAL DOORS",
+      "description": "New doors and hardware can change and upgrade the entire look and function of your space. We can do full replacement including frames, or simply just the slab.",
+      "subDescriptions": [
+        {
+          "description": "### Full Line of Doors\n* Interior or exterior doors\n* Impact or non-impact\n* Wood, fiberglass or steel\n* Traffic doors"
+        },
+        {
+          "description": "### Wide Array of Hardware\n* Panic hardware\n* Electric panic hardware\n* Door closers\n* Perimeter Soundproofing kits\n* Sweeps\""
+        }
+      ],
+      "images": [
+        {
+          "src": "src/assets/images/managed/manual-1.jpg",
+          "alt": "Gray double doors"
+        },
+        {
+          "src": "src/assets/images/managed/manual-2.jpg",
+          "alt": "Gray double doors with half-height windows at the top of each"
+        },
+        {
+          "src": "src/assets/images/managed/manual-3.jpg",
+          "alt": "Gray double doors"
+        },
+        {
+          "src": "src/assets/images/managed/manual-4.jpg",
+          "alt": "Single gray door with vent at bottom"
+        },
+        {
+          "src": "src/assets/images/managed/img_5635.jpg",
+          "alt": "Traffic doors"
+        }
+      ]
     }
   ]
 }
