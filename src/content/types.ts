@@ -29,10 +29,14 @@ export interface AboutUs {
   serviceCard: InfoCard;
 }
 
+interface SubDescription {
+  description: Markdown;
+}
+
 interface WorkGallery {
   name: string;
   description?: Markdown;
-  subDescriptions: string[];
+  subDescriptions: SubDescription[];
   images: Image[];
 }
 
