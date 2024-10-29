@@ -60,6 +60,31 @@
           "alt": "Traffic doors"
         }
       ]
+    },
+    {
+      "name": "GLASS & ALUMINUM STOREFRONT",
+      "description": "Whether you're a boutique or a restaurant, school or office, chances are you have storefront in your space. Does your storefront need some attention?  [Give us a call](/#contact-us)!",
+      "subDescriptions": [
+        {
+          "description": "Service, repair, replacement or new installation of all types of storefront."
+        },
+        {
+          "description": "Interior or exterior, architectural or structural, and impact or non-impact."
+        },
+        {
+          "description": "Frameless options are also available. We have teams that can tint any storefront to your liking, as well!"
+        }
+      ],
+      "images": [
+        {
+          "src": "src/assets/images/managed/resized_20171213_183614_1250.jpeg",
+          "alt": "Storefront with modified opening."
+        },
+        {
+          "src": "src/assets/images/managed/pc-ilab.jpg",
+          "alt": "Single with sidelites"
+        }
+      ]
     }
   ]
 }
