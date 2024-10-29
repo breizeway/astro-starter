@@ -33,9 +33,15 @@ const { sectionId, sectionClass } = SECTION_DEFS["contact-us"];
                 md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
               `}
             >
-              <Icon icon={cardIcons[idx]} class="h-24 mx-auto mb-12" />
-              <p class="text-title-3 text-primary">{card.title}</p>
-              <Markdown content={card.description} noMarginY />
+              <div class="h-32">
+                <Icon icon={cardIcons[idx]} class="h-24 mx-auto mb-12" />
+              </div>
+              <div class="h-[4.5em] text-title-3 text-primary flex flex-col justify-center">
+                <p>{card.title}</p>
+              </div>
+              <div class="flex flex-col justify-center flex-grow">
+                <Markdown content={card.description} />
+              </div>
             </div>
           </div>
         ))

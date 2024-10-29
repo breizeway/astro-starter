@@ -60,14 +60,20 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
             <div
               style={`animation-delay: ${idx * 100}ms`}
               class:list={`
-                bracket-card max-w-[22rem] transition w-full grid p-8 text-center strict-relational-rows
+                bracket-card max-w-[22rem] transition w-full p-8 text-center flex flex-col
                 motion-safe:opacity-0 intersect:animate-fade-right intersect-once motion-reduce:intersect:animate-none
                 md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
               `}
             >
-              <Icon icon={cardIcons[idx]} class="h-24 mx-auto mb-12" />
-              <p class="text-title-3 text-primary">{card.title}</p>
-              <Markdown content={card.description} />
+              <div class="h-32">
+                <Icon icon={cardIcons[idx]} class="h-24 mx-auto mb-12" />
+              </div>
+              <div class="h-[4.5em] text-title-3 text-primary flex flex-col justify-center">
+                <p>{card.title}</p>
+              </div>
+              <div class="flex flex-col justify-center flex-grow">
+                <Markdown content={card.description} />
+              </div>
             </div>
           </div>
         ))
@@ -104,9 +110,6 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
 
   @tailwind utilities;
   @layer utilities {
-    .strict-relational-rows {
-      grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
-    }
     .no-animation-delay {
       animation-delay: 0s;
     }
