@@ -14,16 +14,8 @@
       ],
       "images": [
         {
-          "src": "src/assets/images/managed/auto-swing2.png",
-          "alt": "Double Acting Wood Doors with Operator"
-        },
-        {
           "src": "src/assets/images/managed/capture.png",
           "alt": "Exterior view of accessible automatic glass tri-part door"
-        },
-        {
-          "src": "src/assets/images/managed/auto-swing5.jpg",
-          "alt": "Exterior view of two black automatic glass doors"
         },
         {
           "src": "src/assets/images/managed/20230511_185821.jpg",
@@ -54,16 +46,40 @@
           "alt": "Pair auto, single"
         },
         {
-          "src": "src/assets/images/managed/auto-swing5.jpg",
-          "alt": "Exterior pair"
-        },
-        {
           "src": "src/assets/images/managed/20240806_160721.jpg",
           "alt": "pair with transom"
         },
         {
           "src": "src/assets/images/managed/image000000-10-.jpg",
           "alt": "Casino"
+        },
+        {
+          "src": "src/assets/images/managed/image000000-8-.jpg",
+          "alt": "Single Hospital"
+        },
+        {
+          "src": "src/assets/images/managed/image000000-9-.jpg",
+          "alt": "Casino Ext"
+        },
+        {
+          "src": "src/assets/images/managed/image000001-5-.jpg",
+          "alt": "tinted"
+        },
+        {
+          "src": "src/assets/images/managed/image000001-4-.jpg",
+          "alt": "4 panel"
+        },
+        {
+          "src": "src/assets/images/managed/image000000-5-.jpg",
+          "alt": "Hospt"
+        },
+        {
+          "src": "src/assets/images/managed/image000001-7-.jpg",
+          "alt": "BOH"
+        },
+        {
+          "src": "src/assets/images/managed/image000000-1-.jpg",
+          "alt": "single sidelite"
         }
       ]
     },
@@ -106,6 +122,14 @@
         {
           "src": "src/assets/images/managed/image000000-3-.jpg",
           "alt": "Double steel louver"
+        },
+        {
+          "src": "src/assets/images/managed/img_5807.jpg",
+          "alt": "FSH"
+        },
+        {
+          "src": "src/assets/images/managed/img_5544.jpg",
+          "alt": "Double Warehouse"
         }
       ]
     },
