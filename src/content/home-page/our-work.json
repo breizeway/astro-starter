@@ -85,6 +85,28 @@
           "alt": "Single with sidelites"
         }
       ]
+    },
+    {
+      "name": "REVOLVING DOORS",
+      "description": "Revolving doors allow you the opportunity to enhance your building entrance with an aesthetic appeal. \n\nRevolving doors often offer minimal trim, resulting in a clean, sleek and modern look.",
+      "subDescriptions": [
+        {
+          "description": "Revolving doors also minimize climatized air loss when opening and closing a door."
+        },
+        {
+          "description": "Doors can be locked from a remote location and integrated with access control systems for controlled access"
+        }
+      ],
+      "images": [
+        {
+          "src": "src/assets/images/managed/revolver_auto_6.9adce7ddd28152e924a3011a28658e22.jpg",
+          "alt": "Hx Revolver"
+        },
+        {
+          "src": "src/assets/images/managed/revolver_security.9adce7ddd28152e924a3011a28658e22.jpg",
+          "alt": "Office Revolver"
+        }
+      ]
     }
   ]
 }
