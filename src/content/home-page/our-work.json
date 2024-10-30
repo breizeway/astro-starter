@@ -80,7 +80,7 @@
       ],
       "images": [
         {
-          "src": "src/assets/images/managed/manual-1.jpg",
+          "src": "src/assets/images/managed/20220913_174553.jpg",
           "alt": "Gray double doors"
         },
         {
@@ -92,12 +92,20 @@
           "alt": "Gray double doors"
         },
         {
-          "src": "src/assets/images/managed/manual-4.jpg",
+          "src": "src/assets/images/managed/20220919_180010.jpg",
           "alt": "Single gray door with vent at bottom"
         },
         {
           "src": "src/assets/images/managed/img_5635.jpg",
           "alt": "Traffic doors"
+        },
+        {
+          "src": "src/assets/images/managed/20220921_181253.jpg",
+          "alt": "Red double"
+        },
+        {
+          "src": "src/assets/images/managed/20230412_121708.jpg",
+          "alt": "double vent"
         }
       ]
     },
