@@ -157,6 +157,10 @@
           "alt": "Single with sidelites"
         },
         {
+          "src": "src/assets/images/managed/20240529_175853.jpg",
+          "alt": "Interior 1"
+        },
+        {
           "src": "src/assets/images/managed/20220919_180010.jpg",
           "alt": "Red Double"
         },
@@ -165,8 +169,16 @@
           "alt": "slider"
         },
         {
+          "src": "src/assets/images/managed/20240529_175831.jpg",
+          "alt": "Interior 2"
+        },
+        {
           "src": "src/assets/images/managed/20220921_181253.jpg",
           "alt": "Rede Interior"
+        },
+        {
+          "src": "src/assets/images/managed/20240529_175848.jpg",
+          "alt": "Interior 3"
         }
       ]
     },
