@@ -100,10 +100,6 @@
           "alt": "Traffic doors"
         },
         {
-          "src": "src/assets/images/managed/20220921_181253.jpg",
-          "alt": "Red double"
-        },
-        {
           "src": "src/assets/images/managed/20230412_121708.jpg",
           "alt": "double vent"
         }
@@ -131,6 +127,18 @@
         {
           "src": "src/assets/images/managed/pc-ilab.jpg",
           "alt": "Single with sidelites"
+        },
+        {
+          "src": "src/assets/images/managed/20220919_180010.jpg",
+          "alt": "Red Double"
+        },
+        {
+          "src": "src/assets/images/managed/20240819_193428.jpg",
+          "alt": "slider"
+        },
+        {
+          "src": "src/assets/images/managed/20220921_181253.jpg",
+          "alt": "Rede Interior"
         }
       ]
     },
