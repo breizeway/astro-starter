@@ -88,20 +88,24 @@
           "alt": "Gray double doors with half-height windows at the top of each"
         },
         {
-          "src": "src/assets/images/managed/manual-3.jpg",
-          "alt": "Gray double doors"
-        },
-        {
-          "src": "src/assets/images/managed/20220919_180010.jpg",
-          "alt": "Single gray door with vent at bottom"
-        },
-        {
           "src": "src/assets/images/managed/img_5635.jpg",
           "alt": "Traffic doors"
         },
         {
           "src": "src/assets/images/managed/20230412_121708.jpg",
           "alt": "double vent"
+        },
+        {
+          "src": "src/assets/images/managed/20231011_174620.jpg",
+          "alt": "double steel"
+        },
+        {
+          "src": "src/assets/images/managed/image000000-11-.jpg",
+          "alt": "Single Steel"
+        },
+        {
+          "src": "src/assets/images/managed/image000000-3-.jpg",
+          "alt": "Double steel louver"
         }
       ]
     },
