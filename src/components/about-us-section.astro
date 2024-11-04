@@ -9,7 +9,7 @@ import Markdown from "./common/markdown.astro";
 import PageSection from "./common/page-section.astro";
 
 const {
-  data: { title, description, image, locationCard, businessCard, serviceCard },
+  data: { description, image, locationCard, businessCard, serviceCard },
 } = (await getEntry("home-page", "about-us")) as ContentSection<AboutUs>;
 
 const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
@@ -20,9 +20,9 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
   <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
     <div
       class={`
-        glassy glass-full glass-card glass-responsive p-0 text-empty flex gap-[var(--site-space-x)] flex-wrap [&_>_*]:flex-[1_1_24rem] transition-all
+        glassy glass-dark glass-card glass-responsive flex gap-[var(--site-space-x-lg)] flex-wrap [&_>_*]:flex-[1_1_24rem] transition-all
         motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
-        sm:p-[var(--site-space-x)] sm:py-[calc(var(--site-space-x)*1.5)]
+        p-[var(--site-space-x)] py-[calc(var(--site-space-x-lg)*1.5)] 
       `}
     >
       {
@@ -32,53 +32,47 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
               src={getManagedImage(i.src)}
               alt={i.alt}
               class={`
-            img-fade-in w-full h-full object-cover overflow-clip
-            sm:border sm:border-std sm:shadow-std sm:rounded-lg
+            img-fade-in w-full h-full max-h-[30rem] object-cover overflow-clip
+            border border-std shadow-std rounded-lg
           `}
               loading="eager"
             />
           ))
       }
-      <div
-        class:list={[
-          "p-[var(--site-space-x)] sm:p-0",
-          { "py-[calc(var(--site-space-x)*1.5)]": !image?.length },
-        ]}
-      >
-        <p class="text-title-2">{title}</p>
-        <Markdown content={description} class="about-description" />
+      <div class="blurb">
+        <Markdown content={description} class="about-description text-center" />
       </div>
     </div>
-    <div
-      class={`
-        flex flex-wrap gap-y-[var(--site-space-y)] transition-[gap]
+  </div>
+  <div
+    class={`
+        flex flex-wrap gap-y-[var(--site-space-y-sm)] transition-[gap] mt-[var(--site-space-y-sm)]
     `}
-    >
-      {
-        [locationCard, businessCard, serviceCard].map((card, idx) => (
-          <div class="flex-1 basis-[22rem] flex justify-center px-[var(--site-space-x-lg)]">
-            <div
-              style={`animation-delay: ${idx * 100}ms`}
-              class:list={`
+  >
+    {
+      [locationCard, businessCard, serviceCard].map((card, idx) => (
+        <div class="flex-1 basis-[22rem] flex justify-center px-[var(--site-space-x-lg)]">
+          <div
+            style={`animation-delay: ${idx * 100}ms`}
+            class:list={`
                 bracket-card max-w-[22rem] transition w-full p-8 text-center flex flex-col
                 motion-safe:opacity-0 intersect:animate-fade-right intersect-once motion-reduce:intersect:animate-none
                 md:intersect:animate-fade-up motion-reduce:md:intersect:animate-none 
               `}
-            >
-              <div class="h-32">
-                <Icon icon={cardIcons[idx]} class="h-24 mx-auto mb-12" />
-              </div>
-              <div class="h-[4.5em] text-title-3 text-primary flex flex-col justify-center">
-                <p>{card.title}</p>
-              </div>
-              <div class="flex flex-col justify-center flex-grow">
-                <Markdown content={card.description} />
-              </div>
+          >
+            <div class="h-32">
+              <Icon icon={cardIcons[idx]} class="h-24 mx-auto mb-12" />
+            </div>
+            <div class="h-[4.5em] text-title-3 text-primary flex flex-col justify-center">
+              <p>{card.title}</p>
+            </div>
+            <div class="flex flex-col justify-center flex-grow">
+              <Markdown content={card.description} />
             </div>
           </div>
-        ))
-      }
-    </div>
+        </div>
+      ))
+    }
   </div>
 </PageSection>
 
@@ -100,7 +94,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
     }
 
     .about-description {
-      @apply text-empty;
+      @apply light:text-empty;
     }
 
     .bracket-card {

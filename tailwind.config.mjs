@@ -19,10 +19,10 @@ const customColor = (colorVar, { opacityVariable, opacityValue }) => {
 
 const COMMON_VARS = {
   // sizes
-  "--site-space-x-lg": "1.5rem",
+  "--site-space-x-lg": "2rem",
   "--site-space-x-sm": "0.75rem",
-  "--site-space-y-lg": "8rem",
-  "--site-space-y-sm": "4rem",
+  "--site-space-y-lg": "10rem",
+  "--site-space-y-sm": "5rem",
 
   "--icon-stroke": "3px",
   "--nav-height": "4.75rem",
@@ -356,10 +356,9 @@ const config = {
         light: {
           primary: "#449FF4",
           secondary: "#455270",
-          accent: "#888",
           neutral: "#455270",
 
-          "base-100": "#fafafa",
+          "base-100": "#eee",
           "base-content": "#253040",
 
           "--color-empty": "100% 0 0",
@@ -372,11 +371,10 @@ const config = {
         dark: {
           primary: "#449FF4",
           secondary: "#455270",
-          accent: "#888",
           neutral: "#6B7B8C",
 
           "base-100": "#414141",
-          "base-content": "#eeeeee",
+          "base-content": "#eee",
 
           "--color-empty": "0% 0 0",
           "--color-full": "100% 0 0",

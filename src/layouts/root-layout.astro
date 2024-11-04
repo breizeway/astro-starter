@@ -149,7 +149,7 @@ const { title } = Astro.props;
   @tailwind components;
   @layer components {
     .tl-tab {
-      @apply inline-flex items-center font-title text-lg sm:text-xl border-transparent whitespace-nowrap text-base-content transition-colors duration-200 h-[var(--nav-height)];
+      @apply inline-flex items-center font-title text-lg sm:text-xl border-transparent whitespace-nowrap transition-colors duration-200 h-[var(--nav-height)];
       @apply no-touch:hover:text-opacity-75 no-touch:hover:!border-opacity-50;
     }
     .tl-tab-x {
@@ -165,18 +165,13 @@ const { title } = Astro.props;
       @apply border-l-primary bg-base-content bg-opacity-10 no-touch:hover:bg-base-content no-touch:hover:bg-opacity-5;
     }
     .blurb {
-      @apply relative pl-[calc(var(--site-space-x)+1.2rem)] pr-[var(--site-space-x)] w-full max-w-[36rem] text-current bg-opacity-10;
-
-      &::before {
-        content: "";
-        @apply absolute left-[0.6rem] h-full w-[0.6rem] bg-current opacity-75;
-      }
+      @apply w-full text-current [&_p]:text-lg [&_*]:max-w-[32rem] text-center text-lg bg-opacity-10 flex justify-center;
     }
     .border-std {
       @apply border border-neutral border-opacity-15;
     }
     .cell {
-      @apply flex flex-col gap-[var(--site-space-x-sm)] bg-empty !bg-opacity-60 dark:!bg-opacity-30 rounded-lg p-[var(--site-space-x)] border-std shadow-std;
+      @apply flex flex-col gap-[var(--site-space-x-sm)] rounded-xl p-[var(--site-space-x)] border-std shadow-std;
       @apply motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none;
     }
   }
@@ -204,7 +199,7 @@ const { title } = Astro.props;
         0px -2px 2px 0px #00000048 inset;
     }
     .glass-wide {
-      border-radius: 1.75rem;
+      border-radius: 2.25rem;
       box-shadow:
         1px 2px 2px 0px #ffffff48 inset,
         -1px -2px 2px 0px #00000048 inset;
@@ -217,11 +212,23 @@ const { title } = Astro.props;
     .glass-empty-header {
       @apply bg-opacity-30 bg-empty;
     }
+    .glass-dark-header {
+      @apply bg-opacity-30 bg-black;
+    }
+    .glass-light-header {
+      @apply bg-opacity-15 bg-white;
+    }
     .glass-base {
       @apply bg-opacity-30 bg-base-100;
     }
     .glass-empty {
       @apply bg-opacity-50 bg-empty;
+    }
+    .glass-dark {
+      @apply bg-opacity-50 dark:bg-opacity-30 bg-black;
+    }
+    .glass-light {
+      @apply bg-opacity-50 dark:bg-opacity-30 bg-white;
     }
     .glass-full {
       @apply bg-opacity-50 bg-full;
@@ -230,7 +237,7 @@ const { title } = Astro.props;
       @apply bg-opacity-25 bg-full;
     }
     .btn-overlay {
-      @apply aspect-square rounded-full bg-neutral bg-opacity-60 backdrop-blur-xl w-10 flex justify-center items-center text-white  [&_*]:text-white text-lg;
+      @apply aspect-square rounded-full bg-neutral bg-opacity-60 backdrop-blur-xl w-10 flex justify-center items-center text-white [&_*]:text-white text-lg;
     }
   }
 </style>

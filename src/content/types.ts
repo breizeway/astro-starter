@@ -21,7 +21,6 @@ interface InfoCard {
 }
 
 export interface AboutUs {
-  title: string;
   description: Markdown;
   image?: Image[];
   locationCard: InfoCard;
@@ -51,7 +50,6 @@ interface Certificate {
 }
 
 export interface Certifications {
-  title: string;
   description?: string;
   certificates: Certificate[];
 }
@@ -63,7 +61,6 @@ interface Distributor {
 }
 
 export interface Distributorships {
-  title: string;
   description?: string;
   distributors: Distributor[];
 }

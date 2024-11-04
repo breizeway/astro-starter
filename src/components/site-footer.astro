@@ -2,15 +2,25 @@
 import LogoLink from "./common/logo-link.astro";
 ---
 
-<footer class="site-px page-section [&&]:pt-12 [&&]:pb-6 back [&&]:bg-base-200">
+<footer class="site-px page-section [&&]:pt-12 [&&]:pb-6">
   <div class="site-width-content flex flex-col gap-6 items-center">
     <LogoLink
       variant="small"
       class="h-[var(--nav-height)]"
       iconProps={{ class: "h-full" }}
     />
-    <p class="text-center text-base-content text-opacity-60">
+    <p class="text-center">
       © {new Date().getFullYear()} Elite Commercial Door, Inc.
     </p>
   </div>
 </footer>
+
+<style>
+  footer {
+    @apply text-base-content opacity-75;
+
+    & * {
+      --site-logo-color-1: currentColor;
+    }
+  }
+</style>

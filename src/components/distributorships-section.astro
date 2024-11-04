@@ -7,7 +7,7 @@ import { getManagedImage } from "../helpers/media";
 import Markdown from "./common/markdown.astro";
 
 const {
-  data: { title, description, distributors },
+  data: { description, distributors },
 } = (await getEntry(
   "home-page",
   "distributorships",
@@ -21,32 +21,29 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
   class:list={[
     sectionClass,
     `
-     glassy glass-empty glass-card glass-responsive [&&]:p-0 mt-[var(--site-space-y-sm)]
+     glassy glass-light glass-card glass-responsive [&&]:p-0 mt-[var(--site-space-y)]
       motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
     `,
   ]}
 >
   <div
-    class="glass-empty-header px-[var(--site-space-x)] py-[var(--site-space-x-lg)]"
-  >
-    <span class="text-title-2">{title}</span>
-  </div>
-  <div
-    class="p-[var(--site-space-x)] py-[calc(var(--site-space-x)*1.5)] flex flex-col gap-[calc(var(--site-space-x)*1.5)]"
+    class="p-[var(--site-space-x)] py-[calc(var(--site-space-x-lg)*1.5)] flex flex-col gap-[calc(var(--site-space-x)*1.5)]"
   >
     {
       !!description && (
-        <div class="blurb my-[var(--site-space-x-sm)] motion-safe:opacity-0 intersect:animate-fade-left intersect-once motion-reduce:intersect:animate-none">
+        <div class="blurb my-[var(--site-space-x-sm)]">
           <Markdown content={description} noMarginY />
         </div>
       )
     }
-    <div class="flex flex-wrap gap-[var(--site-space-x)]">
+    <div
+      class="flex flex-wrap gap-[var(--site-space-x-lg)] p-[var(--site-space-x)] pb-0"
+    >
       {
         distributors.map((dist) => (
           <a
             class={`
-              cell bg-empty flex-1 basis-[26rem] gap-[var(--site-space-x)] flex flex-row items-center
+              cell glass-light-header flex-1 basis-[26rem] gap-[var(--site-space-x)] flex flex-row items-center
               motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none
             `}
             href={dist.href}
@@ -71,5 +68,13 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
 <style>
   a {
     text-decoration-thickness: 3px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    *,
+    .markdown {
+      @apply text-black;
+      --bc: black;
+    }
   }
 </style>

@@ -17,14 +17,14 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
   class:list={[
     sectionClass,
     `
-      glassy glass-full glass-card glass-responsive text-empty [&&]:p-0 flex flex-col 
+      glassy glass-dark glass-card glass-responsive [&&]:p-0 flex flex-col 
       motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none
     `,
   ]}
 >
-  <div class="glass-full-header">
+  <div class="glass-dark-header">
     <p
-      class="text-title-2 px-[var(--site-space-x)] pt-[var(--site-space-x-lg)] pb-0 text-center"
+      class="text-title-2 px-[var(--site-space-x)] pt-[calc(var(--site-space-x-lg)*1.5)] pb-0 text-center"
     >
       {title}
     </p>
@@ -37,7 +37,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
           <li role="tab">
             <button
               class:list={[
-                "gallery-tab tl-tab tl-tab-x text-empty",
+                "gallery-tab tl-tab tl-tab-x",
                 { "tl-tab--selected": !idx },
               ]}
               data-gallery={makeId(gallery.name)}
@@ -54,7 +54,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
     galleries.map((gallery, idx) => (
       <div
         class:list={[
-          "gallery-carousel py-[calc(var(--site-space-x)*1.5)] flex flex-col gap-[calc(var(--site-space-x)*1.5)]",
+          "gallery-carousel py-[calc(var(--site-space-x)*1.5)] flex flex-col gap-[calc(var(--site-space-x-lg)*1)] pb-[var(--site-space-x-lg)]",
           { hidden: !!idx },
         ]}
         data-gallery={makeId(gallery.name)}
@@ -69,9 +69,9 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
               />
             </div>
             {!!gallery.subDescriptions.length && (
-              <div class="flex flex-wrap gap-[var(--site-space-x)]">
+              <div class="flex flex-wrap gap-[var(--site-space-x-lg)]">
                 {gallery.subDescriptions.map(({ description }) => (
-                  <div class="cell shadow-std bg-full !bg-opacity-25 flex-1 basis-72">
+                  <div class="cell glass-dark-header shadow-std !bg-opacity-25 flex-1 basis-72">
                     <Markdown content={description} noMarginY />
                   </div>
                 ))}
@@ -86,10 +86,16 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 </work-galleries>
 
 <style>
-  .gallery-carousel {
-    --carousel-control-color: var(--color-empty);
-    .markdown {
-      --bc: var(--color-empty);
+  .glassy * {
+    --carousel-control-color: var(--bc);
+  }
+  @media (prefers-color-scheme: light) {
+    .glassy * {
+      @apply !text-empty;
+      --carousel-control-color: var(--color-empty);
+      .markdown {
+        --bc: var(--color-empty);
+      }
     }
   }
 </style>

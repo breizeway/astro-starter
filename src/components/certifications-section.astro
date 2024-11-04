@@ -9,7 +9,7 @@ import ImgZoomWrapper from "./common/img-zoom-wrapper.astro";
 import Markdown from "./common/markdown.astro";
 
 const {
-  data: { title, description, certificates },
+  data: { description, certificates },
 } = (await getEntry(
   "home-page",
   "certifications",
@@ -23,42 +23,41 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
   class:list={[
     sectionClass,
     `
-      glassy glass-empty text-full glass-card glass-responsive [&&]:p-0 mt-[var(--site-space-y)]
-      motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
+    glassy glass-light glass-card glass-responsive [&&]:p-0 mt-[var(--site-space-y)]
+    motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
     `,
   ]}
 >
   <div
-    class="glass-empty-header px-[var(--site-space-x)] py-[var(--site-space-x-lg)]"
-  >
-    <span class="text-title-2">{title}</span>
-  </div>
-
-  <div
-    class="p-[var(--site-space-x)] py-[calc(var(--site-space-x)*1.5)] flex flex-col gap-[calc(var(--site-space-x)*1.5)]"
+    class="p-[var(--site-space-x)] py-[calc(var(--site-space-x-lg)*1.5)] flex flex-col gap-[calc(var(--site-space-x)*1.5)]"
   >
     {
       !!description && (
-        <div class="blurb my-[var(--site-space-x-sm)] motion-safe:opacity-0 intersect:animate-fade-left intersect-once motion-reduce:intersect:animate-none">
+        <div class="blurb my-[var(--site-space-x-sm)]">
           <Markdown content={description} noMarginY />
         </div>
       )
     }
 
-    <div class="flex flex-wrap gap-[var(--site-space-x)]">
+    <div
+      class="flex flex-wrap gap-[calc(var(--site-space-x-lg)*2)] p-[var(--site-space-x)] justify-center"
+    >
       {
         certificates.map((cert) => (
-          <div class="cell bg-empty flex-1 basis-80">
-            <div class="flex items-center text-success gap-4">
+          <div class="flex flex-col justify-between items-center gap-[var(--site-space-x-sm)] flex-1 basis-80">
+            <div class="flex items-center justify-center text-success dark:text-[oklch(85%_0.45_160_/_0.9)] dark:drop-shadow-lg gap-4 mb-[calc(var(--site-space-x)/2)]">
               <Icon icon="certified" class="h-12" />
               <span class="text-title-4">{cert.name}</span>
             </div>
-            <a class="w-fit border-std shadow-md" target="_blank">
+            <a
+              class="w-fit border-std rounded-xl overflow-clip shadow-std"
+              target="_blank"
+            >
               <ImgZoomWrapper>
                 <Image
                   src={getManagedImage(cert.image.src)}
                   alt={cert.image.alt}
-                  class="img-fade-in w-full"
+                  class="img-fade-in w-full max-w-[24rem]"
                   loading="lazy"
                 />
               </ImgZoomWrapper>
@@ -73,5 +72,12 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
 <style>
   .glassy {
     --icon-stroke: 4px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .markdown {
+      @apply text-black;
+      --bc: black;
+    }
   }
 </style>
