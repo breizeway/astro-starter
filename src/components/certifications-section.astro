@@ -45,23 +45,20 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
       {
         certificates.map((cert) => (
           <div class="flex flex-col justify-between items-center gap-[var(--site-space-x-sm)] flex-1 basis-80">
-            <div class="flex items-center justify-center text-success dark:text-[oklch(78%_0.4_160_/_0.9)] dark:drop-shadow-lg gap-4 mb-[calc(var(--site-space-x)/2)]">
+            <div class="flex items-center justify-center text-success dark:text-[oklch(70%_0.5_160_/_0.9)] dark:drop-shadow-lg gap-4 mb-[calc(var(--site-space-x)/2)]">
               <Icon icon="certified" class="h-12" />
               <span class="text-title-4">{cert.name}</span>
             </div>
-            <a
-              class="w-fit border-std rounded-xl overflow-clip shadow-std"
-              target="_blank"
-            >
+            <div class="border-std rounded-xl overflow-clip shadow-std max-w-[24rem]">
               <ImgZoomWrapper>
                 <Image
                   src={getManagedImage(cert.image.src)}
                   alt={cert.image.alt}
-                  class="img-fade-in w-full max-w-[24rem]"
+                  class="img-fade-in"
                   loading="lazy"
                 />
               </ImgZoomWrapper>
-            </a>
+            </div>
           </div>
         ))
       }
