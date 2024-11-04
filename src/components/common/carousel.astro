@@ -64,32 +64,28 @@ const { images, ...restProps } = Astro.props;
   <div
     class="carousel-comp__controls flex w-full justify-center items-center gap-2 py-2 px-[var(--carousel-px)]"
   >
-    <div class="flex w-full justify-end">
-      <div
-        class="flex items-center max-w-[7.5rem] gap-2 overflow-x-scroll no-scrollbar relative"
-      >
-        {
-          images.map((_, idx) => (
-            <button
-              aria-label={`scroll to carousel slide ${idx + 1}`}
-              class:list={[
-                "carousel-comp__pg-btn btn btn-circle btn-xs btn-outline h-4 w-4 min-h-4",
-                { "btn-active": !idx },
-              ]}
-            />
-          ))
-        }
-      </div>
+    <div
+      class="flex items-center max-w-[7.5rem] gap-2 overflow-x-scroll no-scrollbar relative"
+    >
+      {
+        images.map((_, idx) => (
+          <button
+            aria-label={`scroll to carousel slide ${idx + 1}`}
+            class:list={[
+              "carousel-comp__pg-btn btn btn-circle btn-xs btn-outline h-4 w-4 min-h-4",
+              { "btn-active": !idx },
+            ]}
+          />
+        ))
+      }
     </div>
-    <div class="w-full flex items-center">
-      <button
-        class="carousel-comp__play-btn btn btn-circle btn-sm btn-ghost z-10"
-        aria-label="pause or play carousel"
-      >
-        <Icon icon="pause" class="h-6" />
-        <Icon icon="play" class="hidden h-6" />
-      </button>
-    </div>
+    <button
+      class="carousel-comp__play-btn btn btn-circle btn-sm btn-ghost z-10"
+      aria-label="pause or play carousel"
+    >
+      <Icon icon="pause" class="h-6" />
+      <Icon icon="play" class="hidden h-6" />
+    </button>
   </div>
 </carousel-comp>
 
