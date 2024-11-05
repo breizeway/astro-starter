@@ -1,4 +1,16 @@
 ---
+import { getImage } from "astro:assets";
+import faviconSrc from "../assets/images/logos/favicon.png";
+import faviconSvgSrc from "../assets/images/logos/favicon.svg";
+
+const appleTouchIcon = await getImage({
+  src: faviconSrc,
+  width: 180,
+  height: 180,
+  format: "png",
+});
+const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
+
 interface Props {
   title: string;
 }
@@ -17,6 +29,10 @@ const { title } = Astro.props;
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={appleTouchIcon.src} />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -165,7 +181,7 @@ const { title } = Astro.props;
       @apply border-l-primary bg-base-content bg-opacity-10 no-touch:hover:bg-base-content no-touch:hover:bg-opacity-5;
     }
     .blurb {
-      @apply w-full text-current [&_p]:text-lg [&_*]:max-w-[32rem] text-center text-lg bg-opacity-10 flex justify-center;
+      @apply w-full text-current [&_p]:sm:text-lg [&_*]:max-w-[32rem] text-center bg-opacity-10 flex justify-center;
     }
     .border-std {
       @apply border border-neutral border-opacity-15;
