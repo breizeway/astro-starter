@@ -8,20 +8,21 @@ const props = Astro.props;
 ---
 
 <img-zoom-wrapper {...props}>
-  <button class="open-button"><slot /></button>
+  <button aria-label="view image" class="open-button"><slot /></button>
   <dialog class="modal w-full">
     <div
       class="modal-box !transform-none !max-w-[100vw] !max-h-screen bg-transparent p-0 rounded-none w-fit cursor-zoom-in"
     >
       <slot />
       <button
+        aria-label="close image"
         class="close-button fixed left-[calc(100vw-3.75rem)] top-[1.25rem] btn-overlay"
       >
         <Icon icon="close" class="h-[1.5rem]" /></button
       >
     </div>
     <form method="dialog" class="modal-backdrop">
-      <button></button>
+      <button aria-label="close image"></button>
     </form>
   </dialog>
 </img-zoom-wrapper>
