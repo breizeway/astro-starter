@@ -3,7 +3,7 @@ backend:
   branch: main # Branch to update (optional; defaults to master)
 site_url: https://elite-door.com/
 display_url: https://elite-door.com/
-logo_url: https://elite-door.com/logo-large.svg
+logo_url: https://elite-door.com/logo.svg
 media_folder: src/assets/images/managed # Location where files will be stored in the repo
 public_folder: src/assets/images/managed # The src attribute for uploaded media
 collections:
