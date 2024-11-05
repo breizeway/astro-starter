@@ -74,7 +74,8 @@ const config = {
         },
       },
       screens: {
-        "nav-lrg": `${SITE_TAB_WIDTH}px`,
+        "bp-nav": `${SITE_TAB_WIDTH}px`,
+        "bp-abt": "920px",
       },
       fontFamily: {
         title: ["poppins", ...defaultTheme.fontFamily.sans],

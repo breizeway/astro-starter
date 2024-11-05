@@ -20,9 +20,9 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
   <div id={sectionId} class:list={[sectionClass, "offset-section"]}>
     <div
       class={`
-        glassy glass-dark glass-card glass-responsive flex gap-[var(--site-space-x-lg)] flex-wrap [&_>_*]:flex-[1_1_24rem] transition-all
+        glassy glass-dark glass-card glass-responsive flex gap-[var(--site-space-x-lg)] flex-col bp-abt:flex-row transition-all
         motion-safe:opacity-0 intersect:animate-fade-up intersect-once intersect-th-0.1 motion-reduce:intersect:animate-none
-        p-[var(--site-space-x)] py-[calc(var(--site-space-x-lg)*1.5)] 
+        p-[var(--site-space-x)] py-[calc(var(--site-space-x-lg)*1.5)]
       `}
     >
       {
@@ -40,7 +40,10 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
           ))
       }
       <div class="blurb">
-        <Markdown content={description} class="about-description text-center" />
+        <Markdown
+          content={description}
+          class="about-description text-center bp-abt:text-left"
+        />
       </div>
     </div>
   </div>
