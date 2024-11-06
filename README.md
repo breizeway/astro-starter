@@ -6,7 +6,7 @@
 ## Summary
 
 - The source of truth for the code is in this repository on github (`https://github.com/JHElite/landing-page`).
-- This site is hosted by Netlify at () which automatically detects change in the code from github to build and host the website.
+- This site is hosted by Netlify at (`https://app.netlify.com/sites/elite-door/overview`) which automatically detects change in the code from github to build and host the website.
 - The top-level domain (TLD) `elite-door.com` is registered with and purchased from GoDaddy and is configured as a custom domain on Netlify.
 - Netlify is configured with Decap CMS (**C**ontent **M**anagement **S**ystem - or the `/admin` page) to allow you to update text and images on your site.
 - This site was originally developed by Tannor Breitigam. Can be reached at:
