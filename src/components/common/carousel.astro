@@ -20,10 +20,7 @@ const { images, ...restProps } = Astro.props;
     >
       {
         images.map(({ src, alt }, idx) => (
-          <a
-            target="_blank"
-            class="carousel-item w-full md:w-3/4 h-[var(--carousel-img-height)] bg-base-300 overflow-hidden shadow-std"
-          >
+          <div class="carousel-item w-full md:w-3/4 h-[var(--carousel-img-height)] bg-base-300 overflow-hidden shadow-std">
             <ImgZoomWrapper>
               <Image
                 class="object-cover img-fade-in"
@@ -33,7 +30,7 @@ const { images, ...restProps } = Astro.props;
                 {...{ alt }}
               />
             </ImgZoomWrapper>
-          </a>
+          </div>
         ))
       }
     </div>
