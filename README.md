@@ -1,54 +1,66 @@
-# Astro Starter Kit: Basics
+![Elite Door Logo](https://elite-door.netlify.app/logo.svg)
+# Elite Door Landing Page
 
-```sh
-npm create astro@latest -- --template basics
-```
+[![Netlify Status](https://api.netlify.com/api/v1/badges/93d59538-1193-412e-b5b7-410324ff4f08/deploy-status)](https://app.netlify.com/sites/elite-door/deploys)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Summary
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- The source of truth for the code is in this repository on github (`https://github.com/JHElite/landing-page`).
+- This site is hosted by Netlify at () which automatically detects change in the code from github to build and host the website.
+- The top-level domain (TLD) `elite-door.com` is registered with and purchased from GoDaddy and is configured as a custom domain on Netlify.
+- Netlify is configured with Decap CMS (**C**ontent **M**anagement **S**ystem - or the `/admin` page) to allow you to update text and images on your site.
+- This site was originally developed by Tannor Breitigam. Can be reached at:
+  - dev@tannor.net
+  - https://tannor.net
+  - https://www.linkedin.com/in/tannor/
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## How it works
 
-## 🚀 Project Structure
+### Github
 
-Inside of your Astro project, you'll see the following folders and files:
+- Your website's code lives at `https://github.com/JHElite/landing-page`.
+- Your github account is `JHElite`. It's recommended to use this github account to log in to both netlify and to the `/admin` page on the website - that way you only have to remember one account for everything website-related
+- If you want to allow someone to edit the code, you can invite collaborators to your repository on Github in the settings at `https://github.com/JHElite/landing-page/settings/access`.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+### Netlify
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- Log in to your Netlify with you Github credentials ("Log in wth Github") at `https://app.netlify.com/sites/elite-door/overview`
+- Netlify is integrated with your Github account. Whenever changes are made to the Code on your Github account, Netlify will take those changes and update the website within a few minutes.
+- When you make change to your website on the CMS `/admin` page, this makes changes directly to the source code on Github, which also triggers an update.
+- User accounts and the CMS `/admin` integration are managed on the `Identity` page on Netlify (https://app.netlify.com/sites/elite-door/configuration/identity#content - Site Configuration > Identity.
+  - To edit / invite CMS users, go to the `Users` section on the `Identity` page (https://app.netlify.com/sites/elite-door/configuration/identity#users)
+  - The integration with Decap CMS that enables the `/admin` page is also here in the `Services` section (https://app.netlify.com/sites/elite-door/configuration/identity#users)
+    - If for some reason the integration were to break, try removing and re-adding it here.
+- The free tier on Netlify allows only 1 account for an organization. This mean that hosting / deployment settings (inviting users to the `/admin` page, domain name setup, integration with github) must be configured through a single account and the email and password may need to be shared with a developer in order to mak significant updates.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### CMS or the `/admin` page
 
-Any static assets, like images, can be placed in the `public/` directory.
+Changes to text and images are enabled by the Decap CMS at `https://elite-door.com/admin`
 
-## 🧞 Commands
+- You can have up to 5 users at a time who have access to the admin page
+- See the previous `Netlify` section on how to manage users
 
-All commands are run from the root of the project, from a terminal:
+### The domain (GoDaddy)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+The website is reachable at `https://elite-door.com` because we have instructed GoDaddy to point that domain at the site hosted on Netlify. This requires some set up on both GoDaddy and Netlify
 
-## 👀 Want to learn more?
+- Set up on Netlify is at `https://app.netlify.com/sites/elite-door/domain-management/setup`
+- You must also configure GoDaddy to point the domain to Netlify. Follow the instructions in Netlify's docs. `https://docs.netlify.com/domains-https/custom-domains/` is a good place to start
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Development
+
+This project uses `AstroJs` with `TypeScript`, `Tailwind`, and some theming and components from `DaisyUI`. It integrates with `Decap` CMS for content.
+
+### Running locally
+
+In your shell, run...
+
+- `nvm use`
+- `npm install`
+- `npm run dev`
+
+Open in your browser at http://localhost/4321 to view the live local site.
+
+### Configuration
+
+The site has no ENV variable or extra set up needed.
