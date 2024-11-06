@@ -1,9 +1,7 @@
 import typography from "@tailwindcss/typography";
 import daisyui from "daisyui";
-// import tailwindCssAnimated from "tailwindcss-animated";
 import defaultTheme from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
-import { SITE_TAB_WIDTH } from "./src/constants";
 import { intersectionPlugin } from "./src/library/intersection-handler";
 
 const customColor = (colorVar, { opacityVariable, opacityValue }) => {
@@ -74,7 +72,7 @@ const config = {
         },
       },
       screens: {
-        "bp-nav": `${SITE_TAB_WIDTH}px`,
+        "bp-nav": "1120px",
         "bp-abt": "920px",
       },
       fontFamily: {

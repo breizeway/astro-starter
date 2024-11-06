@@ -58,5 +58,3 @@ export const SECTION_DEFS: SectionDefs = {
     tabClass: TAB_CLASS,
   },
 };
-
-export const SITE_TAB_WIDTH = 1120;
