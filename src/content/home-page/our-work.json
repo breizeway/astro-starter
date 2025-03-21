@@ -80,6 +80,14 @@
         {
           "src": "src/assets/images/managed/image000000-1-.jpg",
           "alt": "single sidelite"
+        },
+        {
+          "src": "src/assets/images/managed/1000003875.jpg",
+          "alt": "Hospital Linen Door"
+        },
+        {
+          "src": "src/assets/images/managed/1000003689.jpg",
+          "alt": "Hospital Loading Dock"
         }
       ]
     },
