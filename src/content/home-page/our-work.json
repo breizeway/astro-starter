@@ -203,6 +203,28 @@
           "alt": "Office Revolver"
         }
       ]
+    },
+    {
+      "name": "MEET THE FLEET",
+      "description": "We've got wheels on the road on both the East Coast and West Coast, ready to provide the service or installation you need!",
+      "subDescriptions": [
+        {
+          "description": "East Coast Fleet"
+        },
+        {
+          "description": "West Coast Fleet"
+        }
+      ],
+      "images": [
+        {
+          "src": "src/assets/images/managed/wc-vans-2.jpg",
+          "alt": "WC Fleet "
+        },
+        {
+          "src": "src/assets/images/managed/1000005472-002-.jpg",
+          "alt": "WC Office"
+        }
+      ]
     }
   ]
 }
