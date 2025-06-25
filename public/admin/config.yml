@@ -157,6 +157,7 @@ collections:
             label_singular: Certificate
             widget: list
             summary: "{{fields.name}}"
+            required: false
             fields:
               - name: name
                 label: Name
@@ -187,6 +188,7 @@ collections:
             label_singular: Distributor
             widget: list
             summary: "{{fields.name}}"
+            required: false
             fields:
               - name: name
                 label: Name

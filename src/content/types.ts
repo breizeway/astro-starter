@@ -11,7 +11,7 @@ export interface ContentSection<T extends object> {
 }
 
 export interface Banner {
-  slogan: Markdown;
+  slogan?: Markdown;
   image?: Image[];
 }
 
@@ -21,11 +21,11 @@ interface InfoCard {
 }
 
 export interface AboutUs {
-  description: Markdown;
+  description?: Markdown;
   image?: Image[];
-  locationCard: InfoCard;
-  businessCard: InfoCard;
-  serviceCard: InfoCard;
+  locationCard?: InfoCard;
+  businessCard?: InfoCard;
+  serviceCard?: InfoCard;
 }
 
 interface SubDescription {
@@ -51,7 +51,7 @@ interface Certificate {
 
 export interface Certifications {
   description?: string;
-  certificates: Certificate[];
+  certificates?: Certificate[];
 }
 
 interface Distributor {
@@ -62,7 +62,7 @@ interface Distributor {
 
 export interface Distributorships {
   description?: string;
-  distributors: Distributor[];
+  distributors?: Distributor[];
 }
 
 export interface ContactUs {

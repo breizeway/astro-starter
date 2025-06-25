@@ -2,15 +2,29 @@
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import { SECTION_DEFS } from "../constants";
+import { FALLBACK_DATA } from "../content/fallbacks";
 import type { AboutUs, ContentSection } from "../content/types";
 import { getManagedImage } from "../helpers/media";
 import Icon from "./common/icon.astro";
 import Markdown from "./common/markdown.astro";
 import PageSection from "./common/page-section.astro";
 
+const getAboutUsData = async (): Promise<ContentSection<AboutUs>> => {
+  try {
+    return (await getEntry("home-page", "about-us")) as ContentSection<AboutUs>;
+  } catch (error) {
+    console.error("Failed to load about-us content:", error);
+    return FALLBACK_DATA.aboutUs;
+  }
+};
+
 const {
   data: { description, image, locationCard, businessCard, serviceCard },
-} = (await getEntry("home-page", "about-us")) as ContentSection<AboutUs>;
+} = await getAboutUsData();
+
+const cards = [locationCard, businessCard, serviceCard] as NonNullable<
+  typeof locationCard
+>[];
 
 const cardIcons = ["location-lrg", "business-lrg", "service-lrg"];
 const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
@@ -41,7 +55,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
       }
       <div class="blurb">
         <Markdown
-          content={description}
+          content={description || ""}
           class="about-description text-center bp-abt:text-left"
         />
       </div>
@@ -52,7 +66,7 @@ const { sectionId, sectionClass } = SECTION_DEFS["about-us"];
     `}
     >
       {
-        [locationCard, businessCard, serviceCard].map((card, idx) => (
+        cards.map((card, idx) => (
           <div class="flex-1 basis-[22rem] flex justify-center px-[var(--site-space-x-lg)]">
             <div
               style={`animation-delay: ${idx * 100}ms`}

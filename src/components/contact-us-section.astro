@@ -1,14 +1,27 @@
 ---
 import { getEntry } from "astro:content";
 import { SECTION_DEFS } from "../constants";
+import { FALLBACK_DATA } from "../content/fallbacks";
 import type { ContactUs, ContentSection } from "../content/types";
 import Icon from "./common/icon.astro";
 import Markdown from "./common/markdown.astro";
 import PageSection from "./common/page-section.astro";
 
+const getContactUsData = async (): Promise<ContentSection<ContactUs>> => {
+  try {
+    return (await getEntry(
+      "home-page",
+      "contact-us",
+    )) as ContentSection<ContactUs>;
+  } catch (error) {
+    console.error("Failed to load contact-us content:", error);
+    return FALLBACK_DATA.contactUs;
+  }
+};
+
 const {
   data: { title, emailCard, phoneCard, mailingCard, shippingCard },
-} = (await getEntry("home-page", "contact-us")) as ContentSection<ContactUs>;
+} = await getContactUsData();
 
 const cardIcons = ["email-lrg", "phone-lrg", "mail-lrg", "shipping-lrg"];
 const { sectionId, sectionClass } = SECTION_DEFS["contact-us"];

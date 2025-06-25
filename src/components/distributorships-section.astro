@@ -2,18 +2,34 @@
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import { SECTION_DEFS } from "../constants";
+import { FALLBACK_DATA } from "../content/fallbacks";
 import type { ContentSection, Distributorships } from "../content/types";
 import { getManagedImage } from "../helpers/media";
 import Markdown from "./common/markdown.astro";
 
+const getDistributorshipsData = async (): Promise<
+  ContentSection<Distributorships>
+> => {
+  try {
+    return (await getEntry(
+      "home-page",
+      "distributorships",
+    )) as ContentSection<Distributorships>;
+  } catch (error) {
+    console.error("Failed to load distributorships content:", error);
+    return FALLBACK_DATA.distributorships;
+  }
+};
+
 const {
   data: { description, distributors },
-} = (await getEntry(
-  "home-page",
-  "distributorships",
-)) as ContentSection<Distributorships>;
+} = await getDistributorshipsData();
 
 const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
+
+const validDistributors = (distributors || []).filter(
+  (dist) => dist && dist.href && dist.image && dist.image.src && dist.image.alt,
+);
 ---
 
 <div
@@ -30,38 +46,38 @@ const { sectionId, sectionClass } = SECTION_DEFS["distributorships"];
     class="p-[var(--site-space-x)] py-[calc(var(--site-space-x-lg)*1.5)] flex flex-col gap-[calc(var(--site-space-x)*1.5)]"
   >
     {
-      !!description && (
+      description && description.trim() !== "" && (
         <div class="blurb my-[var(--site-space-x-sm)]">
           <Markdown content={description} noMarginY />
         </div>
       )
     }
-    <div
-      class="flex flex-wrap gap-[var(--site-space-x-lg)] p-[var(--site-space-x)] sm:px-0 pb-0"
-    >
-      {
-        distributors.map((dist) => (
-          <a
-            class={`
-              cell glass-light-header flex-1 basis-[26rem] gap-[var(--site-space-x)] flex flex-row items-center
-              motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none
-            `}
-            href={dist.href}
-            target="_blank"
-          >
-            <div class="aspect-square flex flex-col justify-center">
-              <Image
-                src={getManagedImage(dist.image.src)}
-                alt={dist.image.alt}
-                class="img-fade-in w-32 min-w-32 sm:w-40 sm:min-w-40 drop-shadow-xl"
-                loading="lazy"
-              />
-            </div>
-            <span class="text-title-4">{dist.name}</span>
-          </a>
-        ))
-      }
-    </div>
+    {
+      validDistributors.length > 0 && (
+        <div class="flex flex-wrap gap-[var(--site-space-x-lg)] p-[var(--site-space-x)] sm:px-0 pb-0">
+          {validDistributors.map((dist) => (
+            <a
+              class={`
+                cell glass-light-header flex-1 basis-[26rem] gap-[var(--site-space-x)] flex flex-row items-center
+                motion-safe:opacity-0 intersect:animate-fade-up intersect-once motion-reduce:intersect:animate-none
+              `}
+              href={dist.href}
+              target="_blank"
+            >
+              <div class="aspect-square flex flex-col justify-center">
+                <Image
+                  src={getManagedImage(dist.image.src)}
+                  alt={dist.image.alt}
+                  class="img-fade-in w-32 min-w-32 sm:w-40 sm:min-w-40 drop-shadow-xl"
+                  loading="lazy"
+                />
+              </div>
+              <span class="text-title-4">{dist.name}</span>
+            </a>
+          ))}
+        </div>
+      )
+    }
   </div>
 </div>
 

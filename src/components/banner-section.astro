@@ -1,14 +1,24 @@
 ---
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
+import { FALLBACK_DATA } from "../content/fallbacks";
 import type { Banner, ContentSection } from "../content/types";
 import { getManagedImage } from "../helpers/media";
 import Markdown from "./common/markdown.astro";
 import PageSection from "./common/page-section.astro";
 
+const getBannerData = async (): Promise<ContentSection<Banner>> => {
+  try {
+    return (await getEntry("home-page", "banner")) as ContentSection<Banner>;
+  } catch (error) {
+    console.error("Failed to load banner content:", error);
+    return FALLBACK_DATA.banner;
+  }
+};
+
 const {
   data: { slogan, image },
-} = (await getEntry("home-page", "banner")) as ContentSection<Banner>;
+} = await getBannerData();
 
 const hasImage = !!image?.length;
 ---
@@ -27,7 +37,7 @@ const hasImage = !!image?.length;
         </div>
       ))
     ) : (
-      <Markdown content={slogan} noMarginY />
+      <Markdown content={slogan || ""} noMarginY />
     )
   }
 </PageSection>

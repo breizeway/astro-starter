@@ -2,20 +2,36 @@
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import { SECTION_DEFS } from "../constants";
+import { FALLBACK_DATA } from "../content/fallbacks";
 import type { Certifications, ContentSection } from "../content/types";
 import { getManagedImage } from "../helpers/media";
 import Icon from "./common/icon.astro";
 import ImgZoomWrapper from "./common/img-zoom-wrapper.astro";
 import Markdown from "./common/markdown.astro";
 
+const getCertificationsData = async (): Promise<
+  ContentSection<Certifications>
+> => {
+  try {
+    return (await getEntry(
+      "home-page",
+      "certifications",
+    )) as ContentSection<Certifications>;
+  } catch (error) {
+    console.error("Failed to load certifications content:", error);
+    return FALLBACK_DATA.certifications;
+  }
+};
+
 const {
   data: { description, certificates },
-} = (await getEntry(
-  "home-page",
-  "certifications",
-)) as ContentSection<Certifications>;
+} = await getCertificationsData();
 
 const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
+
+const validCertificates = (certificates || []).filter(
+  (cert) => cert && cert.name && cert.image && cert.image.src && cert.image.alt,
+);
 ---
 
 <div
@@ -32,37 +48,37 @@ const { sectionId, sectionClass } = SECTION_DEFS["certifications"];
     class="p-[var(--site-space-x)] py-[calc(var(--site-space-x-lg)*1.5)] flex flex-col gap-[calc(var(--site-space-x)*1.5)]"
   >
     {
-      !!description && (
+      description && description.trim() !== "" && (
         <div class="blurb my-[var(--site-space-x-sm)]">
           <Markdown content={description} noMarginY />
         </div>
       )
     }
 
-    <div
-      class="flex flex-wrap gap-[calc(var(--site-space-x-lg)*2)] p-[var(--site-space-x)] justify-center"
-    >
-      {
-        certificates.map((cert) => (
-          <div class="flex flex-col justify-between items-center gap-[var(--site-space-x-sm)] flex-1 basis-80">
-            <div class="flex items-center justify-center text-success dark:text-[oklch(70%_0.5_160_/_0.9)] dark:drop-shadow-lg gap-4 mb-[calc(var(--site-space-x)/2)]">
-              <Icon icon="certified" class="h-12" />
-              <span class="text-title-4">{cert.name}</span>
+    {
+      validCertificates.length > 0 && (
+        <div class="flex flex-wrap gap-[calc(var(--site-space-x-lg)*2)] p-[var(--site-space-x)] justify-center">
+          {validCertificates.map((cert) => (
+            <div class="flex flex-col justify-between items-center gap-[var(--site-space-x-sm)] flex-1 basis-80">
+              <div class="flex items-center justify-center text-success dark:text-[oklch(70%_0.5_160_/_0.9)] dark:drop-shadow-lg gap-4 mb-[calc(var(--site-space-x)/2)]">
+                <Icon icon="certified" class="h-12" />
+                <span class="text-title-4">{cert.name}</span>
+              </div>
+              <div class="border-std rounded-xl overflow-clip shadow-std max-w-[24rem]">
+                <ImgZoomWrapper>
+                  <Image
+                    src={getManagedImage(cert.image.src)}
+                    alt={cert.image.alt}
+                    class="img-fade-in"
+                    loading="lazy"
+                  />
+                </ImgZoomWrapper>
+              </div>
             </div>
-            <div class="border-std rounded-xl overflow-clip shadow-std max-w-[24rem]">
-              <ImgZoomWrapper>
-                <Image
-                  src={getManagedImage(cert.image.src)}
-                  alt={cert.image.alt}
-                  class="img-fade-in"
-                  loading="lazy"
-                />
-              </ImgZoomWrapper>
-            </div>
-          </div>
-        ))
-      }
-    </div>
+          ))}
+        </div>
+      )
+    }
   </div>
 </div>
 

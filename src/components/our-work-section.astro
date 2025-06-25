@@ -5,36 +5,29 @@ import { makeId } from "../helpers/strings";
 import Carousel from "./common/carousel.astro";
 import { SECTION_DEFS } from "../constants";
 import Markdown from "./common/markdown.astro";
+import { FALLBACK_DATA } from "../content/fallbacks";
 
-// Add error handling for getEntry
 const getWorkData = async (): Promise<ContentSection<OurWork>> => {
   try {
     return (await getEntry("home-page", "our-work")) as ContentSection<OurWork>;
   } catch (error) {
     console.error("Failed to load our-work content:", error);
-    return {
-      id: "our-work",
-      collection: "home-page",
-      data: {
-        title: "Our Work",
-        galleries: [],
-      },
-    };
+    return FALLBACK_DATA.ourWork;
   }
 };
 
-const ourWorkData = await getWorkData();
-
 const {
-  data: { title, galleries = [] },
-} = ourWorkData;
+  data: { title, galleries },
+} = await getWorkData();
 
 const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
 
-// Filter out galleries that might have invalid data
 const validGalleries = galleries.filter(
   (gallery) =>
-    gallery && typeof gallery.name === "string" && gallery.name.trim() !== "",
+    gallery &&
+    typeof gallery.name === "string" &&
+    gallery.name.trim() !== "" &&
+    !!gallery.images?.length,
 );
 ---
 
@@ -66,7 +59,7 @@ const validGalleries = galleries.filter(
                 "gallery-tab tl-tab tl-tab-x",
                 { "tl-tab--selected": !idx },
               ]}
-              data-gallery={makeId(gallery.name || `gallery-${idx}`)}
+              data-gallery={makeId(gallery.name)}
             >
               {gallery.name}
             </button>
@@ -78,7 +71,6 @@ const validGalleries = galleries.filter(
 
   {
     validGalleries.map((gallery, idx) => {
-      // Safely access arrays with defaults
       const subDescriptions = gallery.subDescriptions || [];
       const images = gallery.images || [];
 
@@ -88,7 +80,7 @@ const validGalleries = galleries.filter(
             "gallery-carousel py-[calc(var(--site-space-x)*1.5)] flex flex-col gap-[calc(var(--site-space-x-lg)*1)] pb-[var(--site-space-x-lg)]",
             { hidden: !!idx },
           ]}
-          data-gallery={makeId(gallery.name || `gallery-${idx}`)}
+          data-gallery={makeId(gallery.name)}
         >
           {gallery.description && gallery.description.trim() !== "" && (
             <div class="site-px w-full flex flex-col gap-[var(--carousel-gap)]">
