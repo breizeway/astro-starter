@@ -214,13 +214,22 @@
     },
     {
       "name": "MEET THE FLEET",
-      "description": "",
+      "description": "We've got wheels on road on both the East Coast and West Coast of Florida - ready to tackle your Service or Installation needs!",
       "subDescriptions": [
         {
-          "description": "Meet the fleet."
+          "description": "Meet the Elite Fleet!"
         }
       ],
-      "images": []
+      "images": [
+        {
+          "src": "src/assets/images/managed/wc-vans-2.jpg",
+          "alt": "WC Fleet"
+        },
+        {
+          "src": "src/assets/images/managed/1000005472-002-.jpg",
+          "alt": "WC Shop"
+        }
+      ]
     }
   ]
 }
