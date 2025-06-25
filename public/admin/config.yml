@@ -121,6 +121,7 @@ collections:
                 label: Sub-descriptions
                 label_singular: Sub-description
                 widget: list
+                required: false
                 fields:
                   - name: description
                     label: Description
@@ -132,6 +133,7 @@ collections:
                 label_singular: Image
                 widget: "list"
                 summary: "{{fields.alt}}"
+                required: false
                 fields:
                   - name: src
                     label: Source

@@ -6,10 +6,36 @@ import Carousel from "./common/carousel.astro";
 import { SECTION_DEFS } from "../constants";
 import Markdown from "./common/markdown.astro";
 
+// Add error handling for getEntry
+const getWorkData = async (): Promise<ContentSection<OurWork>> => {
+  try {
+    return (await getEntry("home-page", "our-work")) as ContentSection<OurWork>;
+  } catch (error) {
+    console.error("Failed to load our-work content:", error);
+    return {
+      id: "our-work",
+      collection: "home-page",
+      data: {
+        title: "Our Work",
+        galleries: [],
+      },
+    };
+  }
+};
+
+const ourWorkData = await getWorkData();
+
 const {
-  data: { title, galleries },
-} = (await getEntry("home-page", "our-work")) as ContentSection<OurWork>;
+  data: { title, galleries = [] },
+} = ourWorkData;
+
 const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
+
+// Filter out galleries that might have invalid data
+const validGalleries = galleries.filter(
+  (gallery) =>
+    gallery && typeof gallery.name === "string" && gallery.name.trim() !== "",
+);
 ---
 
 <work-galleries
@@ -33,14 +59,14 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
       class="flex gap-2 no-scrollbar overflow-x-scroll mx-auto w-fit max-w-full px-[var(--site-space-x)]"
     >
       {
-        galleries.map((gallery, idx) => (
+        validGalleries.map((gallery, idx) => (
           <li role="tab">
             <button
               class:list={[
                 "gallery-tab tl-tab tl-tab-x",
                 { "tl-tab--selected": !idx },
               ]}
-              data-gallery={makeId(gallery.name)}
+              data-gallery={makeId(gallery.name || `gallery-${idx}`)}
             >
               {gallery.name}
             </button>
@@ -51,37 +77,43 @@ const { sectionId, sectionClass } = SECTION_DEFS["our-work"];
   </div>
 
   {
-    galleries.map((gallery, idx) => (
-      <div
-        class:list={[
-          "gallery-carousel py-[calc(var(--site-space-x)*1.5)] flex flex-col gap-[calc(var(--site-space-x-lg)*1)] pb-[var(--site-space-x-lg)]",
-          { hidden: !!idx },
-        ]}
-        data-gallery={makeId(gallery.name)}
-      >
-        {!!gallery.description && (
-          <div class="site-px w-full flex flex-col gap-[var(--carousel-gap)]">
-            <div class="w-full max-w-[30rem] my-[var(--site-space-x-sm)] mx-auto text-center">
-              <Markdown
-                content={gallery.description}
-                noMarginY
-                class="text-lg"
-              />
-            </div>
-            {!!gallery.subDescriptions.length && (
-              <div class="flex flex-wrap gap-[var(--site-space-x-lg)]">
-                {gallery.subDescriptions.map(({ description }) => (
-                  <div class="cell glass-dark-header shadow-std !bg-opacity-25 flex-1 basis-72">
-                    <Markdown content={description} noMarginY />
-                  </div>
-                ))}
+    validGalleries.map((gallery, idx) => {
+      // Safely access arrays with defaults
+      const subDescriptions = gallery.subDescriptions || [];
+      const images = gallery.images || [];
+
+      return (
+        <div
+          class:list={[
+            "gallery-carousel py-[calc(var(--site-space-x)*1.5)] flex flex-col gap-[calc(var(--site-space-x-lg)*1)] pb-[var(--site-space-x-lg)]",
+            { hidden: !!idx },
+          ]}
+          data-gallery={makeId(gallery.name || `gallery-${idx}`)}
+        >
+          {gallery.description && gallery.description.trim() !== "" && (
+            <div class="site-px w-full flex flex-col gap-[var(--carousel-gap)]">
+              <div class="w-full max-w-[30rem] my-[var(--site-space-x-sm)] mx-auto text-center">
+                <Markdown
+                  content={gallery.description}
+                  noMarginY
+                  class="text-lg"
+                />
               </div>
-            )}
-          </div>
-        )}
-        {!!gallery.images.length && <Carousel images={gallery.images} />}
-      </div>
-    ))
+              {subDescriptions.length > 0 && (
+                <div class="flex flex-wrap gap-[var(--site-space-x-lg)]">
+                  {subDescriptions.map(({ description }) => (
+                    <div class="cell glass-dark-header shadow-std !bg-opacity-25 flex-1 basis-72">
+                      <Markdown content={description || ""} noMarginY />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          {images.length > 0 && <Carousel images={images} />}
+        </div>
+      );
+    })
   }
 </work-galleries>
 

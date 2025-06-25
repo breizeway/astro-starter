@@ -6,7 +6,7 @@
   },
   "phoneCard": {
     "title": "Phone",
-    "description": "**East Coast:** (954) 774-8700\n\n**West Coast:** (239) 770-5654"
+    "description": "#### East Coast\n(954) 774-8700\n\n#### West Coast\n(239) 770-5654"
   },
   "mailingCard": {
     "title": "Mailing Address",
@@ -14,6 +14,6 @@
   },
   "shippingCard": {
     "title": "Shipping / Shop Address",
-    "description": "**East Coast** - 500 SW 21st Terrace, Bay #B103\nFort Lauderdale, FL 33312\n\n**West Coast** - 820 NE 24th Lane, Suite 112\nCape Coral, FL  33909"
+    "description": "#### East Coast\n500 SW 21st Terrace, Bay #B103\nFort Lauderdale, FL 33312\n\n#### West Coast\n820 NE 24th Lane, Suite 112\nCape Coral, FL  33909"
   }
 }

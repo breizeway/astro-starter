@@ -35,8 +35,8 @@ interface SubDescription {
 interface WorkGallery {
   name: string;
   description?: Markdown;
-  subDescriptions: SubDescription[];
-  images: Image[];
+  subDescriptions?: SubDescription[];
+  images?: Image[];
 }
 
 export interface OurWork {
