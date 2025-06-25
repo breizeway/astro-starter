@@ -222,16 +222,16 @@
       ],
       "images": [
         {
+          "src": "src/assets/images/managed/fullsizer10011.jpg",
+          "alt": "EC Fleet"
+        },
+        {
           "src": "src/assets/images/managed/wc-vans-2.jpg",
           "alt": "WC Fleet"
         },
         {
           "src": "src/assets/images/managed/1000005472-002-.jpg",
           "alt": "WC Shop"
-        },
-        {
-          "src": "src/assets/images/managed/fullsizer10011.jpg",
-          "alt": "EC Vans"
         }
       ]
     }
