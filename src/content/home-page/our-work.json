@@ -80,6 +80,14 @@
         {
           "src": "src/assets/images/managed/image000000-1-.jpg",
           "alt": "single sidelite"
+        },
+        {
+          "src": "src/assets/images/managed/twc-09.25.2.jpg",
+          "alt": "TWC ext"
+        },
+        {
+          "src": "src/assets/images/managed/twc-09.25.jpg",
+          "alt": "TWC int"
         }
       ]
     },
