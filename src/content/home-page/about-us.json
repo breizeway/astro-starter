@@ -1,5 +1,5 @@
 {
-  "description": "# About Us\n**Elite Commercial Door, Inc.** is a state licensed & insured premier company for ALL of your commercial door needs.  We can tackle your automatic, storefront or manual door projects, whether it's service, repairs or new installation!\n\n### [CONTACT US](/#contact-us) TODAY!",
+  "description": "# About Us\n\n**Elite Commercial Door, Inc.** is a state licensed & insured premier company for ALL of your commercial door needs.  We can tackle your automatic, storefront or manual door projects, whether it's service, repairs or new installation!\n\n### [CONTACT US](/#contact-us) TODAY!\n\n**[REQUEST SERVICE](https://form.jotform.com/253285903245156)**",
   "locationCard": {
     "title": "STATE-WIDE SERVICE",
     "description": "We have offices & crews on the East Coast and West Coast of Florida!"
@@ -12,7 +12,6 @@
     "title": "Service & Installation",
     "description": "We can service and install Automatic Door assemblies, manual & steel door assemblies, storefront assemblies and all respective hardware.\n\nOur automatic door technicians are *AAADM* Certified, with a wealth of knowledge & experience in various manufacturers."
   },
-
   "image": [
     {
       "src": "src/assets/images/managed/horton-photo.jpg",
