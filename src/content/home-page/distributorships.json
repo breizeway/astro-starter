@@ -18,14 +18,6 @@
       }
     },
     {
-      "name": "Quad Automatic Doors",
-      "href": "https://quadautomaticdoors.com/",
-      "image": {
-        "src": "src/assets/images/managed/quad_logo.jpg",
-        "alt": "Quad Systems LLC Logo"
-      }
-    },
-    {
       "name": "Rytec Doors",
       "href": "https://www.rytecdoors.com/",
       "image": {
@@ -39,6 +31,14 @@
       "image": {
         "src": "src/assets/images/managed/tormax_logo.svg",
         "alt": "Tormax Logo"
+      }
+    },
+    {
+      "name": "Quad Automatic Doors",
+      "href": "https://quadautomaticdoors.com/",
+      "image": {
+        "src": "src/assets/images/managed/quad_logo.jpg",
+        "alt": "Quad Systems LLC Logo"
       }
     }
   ]
